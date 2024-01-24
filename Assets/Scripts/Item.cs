@@ -18,8 +18,11 @@ public class Item : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        
-       
+        if (other.gameObject.CompareTag("Car")) 
+        { 
+            Destroy(gameObject);
+        }
+
     }
     
     private void OnCollisionStay(Collision other)
