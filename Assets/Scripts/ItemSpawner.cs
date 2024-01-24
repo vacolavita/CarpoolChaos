@@ -11,7 +11,7 @@ public class ItemSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        timer = spawnTime;
     }
 
     // Update is called once per frame
@@ -22,7 +22,7 @@ public class ItemSpawner : MonoBehaviour
         {
             timer -= spawnTime;
             GameObject itemx = Instantiate(item);
-            itemx.transform.position = new Vector3(Random.Range(-2.0f, 2.0f), 0, Random.Range(-2.0f, 2.0f));
+            itemx.transform.position = new Vector3(Random.Range(-16.0f, 16.0f), 1, Random.Range(-16.0f, 16.0f));
         }
     }
 }

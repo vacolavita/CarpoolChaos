@@ -15,4 +15,18 @@ public class Item : MonoBehaviour
     {
         
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        
+       
+    }
+    
+    private void OnCollisionStay(Collision other)
+    {
+        if (other.gameObject.CompareTag("Wall"))
+        {
+            transform.position = new Vector3(Random.Range(-16.0f, 16.0f), 1, Random.Range(-16.0f, 16.0f));
+        }
+    }
 }
