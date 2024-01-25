@@ -12,6 +12,10 @@ public class Movement : MonoBehaviour
     public int carryingCapacity;
     public int currentPassengers;
     public Vector3 launchTrajectory;
+    public bool isMoving;
+    private GameManager gameManager;
+
+    public float fuelLevel;
 
     Rigidbody r;
     float curSpeed;
@@ -25,6 +29,7 @@ public class Movement : MonoBehaviour
     void Start()
     {
         r = GetComponent<Rigidbody>();
+        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -33,19 +38,51 @@ public class Movement : MonoBehaviour
 
         Vector2 c = new Vector2(Input.GetAxis(axisH), Input.GetAxis(axisV));
         Vector3 newDirection = Vector3.RotateTowards(transform.forward, new Vector3(c.x,0,c.y), handling, 0.0f);
-        if(c.magnitude > 1){ c.Normalize(); }
-        if (c.magnitude > 0.5) { launch = true; launchTrajectory = new Vector3(0, 4, 0) + (r.velocity * 0.5f) + transform.forward * (launchForce + r.velocity.magnitude * 0.5f); } else { launch = false; }
-        if (Vector2.Angle(new Vector2(r.velocity.x, r.velocity.z), c) > 90) { c *= 0.33f; } //If the angle you're trying to move at is more than 90 degrees away from the direction you're facing, you'll slow down for a sharper turn
+        if (c.magnitude > 0.3) 
+        {
+            isMoving = true;
+        }
+        else
+        {
+            isMoving = false;
+        }
+
+        if (c.magnitude > 1)
+        {
+            c.Normalize();
+        }
+        if (c.magnitude > 0.5) 
+        { 
+            launch = true; launchTrajectory = new Vector3(0, 4, 0) + (r.velocity * 0.5f) + transform.forward * (launchForce + r.velocity.magnitude * 0.5f); 
+        } 
+        else 
+        {
+            launch = false;
+        }
+        if (Vector2.Angle(new Vector2(r.velocity.x, r.velocity.z), c) > 90) //If the angle you're trying to move at is more than 90 degrees away from the direction you're facing, you'll slow down for a sharper turn
+        {
+            c *= 0.33f;
+        } 
         curSpeed += c.magnitude * maxSpeed * (acceleration - 1) * (traction - 1);
         transform.rotation = Quaternion.LookRotation(newDirection);
         curSpeed /= acceleration;
         r.velocity += transform.forward * curSpeed;
         r.velocity = new Vector3(r.velocity.x/traction, r.velocity.y, r.velocity.z/traction);
+
+        if (isMoving)
+        {
+            FuelDrain();
+        }    
     }
 
     public Vector3 PassengerPosition(int passengerNum)
     {
         return new Vector3(((passengerNum - 1) % 3 - 1) *0.5f,1,Mathf.Floor((passengerNum - 1) / 3 - 1) * 0.5f);
+    }
+
+    public void FuelDrain()
+    {
+        fuelLevel -= Time.deltaTime;
     }
 
 
