@@ -22,6 +22,7 @@ public class Movement : MonoBehaviour
     public bool hasFuel;
     public float fuelLevel;
     public float maxFuel;
+    private float gasToAdd;
 
     Rigidbody r;
     float curSpeed;
@@ -110,6 +111,12 @@ public class Movement : MonoBehaviour
     public void GasRefill()
     {
         fuelLevel = maxFuel;
+    }
+
+    public void GasCanFill()
+    {
+        gasToAdd = maxFuel * 0.3f;
+        fuelLevel += gasToAdd;
     }
 
 

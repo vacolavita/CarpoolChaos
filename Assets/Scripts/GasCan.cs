@@ -18,12 +18,12 @@ public class GasCan : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            car1.GasRefill();
+            car1.GasCanFill();
         }
 
         if (Input.GetKeyDown(KeyCode.Keypad1))
         {
-            car2.GasRefill();
+            car2.GasCanFill();
         }
     }
 }
