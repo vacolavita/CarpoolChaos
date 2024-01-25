@@ -10,6 +10,10 @@ public class Movement : MonoBehaviour
     public float handling;
     public float launchForce;
     public int carryingCapacity;
+    public float fuelEfficiency;
+    public float passengerPenalty;
+    public float launchPenalty;
+
     public int currentPassengers;
     public Vector3 launchTrajectory;
     
@@ -39,14 +43,6 @@ public class Movement : MonoBehaviour
 
         Vector2 c = new Vector2(Input.GetAxis(axisH), Input.GetAxis(axisV));
         Vector3 newDirection = Vector3.RotateTowards(transform.forward, new Vector3(c.x,0,c.y), handling, 0.0f);
-        if (c.magnitude > 0.3) 
-        {
-            isMoving = true;
-        }
-        else
-        {
-            isMoving = false;
-        }
 
         if (c.magnitude > 1)
         {
@@ -70,9 +66,20 @@ public class Movement : MonoBehaviour
         r.velocity += transform.forward * curSpeed;
         r.velocity = new Vector3(r.velocity.x/traction, r.velocity.y, r.velocity.z/traction);
 
+
+
+        //Fuel Stuff
+        if (curSpeed > 0.1f)
+        {
+            isMoving = true;
+        }
+        else
+        {
+            isMoving = false;
+        }
         if (isMoving)
         {
-            FuelDrain();
+            FuelDrain((curSpeed/maxSpeed)*(fuelEfficiency + (passengerPenalty*currentPassengers)));
         }
         
         if (fuelLevel <= 0)
@@ -91,11 +98,11 @@ public class Movement : MonoBehaviour
         return new Vector3(((passengerNum - 1) % 3 - 1) *0.5f,1,Mathf.Floor((passengerNum - 1) / 3 - 1) * 0.5f);
     }
 
-    public void FuelDrain()
+    public void FuelDrain(float amount)
     {
         if (hasFuel)
         {
-            fuelLevel -= Time.deltaTime;
+            fuelLevel -= amount;
         }
     }
 
