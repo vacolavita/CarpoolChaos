@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class ItemSpawner : MonoBehaviour
 {
-    public float spawnTime = 10;
+    public float spawnTime = 30;
     float timer = 0;
     public GameObject item;
+    public Vector3[] spawnPoints;
     int spawnPoint;
-
-    // Start is called before the first frame update
     void Start()
     {
         timer = spawnTime;
@@ -22,8 +21,10 @@ public class ItemSpawner : MonoBehaviour
         if (timer >= spawnTime)
         {
             timer -= spawnTime;
+            spawnPoint = Random.Range(0, spawnPoints.Length);
             GameObject itemx = Instantiate(item);
-            itemx.transform.position = new Vector3(Random.Range(-16.0f, 16.0f), 1, Random.Range(-16.0f, 16.0f));
+            item.transform.position = spawnPoints[spawnPoint] + new Vector3(0, 1, 0);
+            spawnPoint = (spawnPoint + 1) % 3;
         }
     }
 }

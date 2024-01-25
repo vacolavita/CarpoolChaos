@@ -13,7 +13,7 @@ public class Item : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        StartCoroutine(ItemDelete());
     }
 
     private void OnTriggerStay(Collider other)
@@ -22,20 +22,18 @@ public class Item : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
-        else
-        {
-            if (other.gameObject.CompareTag("Wall"))
-            {
-                Debug.Log("Somebody PLEASE get this item out of the wall!!!");
-                transform.position = transform.position + new Vector3(Random.Range(-16.0f, 16.0f), 1, Random.Range(-16.0f, 16.0f));
-            }
-        }
-
     }
 
     private void OnCollisionStay(Collision collision)
     {
 
+        Debug.Log("Somebody PLEASE get this item out of the wall!!!");
+        transform.position = transform.position + new Vector3(Random.Range(-16.0f, 16.0f), 1, Random.Range(-16.0f, 16.0f));
+    }
+
+    IEnumerator ItemDelete()
+    {
+        yield return new WaitForSeconds(20);
+        Destroy(gameObject);
     }
 }
