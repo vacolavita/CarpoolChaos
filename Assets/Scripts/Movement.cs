@@ -12,15 +12,17 @@ public class Movement : MonoBehaviour
     public int carryingCapacity;
     public int currentPassengers;
     public Vector3 launchTrajectory;
+    
+    //Variables for fuel
     public bool isMoving;
-    private GameManager gameManager;
-
+    public bool hasFuel;
     public float fuelLevel;
 
     Rigidbody r;
     float curSpeed;
     public bool launch;
 
+    //Drop Variables
     public KeyCode drop;
     public string axisH;
     public string axisV;
@@ -29,7 +31,6 @@ public class Movement : MonoBehaviour
     void Start()
     {
         r = GetComponent<Rigidbody>();
-        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -72,7 +73,17 @@ public class Movement : MonoBehaviour
         if (isMoving)
         {
             FuelDrain();
-        }    
+        }
+        
+        if (fuelLevel <= 0)
+        {
+            Debug.Log("Fuel is empty.");
+            hasFuel = false;
+        }
+        else
+        {
+            hasFuel = true;
+        }
     }
 
     public Vector3 PassengerPosition(int passengerNum)
@@ -82,7 +93,10 @@ public class Movement : MonoBehaviour
 
     public void FuelDrain()
     {
-        fuelLevel -= Time.deltaTime;
+        if (hasFuel)
+        {
+            fuelLevel -= Time.deltaTime;
+        }
     }
 
 
