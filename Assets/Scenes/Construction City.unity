@@ -346,6 +346,7 @@ GameObject:
   - component: {fileID: 127162100}
   - component: {fileID: 127162099}
   - component: {fileID: 127162098}
+  - component: {fileID: 127162103}
   m_Layer: 0
   m_Name: Building
   m_TagString: Destination
@@ -460,6 +461,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &127162103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 127162097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef2ffd721d74dd640ab4c5872dfb56a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destType: 1
 --- !u!1 &157880716
 GameObject:
   m_ObjectHideFlags: 0
@@ -1008,8 +1022,8 @@ MonoBehaviour:
   - {x: -49.8, y: 0.52, z: 29.8}
   - {x: 74.5, y: 0.52, z: 13.3}
   - {x: 0.6, y: 0.52, z: -51.2}
-  passClump: 0
-  passAmount: 0
+  passClump: 3
+  passAmount: 3
 --- !u!4 &355820266
 Transform:
   m_ObjectHideFlags: 0
@@ -1400,6 +1414,7 @@ GameObject:
   - component: {fileID: 689190006}
   - component: {fileID: 689190005}
   - component: {fileID: 689190004}
+  - component: {fileID: 689190009}
   m_Layer: 0
   m_Name: Building (1)
   m_TagString: Destination
@@ -1514,6 +1529,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &689190009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 689190003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef2ffd721d74dd640ab4c5872dfb56a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destType: 3
 --- !u!1 &733903893
 GameObject:
   m_ObjectHideFlags: 0
@@ -3380,6 +3408,7 @@ GameObject:
   - component: {fileID: 1784820126}
   - component: {fileID: 1784820125}
   - component: {fileID: 1784820124}
+  - component: {fileID: 1784820129}
   m_Layer: 0
   m_Name: Building (2)
   m_TagString: Destination
@@ -3494,6 +3523,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1784820129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1784820123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef2ffd721d74dd640ab4c5872dfb56a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destType: 2
 --- !u!1 &1874583404
 GameObject:
   m_ObjectHideFlags: 0
