@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Passenger : MonoBehaviour
@@ -7,17 +8,27 @@ public class Passenger : MonoBehaviour
     bool isInCar = false;
     bool canTrigger = true;
     int passengerNum;
+    public int passengerType;
+    public Material[] passengerMats;
     Movement parentMove;
     SpriteRenderer mapSprite;
+    MeshRenderer[] mesh;
     // Start is called before the first frame update
     void Start()
     {
         mapSprite = GetComponentInChildren<SpriteRenderer>();
+        mesh = GetComponentsInChildren<MeshRenderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        foreach (var item in mesh)
+        {
+            item.material = passengerMats[passengerType-1];
+        }
+        mapSprite.color = mesh[0].material.color;
+
         mapSprite.enabled = true;
         if (isInCar)
         {
@@ -63,9 +74,12 @@ public class Passenger : MonoBehaviour
             r.isKinematic = true;
         }
         if (other.gameObject.CompareTag("Car")){ canTrigger = true; }
-        if (other.gameObject.CompareTag("Destination")) {
-            if (isInCar) { parentMove.currentPassengers--; }
-            Destroy(gameObject); 
+        if (other.gameObject.CompareTag("Destination"))
+        {
+            if(other.gameObject.GetComponent<Destination>().destType == passengerType){
+                if (isInCar) { parentMove.currentPassengers--; }
+                Destroy(gameObject);
+            }
         }
     }
 
