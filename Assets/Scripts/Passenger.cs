@@ -91,25 +91,7 @@ public class Passenger : MonoBehaviour
                     parentMove.currentPassengers--;
                 }
                 Destroy(gameObject);
-                
-                switch (passengerType)
-                {
-                    case 1:
-                        Debug.Log("Green is with green.");
-                        gameManager.UpdateScore(1);
-                        break;
-                    case 2:
-                        Debug.Log("Red is with red.");
-                        gameManager.UpdateScore(2);
-                        break;
-                    case 3:
-                        Debug.Log("Blue is with blue.");
-                        gameManager.UpdateScore(3);
-                        break;
-                    default:
-                        Debug.Log("Passenger type is null.");
-                        break;
-                }
+                gameManager.UpdateScore(1);
             }
         }
     }
