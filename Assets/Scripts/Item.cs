@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Item : MonoBehaviour
 {
+    private int itemGet;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +23,26 @@ public class Item : MonoBehaviour
         if (other.gameObject.CompareTag("Car"))
         {
             Destroy(gameObject);
+            itemGet = Random.Range(1, 5);
+
+            switch (itemGet)
+            {
+                case 1:
+                    Debug.Log("Gas Can");
+                    break;
+                case 2:
+                    Debug.Log("Boost Pad");
+                    break;
+                case 3:
+                    Debug.Log("Tent");
+                    break;
+                case 4:
+                    Debug.Log("Spring Pad");
+                    break;
+                default:
+                    Debug.Log("Item type is null");
+                    break;
+            }
         }
     }
 
