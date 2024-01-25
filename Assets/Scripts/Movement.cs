@@ -118,6 +118,13 @@ public class Movement : MonoBehaviour
     {
         fuelLevel = Mathf.Min(fuelLevel+maxFuel*0.3f,maxFuel);
     }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Gas Station"))
+        {
+            GasRefill();
+        }
+    }
 
 
 }
