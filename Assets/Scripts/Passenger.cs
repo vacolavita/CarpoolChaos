@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Passenger : MonoBehaviour
@@ -7,17 +8,30 @@ public class Passenger : MonoBehaviour
     bool isInCar = false;
     bool canTrigger = true;
     int passengerNum;
+    public int passengerType;
+    public Material[] passengerMats;
     Movement parentMove;
     SpriteRenderer mapSprite;
+    MeshRenderer[] mesh;
+    private GameManager gameManager;
+
     // Start is called before the first frame update
     void Start()
     {
         mapSprite = GetComponentInChildren<SpriteRenderer>();
+        mesh = GetComponentsInChildren<MeshRenderer>();
+        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        foreach (var item in mesh)
+        {
+            item.material = passengerMats[passengerType-1];
+        }
+        mapSprite.color = mesh[0].material.color;
+
         mapSprite.enabled = true;
         if (isInCar)
         {
@@ -42,7 +56,8 @@ public class Passenger : MonoBehaviour
                 canTrigger = false;
             }
         }
-        if (parentMove != null) {
+        if (parentMove != null)
+        {
             if (Vector3.Distance(parentMove.transform.position, transform.position) > 4)
             {
                 canTrigger = true;
@@ -52,7 +67,8 @@ public class Passenger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Car") && !isInCar && canTrigger && other.GetComponent<Movement>().carryingCapacity > other.GetComponent<Movement>().currentPassengers) {
+        if (other.gameObject.CompareTag("Car") && !isInCar && canTrigger && other.GetComponent<Movement>().carryingCapacity > other.GetComponent<Movement>().currentPassengers)
+        {
             transform.SetParent(other.gameObject.transform);
             parentMove = transform.parent.GetComponent<Movement>();
             isInCar = true;
@@ -62,10 +78,21 @@ public class Passenger : MonoBehaviour
             Rigidbody r = GetComponent<Rigidbody>();
             r.isKinematic = true;
         }
-        if (other.gameObject.CompareTag("Car")){ canTrigger = true; }
-        if (other.gameObject.CompareTag("Destination")) {
-            if (isInCar) { parentMove.currentPassengers--; }
-            Destroy(gameObject); 
+        if (other.gameObject.CompareTag("Car"))
+        {
+            canTrigger = true;
+        }
+        if (other.gameObject.CompareTag("Destination"))
+        {
+            if(other.gameObject.GetComponent<Destination>().destType == passengerType)
+            {
+                if (isInCar) 
+                {
+                    parentMove.currentPassengers--;
+                }
+                Destroy(gameObject);
+                gameManager.UpdateScore(1);
+            }
         }
     }
 
