@@ -198,7 +198,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 26.991467
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -225,7 +225,7 @@ Transform:
   m_GameObject: {fileID: 13237168}
   serializedVersion: 2
   m_LocalRotation: {x: 0.5735764, y: 0, z: 0, w: 0.8191521}
-  m_LocalPosition: {x: 0, y: 19.2, z: -5.38}
+  m_LocalPosition: {x: 0, y: 22.44, z: -5.38}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -901,12 +901,24 @@ PrefabInstance:
       value: Car (1)
       objectReference: {fileID: 0}
     - target: {fileID: 1933865982034344777, guid: a78c323b43ef17647a46d84e62005de1, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1933865982034344777, guid: a78c323b43ef17647a46d84e62005de1, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1933865982034344777, guid: a78c323b43ef17647a46d84e62005de1, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1933865982034344777, guid: a78c323b43ef17647a46d84e62005de1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 77.813644
       objectReference: {fileID: 0}
     - target: {fileID: 1933865982034344777, guid: a78c323b43ef17647a46d84e62005de1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.33333206
+      value: 3.3
       objectReference: {fileID: 0}
     - target: {fileID: 1933865982034344777, guid: a78c323b43ef17647a46d84e62005de1, type: 3}
       propertyPath: m_LocalPosition.z
@@ -951,6 +963,10 @@ PrefabInstance:
     - target: {fileID: 3758951218398212852, guid: a78c323b43ef17647a46d84e62005de1, type: 3}
       propertyPath: axisV
       value: Vertical2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3758951218398212852, guid: a78c323b43ef17647a46d84e62005de1, type: 3}
+      propertyPath: maxSpeed
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2351,12 +2367,24 @@ PrefabInstance:
       value: Car
       objectReference: {fileID: 0}
     - target: {fileID: 1933865982034344777, guid: a78c323b43ef17647a46d84e62005de1, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1933865982034344777, guid: a78c323b43ef17647a46d84e62005de1, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1933865982034344777, guid: a78c323b43ef17647a46d84e62005de1, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1933865982034344777, guid: a78c323b43ef17647a46d84e62005de1, type: 3}
       propertyPath: m_LocalPosition.x
       value: -78.58093
       objectReference: {fileID: 0}
     - target: {fileID: 1933865982034344777, guid: a78c323b43ef17647a46d84e62005de1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.33333206
+      value: 3.3
       objectReference: {fileID: 0}
     - target: {fileID: 1933865982034344777, guid: a78c323b43ef17647a46d84e62005de1, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2389,6 +2417,10 @@ PrefabInstance:
     - target: {fileID: 1933865982034344777, guid: a78c323b43ef17647a46d84e62005de1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3758951218398212852, guid: a78c323b43ef17647a46d84e62005de1, type: 3}
+      propertyPath: maxSpeed
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2532,9 +2564,9 @@ MonoBehaviour:
   spawnTime: 12
   pass: {fileID: 4128033999256982640, guid: f7798f228cabaa344801977115a13119, type: 3}
   spawnPoints:
-  - {x: 36, y: 2, z: 36}
-  - {x: -28, y: 2, z: -9}
-  - {x: -5, y: 2, z: -42}
+  - {x: -29.5, y: 0.52, z: 50.9}
+  - {x: 74.5, y: 0.52, z: 13.3}
+  - {x: 0.6, y: 0.52, z: -51.2}
 --- !u!4 &1242111299
 Transform:
   m_ObjectHideFlags: 0
