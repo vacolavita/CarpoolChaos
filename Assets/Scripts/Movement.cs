@@ -16,12 +16,14 @@ public class Movement : MonoBehaviour
 
     public int currentPassengers;
     public Vector3 launchTrajectory;
+    private GameManager gameManager;
     
     //Variables for fuel
     public bool isMoving;
     public bool hasFuel;
     public float fuelLevel;
     public float maxFuel;
+    private float gasToAdd;
 
     Rigidbody r;
     float curSpeed;
@@ -36,6 +38,7 @@ public class Movement : MonoBehaviour
     void Start()
     {
         r = GetComponent<Rigidbody>();
+        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -85,7 +88,6 @@ public class Movement : MonoBehaviour
         
         if (fuelLevel <= 0)
         {
-            Debug.Log("Fuel is empty.");
             hasFuel = false;
         }
         else
@@ -110,6 +112,11 @@ public class Movement : MonoBehaviour
     public void GasRefill()
     {
         fuelLevel = maxFuel;
+    }
+
+    public void GasCanFill()
+    {
+        fuelLevel = Mathf.Min(fuelLevel+maxFuel*0.3f,maxFuel);
     }
 
 
