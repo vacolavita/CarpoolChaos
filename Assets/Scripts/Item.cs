@@ -7,13 +7,14 @@ public class Item : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        GetComponent<Rigidbody>().AddTorque(new Vector3(0,5000,0));
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        StartCoroutine(ItemDelete());
+        transform.Rotate(0, 180 * Time.deltaTime, 0);
     }
 
     private void OnTriggerStay(Collider other)
@@ -22,20 +23,11 @@ public class Item : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
-        else
-        {
-            if (other.gameObject.CompareTag("Wall"))
-            {
-                Debug.Log("Somebody PLEASE get this item out of the wall!!!");
-                transform.position = transform.position + new Vector3(Random.Range(-16.0f, 16.0f), 1, Random.Range(-16.0f, 16.0f));
-            }
-        }
-
     }
 
-    private void OnCollisionStay(Collision collision)
+    IEnumerator ItemDelete()
     {
-
+        yield return new WaitForSeconds(20);
+        Destroy(gameObject);
     }
 }
