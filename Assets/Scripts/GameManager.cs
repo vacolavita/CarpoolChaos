@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-
 public class GameManager : MonoBehaviour
 {
     public TextMeshProUGUI scoreText;
@@ -21,6 +20,7 @@ public class GameManager : MonoBehaviour
     public Slider fuelMeter2;
     public float fuelAmount1;
     public float fuelAmount2;
+    public int lives;
     // Start is called before the first frame update
     void Start()
     {
@@ -32,7 +32,6 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         fuel1Text.text = "Fuel: " + Mathf.Round(car1.fuelLevel);
         fuel2Text.text = "Fuel: " + Mathf.Round(car2.fuelLevel);
         if (hasGasCan)
@@ -40,6 +39,11 @@ public class GameManager : MonoBehaviour
             gasCan.Gas();
         }
         Timer(1);
+
+        if (time == 0 || lives == 0)
+        {
+            EndGame();
+        }
     }
 
     public void UpdateScore(int scoreToAdd)
@@ -58,9 +62,9 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public void QuitGame()
+    public void EndGame()
     {
-        Application.Quit();
+        Loader.Load(Loader.Scene.GameEndMenu);
     }
 
 }
