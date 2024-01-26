@@ -15,12 +15,17 @@ public class GameManager : MonoBehaviour
     public bool hasItem;
     public bool hasGasCan;
     private GasCan gasCan;
+    public float time;
+    public TextMeshProUGUI timerText;
+    public Slider fuelMeter1;
+    public Slider fuelMeter2;
+    public float fuelAmount1;
+    public float fuelAmount2;
     // Start is called before the first frame update
     void Start()
     {
         scoreText.text = "Score: " + score;
-        fuel1Text.text = "Fuel: " + car1.fuelLevel;
-        fuel2Text.text = "Fuel: " + car2.fuelLevel;
+        timerText.text = "Time: " + time;
         gasCan = GetComponent<GasCan>();
     }
 
@@ -34,6 +39,7 @@ public class GameManager : MonoBehaviour
         {
             gasCan.Gas();
         }
+        Timer(1);
     }
 
     public void UpdateScore(int scoreToAdd)
@@ -47,5 +53,14 @@ public class GameManager : MonoBehaviour
         
     }
 
-    
+    public void Timer(float timeLeft)
+    {
+        time -= timeLeft * Time.deltaTime;
+
+        float minutes = Mathf.FloorToInt(time / 60F);
+        float seconds = Mathf.FloorToInt(time - minutes * 60);
+        timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+
+    }
+
 }
