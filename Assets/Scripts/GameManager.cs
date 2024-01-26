@@ -12,8 +12,13 @@ public class GameManager : MonoBehaviour
     public Movement car1;
     public Movement car2;
     public bool hasItem;
+    
+    //items
     public bool hasGasCan;
     private GasCan gasCan;
+    public bool hasTent;
+    public GameObject tent;
+    
     public float time;
     public TextMeshProUGUI timerText;
     public Slider fuelMeter1;
@@ -26,6 +31,7 @@ public class GameManager : MonoBehaviour
     public bool useTime;
     public GameObject timer;
     public GameObject lifeMeter;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -41,14 +47,32 @@ public class GameManager : MonoBehaviour
     {
         fuel1Text.text = "Fuel: " + Mathf.Round(car1.fuelLevel);
         fuel2Text.text = "Fuel: " + Mathf.Round(car2.fuelLevel);
+
         if (hasGasCan)
         {
             gasCan.Gas();
         }
-        
+
+        if (hasTent)
+        {
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                Debug.Log("Spawn tent");
+                Instantiate(tent, car1.transform.position + new Vector3(Random.Range(-10, 10), 1, Random.Range(-10, 10)), tent.transform.rotation);
+                hasTent = false;
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                Debug.Log("Spawn tent");
+                Instantiate(tent, car2.transform.position + new Vector3(Random.Range(-10, 10), 1, Random.Range(-10, 10)), tent.transform.rotation);
+                hasTent = false;
+            }
+        }
+
         if (useTime)
         {
             Timer(1);
+            timer.SetActive(true);
         }
 
         if (useLives)
@@ -62,10 +86,6 @@ public class GameManager : MonoBehaviour
             lifeMeter.SetActive(false);
         }
 
-        if (useTime == true)
-        {
-            timer.SetActive(true);
-        }
 
         if (useTime && time == 0 || useLives && lives == 0)
         {

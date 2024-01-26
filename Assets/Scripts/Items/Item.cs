@@ -47,6 +47,7 @@ public class Item : MonoBehaviour
                     break;
                 case 3:
                     Debug.Log("Tent");
+                    gameManager.hasTent = true;
                     break;
                 case 4:
                     Debug.Log("Spring Pad");
