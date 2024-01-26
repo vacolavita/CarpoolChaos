@@ -33,6 +33,9 @@ public class Spawner : MonoBehaviour
                 spawnType = Random.Range(1, 4);
                 for (int i = passAmount; i > 0; i--)
                 {
+                    if (GameModes.mixUp) {
+                        spawnType = Random.Range(1, 4);
+                    }
                     GameObject passenger = Instantiate(pass);
                     passenger.transform.position = spawnPoints[spawnPoint] + new Vector3(Random.Range(-2.0f, 2.0f), 0, Random.Range(-2.0f, 2.0f));
                     passenger.GetComponent<Passenger>().clump = spawnGroups[spawnPoint].GetComponent<Clump>();
