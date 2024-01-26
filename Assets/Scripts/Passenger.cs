@@ -7,6 +7,7 @@ public class Passenger : MonoBehaviour
 {
     bool isInCar = false;
     bool canTrigger = true;
+    public GameObject group;
     int passengerNum;
     public int passengerType;
     public Material[] passengerMats;

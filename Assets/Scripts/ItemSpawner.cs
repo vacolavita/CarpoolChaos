@@ -11,7 +11,7 @@ public class ItemSpawner : MonoBehaviour
     int spawnPoint;
     void Start()
     {
-        timer = spawnTime;
+
     }
 
     // Update is called once per frame

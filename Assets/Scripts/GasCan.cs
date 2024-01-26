@@ -4,26 +4,33 @@ using UnityEngine;
 
 public class GasCan : MonoBehaviour
 {
-    private Movement car1;
-    private Movement car2;
+    public Movement car1;
+    public Movement car2;
+    private GameManager gameManager;
     // Start is called before the first frame update
     void Start()
     {
-        car1 = GameObject.Find("Car 1").GetComponent<Movement>();
-        car2 = GameObject.Find("Car 2").GetComponent<Movement>();
+        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        
+    }
+
+    public void Gas()
+    {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            car1.GasRefill();
+            car1.GasCanFill();
+            gameManager.hasGasCan = false;
         }
 
-        if (Input.GetKeyDown(KeyCode.Keypad1))
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            car2.GasRefill();
+            car2.GasCanFill();
+            gameManager.hasGasCan = false;
         }
     }
 }
