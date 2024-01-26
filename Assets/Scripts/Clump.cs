@@ -6,9 +6,8 @@ public class Clump : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    public GameObject[] passengers;
-    public bool[] typeAcceptance;
-    public bool isSpawnClump;
+    public GameObject player;
+    bool taken = false;
 
     void Start()
     {
@@ -18,10 +17,15 @@ public class Clump : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (taken) {
+            taken = false;
+            player = null;
+        }
+
+        if (player != null)
+        {
+            taken = true;
+        }
     }
 
-    //If touching car, make car collect passengers based on, in this order:
-    //Matching Color (is this color already on the car?)
-    //Age (How old is this passenger?)
 }
