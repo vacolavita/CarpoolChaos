@@ -60,7 +60,7 @@ public class Item : MonoBehaviour
 
     IEnumerator ItemDelete()
     {
-        yield return new WaitForSeconds(20);
+        yield return new WaitForSeconds(10);
         Destroy(gameObject);
     }
 }
