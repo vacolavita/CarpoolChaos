@@ -61,6 +61,13 @@ public class Passenger : MonoBehaviour
                 if (parentMove.launch)
                 {
                     r.velocity = parentMove.launchTrajectory + new Vector3(Random.Range(-1.0f, 1.0f), 0, (Random.Range(-1.0f, 1.0f)));
+                    if (GameModes.lobber)
+                    {
+                        r.velocity = parentMove.launchTrajectory*0.7f + new Vector3(Random.Range(-1.0f, 1.0f), 7, (Random.Range(-1.0f, 1.0f)));
+                    }
+                    else {
+                        r.velocity = parentMove.launchTrajectory + new Vector3(Random.Range(-1.0f, 1.0f), 0, (Random.Range(-1.0f, 1.0f)));
+                    }
                 }
                 else
                 {
