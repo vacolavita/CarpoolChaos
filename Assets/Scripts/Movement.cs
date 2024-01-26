@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Movement : MonoBehaviour
 {
@@ -24,6 +25,7 @@ public class Movement : MonoBehaviour
     public float fuelLevel;
     public float maxFuel;
     private float gasToAdd;
+    public Slider fuelMeter;
 
     Rigidbody r;
     float curSpeed;
@@ -39,6 +41,7 @@ public class Movement : MonoBehaviour
     {
         r = GetComponent<Rigidbody>();
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+        SetMaxFuel(maxFuel);
     }
 
     // Update is called once per frame
@@ -106,17 +109,20 @@ public class Movement : MonoBehaviour
         if (hasFuel)
         {
             fuelLevel -= amount;
+            SetFuel(fuelLevel);
         }
     }
 
     public void GasRefill()
     {
         fuelLevel = maxFuel;
+        SetFuel(fuelLevel);
     }
 
     public void GasCanFill()
     {
         fuelLevel = Mathf.Min(fuelLevel+maxFuel*0.3f,maxFuel);
+        SetFuel(fuelLevel);
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -126,5 +132,16 @@ public class Movement : MonoBehaviour
         }
     }
 
+    public void SetMaxFuel(float fuel)
+    {
+        fuelMeter.maxValue = fuel;
+
+        fuelMeter.value = fuel;
+    }
+
+    public void SetFuel(float fuel)
+    {
+        fuelMeter.value = fuel;
+    }
 
 }
