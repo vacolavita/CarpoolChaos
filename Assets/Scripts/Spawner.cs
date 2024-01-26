@@ -35,7 +35,7 @@ public class Spawner : MonoBehaviour
                 {
                     GameObject passenger = Instantiate(pass);
                     passenger.transform.position = spawnPoints[spawnPoint] + new Vector3(Random.Range(-2.0f, 2.0f), 0, Random.Range(-2.0f, 2.0f));
-                    passenger.GetComponent<Passenger>().group = spawnGroups[spawnPoint];
+                    passenger.GetComponent<Passenger>().clump = spawnGroups[spawnPoint].GetComponent<Clump>();
                     passenger.GetComponent<Passenger>().passengerType = spawnType;
                 }
                 spawnPoint = (spawnPoint + 1) % 3;

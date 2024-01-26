@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Movement : MonoBehaviour
@@ -23,7 +24,6 @@ public class Movement : MonoBehaviour
     public bool hasFuel;
     public float fuelLevel;
     public float maxFuel;
-    private float gasToAdd;
 
     Rigidbody r;
     float curSpeed;
@@ -124,7 +124,12 @@ public class Movement : MonoBehaviour
         {
             GasRefill();
         }
+        if (other.gameObject.CompareTag("Clump"))
+        {
+            other.GetComponent<Clump>().player = gameObject;
+        }
     }
+
 
 
 }

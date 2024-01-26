@@ -7,7 +7,7 @@ public class Passenger : MonoBehaviour
 {
     bool isInCar = false;
     bool canTrigger = true;
-    public GameObject group;
+    public Clump clump;
     int passengerNum;
     public int passengerType;
     public Material[] passengerMats;
@@ -64,20 +64,16 @@ public class Passenger : MonoBehaviour
                 canTrigger = true;
             }
         }
+        if (clump != null && clump.player != null) {
+            joinCar(clump.player.GetComponent<Collider>());
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Car") && !isInCar && canTrigger && other.GetComponent<Movement>().carryingCapacity > other.GetComponent<Movement>().currentPassengers)
+        if (other.gameObject.CompareTag("Car") && !isInCar && canTrigger && clump == null)
         {
-            transform.SetParent(other.gameObject.transform);
-            parentMove = transform.parent.GetComponent<Movement>();
-            isInCar = true;
-            canTrigger = false;
-            parentMove.currentPassengers++;
-            passengerNum = parentMove.currentPassengers;
-            Rigidbody r = GetComponent<Rigidbody>();
-            r.isKinematic = true;
+                joinCar(other);
         }
         if (other.gameObject.CompareTag("Car"))
         {
@@ -100,5 +96,20 @@ public class Passenger : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         canTrigger = true;
+    }
+
+
+    private void joinCar(Collider other) {
+        if (other.GetComponent<Movement>().carryingCapacity > other.GetComponent<Movement>().currentPassengers) {
+            transform.SetParent(other.gameObject.transform);
+            parentMove = transform.parent.GetComponent<Movement>();
+            isInCar = true;
+            canTrigger = false;
+            parentMove.currentPassengers++;
+            passengerNum = parentMove.currentPassengers;
+            Rigidbody r = GetComponent<Rigidbody>();
+            r.isKinematic = true;
+            clump = null;
+        }
     }
 }

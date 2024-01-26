@@ -5,6 +5,8 @@ using UnityEngine;
 public class SpawnGroup : MonoBehaviour
 {
     // Start is called before the first frame update
+    public GameObject player;
+
     void Start()
     {
         
