@@ -47,11 +47,6 @@ public class GameManager : MonoBehaviour
         score += scoreToAdd;
         scoreText.text = "Score: " + score;
     }
-    
-    public void ItemBoxChange()
-    {
-        
-    }
 
     public void Timer(float timeLeft)
     {
@@ -61,6 +56,11 @@ public class GameManager : MonoBehaviour
         float seconds = Mathf.FloorToInt(time - minutes * 60);
         timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
 
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 
 }
