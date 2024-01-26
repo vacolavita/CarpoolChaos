@@ -110,6 +110,9 @@ public class Passenger : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         canTrigger = true;
+        if (clump == null && GameModes.fragilePassengers) {
+            Destroy(gameObject);
+        }
     }
 
 

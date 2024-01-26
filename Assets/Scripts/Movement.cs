@@ -17,6 +17,7 @@ public class Movement : MonoBehaviour
     public float launchPenalty;
 
     public int currentPassengers;
+    public GameObject[] passengers;
     public Vector3 launchTrajectory;
     private GameManager gameManager;
     
@@ -43,6 +44,29 @@ public class Movement : MonoBehaviour
         r = GetComponent<Rigidbody>();
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
         SetMaxFuel(maxFuel);
+        if (GameModes.turbo) {
+            maxSpeed *= 1.3f;
+        }
+        if (GameModes.runningOnFumes)
+        {
+            maxSpeed /= 1.3f;
+        }
+        if (GameModes.wornOutWheels)
+        {
+            traction = ((traction-1)*0.7f)+1;
+        }
+        if (GameModes.superLaunch)
+        {
+            launchForce = launchForce *= 1.3f;
+        }
+        if (GameModes.stickyWheels)
+        {
+            traction = ((traction - 1) * 1.3f) + 1;
+        }
+        if (GameModes.bigCars)
+        {
+            GetComponentInParent<Transform>().localScale = new Vector3(1.3f,1.3f,1.3f);
+        }
     }
 
     // Update is called once per frame
@@ -97,6 +121,10 @@ public class Movement : MonoBehaviour
         else
         {
             hasFuel = true;
+            if (GameModes.gasLeak) {
+                fuelLevel -= 0.03f;
+                fuelMeter.value = fuelLevel;
+            }
         }
     }
 
