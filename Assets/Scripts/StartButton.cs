@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayButton : MonoBehaviour
+public class StartButton : MonoBehaviour
 {
     private Button button;
     // Start is called before the first frame update
