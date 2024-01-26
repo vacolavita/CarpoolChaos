@@ -225,6 +225,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 956099606483766392, guid: 9307311aa18b4a84facd1fa210012688, type: 3}
+      propertyPath: m_Radius
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2945318143234852450, guid: 9307311aa18b4a84facd1fa210012688, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.783642
@@ -486,9 +490,10 @@ MonoBehaviour:
   launchForce: 6
   carryingCapacity: 9
   fuelEfficiency: 0.25
-  passengerPenalty: 0.5
+  passengerPenalty: 0.02
   launchPenalty: 0
   currentPassengers: 0
+  passengers: []
   launchTrajectory: {x: 0, y: 0, z: 0}
   isMoving: 0
   hasFuel: 0
@@ -691,6 +696,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 956099606483766392, guid: 9307311aa18b4a84facd1fa210012688, type: 3}
+      propertyPath: m_Radius
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2945318143234852450, guid: 9307311aa18b4a84facd1fa210012688, type: 3}
       propertyPath: m_LocalPosition.x
       value: -28.82038
@@ -894,9 +903,10 @@ MonoBehaviour:
   launchForce: 6
   carryingCapacity: 9
   fuelEfficiency: 0.25
-  passengerPenalty: 0.5
+  passengerPenalty: 0.02
   launchPenalty: 0
   currentPassengers: 0
+  passengers: []
   launchTrajectory: {x: 0, y: 0, z: 0}
   isMoving: 0
   hasFuel: 0
@@ -1253,7 +1263,7 @@ MonoBehaviour:
   - {fileID: 1425281968}
   - {fileID: 239621809}
   - {fileID: 2122637422}
-  passClump: 3
+  passClump: 2
   passAmount: 3
 --- !u!4 &526564204
 Transform:
@@ -3612,6 +3622,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 956099606483766392, guid: 9307311aa18b4a84facd1fa210012688, type: 3}
+      propertyPath: m_Radius
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2945318143234852450, guid: 9307311aa18b4a84facd1fa210012688, type: 3}
       propertyPath: m_LocalPosition.x
       value: 37.39299
@@ -3690,7 +3704,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f7e4a1a34c980341983b4f3c9b355a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnTime: 10
+  spawnTime: 30
   item: {fileID: 6522154520343987878, guid: 8e43a65fad03d894daf87eb472ee98ab, type: 3}
   spawnPoints:
   - {x: 43.9, y: 1, z: -41.19}
