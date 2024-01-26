@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-
 public class GameManager : MonoBehaviour
 {
     public TextMeshProUGUI scoreText;
@@ -21,9 +20,17 @@ public class GameManager : MonoBehaviour
     public Slider fuelMeter2;
     public float fuelAmount1;
     public float fuelAmount2;
+    public int lives;
+    public TextMeshProUGUI livesText;
+    public bool useLives;
+    public bool useTime;
+    public GameObject timer;
+    public GameObject lifeMeter;
     // Start is called before the first frame update
     void Start()
     {
+        useTime = true;
+        livesText.text = "Lives: " + lives;
         scoreText.text = "Score: " + score;
         timerText.text = "Time: " + time;
         gasCan = GetComponent<GasCan>();
@@ -32,14 +39,38 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         fuel1Text.text = "Fuel: " + Mathf.Round(car1.fuelLevel);
         fuel2Text.text = "Fuel: " + Mathf.Round(car2.fuelLevel);
         if (hasGasCan)
         {
             gasCan.Gas();
         }
-        Timer(1);
+        
+        if (useTime)
+        {
+            Timer(1);
+        }
+
+        if (useLives)
+        {
+            useTime = false;
+            lifeMeter.SetActive(true);
+        }
+        else
+        {
+            useTime = true;
+            lifeMeter.SetActive(false);
+        }
+
+        if (useTime == true)
+        {
+            timer.SetActive(true);
+        }
+
+        if (useTime && time == 0 || useLives && lives == 0)
+        {
+            EndGame();
+        }
     }
 
     public void UpdateScore(int scoreToAdd)
@@ -58,9 +89,9 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public void QuitGame()
+    public void EndGame()
     {
-        Application.Quit();
+        Loader.Load(Loader.Scene.GameEndMenu);
     }
 
 }
