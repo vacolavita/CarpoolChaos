@@ -27,11 +27,25 @@ public class Passenger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        foreach (var item in mesh)
+
+
+        if (GameModes.peculiarPassengers && clump != null)
         {
-            item.material = passengerMats[passengerType-1];
+            foreach (var item in mesh)
+            {
+                item.material = passengerMats[3];
+            }
+            mapSprite.color = mesh[0].material.color;
         }
-        mapSprite.color = mesh[0].material.color;
+        else {
+            foreach (var item in mesh)
+            {
+                item.material = passengerMats[passengerType - 1];
+            }
+            mapSprite.color = mesh[0].material.color;
+        }
+
+
 
         mapSprite.enabled = true;
         if (isInCar)
@@ -96,6 +110,9 @@ public class Passenger : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         canTrigger = true;
+        if (clump == null && GameModes.fragilePassengers) {
+            Destroy(gameObject);
+        }
     }
 
 
