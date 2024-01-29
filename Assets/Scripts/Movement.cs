@@ -16,6 +16,8 @@ public class Movement : MonoBehaviour
     public float passengerPenalty;
     public float launchPenalty;
 
+    public bool boostSpeed;
+
     public int currentPassengers;
     public GameObject[] passengers;
     public Vector3 launchTrajectory;
@@ -98,6 +100,11 @@ public class Movement : MonoBehaviour
         r.velocity += transform.forward * curSpeed;
         r.velocity = new Vector3(r.velocity.x/traction, r.velocity.y, r.velocity.z/traction);
 
+        if (boostSpeed)
+        {
+            curSpeed *= 1.25f;
+        }
+
 
 
         //Fuel Stuff
@@ -162,6 +169,15 @@ public class Movement : MonoBehaviour
         if (other.gameObject.CompareTag("Clump"))
         {
             other.GetComponent<Clump>().player = gameObject;
+        }
+
+        if (other.gameObject.CompareTag("Boost Pad"))
+        {
+            boostSpeed = true;
+        }
+        else
+        {
+            boostSpeed = false;
         }
     }
 
