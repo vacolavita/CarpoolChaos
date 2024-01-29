@@ -41,17 +41,30 @@ public class Item : MonoBehaviour
                 case 1:
                     Debug.Log("Gas Can");
                     gameManager.hasGasCan = true;
+                    gameManager.hasTent = false;
+                    gameManager.hasBoost = false;
+                    gameManager.hasSpring = false;
                     break;
                 case 2:
                     Debug.Log("Boost Pad");
                     gameManager.hasBoost = true;
+                    gameManager.hasSpring = false;
+                    gameManager.hasGasCan = false;
+                    gameManager.hasTent = false;
                     break;
                 case 3:
                     Debug.Log("Tent");
                     gameManager.hasTent = true;
+                    gameManager.hasBoost = false;
+                    gameManager.hasSpring = false;
+                    gameManager.hasGasCan = false;
                     break;
                 case 4:
                     Debug.Log("Spring Pad");
+                    gameManager.hasSpring = true;
+                    gameManager.hasBoost = false;
+                    gameManager.hasGasCan = false;
+
                     break;
                 default:
                     Debug.Log("Item type is null");
