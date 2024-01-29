@@ -488,6 +488,7 @@ MonoBehaviour:
   fuelEfficiency: 0.25
   passengerPenalty: 0.5
   launchPenalty: 0
+  boostSpeed: 0
   currentPassengers: 0
   passengers: []
   launchTrajectory: {x: 0, y: 0, z: 0}
@@ -929,6 +930,7 @@ MonoBehaviour:
   fuelEfficiency: 0.25
   passengerPenalty: 0.5
   launchPenalty: 0
+  boostSpeed: 0
   currentPassengers: 0
   passengers: []
   launchTrajectory: {x: 0, y: 0, z: 0}
@@ -1581,6 +1583,8 @@ MonoBehaviour:
   hasGasCan: 0
   hasTent: 0
   tent: {fileID: 6999645714063828644, guid: b95b47aacddfcb24d82d3d24fd97558f, type: 3}
+  hasBoost: 0
+  boostPad: {fileID: 229548168784626748, guid: f111fed054803524b9004700cbdfedbc, type: 3}
   time: 150
   timerText: {fileID: 1411762010}
   fuelMeter1: {fileID: 1697686838}
