@@ -2,15 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class GameModeMenu : MonoBehaviour
 {
+    private int val;
     private void Start()
     {
         DontDestroyOnLoad(gameObject);
     }
     // Start is called before the first frame update
-    public void HandleInputData(int val)
+    public void HandleInputData()
     {
         if (val == 0)
         {
