@@ -21,6 +21,6 @@ public class StartButton : MonoBehaviour
 
     void PlayGame()
     {
-        Loader.Load(Loader.Scene.Domenic);
+        Loader.Load(Loader.Scene.LevelSelect);
     }
 }
