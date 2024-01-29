@@ -488,6 +488,7 @@ MonoBehaviour:
   fuelEfficiency: 0.25
   passengerPenalty: 0.5
   launchPenalty: 0
+  jumpForce: 10
   boostSpeed: 0
   currentPassengers: 0
   passengers: []
@@ -930,6 +931,7 @@ MonoBehaviour:
   fuelEfficiency: 0.25
   passengerPenalty: 0.5
   launchPenalty: 0
+  jumpForce: 10
   boostSpeed: 0
   currentPassengers: 0
   passengers: []
@@ -1585,6 +1587,8 @@ MonoBehaviour:
   tent: {fileID: 6999645714063828644, guid: b95b47aacddfcb24d82d3d24fd97558f, type: 3}
   hasBoost: 0
   boostPad: {fileID: 229548168784626748, guid: f111fed054803524b9004700cbdfedbc, type: 3}
+  hasSpring: 0
+  springPad: {fileID: 1531684317481719074, guid: 83548550ab21f6949b49c0d052236435, type: 3}
   time: 150
   timerText: {fileID: 1411762010}
   fuelMeter1: {fileID: 1697686838}
