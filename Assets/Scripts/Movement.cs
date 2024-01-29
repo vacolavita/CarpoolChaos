@@ -15,6 +15,7 @@ public class Movement : MonoBehaviour
     public float fuelEfficiency;
     public float passengerPenalty;
     public float launchPenalty;
+    public float jumpForce = 10f;
 
     public bool boostSpeed;
 
@@ -178,6 +179,11 @@ public class Movement : MonoBehaviour
         else
         {
             boostSpeed = false;
+        }
+
+        if (other.gameObject.CompareTag("Spring Pad"))
+        {
+            r.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
     }
 
