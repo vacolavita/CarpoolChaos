@@ -20,6 +20,8 @@ public class GameManager : MonoBehaviour
     public GameObject tent;
     public bool hasBoost;
     public GameObject boostPad;
+    public bool hasSpring;
+    public GameObject springPad;
     
     public float time;
     public TextMeshProUGUI timerText;
@@ -84,6 +86,22 @@ public class GameManager : MonoBehaviour
                 Debug.Log("Spawn boost pad");
                 Instantiate(boostPad, car2.transform.position + new Vector3(Random.Range(-10, 10), -0.92f, Random.Range(-10, 10)), tent.transform.rotation);
                 hasBoost = false;
+            }
+        }
+
+        if (hasSpring)
+        {
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                Debug.Log("Spawn spring pad");
+                Instantiate(springPad, car1.transform.position + new Vector3(Random.Range(-10, 10), -0.92f, Random.Range(-10, 10)), tent.transform.rotation);
+                hasSpring = false;
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                Debug.Log("Spawn spring pad");
+                Instantiate(springPad, car2.transform.position + new Vector3(Random.Range(-10, 10), -0.92f, Random.Range(-10, 10)), tent.transform.rotation);
+                hasSpring = false;
             }
         }
 
