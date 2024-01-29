@@ -18,6 +18,10 @@ public class GameManager : MonoBehaviour
     private GasCan gasCan;
     public bool hasTent;
     public GameObject tent;
+    public bool hasBoost;
+    public GameObject boostPad;
+    public bool hasSpring;
+    public GameObject springPad;
     
     public float time;
     public TextMeshProUGUI timerText;
@@ -25,17 +29,15 @@ public class GameManager : MonoBehaviour
     public Slider fuelMeter2;
     public float fuelAmount1;
     public float fuelAmount2;
-    public int lives;
+    public int lives = 3;
     public TextMeshProUGUI livesText;
-    public bool useLives;
-    public bool useTime;
     public GameObject timer;
     public GameObject lifeMeter;
 
     // Start is called before the first frame update
     void Start()
     {
-        useTime = true;
+        GameModes.useTime = true;
         livesText.text = "Lives: " + lives;
         scoreText.text = "Score: " + score;
         timerText.text = "Time: " + time;
@@ -69,25 +71,53 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        if (useTime)
+        if (hasBoost)
+        {
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                Debug.Log("Spawn boost pad");
+                Instantiate(boostPad, car1.transform.position + new Vector3(Random.Range(-10, 10), -0.92f, Random.Range(-10, 10)), tent.transform.rotation);
+                hasBoost = false;
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                Debug.Log("Spawn boost pad");
+                Instantiate(boostPad, car2.transform.position + new Vector3(Random.Range(-10, 10), -0.92f, Random.Range(-10, 10)), tent.transform.rotation);
+                hasBoost = false;
+            }
+        }
+
+        if (hasSpring)
+        {
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                Debug.Log("Spawn spring pad");
+                Instantiate(springPad, car1.transform.position + new Vector3(Random.Range(-10, 10), -0.92f, Random.Range(-10, 10)), tent.transform.rotation);
+                hasSpring = false;
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                Debug.Log("Spawn spring pad");
+                Instantiate(springPad, car2.transform.position + new Vector3(Random.Range(-10, 10), -0.92f, Random.Range(-10, 10)), tent.transform.rotation);
+                hasSpring = false;
+            }
+        }
+
+        if (GameModes.useTime)
         {
             Timer(1);
             timer.SetActive(true);
-        }
-
-        if (useLives)
-        {
-            useTime = false;
-            lifeMeter.SetActive(true);
-        }
-        else
-        {
-            useTime = true;
             lifeMeter.SetActive(false);
         }
 
+        if (GameModes.useLives)
+        {
+            lifeMeter.SetActive(true);
+            timer.SetActive(false);
+        }
 
-        if (useTime && time == 0 || useLives && lives == 0)
+
+        if (GameModes.useTime && time <= 0 || GameModes.useLives && lives <= 0)
         {
             EndGame();
         }

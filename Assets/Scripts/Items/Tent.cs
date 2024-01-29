@@ -16,11 +16,17 @@ public class Tent : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        StartCoroutine(TentDelete());
     }
 
     public void Place()
     {
 
+    }
+
+    IEnumerator TentDelete()
+    {
+        yield return new WaitForSeconds(10);
+        Destroy(gameObject);
     }
 }
