@@ -7,7 +7,6 @@ using UnityEngine.Events;
 public class EndGameMenu : MonoBehaviour
 {
     //public Dropdown dropDown;
-    private int val;
     // Start is called before the first frame update
     private void Start()
     {
@@ -15,7 +14,7 @@ public class EndGameMenu : MonoBehaviour
         //dropDown.onValueChanged.AddListener(delegate { DropdownItemSelected(dropDown); });
         DontDestroyOnLoad(gameObject);
     }
-    public void HandleInputData()
+    public void HandleInputData(int val)
     {
         DontDestroyOnLoad(gameObject);
         if (val == 0)
