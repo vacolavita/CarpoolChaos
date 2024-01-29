@@ -9,14 +9,14 @@ public class Spawner : MonoBehaviour
     public GameObject pass;
     public Vector3[] spawnPoints;
     public GameObject[] spawnGroups;
-    int spawnPoint;
+    int spawnPoint = 1;
     int spawnType;
     public int passClump;
     public int passAmount;
 
     void Start()
     {
-        timer = spawnTime;
+        timer = spawnTime - 2;
     }
 
     // Update is called once per frame
@@ -27,7 +27,7 @@ public class Spawner : MonoBehaviour
         {
             timer -= spawnTime;
             spawnPoint = Random.Range(0, spawnPoints.Length);
-
+            Debug.Log(spawnPoint);
             for (int j = passClump; j > 0; j--)
             {
                 spawnType = Random.Range(1, 4);

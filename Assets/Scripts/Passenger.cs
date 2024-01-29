@@ -53,7 +53,7 @@ public class Passenger : MonoBehaviour
             mapSprite.enabled = false;
             transform.SetLocalPositionAndRotation(parentMove.PassengerPosition(passengerNum), new Quaternion());
             canTrigger = false;
-            if (Input.GetKeyDown(parentMove.drop))
+            if (Input.GetKeyDown(parentMove.drop) && parentMove.select == passengerType-1)
             {
                 isInCar = false;
                 Rigidbody r = GetComponent<Rigidbody>();
@@ -125,6 +125,7 @@ public class Passenger : MonoBehaviour
 
     private void joinCar(Collider other) {
         if (other.GetComponent<Movement>().carryingCapacity > other.GetComponent<Movement>().currentPassengers) {
+            GetComponent<Rigidbody>().interpolation = RigidbodyInterpolation.Interpolate;
             transform.SetParent(other.gameObject.transform);
             parentMove = transform.parent.GetComponent<Movement>();
             isInCar = true;

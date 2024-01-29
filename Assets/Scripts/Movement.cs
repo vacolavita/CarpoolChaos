@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class Movement : MonoBehaviour
@@ -35,12 +36,17 @@ public class Movement : MonoBehaviour
 
     //Drop Variables
     public KeyCode drop;
-    public string axisH;
-    public string axisV;
+
+    public int select = 0;
+
+
+    public Vector2 controlDirection;
 
     // Start is called before the first frame update
     void Start()
     {
+
+        passengers = new GameObject[carryingCapacity];
         r = GetComponent<Rigidbody>();
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
         SetMaxFuel(maxFuel);
@@ -69,13 +75,30 @@ public class Movement : MonoBehaviour
         }
     }
 
+    public void OnMove(InputValue value)
+    {
+        controlDirection = value.Get<Vector2>();
+        //Debug.Log(c);
+    }
+
+    public void OnScrollLeft()
+    {
+        select = (select - 1) % 3;
+        Debug.Log(select);
+    }
+    public void OnScrollRight()
+    {
+        select = (select + 1) % 3;
+        Debug.Log(select);
+
+    }
+
     // Update is called once per frame
     void FixedUpdate()
     {
 
-        Vector2 c = new Vector2(Input.GetAxis(axisH), Input.GetAxis(axisV));
+        Vector2 c = controlDirection;
         Vector3 newDirection = Vector3.RotateTowards(transform.forward, new Vector3(c.x,0,c.y), handling, 0.0f);
-
         if (c.magnitude > 1)
         {
             c.Normalize();
