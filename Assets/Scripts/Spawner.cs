@@ -6,6 +6,7 @@ public class Spawner : MonoBehaviour
 {
     public float spawnTime = 10;
     float timer = 0;
+    public float spawnTimeAdjusted;
     public GameObject pass;
     public Vector3[] spawnPoints;
     public GameObject[] spawnGroups;
@@ -13,17 +14,28 @@ public class Spawner : MonoBehaviour
     int spawnType;
     public int passClump;
     public int passAmount;
+    private GameManager gameManager;
 
     void Start()
     {
+        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
         timer = spawnTime;
+        spawnTimeAdjusted = spawnTime;
     }
 
     // Update is called once per frame
     void Update()
     {
+        
+        spawnTimeAdjusted = spawnTime/ 1 + (gameManager.score/10);
+
+        if (GameModes.useLives)
+        {
+            spawnTimeAdjusted = spawnTime / 1 + (Time.deltaTime / 10);
+        }
+
         timer += Time.deltaTime;
-        if (timer >= spawnTime)
+        if (timer >= spawnTimeAdjusted)
         {
             timer -= spawnTime;
             spawnPoint = Random.Range(0, spawnPoints.Length);

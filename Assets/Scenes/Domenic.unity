@@ -1282,6 +1282,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnTime: 12
+  spawnTimeAdjusted: 0
   pass: {fileID: 4128033999256982640, guid: f7798f228cabaa344801977115a13119, type: 3}
   spawnPoints:
   - {x: -5.4, y: 2, z: -41.19}
@@ -1577,6 +1578,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreText: {fileID: 627541485}
+  score: 0
   fuel1Text: {fileID: 485293762}
   fuel2Text: {fileID: 1198905069}
   car1: {fileID: 149828963}
@@ -1589,13 +1591,13 @@ MonoBehaviour:
   boostPad: {fileID: 229548168784626748, guid: f111fed054803524b9004700cbdfedbc, type: 3}
   hasSpring: 0
   springPad: {fileID: 1531684317481719074, guid: 83548550ab21f6949b49c0d052236435, type: 3}
-  time: 10
+  time: 150
   timerText: {fileID: 1411762010}
   fuelMeter1: {fileID: 1697686838}
   fuelMeter2: {fileID: 565273069}
   fuelAmount1: 0
   fuelAmount2: 0
-  lives: 0
+  lives: 3
   livesText: {fileID: 926058661}
   timer: {fileID: 1714851161}
   lifeMeter: {fileID: 400451578}

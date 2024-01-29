@@ -12,12 +12,12 @@ public class DropdownMenu : MonoBehaviour
 
     private void Start()
     {
-        dropDown = GameObject.Find("Dropdown").GetComponent<Dropdown>();
-        dropDown.value = PlayerPrefs.GetInt(PrefName);
-        dropDown.onValueChanged.AddListener(delegate { DropdownItemSelected(dropDown); });
+        //dropDown = GameObject.Find("Dropdown").GetComponent<Dropdown>();
+        //dropDown.value = PlayerPrefs.GetInt(PrefName);
+        //dropDown.onValueChanged.AddListener(delegate { DropdownItemSelected(dropDown); });
     }
 
-    public void DropdownItemSelected(Dropdown dropdown)//a delegate , a method which is invoked when the value of the dropdown is changed
+    /*public void DropdownItemSelected(Dropdown dropdown)//a delegate , a method which is invoked when the value of the dropdown is changed
     {
         switch (dropdown.value)
         {
@@ -55,5 +55,5 @@ public class DropdownMenu : MonoBehaviour
                 PlayerPrefs.SetInt("optionvalue", 10);
                 break;
         }
-    }
+    }*/
 }

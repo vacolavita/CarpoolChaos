@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public TextMeshProUGUI scoreText;
-    private int score = 0;
+    public int score = 0;
     public TextMeshProUGUI fuel1Text;
     public TextMeshProUGUI fuel2Text;
     public Movement car1;
