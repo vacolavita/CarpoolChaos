@@ -117,7 +117,7 @@ public class GameManager : MonoBehaviour
         }
 
 
-        if (GameModes.useTime && time == 0 || GameModes.useLives && lives == 0)
+        if (GameModes.useTime && time <= 0 || GameModes.useLives && lives <= 0)
         {
             EndGame();
         }
