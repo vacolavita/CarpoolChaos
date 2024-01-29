@@ -76,13 +76,13 @@ public class GameManager : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.E))
             {
                 Debug.Log("Spawn boost pad");
-                Instantiate(boostPad, car1.transform.position + new Vector3(Random.Range(-10, 10), 1, Random.Range(-10, 10)), tent.transform.rotation);
+                Instantiate(boostPad, car1.transform.position + new Vector3(Random.Range(-10, 10), -0.92f, Random.Range(-10, 10)), tent.transform.rotation);
                 hasBoost = false;
             }
             if (Input.GetKeyDown(KeyCode.Alpha1))
             {
                 Debug.Log("Spawn boost pad");
-                Instantiate(boostPad, car2.transform.position + new Vector3(Random.Range(-10, 10), -1, Random.Range(-10, 10)), tent.transform.rotation);
+                Instantiate(boostPad, car2.transform.position + new Vector3(Random.Range(-10, 10), -0.92f, Random.Range(-10, 10)), tent.transform.rotation);
                 hasBoost = false;
             }
         }
