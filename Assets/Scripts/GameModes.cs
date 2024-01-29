@@ -6,6 +6,8 @@ public static class GameModes
 {
     public static int mainMode = 0;
 
+    public static bool useLives;
+    public static bool useTime;
 
     public static bool mixUp = false;
     public static bool peculiarPassengers = true;
