@@ -10,7 +10,7 @@ public class Spawner : MonoBehaviour
     public GameObject pass;
     public Vector3[] spawnPoints;
     public GameObject[] spawnGroups;
-    int spawnPoint;
+    int spawnPoint = 1;
     int spawnType;
     public int passClump;
     public int passAmount;
@@ -39,7 +39,7 @@ public class Spawner : MonoBehaviour
         {
             timer -= spawnTime;
             spawnPoint = Random.Range(0, spawnPoints.Length);
-
+            Debug.Log(spawnPoint);
             for (int j = passClump; j > 0; j--)
             {
                 spawnType = Random.Range(1, 4);
