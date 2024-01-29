@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
     public Slider fuelMeter2;
     public float fuelAmount1;
     public float fuelAmount2;
-    public int lives;
+    public int lives = 3;
     public TextMeshProUGUI livesText;
     public GameObject timer;
     public GameObject lifeMeter;
@@ -37,6 +37,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GameModes.useTime = true;
         livesText.text = "Lives: " + lives;
         scoreText.text = "Score: " + score;
         timerText.text = "Time: " + time;
