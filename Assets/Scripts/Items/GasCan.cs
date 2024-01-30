@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class GasCan : MonoBehaviour
 {
-    public Movement car1;
-    public Movement car2;
+    public float move = 5;
+    private Movement car;
     private GameManager gameManager;
+    private Rigidbody gasR;
     // Start is called before the first frame update
     void Start()
     {
-        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+        car = GameObject.Find("Car").GetComponent<Movement>();
     }
 
     // Update is called once per frame
@@ -19,20 +20,12 @@ public class GasCan : MonoBehaviour
         
     }
 
-    public void Gas()
+    private void OnTriggerEnter(Collider other)
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (other.gameObject.CompareTag("Car"))
         {
-            car1.GasCanFill();
-            gameManager.hasGasCan = false;
-            gameManager.hasItem = false;
-        }
-
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            car2.GasCanFill();
-            gameManager.hasGasCan = false;
-            gameManager.hasItem = false;
+            car.GasCanFill();
+            Destroy(gameObject);
         }
     }
 }

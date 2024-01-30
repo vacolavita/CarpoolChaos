@@ -48,6 +48,8 @@ public class Movement : MonoBehaviour
 
     public Vector2 controlDirection;
 
+    public Transform carTransform;
+
     public GameObject[] items;
 
     // Start is called before the first frame update
@@ -313,11 +315,12 @@ public class Movement : MonoBehaviour
 
     public void OnItem() {
         if (item == 1) {
-            //Gas Can
+            GameObject gas = Instantiate(items[0], carTransform.position, transform.rotation);
+            gas.GetComponent<Rigidbody>().velocity = transform.forward * maxSpeed * 2;
         }
         if (item == 2)
         {
-            Instantiate(items[1], transform.position + new Vector3(0, -0.92f, 0), transform.rotation);
+            Instantiate(items[1], carTransform.position, transform.rotation);
         }
         if (item == 3)
         {

@@ -379,6 +379,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1026682293}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &144072545
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 144072546}
+  m_Layer: 0
+  m_Name: Car Transform
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &144072546
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 144072545}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 149828961}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &149828959
 GameObject:
   m_ObjectHideFlags: 0
@@ -439,6 +470,7 @@ Transform:
   - {fileID: 1497363313}
   - {fileID: 20818620}
   - {fileID: 427965483}
+  - {fileID: 144072546}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &149828962
@@ -500,8 +532,14 @@ MonoBehaviour:
   maxFuel: 100
   fuelMeter: {fileID: 1697686838}
   select: 0
-  action: 0
+  item: 0
   controlDirection: {x: 0, y: 0}
+  carTransform: {fileID: 144072546}
+  items:
+  - {fileID: 5224620715955481171, guid: b865040358d84684587015af45ced553, type: 3}
+  - {fileID: 229548168784626748, guid: f111fed054803524b9004700cbdfedbc, type: 3}
+  - {fileID: 6999645714063828644, guid: b95b47aacddfcb24d82d3d24fd97558f, type: 3}
+  - {fileID: 1531684317481719074, guid: 83548550ab21f6949b49c0d052236435, type: 3}
 --- !u!135 &149828964
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -521,7 +559,7 @@ SphereCollider:
   m_ProvidesContacts: 1
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 4.2
+  m_Radius: 2.2
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &149828965
 MonoBehaviour:
@@ -778,6 +816,37 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1207648877872886648, guid: 2a6d1561287d4e34090decb78a8885d4, type: 3}
   m_PrefabInstance: {fileID: 2832946318243448423}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &426787444
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 426787445}
+  m_Layer: 0
+  m_Name: Car Transform (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &426787445
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 426787444}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 443506490}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &427965482
 GameObject:
   m_ObjectHideFlags: 0
@@ -912,7 +981,7 @@ SphereCollider:
   m_ProvidesContacts: 1
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 4.2
+  m_Radius: 2.2
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &443506487
 MonoBehaviour:
@@ -946,8 +1015,10 @@ MonoBehaviour:
   maxFuel: 100
   fuelMeter: {fileID: 565273069}
   select: 0
-  action: 0
+  item: 0
   controlDirection: {x: 0, y: 0}
+  carTransform: {fileID: 426787445}
+  items: []
 --- !u!54 &443506488
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1014,6 +1085,7 @@ Transform:
   - {fileID: 1953623431}
   - {fileID: 1812370983}
   - {fileID: 1595432500}
+  - {fileID: 426787445}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &443506491
@@ -1240,7 +1312,6 @@ GameObject:
   m_Component:
   - component: {fileID: 642119307}
   - component: {fileID: 642119308}
-  - component: {fileID: 642119309}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Game Manager
@@ -1297,20 +1368,6 @@ MonoBehaviour:
   livesText: {fileID: 926058661}
   timer: {fileID: 1714851161}
   lifeMeter: {fileID: 400451578}
---- !u!114 &642119309
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 642119306}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e36959cd0e379e249a24599912d16722, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  car1: {fileID: 149828963}
-  car2: {fileID: 443506487}
 --- !u!1 &669789221
 GameObject:
   m_ObjectHideFlags: 0
@@ -2931,7 +2988,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f7e4a1a34c980341983b4f3c9b355a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnTime: 10
+  spawnTime: 5
   item: {fileID: 6522154520343987878, guid: 8e43a65fad03d894daf87eb472ee98ab, type: 3}
   spawnPoints:
   - {x: 43.9, y: 1, z: -41.19}
