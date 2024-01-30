@@ -25,12 +25,14 @@ public class GasCan : MonoBehaviour
         {
             car1.GasCanFill();
             gameManager.hasGasCan = false;
+            gameManager.hasItem = false;
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             car2.GasCanFill();
             gameManager.hasGasCan = false;
+            gameManager.hasItem = false;
         }
     }
 }
