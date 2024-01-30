@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class StartButton : MonoBehaviour
+public class LevelSelectButton : MonoBehaviour
 {
     private Button button;
     // Start is called before the first frame update
@@ -16,11 +16,11 @@ public class StartButton : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     void PlayGame()
     {
-        Loader.Load(Loader.Scene.VehicleSelect);
+        Loader.Load(Loader.Scene.LevelSelect);
     }
 }
