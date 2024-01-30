@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -492,7 +492,7 @@ MonoBehaviour:
   carryingCapacity: 9
   fuelEfficiency: 0.25
   passengerPenalty: 0.02
-  launchPenalty: 0
+  launchPenalty: 5
   currentPassengers: 0
   passengers: []
   launchTrajectory: {x: 0, y: 0, z: 0}
@@ -501,8 +501,8 @@ MonoBehaviour:
   fuelLevel: 100
   maxFuel: 100
   fuelMeter: {fileID: 1697686838}
-  drop: 32
   select: 0
+  action: 0
   controlDirection: {x: 0, y: 0}
 --- !u!135 &149828964
 SphereCollider:
@@ -935,7 +935,7 @@ MonoBehaviour:
   carryingCapacity: 9
   fuelEfficiency: 0.25
   passengerPenalty: 0.02
-  launchPenalty: 0
+  launchPenalty: 5
   currentPassengers: 0
   passengers: []
   launchTrajectory: {x: 0, y: 0, z: 0}
@@ -944,8 +944,8 @@ MonoBehaviour:
   fuelLevel: 100
   maxFuel: 100
   fuelMeter: {fileID: 565273069}
-  drop: 256
   select: 0
+  action: 0
   controlDirection: {x: 0, y: 0}
 --- !u!54 &443506488
 Rigidbody:

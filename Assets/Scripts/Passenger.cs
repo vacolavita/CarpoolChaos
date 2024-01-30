@@ -111,6 +111,7 @@ public class Passenger : MonoBehaviour
                 if (isInCar) 
                 {
                     parentMove.currentPassengers--;
+                    parentMove.passengers[passengerNum - 1] = null;
                 }
                 Destroy(gameObject);
                 gameManager.UpdateScore(1);
