@@ -1373,7 +1373,7 @@ GameObject:
   - component: {fileID: 437518382}
   m_Layer: 5
   m_Name: Game Mode Dropdown
-  m_TagString: Untagged
+  m_TagString: Dropdown
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1475,13 +1475,13 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1942057049}
+      - m_Target: {fileID: 437518382}
         m_TargetAssemblyTypeName: GameModeMenu, Assembly-CSharp
-        m_MethodName: HandleInputData
-        m_Mode: 0
+        m_MethodName: 
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgumentAssemblyTypeName: 
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -5326,7 +5326,7 @@ GameObject:
   - component: {fileID: 2031019536}
   m_Layer: 5
   m_Name: End Game Dropdown
-  m_TagString: Untagged
+  m_TagString: Dropdown
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5470,7 +5470,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2031019531}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39421e530d52889429357662b9379ac6, type: 3}
+  m_Script: {fileID: 11500000, guid: 963c130bb03e8c840af3cdff270dbf22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &2059282021

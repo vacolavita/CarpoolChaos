@@ -6,10 +6,11 @@ using UnityEngine.Events;
 
 public class EndGameMenu : MonoBehaviour
 {
-    //public Dropdown dropDown;
+    private Dropdown dropDown;
     // Start is called before the first frame update
     private void Start()
     {
+        //dropDown = GameObject.Find("Dropdown 1").GetComponent<Dropdown>();
         //dropDown.value = PlayerPrefs.GetInt("optionvalue");
         //dropDown.onValueChanged.AddListener(delegate { DropdownItemSelected(dropDown); });
         DontDestroyOnLoad(gameObject);
