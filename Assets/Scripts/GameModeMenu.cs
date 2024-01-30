@@ -7,13 +7,12 @@ using UnityEngine.Events;
 
 public class GameModeMenu : MonoBehaviour
 {
-    private int val;
-    private void Start()
+    public void Start()
     {
         DontDestroyOnLoad(gameObject);
     }
     // Start is called before the first frame update
-    public void HandleInputData()
+    public void HandleInputData(int val)
     {
         if (val == 0)
         {
