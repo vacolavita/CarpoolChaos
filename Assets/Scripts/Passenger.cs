@@ -5,10 +5,10 @@ using UnityEngine;
 
 public class Passenger : MonoBehaviour
 {
-    bool isInCar = false;
-    bool canTrigger = true;
+    public bool isInCar = false;
+    public bool canTrigger = true;
     public Clump clump;
-    int passengerNum;
+    public int passengerNum;
     public int passengerType;
     public Material[] passengerMats;
     Movement parentMove;
@@ -52,35 +52,10 @@ public class Passenger : MonoBehaviour
         {
             mapSprite.enabled = false;
             transform.SetLocalPositionAndRotation(parentMove.PassengerPosition(passengerNum), new Quaternion());
+            if(parentMove.select == passengerType-1){
+                transform.localPosition = transform.localPosition + new Vector3(0, 0.3f, 0);
+            }
             canTrigger = false;
-            if (parentMove.action == 1 && parentMove.select == passengerType-1)
-            {
-                parentMove.passengers[passengerNum - 1] = null;
-                isInCar = false;
-                Rigidbody r = GetComponent<Rigidbody>();
-                r.isKinematic = false;
-                    r.velocity = parentMove.launchTrajectory + new Vector3(Random.Range(-1.0f, 1.0f), 0, (Random.Range(-1.0f, 1.0f)));
-                    if (GameModes.lobber)
-                    {
-                        r.velocity = parentMove.launchTrajectory*0.7f + new Vector3(Random.Range(-1.0f, 1.0f), 7, (Random.Range(-1.0f, 1.0f)));
-                    }
-                    else {
-                        r.velocity = parentMove.launchTrajectory + new Vector3(Random.Range(-1.0f, 1.0f), 0, (Random.Range(-1.0f, 1.0f)));
-                    }
-                transform.SetParent(null);
-                parentMove.currentPassengers--;
-                canTrigger = false;
-            }
-            if (parentMove.action == 2 && parentMove.select == passengerType - 1)
-            {
-                parentMove.passengers[passengerNum-1] = null;
-                isInCar = false;
-                Rigidbody r = GetComponent<Rigidbody>();
-                r.isKinematic = false;
-                r.velocity = transform.forward * -4;
-                transform.SetParent(null);
-                parentMove.currentPassengers--;
-            }
         }
         if (parentMove != null)
         {

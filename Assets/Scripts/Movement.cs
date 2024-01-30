@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using UnityEngine.WSA;
 
 public class Movement : MonoBehaviour
 {
@@ -82,14 +83,15 @@ public class Movement : MonoBehaviour
 
     public void OnScrollLeft()
     {
-        select = (select - 1) % 3;
-        Debug.Log(select);
+
+        select -= 1;
+        if (select < 0)
+            select = 2;
+
     }
     public void OnScrollRight()
     {
         select = (select + 1) % 3;
-        Debug.Log(select);
-
     }
 
     // Update is called once per frame
@@ -205,15 +207,51 @@ public class Movement : MonoBehaviour
     {
         if (hasFuel && currentPassengers > 0)
         {
-            action = 1;
-            fuelLevel = Mathf.Max(fuelLevel-launchPenalty,0);
-            SetFuel(fuelLevel);
+            bool launched = false;
+            for (int i = 0; i < carryingCapacity; i++) {
+                if (passengers[i] != null)
+                {
+                    Passenger p = passengers[i].GetComponent<Passenger>();
+                    if (p.passengerType-1 == select)
+                    {
+                        launched = true;
+                        p.isInCar = false;
+                        passengers[i].transform.SetParent(null);
+                        p.GetComponent<Rigidbody>().isKinematic = false;
+                        p.GetComponent<Rigidbody>().velocity = launchTrajectory + new Vector3(Random.Range(-1.0f, 1.0f), 0, (Random.Range(-1.0f, 1.0f)));
+                        currentPassengers--;
+                        p.canTrigger = false;
+                        passengers[i] = null;
+                    }
+                }
+            }
+            if (launched)
+            {
+                fuelLevel = Mathf.Max(fuelLevel - launchPenalty, 0);
+                SetFuel(fuelLevel);
+            }
         }
     }
 
     public void OnDrop()
     {
-        action = 2;
+        for (int i = 0; i < carryingCapacity; i++)
+        {
+            if (passengers[i] != null)
+            {
+                Passenger p = passengers[i].GetComponent<Passenger>();
+                if (p.passengerType - 1 == select)
+                {
+                    p.isInCar = false;
+                    passengers[i].transform.SetParent(null);
+                    p.GetComponent<Rigidbody>().isKinematic = false;
+                    p.GetComponent<Rigidbody>().velocity = p.transform.forward * -4;
+                    currentPassengers--;
+                    p.canTrigger = false;
+                    passengers[i] = null;
+                }
+            }
+        }
     }
 
 
