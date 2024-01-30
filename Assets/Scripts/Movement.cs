@@ -32,13 +32,12 @@ public class Movement : MonoBehaviour
 
     Rigidbody r;
     float curSpeed;
-    public bool launch;
 
     //Drop Variables
-    public KeyCode drop;
 
     public int select = 0;
 
+    public int action = 0;
 
     public Vector2 controlDirection;
 
@@ -103,14 +102,7 @@ public class Movement : MonoBehaviour
         {
             c.Normalize();
         }
-        if (c.magnitude > 0.5) 
-        { 
-            launch = true; launchTrajectory = new Vector3(0, 4, 0) + (r.velocity * 0.5f) + transform.forward * (launchForce + r.velocity.magnitude * 0.5f); 
-        } 
-        else 
-        {
-            launch = false;
-        }
+        launchTrajectory = new Vector3(0, 4, 0) + transform.forward * (launchForce + (r.velocity.magnitude*0.3f));
         if (Vector2.Angle(new Vector2(r.velocity.x, r.velocity.z), c) > 90) //If the angle you're trying to move at is more than 90 degrees away from the direction you're facing, you'll slow down for a sharper turn
         {
             c *= 0.33f;
@@ -149,6 +141,7 @@ public class Movement : MonoBehaviour
                 fuelMeter.value = fuelLevel;
             }
         }
+        action = 0;
     }
 
     public Vector3 PassengerPosition(int passengerNum)
@@ -198,6 +191,29 @@ public class Movement : MonoBehaviour
     public void SetFuel(float fuel)
     {
         fuelMeter.value = fuel;
+    }
+
+
+
+
+
+
+
+
+
+    public void OnLaunch()
+    {
+        if (hasFuel && currentPassengers > 0)
+        {
+            action = 1;
+            fuelLevel = Mathf.Max(fuelLevel-launchPenalty,0);
+            SetFuel(fuelLevel);
+        }
+    }
+
+    public void OnDrop()
+    {
+        action = 2;
     }
 
 

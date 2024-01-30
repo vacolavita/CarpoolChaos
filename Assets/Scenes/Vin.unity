@@ -488,7 +488,7 @@ MonoBehaviour:
   traction: 1.07
   acceleration: 1.05
   handling: 0.06
-  launchForce: 6
+  launchForce: 25
   carryingCapacity: 9
   fuelEfficiency: 0.25
   passengerPenalty: 0.02
@@ -501,10 +501,8 @@ MonoBehaviour:
   fuelLevel: 100
   maxFuel: 100
   fuelMeter: {fileID: 1697686838}
-  launch: 0
   drop: 32
-  axisH: Horizontal
-  axisV: Vertical
+  select: 0
   controlDirection: {x: 0, y: 0}
 --- !u!135 &149828964
 SphereCollider:
@@ -933,7 +931,7 @@ MonoBehaviour:
   traction: 1.07
   acceleration: 1.05
   handling: 0.06
-  launchForce: 6
+  launchForce: 25
   carryingCapacity: 9
   fuelEfficiency: 0.25
   passengerPenalty: 0.02
@@ -946,10 +944,8 @@ MonoBehaviour:
   fuelLevel: 100
   maxFuel: 100
   fuelMeter: {fileID: 565273069}
-  launch: 0
   drop: 256
-  axisH: Horizontal2
-  axisV: Vertical2
+  select: 0
   controlDirection: {x: 0, y: 0}
 --- !u!54 &443506488
 Rigidbody:

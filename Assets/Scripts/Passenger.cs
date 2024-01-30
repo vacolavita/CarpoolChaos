@@ -53,13 +53,12 @@ public class Passenger : MonoBehaviour
             mapSprite.enabled = false;
             transform.SetLocalPositionAndRotation(parentMove.PassengerPosition(passengerNum), new Quaternion());
             canTrigger = false;
-            if (Input.GetKeyDown(parentMove.drop) && parentMove.select == passengerType-1)
+            if (parentMove.action == 1 && parentMove.select == passengerType-1)
             {
+                parentMove.passengers[passengerNum - 1] = null;
                 isInCar = false;
                 Rigidbody r = GetComponent<Rigidbody>();
                 r.isKinematic = false;
-                if (parentMove.launch)
-                {
                     r.velocity = parentMove.launchTrajectory + new Vector3(Random.Range(-1.0f, 1.0f), 0, (Random.Range(-1.0f, 1.0f)));
                     if (GameModes.lobber)
                     {
@@ -68,14 +67,19 @@ public class Passenger : MonoBehaviour
                     else {
                         r.velocity = parentMove.launchTrajectory + new Vector3(Random.Range(-1.0f, 1.0f), 0, (Random.Range(-1.0f, 1.0f)));
                     }
-                }
-                else
-                {
-                    r.velocity = transform.forward * -3;
-                }
                 transform.SetParent(null);
                 parentMove.currentPassengers--;
                 canTrigger = false;
+            }
+            if (parentMove.action == 2 && parentMove.select == passengerType - 1)
+            {
+                parentMove.passengers[passengerNum-1] = null;
+                isInCar = false;
+                Rigidbody r = GetComponent<Rigidbody>();
+                r.isKinematic = false;
+                r.velocity = transform.forward * -4;
+                transform.SetParent(null);
+                parentMove.currentPassengers--;
             }
         }
         if (parentMove != null)
@@ -128,10 +132,18 @@ public class Passenger : MonoBehaviour
             GetComponent<Rigidbody>().interpolation = RigidbodyInterpolation.Interpolate;
             transform.SetParent(other.gameObject.transform);
             parentMove = transform.parent.GetComponent<Movement>();
+            for (int i = 0; i < parentMove.carryingCapacity; i++)
+            {
+                if (parentMove.passengers[i] == null)
+                {
+                    parentMove.passengers[i] = gameObject;
+                    passengerNum = i+1;
+                    break;
+                }
+            }
             isInCar = true;
             canTrigger = false;
             parentMove.currentPassengers++;
-            passengerNum = parentMove.currentPassengers;
             Rigidbody r = GetComponent<Rigidbody>();
             r.isKinematic = true;
             clump = null;
