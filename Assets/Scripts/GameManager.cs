@@ -7,8 +7,8 @@ public class GameManager : MonoBehaviour
 {
     public TextMeshProUGUI scoreText;
     public int score = 0;
-    public TextMeshProUGUI fuel1Text;
-    public TextMeshProUGUI fuel2Text;
+    //public TextMeshProUGUI fuel1Text;
+    //public TextMeshProUGUI fuel2Text;
     public Movement car1;
     public Movement car2;
     public bool hasItem;
@@ -48,8 +48,8 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        fuel1Text.text = "Fuel: " + Mathf.Round(car1.fuelLevel);
-        fuel2Text.text = "Fuel: " + Mathf.Round(car2.fuelLevel);
+        //fuel1Text.text = "Fuel: " + Mathf.Round(car1.fuelLevel);
+        //fuel2Text.text = "Fuel: " + Mathf.Round(car2.fuelLevel);
 
         if (hasGasCan)
         {
