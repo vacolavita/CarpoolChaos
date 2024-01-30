@@ -118,6 +118,7 @@ GameObject:
   - component: {fileID: 695589948363599382}
   - component: {fileID: 4774928969267287276}
   - component: {fileID: 6965837635959818673}
+  - component: {fileID: -1625056320409937808}
   m_Layer: 0
   m_Name: Car (1)
   m_TagString: Car
@@ -211,12 +212,23 @@ MonoBehaviour:
   handling: 0.06
   launchForce: 6
   carryingCapacity: 9
+  fuelEfficiency: 0
+  passengerPenalty: 0
+  launchPenalty: 0
+  jumpForce: 10
+  boostSpeed: 0
   currentPassengers: 0
+  passengers: []
   launchTrajectory: {x: 0, y: 0, z: 0}
+  isMoving: 0
+  hasFuel: 0
+  fuelLevel: 0
+  maxFuel: 0
+  fuelMeter: {fileID: 0}
   launch: 0
   drop: 256
-  axisH: Horizontal2
-  axisV: Vertical2
+  select: 0
+  controlDirection: {x: 0, y: 0}
 --- !u!135 &6965837635959818673
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -238,6 +250,36 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 4.2
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-1625056320409937808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1038694290299702082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 1cf11ac5e5cc2ba44948b0a1edbd815b, type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: 975a2fcd-9596-485f-a2cc-236037e42b61
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1 &2661276624541859600
 GameObject:
   m_ObjectHideFlags: 0

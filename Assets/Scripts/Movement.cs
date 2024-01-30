@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using UnityEngine.WSA;
 
 public class Movement : MonoBehaviour
 {
@@ -35,13 +36,12 @@ public class Movement : MonoBehaviour
 
     Rigidbody r;
     float curSpeed;
-    public bool launch;
 
     //Drop Variables
-    public KeyCode drop;
 
     public int select = 0;
 
+    public int action = 0;
 
     public Vector2 controlDirection;
 
@@ -86,14 +86,15 @@ public class Movement : MonoBehaviour
 
     public void OnScrollLeft()
     {
-        select = (select - 1) % 3;
-        Debug.Log(select);
+
+        select -= 1;
+        if (select < 0)
+            select = 2;
+
     }
     public void OnScrollRight()
     {
         select = (select + 1) % 3;
-        Debug.Log(select);
-
     }
 
     // Update is called once per frame
@@ -106,14 +107,7 @@ public class Movement : MonoBehaviour
         {
             c.Normalize();
         }
-        if (c.magnitude > 0.5) 
-        { 
-            launch = true; launchTrajectory = new Vector3(0, 4, 0) + (r.velocity * 0.5f) + transform.forward * (launchForce + r.velocity.magnitude * 0.5f); 
-        } 
-        else 
-        {
-            launch = false;
-        }
+        launchTrajectory = new Vector3(0, 4, 0) + transform.forward * (launchForce + (r.velocity.magnitude*0.3f));
         if (Vector2.Angle(new Vector2(r.velocity.x, r.velocity.z), c) > 90) //If the angle you're trying to move at is more than 90 degrees away from the direction you're facing, you'll slow down for a sharper turn
         {
             c *= 0.33f;
@@ -157,6 +151,7 @@ public class Movement : MonoBehaviour
                 fuelMeter.value = fuelLevel;
             }
         }
+        action = 0;
     }
 
     public Vector3 PassengerPosition(int passengerNum)
@@ -220,6 +215,65 @@ public class Movement : MonoBehaviour
     public void SetFuel(float fuel)
     {
         fuelMeter.value = fuel;
+    }
+
+
+
+
+
+
+
+
+
+    public void OnLaunch()
+    {
+        if (hasFuel && currentPassengers > 0)
+        {
+            bool launched = false;
+            for (int i = 0; i < carryingCapacity; i++) {
+                if (passengers[i] != null)
+                {
+                    Passenger p = passengers[i].GetComponent<Passenger>();
+                    if (p.passengerType-1 == select)
+                    {
+                        launched = true;
+                        p.isInCar = false;
+                        passengers[i].transform.SetParent(null);
+                        p.GetComponent<Rigidbody>().isKinematic = false;
+                        p.GetComponent<Rigidbody>().velocity = launchTrajectory + new Vector3(Random.Range(-1.0f, 1.0f), 0, (Random.Range(-1.0f, 1.0f)));
+                        currentPassengers--;
+                        p.canTrigger = false;
+                        passengers[i] = null;
+                    }
+                }
+            }
+            if (launched)
+            {
+                fuelLevel = Mathf.Max(fuelLevel - launchPenalty, 0);
+                SetFuel(fuelLevel);
+            }
+        }
+    }
+
+    public void OnDrop()
+    {
+        for (int i = 0; i < carryingCapacity; i++)
+        {
+            if (passengers[i] != null)
+            {
+                Passenger p = passengers[i].GetComponent<Passenger>();
+                if (p.passengerType - 1 == select)
+                {
+                    p.isInCar = false;
+                    passengers[i].transform.SetParent(null);
+                    p.GetComponent<Rigidbody>().isKinematic = false;
+                    p.GetComponent<Rigidbody>().velocity = p.transform.forward * -4;
+                    currentPassengers--;
+                    p.canTrigger = false;
+                    passengers[i] = null;
+                }
+            }
+        }
     }
 
 

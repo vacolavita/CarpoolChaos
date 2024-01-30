@@ -5,10 +5,10 @@ using UnityEngine;
 
 public class Passenger : MonoBehaviour
 {
-    bool isInCar = false;
-    bool canTrigger = true;
+    public bool isInCar = false;
+    public bool canTrigger = true;
     public Clump clump;
-    int passengerNum;
+    public int passengerNum;
     public int passengerType;
     public Material[] passengerMats;
     Movement parentMove;
@@ -52,31 +52,10 @@ public class Passenger : MonoBehaviour
         {
             mapSprite.enabled = false;
             transform.SetLocalPositionAndRotation(parentMove.PassengerPosition(passengerNum), new Quaternion());
-            canTrigger = false;
-            if (Input.GetKeyDown(parentMove.drop) && parentMove.select == passengerType-1)
-            {
-                isInCar = false;
-                Rigidbody r = GetComponent<Rigidbody>();
-                r.isKinematic = false;
-                if (parentMove.launch)
-                {
-                    r.velocity = parentMove.launchTrajectory + new Vector3(Random.Range(-1.0f, 1.0f), 0, (Random.Range(-1.0f, 1.0f)));
-                    if (GameModes.lobber)
-                    {
-                        r.velocity = parentMove.launchTrajectory*0.7f + new Vector3(Random.Range(-1.0f, 1.0f), 7, (Random.Range(-1.0f, 1.0f)));
-                    }
-                    else {
-                        r.velocity = parentMove.launchTrajectory + new Vector3(Random.Range(-1.0f, 1.0f), 0, (Random.Range(-1.0f, 1.0f)));
-                    }
-                }
-                else
-                {
-                    r.velocity = transform.forward * -3;
-                }
-                transform.SetParent(null);
-                parentMove.currentPassengers--;
-                canTrigger = false;
+            if(parentMove.select == passengerType-1){
+                transform.localPosition = transform.localPosition + new Vector3(0, 0.3f, 0);
             }
+            canTrigger = false;
         }
         if (parentMove != null)
         {
@@ -107,6 +86,7 @@ public class Passenger : MonoBehaviour
                 if (isInCar) 
                 {
                     parentMove.currentPassengers--;
+                    parentMove.passengers[passengerNum - 1] = null;
                 }
                 Destroy(gameObject);
                 gameManager.UpdateScore(1);
@@ -128,10 +108,18 @@ public class Passenger : MonoBehaviour
             GetComponent<Rigidbody>().interpolation = RigidbodyInterpolation.Interpolate;
             transform.SetParent(other.gameObject.transform);
             parentMove = transform.parent.GetComponent<Movement>();
+            for (int i = 0; i < parentMove.carryingCapacity; i++)
+            {
+                if (parentMove.passengers[i] == null)
+                {
+                    parentMove.passengers[i] = gameObject;
+                    passengerNum = i+1;
+                    break;
+                }
+            }
             isInCar = true;
             canTrigger = false;
             parentMove.currentPassengers++;
-            passengerNum = parentMove.currentPassengers;
             Rigidbody r = GetComponent<Rigidbody>();
             r.isKinematic = true;
             clump = null;

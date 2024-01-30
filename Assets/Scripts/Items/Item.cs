@@ -34,6 +34,7 @@ public class Item : MonoBehaviour
         if (other.gameObject.CompareTag("Car") && !gameManager.hasItem)
         {
             Destroy(gameObject);
+            hasItem = true;
             itemGet = Random.Range(1, 5);
 
             switch (itemGet)

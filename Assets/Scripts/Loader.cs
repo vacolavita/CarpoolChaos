@@ -6,7 +6,7 @@ public static class Loader
 {
     public enum Scene
     {
-        MainMenu, LevelSelect, DesertScene, TownScene, Domenic, IcyLevel, GameEndMenu, ConstructionCity
+        MainMenu, LevelSelect, DesertScene, TownScene, Domenic, IcyLevel, GameEndMenu, ConstructionCity, VehicleSelect
     }
     public static void Load(Scene scene)
     {

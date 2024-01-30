@@ -42,6 +42,7 @@ public class GameManager : MonoBehaviour
         scoreText.text = "Score: " + score;
         timerText.text = "Time: " + time;
         gasCan = GetComponent<GasCan>();
+        hasItem = false;
     }
 
     // Update is called once per frame
@@ -62,12 +63,14 @@ public class GameManager : MonoBehaviour
                 Debug.Log("Spawn tent");
                 Instantiate(tent, car1.transform.position + new Vector3(Random.Range(-10, 10), 1, Random.Range(-10, 10)), tent.transform.rotation);
                 hasTent = false;
+                hasItem = false;
             }
             if (Input.GetKeyDown(KeyCode.Alpha1))
             {
                 Debug.Log("Spawn tent");
                 Instantiate(tent, car2.transform.position + new Vector3(Random.Range(-10, 10), 1, Random.Range(-10, 10)), tent.transform.rotation);
                 hasTent = false;
+                hasItem = false;
             }
         }
 
@@ -78,12 +81,14 @@ public class GameManager : MonoBehaviour
                 Debug.Log("Spawn boost pad");
                 Instantiate(boostPad, car1.transform.position + new Vector3(Random.Range(-10, 10), -0.92f, Random.Range(-10, 10)), tent.transform.rotation);
                 hasBoost = false;
+                hasItem = false;
             }
             if (Input.GetKeyDown(KeyCode.Alpha1))
             {
                 Debug.Log("Spawn boost pad");
                 Instantiate(boostPad, car2.transform.position + new Vector3(Random.Range(-10, 10), -0.92f, Random.Range(-10, 10)), tent.transform.rotation);
                 hasBoost = false;
+                hasItem = false;
             }
         }
 
@@ -94,12 +99,14 @@ public class GameManager : MonoBehaviour
                 Debug.Log("Spawn spring pad");
                 Instantiate(springPad, car1.transform.position + new Vector3(Random.Range(-10, 10), -0.92f, Random.Range(-10, 10)), tent.transform.rotation);
                 hasSpring = false;
+                hasItem = false;
             }
             if (Input.GetKeyDown(KeyCode.Alpha1))
             {
                 Debug.Log("Spawn spring pad");
                 Instantiate(springPad, car2.transform.position + new Vector3(Random.Range(-10, 10), -0.92f, Random.Range(-10, 10)), tent.transform.rotation);
                 hasSpring = false;
+                hasItem = false;
             }
         }
 
