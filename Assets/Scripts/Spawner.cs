@@ -61,7 +61,7 @@ public class Spawner : MonoBehaviour
         else
         {
             spawnTimeAdjusted = spawnTime / (1 + (gameManager.score / 100.0f));
-            Debug.Log("bleg");
+            //Debug.Log("bleg");
         }
     }
 }

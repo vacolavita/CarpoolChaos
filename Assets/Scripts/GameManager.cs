@@ -51,11 +51,6 @@ public class GameManager : MonoBehaviour
         //fuel1Text.text = "Fuel: " + Mathf.Round(car1.fuelLevel);
         //fuel2Text.text = "Fuel: " + Mathf.Round(car2.fuelLevel);
 
-        if (hasGasCan)
-        {
-            gasCan.Gas();
-        }
-
         if (hasTent)
         {
             if (Input.GetKeyDown(KeyCode.E))
