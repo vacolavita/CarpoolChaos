@@ -6,19 +6,16 @@ using TMPro;
 
 public class ItemBox : MonoBehaviour
 {
-    private GameObject gasCanImage;
-    private GameObject tentImage;
-    private GameObject boostPadImage;
-    private GameObject springPadImage;
+    public GameObject gasCanImage;
+    public GameObject tentImage;
+    public GameObject boostPadImage;
+    public GameObject springPadImage;
     private GameManager gameManager;
+    public Movement car;
     // Start is called before the first frame update
     void Start()
     {
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
-        gasCanImage = GameObject.Find("Gas Can");
-        tentImage = GameObject.Find("Tent");
-        boostPadImage = GameObject.Find("Boost Pad");
-        springPadImage = GameObject.Find("Spring Pad");
     }
 
     // Update is called once per frame
@@ -26,7 +23,7 @@ public class ItemBox : MonoBehaviour
     {
         if (gameManager.hasItem)
         {
-            if (gameManager.hasGasCan)
+            if (car.item == 1)
             {
                 gasCanImage.SetActive(true);
                 tentImage.SetActive(false) ;
@@ -34,15 +31,7 @@ public class ItemBox : MonoBehaviour
                 springPadImage.SetActive(false);
             }
             
-            if (gameManager.hasTent)
-            {
-                gasCanImage.SetActive(false);
-                tentImage.SetActive(true);
-                boostPadImage.SetActive(false);
-                springPadImage.SetActive(false);
-            }
-
-            if (gameManager.hasBoost)
+            if (car.item == 2)
             {
                 gasCanImage.SetActive(false);
                 tentImage.SetActive(false);
@@ -50,7 +39,15 @@ public class ItemBox : MonoBehaviour
                 springPadImage.SetActive(false);
             }
 
-            if (gameManager.hasSpring)
+            if (car.item == 3)
+            {
+                gasCanImage.SetActive(false);
+                tentImage.SetActive(true);
+                boostPadImage.SetActive(false);
+                springPadImage.SetActive(false);
+            }
+
+            if (car.item == 4)
             {
                 gasCanImage.SetActive(false);
                 tentImage.SetActive(false);
