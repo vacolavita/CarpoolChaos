@@ -50,6 +50,10 @@ public class Movement : MonoBehaviour
 
     public GameObject[] items;
 
+    public int playernum = 0;
+
+    public GameObject playerControl;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -81,12 +85,12 @@ public class Movement : MonoBehaviour
         {
             GetComponentInParent<Transform>().localScale = new Vector3(1.3f,1.3f,1.3f);
         }
+        PlayerManagerManager.players[playernum] = gameObject;
+
     }
 
-    public void OnMove(InputValue value)
-    {
+    public void OnMove(InputValue value) {
         controlDirection = value.Get<Vector2>();
-        //Debug.Log(c);
     }
 
     public void OnScrollLeft()
