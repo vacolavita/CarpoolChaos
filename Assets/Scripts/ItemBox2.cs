@@ -1,10 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
 
-public class ItemBox : MonoBehaviour
+public class ItemBox2 : MonoBehaviour
 {
     private GameObject gasCanImage;
     private GameObject tentImage;
@@ -16,7 +14,6 @@ public class ItemBox : MonoBehaviour
     void Start()
     {
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
-        car = GameObject.Find("Car").GetComponent<Movement>();
         gasCanImage = GameObject.Find("Gas Can");
         tentImage = GameObject.Find("Tent");
         boostPadImage = GameObject.Find("Boost Pad");
@@ -31,11 +28,11 @@ public class ItemBox : MonoBehaviour
             if (car.item == 1)
             {
                 gasCanImage.SetActive(true);
-                tentImage.SetActive(false) ;
+                tentImage.SetActive(false);
                 boostPadImage.SetActive(false);
                 springPadImage.SetActive(false);
             }
-            
+
             if (car.item == 2)
             {
                 gasCanImage.SetActive(false);
