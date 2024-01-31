@@ -90,8 +90,12 @@ public class Movement : MonoBehaviour
         {
             GetComponentInParent<Transform>().localScale = new Vector3(1.3f,1.3f,1.3f);
         }
+        if (PlayerManagerManager.players == null) {
+            PlayerManagerManager.players = new GameObject[2];
+            Debug.Log("AH");
+
+        }
         PlayerManagerManager.players[playernum] = gameObject;
-        Debug.Log("AH");
 
     }
 
