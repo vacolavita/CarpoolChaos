@@ -11,10 +11,12 @@ public class ItemBox : MonoBehaviour
     private GameObject boostPadImage;
     private GameObject springPadImage;
     private GameManager gameManager;
+    private Movement car;
     // Start is called before the first frame update
     void Start()
     {
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+        car = GameObject.Find("Car").GetComponent<Movement>();
         gasCanImage = GameObject.Find("Gas Can");
         tentImage = GameObject.Find("Tent");
         boostPadImage = GameObject.Find("Boost Pad");
@@ -26,7 +28,7 @@ public class ItemBox : MonoBehaviour
     {
         if (gameManager.hasItem)
         {
-            if (gameManager.hasGasCan)
+            if (car.item == 1)
             {
                 gasCanImage.SetActive(true);
                 tentImage.SetActive(false) ;
@@ -34,7 +36,7 @@ public class ItemBox : MonoBehaviour
                 springPadImage.SetActive(false);
             }
             
-            if (gameManager.hasTent)
+            if (car.item == 2)
             {
                 gasCanImage.SetActive(false);
                 tentImage.SetActive(true);
@@ -42,7 +44,7 @@ public class ItemBox : MonoBehaviour
                 springPadImage.SetActive(false);
             }
 
-            if (gameManager.hasBoost)
+            if (car.item == 3)
             {
                 gasCanImage.SetActive(false);
                 tentImage.SetActive(false);
@@ -50,7 +52,7 @@ public class ItemBox : MonoBehaviour
                 springPadImage.SetActive(false);
             }
 
-            if (gameManager.hasSpring)
+            if (car.item == 4)
             {
                 gasCanImage.SetActive(false);
                 tentImage.SetActive(false);
