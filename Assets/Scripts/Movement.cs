@@ -327,34 +327,23 @@ public class Movement : MonoBehaviour
         }
     }
 
-    public void OnItem() 
-    {
-        if (item == 1) 
-        {
+    public void OnItem() {
+        if (item == 1) {
             GameObject gas = Instantiate(items[0], carTransform.position, transform.rotation);
             gas.GetComponent<Rigidbody>().velocity = transform.forward * maxSpeed * 2;
-            gameManager.hasItem = false;
         }
         if (item == 2)
         {
             Instantiate(items[1], carTransform.position, transform.rotation);
-            gameManager.hasItem = false;
         }
         if (item == 3)
         {
             Instantiate(items[2], transform.position + new Vector3(0, -0.92f, 0), transform.rotation);
-            gameManager.hasItem = false;
         }
         if (item == 4)
         {
             Instantiate(items[3], transform.position + new Vector3(0, -0.92f, 0), transform.rotation);
-            gameManager.hasItem = false;
         }
-        else
-        {
-            gameManager.hasItem = false;
-        }
-
         item = 0;
     }
 

@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &8817115480968278123
+--- !u!1 &2892042734182178307
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,8 +8,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5795762075347662992}
-  - component: {fileID: 7528395250107448219}
+  - component: {fileID: 6299115857282585746}
+  - component: {fileID: 4362277008080545735}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Game Manager
@@ -17,13 +17,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5795762075347662992
+--- !u!4 &6299115857282585746
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8817115480968278123}
+  m_GameObject: {fileID: 2892042734182178307}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 6.6010714, y: 16.001621, z: -17.630745}
@@ -32,37 +32,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7528395250107448219
+--- !u!114 &4362277008080545735
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8817115480968278123}
+  m_GameObject: {fileID: 2892042734182178307}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1d869dad121b56e4c91420f2f26d55c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   scoreText: {fileID: 0}
-  score: 0
+  fuel1Text: {fileID: 0}
+  fuel2Text: {fileID: 0}
   car1: {fileID: 0}
   car2: {fileID: 0}
-  hasItem: 0
-  hasGasCan: 0
-  hasTent: 0
-  tent: {fileID: 6999645714063828644, guid: b95b47aacddfcb24d82d3d24fd97558f, type: 3}
-  hasBoost: 0
-  boostPad: {fileID: 229548168784626748, guid: f111fed054803524b9004700cbdfedbc, type: 3}
-  hasSpring: 0
-  springPad: {fileID: 1531684317481719074, guid: 83548550ab21f6949b49c0d052236435, type: 3}
-  time: 150
-  timerText: {fileID: 0}
-  fuelMeter1: {fileID: 0}
-  fuelMeter2: {fileID: 0}
-  fuelAmount1: 0
-  fuelAmount2: 0
-  lives: 3
-  livesText: {fileID: 0}
-  timer: {fileID: 0}
-  lifeMeter: {fileID: 0}
