@@ -56,12 +56,15 @@ public class Movement : MonoBehaviour
 
     public GameObject playerControl;
 
+    public Color paint;
+
     // Start is called before the first frame update
     void Start()
     {
 
         passengers = new GameObject[carryingCapacity];
         r = GetComponent<Rigidbody>();
+        GetComponentsInChildren<MeshRenderer>()[4].materials[0].color = paint;
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
         SetMaxFuel(maxFuel);
         if (GameModes.turbo) {
@@ -88,6 +91,7 @@ public class Movement : MonoBehaviour
             GetComponentInParent<Transform>().localScale = new Vector3(1.3f,1.3f,1.3f);
         }
         PlayerManagerManager.players[playernum] = gameObject;
+        Debug.Log("AH");
 
     }
 
@@ -113,7 +117,7 @@ public class Movement : MonoBehaviour
             }
             if (select == 2)
             {
-                item1.color = new Color(0.50f, 0.92f, 1.00f);
+                item1.color = new Color(0.40f, 0.60f, 2.00f);
             }
         }
 
@@ -134,7 +138,7 @@ public class Movement : MonoBehaviour
             }
             if (select == 2)
             {
-                item1.color = new Color(0.50f, 0.92f, 1.00f);
+                item1.color = new Color(0.40f, 0.60f, 2.00f);
             }
         }
     }
@@ -142,6 +146,7 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        GetComponentsInChildren<MeshRenderer>()[4].materials[0].color = paint;
 
         Vector2 c = controlDirection;
         Vector3 newDirection = Vector3.RotateTowards(transform.forward, new Vector3(c.x,0,c.y), handling, 0.0f);
