@@ -4,20 +4,16 @@ using UnityEngine;
 
 public class ItemBox2 : MonoBehaviour
 {
-    private GameObject gasCanImage;
-    private GameObject tentImage;
-    private GameObject boostPadImage;
-    private GameObject springPadImage;
+    public GameObject gasCan;
+    public GameObject tent;
+    public GameObject boostPad;
+    public GameObject springPad;
     private GameManager gameManager;
     public Movement car;
     // Start is called before the first frame update
     void Start()
     {
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
-        gasCanImage = GameObject.Find("Gas Can");
-        tentImage = GameObject.Find("Tent");
-        boostPadImage = GameObject.Find("Boost Pad");
-        springPadImage = GameObject.Find("Spring Pad");
     }
 
     // Update is called once per frame
@@ -27,42 +23,42 @@ public class ItemBox2 : MonoBehaviour
         {
             if (car.item == 1)
             {
-                gasCanImage.SetActive(true);
-                tentImage.SetActive(false);
-                boostPadImage.SetActive(false);
-                springPadImage.SetActive(false);
+                gasCan.SetActive(true);
+                tent.SetActive(false);
+                boostPad.SetActive(false);
+                springPad.SetActive(false);
             }
 
             if (car.item == 2)
             {
-                gasCanImage.SetActive(false);
-                tentImage.SetActive(false);
-                boostPadImage.SetActive(true);
-                springPadImage.SetActive(false);
+                gasCan.SetActive(false);
+                tent.SetActive(false);
+                boostPad.SetActive(true);
+                springPad.SetActive(false);
             }
 
             if (car.item == 3)
             {
-                gasCanImage.SetActive(false);
-                tentImage.SetActive(true);
-                boostPadImage.SetActive(false);
-                springPadImage.SetActive(false);
+                gasCan.SetActive(false);
+                tent.SetActive(true);
+                boostPad.SetActive(false);
+                springPad.SetActive(false);
             }
 
             if (car.item == 4)
             {
-                gasCanImage.SetActive(false);
-                tentImage.SetActive(false);
-                boostPadImage.SetActive(false);
-                springPadImage.SetActive(true);
+                gasCan.SetActive(false);
+                tent.SetActive(false);
+                boostPad.SetActive(false);
+                springPad.SetActive(true);
             }
         }
         else
         {
-            gasCanImage.SetActive(false);
-            tentImage.SetActive(false);
-            boostPadImage.SetActive(false);
-            springPadImage.SetActive(false);
+            gasCan.SetActive(false);
+            tent.SetActive(false);
+            boostPad.SetActive(false);
+            springPad.SetActive(false);
         }
     }
 }
