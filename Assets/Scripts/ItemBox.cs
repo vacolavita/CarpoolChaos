@@ -6,21 +6,16 @@ using TMPro;
 
 public class ItemBox : MonoBehaviour
 {
-    private GameObject gasCanImage;
-    private GameObject tentImage;
-    private GameObject boostPadImage;
-    private GameObject springPadImage;
+    public GameObject gasCanImage;
+    public GameObject tentImage;
+    public GameObject boostPadImage;
+    public GameObject springPadImage;
     private GameManager gameManager;
     public Movement car;
     // Start is called before the first frame update
     void Start()
     {
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
-        car = GameObject.Find("Car").GetComponent<Movement>();
-        gasCanImage = GameObject.Find("Gas Can");
-        tentImage = GameObject.Find("Tent");
-        boostPadImage = GameObject.Find("Boost Pad");
-        springPadImage = GameObject.Find("Spring Pad");
     }
 
     // Update is called once per frame
