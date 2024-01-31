@@ -240,6 +240,11 @@ public class Movement : MonoBehaviour
         {
             r.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
+
+        if (other.gameObject.CompareTag("Ice"))
+        {
+            traction = ((traction - 1) * 0.7f) + 1;
+        }
     }
 
     public void SetMaxFuel(float fuel)
