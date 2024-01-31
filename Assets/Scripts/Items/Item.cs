@@ -35,7 +35,7 @@ public class Item : MonoBehaviour
         {
             if (other.GetComponent<Movement>().item == 0) 
             {
-                other.GetComponent<Movement>().item = Random.Range(3, 4);
+                other.GetComponent<Movement>().item = Random.Range(1, 5);
             }
             gameManager.hasItem = true;
             Destroy(gameObject);
