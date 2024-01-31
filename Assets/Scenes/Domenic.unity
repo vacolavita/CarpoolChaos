@@ -510,6 +510,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1207648877872886648, guid: 2a6d1561287d4e34090decb78a8885d4, type: 3}
   m_PrefabInstance: {fileID: 2832946318243448423}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &419626790 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7458974938372974149, guid: 2f87948b0ab73154eb3df78d4f5902d6, type: 3}
+  m_PrefabInstance: {fileID: 6256175960901470795}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &518934169
 GameObject:
   m_ObjectHideFlags: 0
@@ -791,7 +796,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 841ecacddd21ad54f978e71632a24718, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraFollow: {fileID: 0}
+  cameraFollow: {fileID: 419626790}
   cameraDistance: {x: 0, y: 40, z: -20}
   cameraOffset: {x: 0, y: 0, z: -3}
 --- !u!81 &669789223
@@ -1590,13 +1595,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 841ecacddd21ad54f978e71632a24718, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraFollow: {fileID: 0}
+  cameraFollow: {fileID: 999608223}
   cameraDistance: {x: 0, y: 40, z: -20}
   cameraOffset: {x: 0, y: 0, z: -3}
 --- !u!1 &976894738 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3789598421164962919, guid: 2a6d1561287d4e34090decb78a8885d4, type: 3}
   m_PrefabInstance: {fileID: 2832946318243448423}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &999608223 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3301784293237717141, guid: f1dc761dce0153948b8e3c07b4a1cb3d, type: 3}
+  m_PrefabInstance: {fileID: 3371178030554389070}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1026682289
 GameObject:
