@@ -2,9 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Experimental.GlobalIllumination;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using UnityEngine.WSA;
+using static System.Net.Mime.MediaTypeNames;
+using static UnityEditor.Progress;
 
 public class Movement : MonoBehaviour
 {
@@ -41,9 +44,13 @@ public class Movement : MonoBehaviour
 
     public int select = 0;
 
-    public int action = 0;
+    public int item = 0;
 
     public Vector2 controlDirection;
+
+    public Transform carTransform;
+
+    public GameObject[] items;
 
     // Start is called before the first frame update
     void Start()
@@ -91,10 +98,41 @@ public class Movement : MonoBehaviour
         if (select < 0)
             select = 2;
 
+        foreach (var item1 in GetComponentsInChildren<Light>())
+        {
+            if (select == 0) {
+                item1.color = Color.green;
+            }
+            if (select == 1)
+            {
+                item1.color = new Color(1.00f, 0.5f, 0.4f);
+            }
+            if (select == 2)
+            {
+                item1.color = new Color(0.50f, 0.92f, 1.00f);
+            }
+        }
+
     }
     public void OnScrollRight()
     {
         select = (select + 1) % 3;
+
+        foreach (var item1 in GetComponentsInChildren<Light>())
+        {
+            if (select == 0)
+            {
+                item1.color = Color.green;
+            }
+            if (select == 1)
+            {
+                item1.color = new Color(1.00f, 0.5f, 0.4f);
+            }
+            if (select == 2)
+            {
+                item1.color = new Color(0.50f, 0.92f, 1.00f);
+            }
+        }
     }
 
     // Update is called once per frame
@@ -151,7 +189,6 @@ public class Movement : MonoBehaviour
                 fuelMeter.value = fuelLevel;
             }
         }
-        action = 0;
     }
 
     public Vector3 PassengerPosition(int passengerNum)
@@ -274,6 +311,26 @@ public class Movement : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void OnItem() {
+        if (item == 1) {
+            GameObject gas = Instantiate(items[0], carTransform.position, transform.rotation);
+            gas.GetComponent<Rigidbody>().velocity = transform.forward * maxSpeed * 2;
+        }
+        if (item == 2)
+        {
+            Instantiate(items[1], carTransform.position, transform.rotation);
+        }
+        if (item == 3)
+        {
+            Instantiate(items[2], transform.position + new Vector3(0, -0.92f, 0), transform.rotation);
+        }
+        if (item == 4)
+        {
+            Instantiate(items[3], transform.position + new Vector3(0, -0.92f, 0), transform.rotation);
+        }
+        item = 0;
     }
 
 

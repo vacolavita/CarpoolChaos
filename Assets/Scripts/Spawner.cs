@@ -26,18 +26,12 @@ public class Spawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        spawnTimeAdjusted = spawnTime/ 1 + (gameManager.score/10);
-
-        if (GameModes.useLives)
-        {
-            spawnTimeAdjusted = spawnTime / 1 + (Time.deltaTime / 10);
-        }
+        TimeDecrease();
 
         timer += Time.deltaTime;
         if (timer >= spawnTimeAdjusted)
         {
-            timer -= spawnTime;
+            timer -= spawnTimeAdjusted;
             spawnPoint = Random.Range(0, spawnPoints.Length);
             Debug.Log(spawnPoint);
             for (int j = passClump; j > 0; j--)
@@ -58,4 +52,16 @@ public class Spawner : MonoBehaviour
         }
     }
 
+    public void TimeDecrease()
+    {
+        if (GameModes.useLives)
+        {
+            spawnTimeAdjusted = spawnTime / (1 + (Time.deltaTime / 100.0f));
+        }
+        else
+        {
+            spawnTimeAdjusted = spawnTime / (1 + (gameManager.score / 100.0f));
+            //Debug.Log("bleg");
+        }
+    }
 }
