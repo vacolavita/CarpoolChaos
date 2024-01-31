@@ -13,15 +13,7 @@ public class GameManager : MonoBehaviour
     public Movement car2;
     public bool hasItem;
     
-    //items
-    public bool hasGasCan;
-    private GasCan gasCan;
-    public bool hasTent;
-    public GameObject tent;
-    public bool hasBoost;
-    public GameObject boostPad;
-    public bool hasSpring;
-    public GameObject springPad;
+   
     
     public float time;
     public TextMeshProUGUI timerText;
@@ -41,7 +33,6 @@ public class GameManager : MonoBehaviour
         livesText.text = "Lives: " + lives;
         scoreText.text = "Score: " + score;
         timerText.text = "Time: " + time;
-        gasCan = GetComponent<GasCan>();
         hasItem = false;
     }
 
@@ -50,60 +41,6 @@ public class GameManager : MonoBehaviour
     {
         //fuel1Text.text = "Fuel: " + Mathf.Round(car1.fuelLevel);
         //fuel2Text.text = "Fuel: " + Mathf.Round(car2.fuelLevel);
-
-        if (hasTent)
-        {
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                Debug.Log("Spawn tent");
-                Instantiate(tent, car1.transform.position + new Vector3(Random.Range(-10, 10), 1, Random.Range(-10, 10)), tent.transform.rotation);
-                hasTent = false;
-                hasItem = false;
-            }
-            if (Input.GetKeyDown(KeyCode.Alpha1))
-            {
-                Debug.Log("Spawn tent");
-                Instantiate(tent, car2.transform.position + new Vector3(Random.Range(-10, 10), 1, Random.Range(-10, 10)), tent.transform.rotation);
-                hasTent = false;
-                hasItem = false;
-            }
-        }
-
-        if (hasBoost)
-        {
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                Debug.Log("Spawn boost pad");
-                Instantiate(boostPad, car1.transform.position + new Vector3(Random.Range(-10, 10), -0.92f, Random.Range(-10, 10)), tent.transform.rotation);
-                hasBoost = false;
-                hasItem = false;
-            }
-            if (Input.GetKeyDown(KeyCode.Alpha1))
-            {
-                Debug.Log("Spawn boost pad");
-                Instantiate(boostPad, car2.transform.position + new Vector3(Random.Range(-10, 10), -0.92f, Random.Range(-10, 10)), tent.transform.rotation);
-                hasBoost = false;
-                hasItem = false;
-            }
-        }
-
-        if (hasSpring)
-        {
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                Debug.Log("Spawn spring pad");
-                Instantiate(springPad, car1.transform.position + new Vector3(Random.Range(-10, 10), -0.92f, Random.Range(-10, 10)), tent.transform.rotation);
-                hasSpring = false;
-                hasItem = false;
-            }
-            if (Input.GetKeyDown(KeyCode.Alpha1))
-            {
-                Debug.Log("Spawn spring pad");
-                Instantiate(springPad, car2.transform.position + new Vector3(Random.Range(-10, 10), -0.92f, Random.Range(-10, 10)), tent.transform.rotation);
-                hasSpring = false;
-                hasItem = false;
-            }
-        }
 
         if (GameModes.useTime)
         {
