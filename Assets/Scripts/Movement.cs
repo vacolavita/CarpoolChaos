@@ -56,6 +56,8 @@ public class Movement : MonoBehaviour
 
     public GameObject playerControl;
 
+    public Color paint;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -149,6 +151,7 @@ public class Movement : MonoBehaviour
     {
 
         Vector2 c = controlDirection;
+        GetComponentsInChildren<MeshRenderer>()[4].materials[0].color = paint;
         Vector3 newDirection = Vector3.RotateTowards(transform.forward, new Vector3(c.x,0,c.y), handling, 0.0f);
         if (c.magnitude > 1)
         {
