@@ -20,7 +20,7 @@ public class Movement : MonoBehaviour
     public float fuelEfficiency;
     public float passengerPenalty;
     public float launchPenalty;
-    public float jumpForce = 10f;
+    public float jumpForce = 5f;
 
     public bool boostSpeed;
 

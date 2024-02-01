@@ -25,32 +25,37 @@ public class GameModeMenu : MonoBehaviour
     // Start is called before the first frame update
     public void MixUp(bool isToggleOn)
     {
+        isToggleOn = gameMode1.isOn;
         if (isToggleOn)
         {
             GameModes.mixUp = true;
+            Debug.Log("mix up");
         }
         else
         {
             GameModes.mixUp = false;
+            Debug.Log("not mix up");
         }
-        isToggleOn = gameMode1.isOn;
     }
 
     public void PeculiarPassengers(bool isToggleOn)
     {
+        isToggleOn = gameMode2.isOn;
         if (isToggleOn)
         { 
-            GameModes.peculiarPassengers = true; 
+            GameModes.peculiarPassengers = true;
+            Debug.Log("mix up");
         }
         else
         {
             GameModes.peculiarPassengers = false;
+            Debug.Log("not mix up");
         }
-        isToggleOn = gameMode2.isOn;
     }
 
     public void RunningOnFumes(bool isToggleOn)
     {
+        isToggleOn = gameMode3.isOn;
         if (isToggleOn)
         {
             GameModes.runningOnFumes = true;
@@ -59,11 +64,11 @@ public class GameModeMenu : MonoBehaviour
         {
             GameModes.runningOnFumes = false;
         }
-        isToggleOn = gameMode3.isOn;
     }
 
     public void WornOutWheels(bool isToggleOn)
     {
+        isToggleOn = gameMode4.isOn;
         if (isToggleOn)
         {
             GameModes.wornOutWheels = true;
@@ -72,11 +77,11 @@ public class GameModeMenu : MonoBehaviour
         {
             GameModes.wornOutWheels = false;
         }
-        isToggleOn = gameMode4.isOn;
     }
 
     public void GasLeak(bool isToggleOn)
     {
+        isToggleOn = gameMode5.isOn;
         if (isToggleOn)
         {
             GameModes.gasLeak = true;
@@ -85,11 +90,11 @@ public class GameModeMenu : MonoBehaviour
         {
             GameModes.gasLeak = false;
         }
-        isToggleOn = gameMode5.isOn;
     }
 
     public void FragilePassengers(bool isToggleOn)
     {
+        isToggleOn = gameMode6.isOn;
         if (isToggleOn)
         {
             GameModes.fragilePassengers = true;
@@ -98,11 +103,11 @@ public class GameModeMenu : MonoBehaviour
         {
             GameModes.fragilePassengers = false;
         }
-        isToggleOn = gameMode6.isOn;
     }
 
     public void Turbo(bool isToggleOn)
     {
+        isToggleOn = gameMode7.isOn;
         if (isToggleOn)
         {
             GameModes.turbo = true;
@@ -111,11 +116,11 @@ public class GameModeMenu : MonoBehaviour
         {
             GameModes.turbo = false;
         }
-        isToggleOn = gameMode7.isOn;
     }
 
     public void SuperLaunch(bool isToggleOn)
     {
+        isToggleOn = gameMode8.isOn;
         if (isToggleOn)
         {
             GameModes.superLaunch = true;
@@ -124,11 +129,11 @@ public class GameModeMenu : MonoBehaviour
         {
             GameModes.superLaunch = false;
         }
-        isToggleOn = gameMode8.isOn;
     }
 
     public void StickyWheels(bool isToggleOn)
     {
+        isToggleOn = gameMode9.isOn;
         if (isToggleOn)
         {
             GameModes.stickyWheels = true;
@@ -137,11 +142,11 @@ public class GameModeMenu : MonoBehaviour
         {
             GameModes.stickyWheels = false;
         }
-        isToggleOn = gameMode9.isOn;
     }
 
     public void BigCars(bool isToggleOn)
     {
+        isToggleOn = gameMode10.isOn;
         if (isToggleOn)
         {
             GameModes.bigCars = true;
@@ -150,11 +155,11 @@ public class GameModeMenu : MonoBehaviour
         {
             GameModes.bigCars = false;
         }
-        isToggleOn = gameMode10.isOn;
     }
 
     public void Lobber(bool isToggleOn)
     {
+        isToggleOn = gameMode11.isOn;
         if (isToggleOn)
         {
             GameModes.lobber = true;
@@ -163,6 +168,5 @@ public class GameModeMenu : MonoBehaviour
         {
             GameModes.lobber = false;
         }
-        isToggleOn = gameMode11.isOn;
     }
 }
