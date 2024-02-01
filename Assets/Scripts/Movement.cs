@@ -170,6 +170,11 @@ public class Movement : MonoBehaviour
             curSpeed *= 1.25f;
         }
 
+        if (fuelLevel <= 0)
+        {
+            hasFuel = false;
+        }
+
 
 
         //Fuel Stuff
@@ -198,6 +203,8 @@ public class Movement : MonoBehaviour
                 fuelMeter.value = fuelLevel;
             }
         }
+
+        FuelGone();
     }
 
     public Vector3 PassengerPosition(int passengerNum)
@@ -266,6 +273,14 @@ public class Movement : MonoBehaviour
     public void SetFuel(float fuel)
     {
         fuelMeter.value = fuel;
+    }
+
+    public void FuelGone()
+    {
+        if (!hasFuel)
+        {
+            curSpeed /= 1.3f;
+        }
     }
 
 
