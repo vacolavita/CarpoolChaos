@@ -286,7 +286,7 @@ public class Movement : MonoBehaviour
     {
         if (!hasFuel)
         {
-            curSpeed /= 1.3f;
+            curSpeed /= 1.05f;
         }
     }
 
