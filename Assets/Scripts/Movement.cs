@@ -56,15 +56,12 @@ public class Movement : MonoBehaviour
 
     public GameObject playerControl;
 
-    public Color paint;
-
     // Start is called before the first frame update
     void Start()
     {
 
         passengers = new GameObject[carryingCapacity];
         r = GetComponent<Rigidbody>();
-        GetComponentsInChildren<MeshRenderer>()[4].materials[0].color = paint;
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
         SetMaxFuel(maxFuel);
         if (GameModes.turbo) {
@@ -121,7 +118,7 @@ public class Movement : MonoBehaviour
             }
             if (select == 2)
             {
-                item1.color = new Color(0.40f, 0.60f, 2.00f);
+                item1.color = new Color(0.50f, 0.92f, 1.00f);
             }
         }
 
@@ -142,7 +139,7 @@ public class Movement : MonoBehaviour
             }
             if (select == 2)
             {
-                item1.color = new Color(0.40f, 0.60f, 2.00f);
+                item1.color = new Color(0.50f, 0.92f, 1.00f);
             }
         }
     }
@@ -150,7 +147,6 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        GetComponentsInChildren<MeshRenderer>()[4].materials[0].color = paint;
 
         Vector2 c = controlDirection;
         Vector3 newDirection = Vector3.RotateTowards(transform.forward, new Vector3(c.x,0,c.y), handling, 0.0f);
@@ -346,23 +342,34 @@ public class Movement : MonoBehaviour
         }
     }
 
-    public void OnItem() {
-        if (item == 1) {
+    public void OnItem() 
+    {
+        if (item == 1) 
+        {
             GameObject gas = Instantiate(items[0], carTransform.position, transform.rotation);
             gas.GetComponent<Rigidbody>().velocity = transform.forward * maxSpeed * 2;
+            gameManager.hasItem = false;
         }
         if (item == 2)
         {
             Instantiate(items[1], carTransform.position, transform.rotation);
+            gameManager.hasItem = false;
         }
         if (item == 3)
         {
             Instantiate(items[2], transform.position + new Vector3(0, -0.92f, 0), transform.rotation);
+            gameManager.hasItem = false;
         }
         if (item == 4)
         {
             Instantiate(items[3], transform.position + new Vector3(0, -0.92f, 0), transform.rotation);
+            gameManager.hasItem = false;
         }
+        else
+        {
+            gameManager.hasItem = false;
+        }
+
         item = 0;
     }
 
