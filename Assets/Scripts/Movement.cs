@@ -92,7 +92,7 @@ public class Movement : MonoBehaviour
             Debug.Log("AH");
 
         }
-        PlayerManagerManager.players[playernum] = gameObject;
+        
 
     }
 
@@ -147,6 +147,10 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+
+
+        PlayerManagerManager.players[playernum] = gameObject;
+        
 
         Vector2 c = controlDirection;
         Vector3 newDirection = Vector3.RotateTowards(transform.forward, new Vector3(c.x,0,c.y), handling, 0.0f);
