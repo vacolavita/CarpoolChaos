@@ -92,7 +92,7 @@ public class Movement : MonoBehaviour
             Debug.Log("AH");
 
         }
-        PlayerManagerManager.players[playernum] = gameObject;
+        
 
     }
 
@@ -147,6 +147,10 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+
+
+        PlayerManagerManager.players[playernum] = gameObject;
+        
 
         Vector2 c = controlDirection;
         Vector3 newDirection = Vector3.RotateTowards(transform.forward, new Vector3(c.x,0,c.y), handling, 0.0f);
@@ -209,7 +213,7 @@ public class Movement : MonoBehaviour
 
     public Vector3 PassengerPosition(int passengerNum)
     {
-        return new Vector3(((passengerNum - 1) % 3 - 1) *0.5f,1,Mathf.Floor((passengerNum - 1) / 3 - 1) * 0.5f);
+        return new Vector3(((passengerNum - 1) % 3 - 1) *0.5f,1,(Mathf.Floor((passengerNum - 1) / 3 - 1) * 0.5f)-0.5f);
     }
 
     public void FuelDrain(float amount)
