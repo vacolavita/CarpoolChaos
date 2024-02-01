@@ -19,7 +19,7 @@ public class Item : MonoBehaviour
     void Update()
     {
         StartCoroutine(ItemDelete());
-        transform.Rotate(0, 180 * Time.deltaTime, 0);
+        transform.Rotate(0, 120 * Time.deltaTime, 0);
     }
 
     private void OnTriggerStay(Collider other)
