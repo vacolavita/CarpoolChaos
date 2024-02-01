@@ -758,13 +758,6 @@ MonoBehaviour:
   car1: {fileID: 0}
   car2: {fileID: 0}
   hasItem: 0
-  hasGasCan: 0
-  hasTent: 0
-  tent: {fileID: 6999645714063828644, guid: b95b47aacddfcb24d82d3d24fd97558f, type: 3}
-  hasBoost: 0
-  boostPad: {fileID: 229548168784626748, guid: f111fed054803524b9004700cbdfedbc, type: 3}
-  hasSpring: 0
-  springPad: {fileID: 1531684317481719074, guid: 83548550ab21f6949b49c0d052236435, type: 3}
   time: 150
   timerText: {fileID: 1411762010}
   fuelMeter1: {fileID: 1697686838}
@@ -3959,6 +3952,22 @@ PrefabInstance:
       propertyPath: car
       value: 
       objectReference: {fileID: 149828963}
+    - target: {fileID: 5279011456250817627, guid: 2a6d1561287d4e34090decb78a8885d4, type: 3}
+      propertyPath: tent
+      value: 
+      objectReference: {fileID: 486766811}
+    - target: {fileID: 5279011456250817627, guid: 2a6d1561287d4e34090decb78a8885d4, type: 3}
+      propertyPath: gasCan
+      value: 
+      objectReference: {fileID: 632564683}
+    - target: {fileID: 5279011456250817627, guid: 2a6d1561287d4e34090decb78a8885d4, type: 3}
+      propertyPath: boostPad
+      value: 
+      objectReference: {fileID: 1318419391}
+    - target: {fileID: 5279011456250817627, guid: 2a6d1561287d4e34090decb78a8885d4, type: 3}
+      propertyPath: springPad
+      value: 
+      objectReference: {fileID: 2033438806}
     - target: {fileID: 5719251545193445290, guid: 2a6d1561287d4e34090decb78a8885d4, type: 3}
       propertyPath: tentImage
       value: 
@@ -4275,3 +4284,4 @@ SceneRoots:
   - {fileID: 50670579}
   - {fileID: 1374778090}
   - {fileID: 1094493009}
+  - {fileID: 642119307}
