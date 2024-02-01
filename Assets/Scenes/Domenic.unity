@@ -704,6 +704,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
 --- !u!1 &632564683 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2346216169309636152, guid: 2a6d1561287d4e34090decb78a8885d4, type: 3}
@@ -775,6 +776,8 @@ MonoBehaviour:
   livesText: {fileID: 926058661}
   timer: {fileID: 1714851161}
   lifeMeter: {fileID: 400451578}
+=======
+>>>>>>> parent of a93687b (Merge branch 'Vin')
 --- !u!1 &669789221
 GameObject:
   m_ObjectHideFlags: 0
@@ -3955,6 +3958,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5279011456250817627, guid: 2a6d1561287d4e34090decb78a8885d4, type: 3}
+      propertyPath: car
+      value: 
+      objectReference: {fileID: 149828963}
     - target: {fileID: 5719251545193445290, guid: 2a6d1561287d4e34090decb78a8885d4, type: 3}
       propertyPath: tentImage
       value: 
@@ -4008,6 +4015,99 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2a6d1561287d4e34090decb78a8885d4, type: 3}
+--- !u!1001 &3128945953996360441
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5795762075347662992, guid: 2c7200850c188e84e94e9a0c4ddad740, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 6.6010714
+      objectReference: {fileID: 0}
+    - target: {fileID: 5795762075347662992, guid: 2c7200850c188e84e94e9a0c4ddad740, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 16.001621
+      objectReference: {fileID: 0}
+    - target: {fileID: 5795762075347662992, guid: 2c7200850c188e84e94e9a0c4ddad740, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -17.630745
+      objectReference: {fileID: 0}
+    - target: {fileID: 5795762075347662992, guid: 2c7200850c188e84e94e9a0c4ddad740, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5795762075347662992, guid: 2c7200850c188e84e94e9a0c4ddad740, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5795762075347662992, guid: 2c7200850c188e84e94e9a0c4ddad740, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5795762075347662992, guid: 2c7200850c188e84e94e9a0c4ddad740, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5795762075347662992, guid: 2c7200850c188e84e94e9a0c4ddad740, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5795762075347662992, guid: 2c7200850c188e84e94e9a0c4ddad740, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5795762075347662992, guid: 2c7200850c188e84e94e9a0c4ddad740, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7528395250107448219, guid: 2c7200850c188e84e94e9a0c4ddad740, type: 3}
+      propertyPath: car1
+      value: 
+      objectReference: {fileID: 149828963}
+    - target: {fileID: 7528395250107448219, guid: 2c7200850c188e84e94e9a0c4ddad740, type: 3}
+      propertyPath: car2
+      value: 
+      objectReference: {fileID: 443506487}
+    - target: {fileID: 7528395250107448219, guid: 2c7200850c188e84e94e9a0c4ddad740, type: 3}
+      propertyPath: timer
+      value: 
+      objectReference: {fileID: 1714851161}
+    - target: {fileID: 7528395250107448219, guid: 2c7200850c188e84e94e9a0c4ddad740, type: 3}
+      propertyPath: lifeMeter
+      value: 
+      objectReference: {fileID: 400451578}
+    - target: {fileID: 7528395250107448219, guid: 2c7200850c188e84e94e9a0c4ddad740, type: 3}
+      propertyPath: livesText
+      value: 
+      objectReference: {fileID: 926058661}
+    - target: {fileID: 7528395250107448219, guid: 2c7200850c188e84e94e9a0c4ddad740, type: 3}
+      propertyPath: scoreText
+      value: 
+      objectReference: {fileID: 627541485}
+    - target: {fileID: 7528395250107448219, guid: 2c7200850c188e84e94e9a0c4ddad740, type: 3}
+      propertyPath: timerText
+      value: 
+      objectReference: {fileID: 1411762010}
+    - target: {fileID: 7528395250107448219, guid: 2c7200850c188e84e94e9a0c4ddad740, type: 3}
+      propertyPath: fuelMeter1
+      value: 
+      objectReference: {fileID: 1697686838}
+    - target: {fileID: 7528395250107448219, guid: 2c7200850c188e84e94e9a0c4ddad740, type: 3}
+      propertyPath: fuelMeter2
+      value: 
+      objectReference: {fileID: 565273069}
+    - target: {fileID: 8817115480968278123, guid: 2c7200850c188e84e94e9a0c4ddad740, type: 3}
+      propertyPath: m_Name
+      value: Game Manager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2c7200850c188e84e94e9a0c4ddad740, type: 3}
 --- !u!1001 &3371178030554389070
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4163,7 +4263,7 @@ SceneRoots:
   - {fileID: 903300912}
   - {fileID: 869663976}
   - {fileID: 1393353369}
-  - {fileID: 642119307}
+  - {fileID: 3128945953996360441}
   - {fileID: 2832946318243448423}
   - {fileID: 1567932628}
   - {fileID: 360061725}
