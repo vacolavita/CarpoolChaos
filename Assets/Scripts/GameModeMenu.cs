@@ -7,30 +7,19 @@ using UnityEngine.Events;
 
 public class GameModeMenu : MonoBehaviour
 {
-    private Toggle gameMode1;
-    private Toggle gameMode2;
-    private Toggle gameMode3;
-    private Toggle gameMode4;
-    private Toggle gameMode5;
-    private Toggle gameMode6;
-    private Toggle gameMode7;
-    private Toggle gameMode8;
-    private Toggle gameMode9;
-    private Toggle gameMode10;
-    private Toggle gameMode11;
+    public Toggle gameMode1;
+    public Toggle gameMode2;
+    public Toggle gameMode3;
+    public Toggle gameMode4;
+    public Toggle gameMode5;
+    public Toggle gameMode6;
+    public Toggle gameMode7;
+    public Toggle gameMode8;
+    public Toggle gameMode9;
+    public Toggle gameMode10;
+    public Toggle gameMode11;
     public void Start()
     {
-        gameMode1 = GameObject.Find("MU").GetComponent<Toggle>();
-        gameMode2 = GameObject.Find("PC").GetComponent<Toggle>();
-        gameMode3 = GameObject.Find("ROF").GetComponent<Toggle>();
-        gameMode4 = GameObject.Find("WOW").GetComponent<Toggle>();
-        gameMode5 = GameObject.Find("GL").GetComponent<Toggle>();
-        gameMode6 = GameObject.Find("FP").GetComponent<Toggle>();
-        gameMode7 = GameObject.Find("T").GetComponent<Toggle>();
-        gameMode8 = GameObject.Find("SL").GetComponent<Toggle>();
-        gameMode9 = GameObject.Find("SW").GetComponent<Toggle>();
-        gameMode10 = GameObject.Find("BC").GetComponent<Toggle>();
-        gameMode11 = GameObject.Find("L").GetComponent<Toggle>();
         DontDestroyOnLoad(gameObject);
     }
     // Start is called before the first frame update
