@@ -7,165 +7,182 @@ using UnityEngine.Events;
 
 public class GameModeMenu : MonoBehaviour
 {
+    public Toggle gameMode1;
+    public Toggle gameMode2;
+    public Toggle gameMode3;
+    public Toggle gameMode4;
+    public Toggle gameMode5;
+    public Toggle gameMode6;
+    public Toggle gameMode7;
+    public Toggle gameMode8;
+    public Toggle gameMode9;
+    public Toggle gameMode10;
+    public Toggle gameMode11;
     public void Start()
     {
         DontDestroyOnLoad(gameObject);
     }
     // Start is called before the first frame update
-    public void HandleInputData(int val)
+    public void MixUp(bool isToggleOn)
     {
-        if (val == 0)
-        {
-            GameModes.mixUp = false;
-            GameModes.peculiarPassengers = false;
-            GameModes.runningOnFumes = false;
-            GameModes.wornOutWheels = false;
-            GameModes.gasLeak = false;
-            GameModes.fragilePassengers = false;
-            GameModes.turbo = false;
-            GameModes.superLaunch = false;
-            GameModes.stickyWheels = false;
-            GameModes.bigCars = false;
-        }
-
-        if (val == 1)
+        isToggleOn = gameMode1.isOn;
+        if (isToggleOn)
         {
             GameModes.mixUp = true;
-            GameModes.peculiarPassengers = false;
-            GameModes.runningOnFumes = false;
-            GameModes.wornOutWheels = false;
-            GameModes.gasLeak = false;
-            GameModes.fragilePassengers = false;
-            GameModes.turbo = false;
-            GameModes.superLaunch = false;
-            GameModes.stickyWheels = false;
-            GameModes.bigCars = false;
+            Debug.Log("mix up");
         }
-
-        if (val == 2)
+        else
         {
             GameModes.mixUp = false;
+            Debug.Log("not mix up");
+        }
+    }
+
+    public void PeculiarPassengers(bool isToggleOn)
+    {
+        isToggleOn = gameMode2.isOn;
+        if (isToggleOn)
+        { 
             GameModes.peculiarPassengers = true;
-            GameModes.runningOnFumes = false;
-            GameModes.wornOutWheels = false;
-            GameModes.gasLeak = false;
-            GameModes.fragilePassengers = false;
-            GameModes.turbo = false;
-            GameModes.superLaunch = false;
-            GameModes.stickyWheels = false;
-            GameModes.bigCars = false;
+            Debug.Log("mix up");
         }
-
-        if (val == 3)
+        else
         {
-            GameModes.mixUp = false;
             GameModes.peculiarPassengers = false;
+            Debug.Log("not mix up");
+        }
+    }
+
+    public void RunningOnFumes(bool isToggleOn)
+    {
+        isToggleOn = gameMode3.isOn;
+        if (isToggleOn)
+        {
             GameModes.runningOnFumes = true;
-            GameModes.wornOutWheels = false;
-            GameModes.gasLeak = false;
-            GameModes.fragilePassengers = false;
-            GameModes.turbo = false;
-            GameModes.superLaunch = false;
-            GameModes.stickyWheels = false;
-            GameModes.bigCars = false;
+            Debug.Log("slow");
         }
-
-        if (val == 4)
+        else
         {
-            GameModes.mixUp = false;
-            GameModes.peculiarPassengers = false;
             GameModes.runningOnFumes = false;
+            Debug.Log("normal");
+        }
+    }
+
+    public void WornOutWheels(bool isToggleOn)
+    {
+        isToggleOn = gameMode4.isOn;
+        if (isToggleOn)
+        {
             GameModes.wornOutWheels = true;
-            GameModes.gasLeak = false;
-            GameModes.fragilePassengers = false;
-            GameModes.turbo = false;
-            GameModes.superLaunch = false;
-            GameModes.stickyWheels = false;
-            GameModes.bigCars = false;
+            Debug.Log("slide");
         }
-
-        if (val == 5)
+        else
         {
-            GameModes.mixUp = false;
-            GameModes.peculiarPassengers = false;
-            GameModes.runningOnFumes = false;
             GameModes.wornOutWheels = false;
+            Debug.Log("no slide");
+        }
+    }
+
+    public void GasLeak(bool isToggleOn)
+    {
+        isToggleOn = gameMode6.isOn;
+        if (isToggleOn)
+        {
             GameModes.gasLeak = true;
-            GameModes.fragilePassengers = false;
-            GameModes.turbo = false;
-            GameModes.superLaunch = false;
-            GameModes.stickyWheels = false;
-            GameModes.bigCars = false;
+            Debug.Log("leak");
         }
-
-        if (val == 6)
+        else
         {
-            GameModes.mixUp = false;
-            GameModes.peculiarPassengers = false;
-            GameModes.runningOnFumes = false;
-            GameModes.wornOutWheels = false;
             GameModes.gasLeak = false;
+            Debug.Log("no leak");
+        }
+    }
+
+    public void FragilePassengers(bool isToggleOn)
+    {
+        isToggleOn = gameMode5.isOn;
+        if (isToggleOn)
+        {
             GameModes.fragilePassengers = true;
-            GameModes.turbo = false;
-            GameModes.superLaunch = false;
-            GameModes.stickyWheels = false;
-            GameModes.bigCars = false;
+            Debug.Log("die");
         }
-
-        if (val == 7)
+        else
         {
-            GameModes.mixUp = false;
-            GameModes.peculiarPassengers = false;
-            GameModes.runningOnFumes = false;
-            GameModes.wornOutWheels = false;
-            GameModes.gasLeak = false;
             GameModes.fragilePassengers = false;
+            Debug.Log("live");
+        }
+    }
+
+    public void Turbo(bool isToggleOn)
+    {
+        isToggleOn = gameMode7.isOn;
+        if (isToggleOn)
+        {
             GameModes.turbo = true;
-            GameModes.superLaunch = false;
-            GameModes.stickyWheels = false;
-            GameModes.bigCars = false;
+            Debug.Log("fast");
         }
-
-        if (val == 8)
+        else
         {
-            GameModes.mixUp = false;
-            GameModes.peculiarPassengers = false;
-            GameModes.runningOnFumes = false;
-            GameModes.wornOutWheels = false;
-            GameModes.gasLeak = false;
-            GameModes.fragilePassengers = false;
             GameModes.turbo = false;
+            Debug.Log("normal");
+        }
+    }
+
+    public void SuperLaunch(bool isToggleOn)
+    {
+        isToggleOn = gameMode8.isOn;
+        if (isToggleOn)
+        {
             GameModes.superLaunch = true;
-            GameModes.stickyWheels = false;
-            GameModes.bigCars = false;
+            Debug.Log("launch");
         }
-
-        if (val == 9)
+        else
         {
-            GameModes.mixUp = false;
-            GameModes.peculiarPassengers = false;
-            GameModes.runningOnFumes = false;
-            GameModes.wornOutWheels = false;
-            GameModes.gasLeak = false;
-            GameModes.fragilePassengers = false;
-            GameModes.turbo = false;
             GameModes.superLaunch = false;
+            Debug.Log("no launch");
+        }
+    }
+
+    public void StickyWheels(bool isToggleOn)
+    {
+        isToggleOn = gameMode9.isOn;
+        if (isToggleOn)
+        {
             GameModes.stickyWheels = true;
+            Debug.Log("stick");
+        }
+        else
+        {
+            GameModes.stickyWheels = false;
+            Debug.Log("no stick");
+        }
+    }
+
+    public void BigCars(bool isToggleOn)
+    {
+        isToggleOn = gameMode10.isOn;
+        if (isToggleOn)
+        {
+            GameModes.bigCars = true;
+        }
+        else
+        {
             GameModes.bigCars = false;
         }
+    }
 
-        if (val == 10)
+    public void Lobber(bool isToggleOn)
+    {
+        isToggleOn = gameMode11.isOn;
+        if (isToggleOn)
         {
-            GameModes.mixUp = false;
-            GameModes.peculiarPassengers = false;
-            GameModes.runningOnFumes = false;
-            GameModes.wornOutWheels = false;
-            GameModes.gasLeak = false;
-            GameModes.fragilePassengers = false;
-            GameModes.turbo = false;
-            GameModes.superLaunch = false;
-            GameModes.stickyWheels = false;
-            GameModes.bigCars = true;
+            GameModes.lobber = true;
+            Debug.Log("lob");
+        }
+        else
+        {
+            GameModes.lobber = false;
+            Debug.Log("no lob");
         }
     }
 }

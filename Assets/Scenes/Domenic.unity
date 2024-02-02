@@ -693,6 +693,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3301784293237717141, guid: f1dc761dce0153948b8e3c07b4a1cb3d, type: 3}
   m_PrefabInstance: {fileID: 3371178030554389070}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &588779850 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1202845486503582370, guid: f1dc761dce0153948b8e3c07b4a1cb3d, type: 3}
+  m_PrefabInstance: {fileID: 3371178030554389070}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cc04437c481e2e48b9ccfb8cd4f470c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &627541485 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4237192226505659944, guid: 2a6d1561287d4e34090decb78a8885d4, type: 3}
@@ -3951,7 +3962,7 @@ PrefabInstance:
     - target: {fileID: 5279011456250817627, guid: 2a6d1561287d4e34090decb78a8885d4, type: 3}
       propertyPath: car
       value: 
-      objectReference: {fileID: 149828963}
+      objectReference: {fileID: 588779850}
     - target: {fileID: 5279011456250817627, guid: 2a6d1561287d4e34090decb78a8885d4, type: 3}
       propertyPath: tent
       value: 
@@ -4138,6 +4149,10 @@ PrefabInstance:
       propertyPath: passengerPenalty
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1202845486503582370, guid: f1dc761dce0153948b8e3c07b4a1cb3d, type: 3}
+      propertyPath: items.Array.data[0]
+      value: 
+      objectReference: {fileID: 5224620715955481171, guid: b865040358d84684587015af45ced553, type: 3}
     - target: {fileID: 7955159108260895079, guid: f1dc761dce0153948b8e3c07b4a1cb3d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -16.86

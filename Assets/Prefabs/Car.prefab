@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1467774079190392858
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7391635376019599953}
+  m_Layer: 0
+  m_Name: Car Transform
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7391635376019599953
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1467774079190392858}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 4.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3301784293237717141}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5968093897524165285
 GameObject:
   m_ObjectHideFlags: 0
@@ -225,6 +256,7 @@ Transform:
   - {fileID: 4309966163103850578}
   - {fileID: 5248608544442143603}
   - {fileID: 3663203845265194192}
+  - {fileID: 7391635376019599953}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &9150062114399512804
@@ -311,15 +343,14 @@ MonoBehaviour:
   select: 0
   item: 0
   controlDirection: {x: 0, y: 0}
-  carTransform: {fileID: 0}
+  carTransform: {fileID: 7391635376019599953}
   items:
-  - {fileID: 0}
+  - {fileID: 5224620715955481171, guid: b865040358d84684587015af45ced553, type: 3}
   - {fileID: 229548168784626748, guid: f111fed054803524b9004700cbdfedbc, type: 3}
   - {fileID: 6999645714063828644, guid: b95b47aacddfcb24d82d3d24fd97558f, type: 3}
   - {fileID: 1531684317481719074, guid: 83548550ab21f6949b49c0d052236435, type: 3}
   playernum: 0
   playerControl: {fileID: 0}
-  paint: {r: 0.8962264, g: 0.78285235, b: 0.16628096, a: 0}
 --- !u!135 &1553458610385992626
 SphereCollider:
   m_ObjectHideFlags: 0
