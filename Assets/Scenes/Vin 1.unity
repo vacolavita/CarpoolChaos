@@ -832,7 +832,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 63
+    m_Bits: 191
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -1489,7 +1489,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 63
+    m_Bits: 191
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -2304,7 +2304,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f7e4a1a34c980341983b4f3c9b355a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnTime: 30
+  spawnTime: 10
   item: {fileID: 1235334786771694874, guid: d8138a094dae2fa4d9948def94b77be1, type: 3}
   spawnPoints:
   - {x: 43.9, y: 1, z: -41.19}
@@ -3557,12 +3557,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 467067797310697953, guid: 2f87948b0ab73154eb3df78d4f5902d6, type: 3}
       propertyPath: handling
-      value: 0.09
+      value: 0.06
       objectReference: {fileID: 0}
     - target: {fileID: 467067797310697953, guid: 2f87948b0ab73154eb3df78d4f5902d6, type: 3}
       propertyPath: fuelMeter
       value: 
       objectReference: {fileID: 45645656}
+    - target: {fileID: 467067797310697953, guid: 2f87948b0ab73154eb3df78d4f5902d6, type: 3}
+      propertyPath: jumpForce
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1469714601863769484, guid: 2f87948b0ab73154eb3df78d4f5902d6, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 136
+      objectReference: {fileID: 0}
     - target: {fileID: 2120605255053486501, guid: 2f87948b0ab73154eb3df78d4f5902d6, type: 3}
       propertyPath: m_Name
       value: Car (1)
@@ -3642,12 +3650,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1202845486503582370, guid: f1dc761dce0153948b8e3c07b4a1cb3d, type: 3}
       propertyPath: handling
-      value: 0.09
+      value: 0.06
       objectReference: {fileID: 0}
     - target: {fileID: 1202845486503582370, guid: f1dc761dce0153948b8e3c07b4a1cb3d, type: 3}
       propertyPath: fuelMeter
       value: 
       objectReference: {fileID: 871307950}
+    - target: {fileID: 1202845486503582370, guid: f1dc761dce0153948b8e3c07b4a1cb3d, type: 3}
+      propertyPath: jumpForce
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 1202845486503582370, guid: f1dc761dce0153948b8e3c07b4a1cb3d, type: 3}
       propertyPath: carryingCapacity
       value: 9
@@ -3711,6 +3723,10 @@ PrefabInstance:
     - target: {fileID: 8806957649529132649, guid: f1dc761dce0153948b8e3c07b4a1cb3d, type: 3}
       propertyPath: m_Color.g
       value: 0.89
+      objectReference: {fileID: 0}
+    - target: {fileID: 9150062114399512804, guid: f1dc761dce0153948b8e3c07b4a1cb3d, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 136
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

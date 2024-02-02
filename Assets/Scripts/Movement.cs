@@ -327,8 +327,8 @@ public class Movement : MonoBehaviour
     {
         if (item == 1) 
         {
-            GameObject gas = Instantiate(items[0], carTransform.position, transform.rotation);
-            gas.GetComponent<Rigidbody>().velocity = transform.forward * maxSpeed * 2;
+            GameObject gas = Instantiate(items[0], transform.position, transform.rotation);
+            gas.GetComponent<Rigidbody>().velocity = r.velocity + transform.forward * 8 + new Vector3(0,4,0);
             gameManager.hasItem = false;
         }
         if (item == 2)
