@@ -92,7 +92,6 @@ public class Movement : MonoBehaviour
         }
         if (PlayerManagerManager.players == null) {
             PlayerManagerManager.players = new GameObject[2];
-            Debug.Log("AH");
 
         }
         
@@ -328,7 +327,7 @@ public class Movement : MonoBehaviour
         if (item == 1) 
         {
             GameObject gas = Instantiate(items[0], transform.position, transform.rotation);
-            gas.GetComponent<Rigidbody>().velocity = r.velocity + transform.forward * 8 + new Vector3(0,4,0);
+            gas.GetComponent<Rigidbody>().velocity = transform.forward * (8 + r.velocity.magnitude) + new Vector3(0,4,0);
             gameManager.hasItem = false;
         }
         if (item == 2)
