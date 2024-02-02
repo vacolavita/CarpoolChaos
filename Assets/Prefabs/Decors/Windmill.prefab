@@ -206,7 +206,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e3a2fdaa1cdda3a498411d5c1feba2d0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -313,7 +313,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 201ef7e75f7995740bafb0ff6682ccb5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -523,7 +523,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 201ef7e75f7995740bafb0ff6682ccb5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -832,7 +832,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 201ef7e75f7995740bafb0ff6682ccb5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -935,6 +935,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 8376bcb7c9d75b54e8bfcc5383d354f9, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9456cb15cb4383144ae603c66f4f5a1d, type: 2}
     - target: {fileID: 919132149155446097, guid: 8376bcb7c9d75b54e8bfcc5383d354f9, type: 3}
       propertyPath: m_Name
       value: Middle of the windmill
@@ -957,6 +961,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1674568709456518186}
     m_Modifications:
+    - target: {fileID: 723786633656485062, guid: a26492773c7080749b22525ac83aad45, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 201ef7e75f7995740bafb0ff6682ccb5, type: 2}
     - target: {fileID: 5615755205429056027, guid: a26492773c7080749b22525ac83aad45, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.372
@@ -1071,6 +1079,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: bc7fde3bf922d7d469ca1d80d44b2e6e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 201ef7e75f7995740bafb0ff6682ccb5, type: 2}
     - target: {fileID: 919132149155446097, guid: bc7fde3bf922d7d469ca1d80d44b2e6e, type: 3}
       propertyPath: m_Name
       value: Semicircle Top
@@ -1133,6 +1145,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: daee0e136bb7fbf4fb37d732ecdb1e78, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 201ef7e75f7995740bafb0ff6682ccb5, type: 2}
     - target: {fileID: 919132149155446097, guid: daee0e136bb7fbf4fb37d732ecdb1e78, type: 3}
       propertyPath: m_Name
       value: WindmillBuilding
