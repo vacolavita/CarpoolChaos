@@ -59,10 +59,12 @@ public class GameModeMenu : MonoBehaviour
         if (isToggleOn)
         {
             GameModes.runningOnFumes = true;
+            Debug.Log("slow");
         }
         else
         {
             GameModes.runningOnFumes = false;
+            Debug.Log("normal");
         }
     }
 
@@ -72,36 +74,42 @@ public class GameModeMenu : MonoBehaviour
         if (isToggleOn)
         {
             GameModes.wornOutWheels = true;
+            Debug.Log("slide");
         }
         else
         {
             GameModes.wornOutWheels = false;
+            Debug.Log("no slide");
         }
     }
 
     public void GasLeak(bool isToggleOn)
     {
-        isToggleOn = gameMode5.isOn;
+        isToggleOn = gameMode6.isOn;
         if (isToggleOn)
         {
             GameModes.gasLeak = true;
+            Debug.Log("leak");
         }
         else
         {
             GameModes.gasLeak = false;
+            Debug.Log("no leak");
         }
     }
 
     public void FragilePassengers(bool isToggleOn)
     {
-        isToggleOn = gameMode6.isOn;
+        isToggleOn = gameMode5.isOn;
         if (isToggleOn)
         {
             GameModes.fragilePassengers = true;
+            Debug.Log("die");
         }
         else
         {
             GameModes.fragilePassengers = false;
+            Debug.Log("live");
         }
     }
 
@@ -111,10 +119,12 @@ public class GameModeMenu : MonoBehaviour
         if (isToggleOn)
         {
             GameModes.turbo = true;
+            Debug.Log("fast");
         }
         else
         {
             GameModes.turbo = false;
+            Debug.Log("normal");
         }
     }
 
@@ -124,10 +134,12 @@ public class GameModeMenu : MonoBehaviour
         if (isToggleOn)
         {
             GameModes.superLaunch = true;
+            Debug.Log("launch");
         }
         else
         {
             GameModes.superLaunch = false;
+            Debug.Log("no launch");
         }
     }
 
@@ -137,10 +149,12 @@ public class GameModeMenu : MonoBehaviour
         if (isToggleOn)
         {
             GameModes.stickyWheels = true;
+            Debug.Log("stick");
         }
         else
         {
             GameModes.stickyWheels = false;
+            Debug.Log("no stick");
         }
     }
 
@@ -163,10 +177,12 @@ public class GameModeMenu : MonoBehaviour
         if (isToggleOn)
         {
             GameModes.lobber = true;
+            Debug.Log("lob");
         }
         else
         {
             GameModes.lobber = false;
+            Debug.Log("no lob");
         }
     }
 }
