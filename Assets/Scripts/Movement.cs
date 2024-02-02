@@ -22,12 +22,8 @@ public class Movement : MonoBehaviour
     public float launchPenalty;
     public float jumpForce = 5f;
 
-    public bool boostSpeed;
 
     public int currentPassengers;
-    public GameObject[] passengers;
-    public Vector3 launchTrajectory;
-    private GameManager gameManager;
     
     //Variables for fuel
     public bool isMoving;
@@ -57,6 +53,11 @@ public class Movement : MonoBehaviour
     public GameObject playerControl;
 
     public Color paint;
+
+    public GameObject[] passengers;
+    public Vector3 launchTrajectory;
+    private GameManager gameManager;
+    public bool boostSpeed;
 
     // Start is called before the first frame update
     void Start()
@@ -113,10 +114,11 @@ public class Movement : MonoBehaviour
     }
 
     // Update is called once per frame
+
     void FixedUpdate()
     {
 
-
+        
         PlayerManagerManager.players[playernum] = gameObject;
         
 
@@ -227,7 +229,7 @@ public class Movement : MonoBehaviour
 
         if (other.gameObject.CompareTag("Spring Pad"))
         {
-            r.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            r.velocity = new Vector3 (r.velocity.x, jumpForce, r.velocity.z);
         }
 
         if (other.gameObject.CompareTag("Ice"))

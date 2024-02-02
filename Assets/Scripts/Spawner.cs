@@ -33,7 +33,6 @@ public class Spawner : MonoBehaviour
         {
             timer -= spawnTimeAdjusted;
             spawnPoint = Random.Range(0, spawnPoints.Length);
-            Debug.Log(spawnPoint);
             for (int j = passClump; j > 0; j--)
             {
                 spawnType = Random.Range(1, 4);
