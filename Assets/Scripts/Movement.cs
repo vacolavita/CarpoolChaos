@@ -97,53 +97,19 @@ public class Movement : MonoBehaviour
         
 
     }
-
+    
     public void OnMove(InputValue value) {
         controlDirection = value.Get<Vector2>();
     }
 
     public void OnScrollLeft()
     {
-
-        select -= 1;
-        if (select < 0)
-            select = 2;
-
-        foreach (var item1 in GetComponentsInChildren<Light>())
-        {
-            if (select == 0) {
-                item1.color = Color.green;
-            }
-            if (select == 1)
-            {
-                item1.color = new Color(1.00f, 0.5f, 0.4f);
-            }
-            if (select == 2)
-            {
-                item1.color = new Color(0.50f, 0.92f, 1.00f);
-            }
-        }
-
+        UpdateColor(-1);
     }
+    
     public void OnScrollRight()
     {
-        select = (select + 1) % 3;
-
-        foreach (var item1 in GetComponentsInChildren<Light>())
-        {
-            if (select == 0)
-            {
-                item1.color = Color.green;
-            }
-            if (select == 1)
-            {
-                item1.color = new Color(1.00f, 0.5f, 0.4f);
-            }
-            if (select == 2)
-            {
-                item1.color = new Color(0.50f, 0.92f, 1.00f);
-            }
-        }
+        UpdateColor(1);
     }
 
     // Update is called once per frame
@@ -324,12 +290,14 @@ public class Movement : MonoBehaviour
             {
                 fuelLevel = Mathf.Max(fuelLevel - launchPenalty, 0);
                 SetFuel(fuelLevel);
+                UpdateColor(1);
             }
         }
     }
 
     public void OnDrop()
     {
+        bool dropped = false;
         for (int i = 0; i < carryingCapacity; i++)
         {
             if (passengers[i] != null)
@@ -344,8 +312,12 @@ public class Movement : MonoBehaviour
                     currentPassengers--;
                     p.canTrigger = false;
                     passengers[i] = null;
+                    dropped = true;
                 }
             }
+        }
+        if (dropped) {
+            UpdateColor(1);
         }
     }
 
@@ -380,5 +352,58 @@ public class Movement : MonoBehaviour
         item = 0;
     }
 
+    public void UpdateColor(int selectChange) {
+        if (currentPassengers > 0)
+        {
 
+            bool[] types = new bool[3];
+            foreach (var item1 in passengers)
+            {
+                if (item1 != null)
+                {
+                    types[item1.GetComponent<Passenger>().passengerType - 1] = true;
+                }
+            }
+
+            int loops = 0;
+            select = (select + selectChange) % 3;
+            if (select < 0)
+                select = 2;
+            while (types[select] == false)
+            {
+                select = (select + selectChange) % 3;
+                if (select < 0)
+                    select = 2;
+                loops++;
+                if (loops == 3 && selectChange == 0) {
+                    selectChange = 1;
+                }
+            }
+            foreach (var item1 in GetComponentsInChildren<Light>())
+            {
+                if (select == 0)
+                {
+                    item1.color = Color.green;
+                }
+                if (select == 1)
+                {
+                    item1.color = new Color(1.00f, 0.5f, 0.4f);
+                }
+                if (select == 2)
+                {
+                    item1.color = new Color(0.50f, 0.92f, 1.00f);
+                }
+            }
+
+        }
+        else
+        {
+
+            foreach (var item1 in GetComponentsInChildren<Light>())
+            {
+                item1.color = new Color(1.00f, 0.89f, 0.28f);
+            }
+        }
+    }
 }
+        

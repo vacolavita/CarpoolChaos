@@ -87,9 +87,11 @@ public class Passenger : MonoBehaviour
                 {
                     parentMove.currentPassengers--;
                     parentMove.passengers[passengerNum - 1] = null;
+                    parentMove.UpdateColor(0);
                 }
                 Destroy(gameObject);
                 gameManager.UpdateScore(1);
+
             }
         }
     }
@@ -120,6 +122,10 @@ public class Passenger : MonoBehaviour
             isInCar = true;
             canTrigger = false;
             parentMove.currentPassengers++;
+            if (parentMove.currentPassengers == 1)
+            {
+                parentMove.OnScrollRight();
+            }
             Rigidbody r = GetComponent<Rigidbody>();
             r.isKinematic = true;
             clump = null;
