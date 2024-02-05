@@ -15,6 +15,7 @@ public class Passenger : MonoBehaviour
     SpriteRenderer mapSprite;
     MeshRenderer[] mesh;
     private GameManager gameManager;
+    public int despawnRate = 60;
 
     // Start is called before the first frame update
     void Start()
@@ -64,6 +65,11 @@ public class Passenger : MonoBehaviour
         }
         if (clump != null && clump.player != null) {
             joinCar(clump.player.GetComponent<Collider>());
+        }
+        
+        if (GameModes.useLives)
+        {
+            StartCoroutine(DespawnPassengers());
         }
     }
 
@@ -128,5 +134,16 @@ public class Passenger : MonoBehaviour
             r.isKinematic = true;
             clump = null;
         }
+    }
+
+
+
+
+
+    IEnumerator DespawnPassengers()
+    {
+        yield return new WaitForSeconds(despawnRate);
+        Destroy(gameObject);
+        gameManager.LifeDrain(-0.1111111111f);
     }
 }
