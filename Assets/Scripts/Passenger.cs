@@ -143,7 +143,10 @@ public class Passenger : MonoBehaviour
     IEnumerator DespawnPassengers()
     {
         yield return new WaitForSeconds(10);
-        Destroy(gameObject);
-        gameManager.LifeDrain(-0.1111111111f);
+        if (!isInCar)
+        {
+            Destroy(gameObject);
+            gameManager.LifeDrain(-0.1111111111f);
+        }
     }
 }
