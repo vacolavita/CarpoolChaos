@@ -62,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 4b3c36feae73ace4b8f7c9fdb6a12294, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -516,6 +516,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: bc7fde3bf922d7d469ca1d80d44b2e6e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4338467eb7ee7234facd66d49ff097b0, type: 2}
     - target: {fileID: 919132149155446097, guid: bc7fde3bf922d7d469ca1d80d44b2e6e, type: 3}
       propertyPath: m_Name
       value: Semicircle Top

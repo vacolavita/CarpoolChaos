@@ -83,4 +83,10 @@ public class GameManager : MonoBehaviour
         Loader.Load(Loader.Scene.GameEndMenu);
     }
 
+    public void LifeDrain(int livesToDrain)
+    {
+        lives += livesToDrain;
+        livesText.text = "Lives: " + lives;
+    }
+
 }
