@@ -25,6 +25,8 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI livesText;
     public GameObject timer;
     public GameObject lifeMeter;
+    public bool isGamePaused;
+    public GameObject pauseScreen;
 
     // Start is called before the first frame update
     void Start()
@@ -60,6 +62,7 @@ public class GameManager : MonoBehaviour
         {
             EndGame();
         }
+        GamePause();
     }
 
     public void UpdateScore(int scoreToAdd)
@@ -87,6 +90,21 @@ public class GameManager : MonoBehaviour
     {
         lives += livesToDrain;
         livesText.text = "Lives: " + Mathf.Round(lives);
+    }
+    
+    public void GamePause()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            isGamePaused = true;
+            pauseScreen.SetActive(true);
+        }
+    }
+
+    public void ResumeGame()
+    {
+        isGamePaused = false;
+        pauseScreen.SetActive(false);
     }
 
 }
