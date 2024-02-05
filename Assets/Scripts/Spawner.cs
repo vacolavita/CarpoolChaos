@@ -52,6 +52,11 @@ public class Spawner : MonoBehaviour
                 spawnPoint = (spawnPoint + 1) % 3;
             }
         }
+
+        if (GameModes.useLives)
+        {
+            StartCoroutine(DespawnPassengers());
+        }
     }
 
     public void TimeDecrease()
