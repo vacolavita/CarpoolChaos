@@ -45,11 +45,6 @@ public class Passenger : MonoBehaviour
             mapSprite.color = mesh[0].material.color;
         }
 
-        if (GameModes.useLives)
-        {
-            StartCoroutine(DespawnPassengers());
-        }
-
         mapSprite.enabled = true;
         if (isInCar)
         {
