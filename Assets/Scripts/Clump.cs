@@ -29,17 +29,5 @@ public class Clump : MonoBehaviour
             taken = true;
         }
 
-        /*if (GameModes.useLives && pass.isInCar)
-        {
-            StartCoroutine(DespawnPassengers());
-        }*/
-
-    }
-
-    IEnumerator DespawnPassengers()
-    {
-        yield return new WaitForSeconds(10);
-        Destroy(gameObject);
-        gameManager.LifeDrain(-1);
     }
 }

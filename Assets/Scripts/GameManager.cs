@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
     public Slider fuelMeter2;
     public float fuelAmount1;
     public float fuelAmount2;
-    public int lives = 3;
+    public float lives = 3;
     public TextMeshProUGUI livesText;
     public GameObject timer;
     public GameObject lifeMeter;
@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         GameModes.useTime = true;
-        livesText.text = "Lives: " + lives;
+        livesText.text = "Lives: " + Mathf.Round(lives);
         scoreText.text = "Score: " + score;
         timerText.text = "Time: " + time;
         hasItem = false;
@@ -83,10 +83,10 @@ public class GameManager : MonoBehaviour
         Loader.Load(Loader.Scene.GameEndMenu);
     }
 
-    public void LifeDrain(int livesToDrain)
+    public void LifeDrain(float livesToDrain)
     {
         lives += livesToDrain;
-        livesText.text = "Lives: " + lives;
+        livesText.text = "Lives: " + Mathf.Round(lives);
     }
 
 }
