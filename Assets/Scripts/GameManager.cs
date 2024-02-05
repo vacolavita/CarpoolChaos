@@ -96,6 +96,7 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+            Time.timeScale = 0;
             isGamePaused = true;
             pauseScreen.SetActive(true);
         }
@@ -103,6 +104,7 @@ public class GameManager : MonoBehaviour
 
     public void ResumeGame()
     {
+        Time.timeScale = 1;
         isGamePaused = false;
         pauseScreen.SetActive(false);
     }

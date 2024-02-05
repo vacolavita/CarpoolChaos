@@ -29,44 +29,45 @@ public class Passenger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+            if (GameModes.peculiarPassengers && clump != null)
+            {
+                foreach (var item in mesh)
+                {
+                    item.material = passengerMats[3];
+                }
+                mapSprite.color = mesh[0].material.color;
+            }
+            else
+            {
+                foreach (var item in mesh)
+                {
+                    item.material = passengerMats[passengerType - 1];
+                }
+                mapSprite.color = mesh[0].material.color;
+            }
 
-        if (GameModes.peculiarPassengers && clump != null)
-        {
-            foreach (var item in mesh)
+            mapSprite.enabled = true;
+            if (isInCar)
             {
-                item.material = passengerMats[3];
+                mapSprite.enabled = false;
+                transform.SetLocalPositionAndRotation(parentMove.PassengerPosition(passengerNum), new Quaternion());
+                if (parentMove.select == passengerType - 1)
+                {
+                    transform.localPosition = transform.localPosition + new Vector3(0, 0.3f, 0);
+                }
+                canTrigger = false;
             }
-            mapSprite.color = mesh[0].material.color;
-        }
-        else {
-            foreach (var item in mesh)
+            if (parentMove != null)
             {
-                item.material = passengerMats[passengerType - 1];
+                if (Vector3.Distance(parentMove.transform.position, transform.position) > 4)
+                {
+                    canTrigger = true;
+                }
             }
-            mapSprite.color = mesh[0].material.color;
-        }
-
-        mapSprite.enabled = true;
-        if (isInCar)
-        {
-            mapSprite.enabled = false;
-            transform.SetLocalPositionAndRotation(parentMove.PassengerPosition(passengerNum), new Quaternion());
-            if(parentMove.select == passengerType-1){
-                transform.localPosition = transform.localPosition + new Vector3(0, 0.3f, 0);
-            }
-            canTrigger = false;
-        }
-        if (parentMove != null)
-        {
-            if (Vector3.Distance(parentMove.transform.position, transform.position) > 4)
+            if (clump != null && clump.player != null)
             {
-                canTrigger = true;
+                joinCar(clump.player.GetComponent<Collider>());
             }
-        }
-        if (clump != null && clump.player != null) {
-            joinCar(clump.player.GetComponent<Collider>());
-        }
-        
         
     }
 
