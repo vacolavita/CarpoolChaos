@@ -67,6 +67,11 @@ public class Passenger : MonoBehaviour
         if (clump != null && clump.player != null) {
             joinCar(clump.player.GetComponent<Collider>());
         }
+
+        if (GameModes.useLives)
+        {
+            
+        }    
     }
 
     private void OnTriggerEnter(Collider other)
@@ -130,5 +135,12 @@ public class Passenger : MonoBehaviour
             r.isKinematic = true;
             clump = null;
         }
+    }
+
+    IEnumerator DespawnPassengers()
+    {
+        yield return new WaitForSeconds(10);
+        Destroy(gameObject);
+        gameManager.LifeDrain(-1);
     }
 }
