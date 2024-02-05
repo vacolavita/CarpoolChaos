@@ -15,7 +15,7 @@ public class Passenger : MonoBehaviour
     SpriteRenderer mapSprite;
     MeshRenderer[] mesh;
     private GameManager gameManager;
-    public int despawnRate = 10;
+    private Spawner spawn;
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +23,7 @@ public class Passenger : MonoBehaviour
         mapSprite = GetComponentInChildren<SpriteRenderer>();
         mesh = GetComponentsInChildren<MeshRenderer>();
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+        spawn = GameObject.Find("Spawner").GetComponent<Spawner>();
     }
 
     // Update is called once per frame
@@ -142,7 +143,7 @@ public class Passenger : MonoBehaviour
 
     IEnumerator DespawnPassengers()
     {
-        yield return new WaitForSeconds(10);
+        yield return new WaitForSeconds(spawn.despawnRate);
         if (!isInCar)
         {
             Destroy(gameObject);

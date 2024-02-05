@@ -15,7 +15,7 @@ public class Spawner : MonoBehaviour
     public int passClump;
     public int passAmount;
     private GameManager gameManager;
-    public int despawnRate = 60;
+    public float despawnRate = 60;
 
     void Start()
     {
