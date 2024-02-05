@@ -15,7 +15,7 @@ public class Passenger : MonoBehaviour
     SpriteRenderer mapSprite;
     MeshRenderer[] mesh;
     private GameManager gameManager;
-    public int despawnRate = 60;
+    public int despawnRate = 10;
 
     // Start is called before the first frame update
     void Start()
@@ -28,7 +28,10 @@ public class Passenger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (GameModes.useLives && !isInCar)
+        {
+            StartCoroutine(DespawnPassengers());
+        }
 
         if (GameModes.peculiarPassengers && clump != null)
         {
@@ -67,10 +70,7 @@ public class Passenger : MonoBehaviour
             joinCar(clump.player.GetComponent<Collider>());
         }
         
-        if (GameModes.useLives && !isInCar)
-        {
-            StartCoroutine(DespawnPassengers());
-        }
+        
     }
 
     private void OnTriggerEnter(Collider other)
