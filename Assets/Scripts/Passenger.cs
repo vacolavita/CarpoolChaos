@@ -137,7 +137,7 @@ public class Passenger : MonoBehaviour
 
     IEnumerator DespawnPassengers()
     {
-        yield return new WaitForSeconds(10);
+        yield return new WaitForSeconds(30);
         Destroy(gameObject);
         gameManager.LifeDrain(-0.1111111111f);
     }
