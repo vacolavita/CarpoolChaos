@@ -45,7 +45,10 @@ public class Passenger : MonoBehaviour
             mapSprite.color = mesh[0].material.color;
         }
 
-
+        if (GameModes.useLives && !isInCar)
+        {
+            StartCoroutine(DespawnPassengers());
+        }
 
         mapSprite.enabled = true;
         if (isInCar)
@@ -130,5 +133,12 @@ public class Passenger : MonoBehaviour
             r.isKinematic = true;
             clump = null;
         }
+    }
+
+    IEnumerator DespawnPassengers()
+    {
+        yield return new WaitForSeconds(10);
+        Destroy(gameObject);
+        gameManager.LifeDrain(-0.1111111111f);
     }
 }
