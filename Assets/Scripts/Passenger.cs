@@ -67,7 +67,7 @@ public class Passenger : MonoBehaviour
             joinCar(clump.player.GetComponent<Collider>());
         }
         
-        if (GameModes.useLives)
+        if (GameModes.useLives && !isInCar)
         {
             StartCoroutine(DespawnPassengers());
         }
