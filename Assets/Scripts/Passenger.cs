@@ -70,7 +70,7 @@ public class Passenger : MonoBehaviour
 
         if (GameModes.useLives)
         {
-            
+            StartCoroutine(DespawnPassengers());
         }    
     }
 
