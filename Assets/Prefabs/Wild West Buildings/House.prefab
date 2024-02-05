@@ -62,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 587418b663f85e146bfce6819c9a8755, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -167,7 +167,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 587418b663f85e146bfce6819c9a8755, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -243,6 +243,7 @@ Transform:
   - {fileID: 7680487820636403264}
   - {fileID: 6329289316356078192}
   - {fileID: 6879613371668916609}
+  - {fileID: 1192963000106219596}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3563002833985070699
@@ -307,7 +308,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 587418b663f85e146bfce6819c9a8755, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -423,4 +424,78 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7e3cc2ec425fd604f9b7e39413b00e4c, type: 3}
   m_PrefabInstance: {fileID: 3994091771168871909}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6639192077449313502
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 7837942099442642509}
+    m_Modifications:
+    - target: {fileID: 5525186132615611538, guid: e9e307fae8b651b479df71ec3c08101a, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.28014576
+      objectReference: {fileID: 0}
+    - target: {fileID: 5525186132615611538, guid: e9e307fae8b651b479df71ec3c08101a, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.28014576
+      objectReference: {fileID: 0}
+    - target: {fileID: 5525186132615611538, guid: e9e307fae8b651b479df71ec3c08101a, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.28014576
+      objectReference: {fileID: 0}
+    - target: {fileID: 5525186132615611538, guid: e9e307fae8b651b479df71ec3c08101a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.81324
+      objectReference: {fileID: 0}
+    - target: {fileID: 5525186132615611538, guid: e9e307fae8b651b479df71ec3c08101a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.936
+      objectReference: {fileID: 0}
+    - target: {fileID: 5525186132615611538, guid: e9e307fae8b651b479df71ec3c08101a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5525186132615611538, guid: e9e307fae8b651b479df71ec3c08101a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5525186132615611538, guid: e9e307fae8b651b479df71ec3c08101a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5525186132615611538, guid: e9e307fae8b651b479df71ec3c08101a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5525186132615611538, guid: e9e307fae8b651b479df71ec3c08101a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5525186132615611538, guid: e9e307fae8b651b479df71ec3c08101a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5525186132615611538, guid: e9e307fae8b651b479df71ec3c08101a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5525186132615611538, guid: e9e307fae8b651b479df71ec3c08101a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8271019296174953599, guid: e9e307fae8b651b479df71ec3c08101a, type: 3}
+      propertyPath: m_Name
+      value: Chimney (Metal)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e9e307fae8b651b479df71ec3c08101a, type: 3}
+--- !u!4 &1192963000106219596 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5525186132615611538, guid: e9e307fae8b651b479df71ec3c08101a, type: 3}
+  m_PrefabInstance: {fileID: 6639192077449313502}
   m_PrefabAsset: {fileID: 0}
