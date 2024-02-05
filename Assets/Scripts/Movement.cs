@@ -57,7 +57,8 @@ public class Movement : MonoBehaviour
     public GameObject[] passengers;
     public Vector3 launchTrajectory;
     private GameManager gameManager;
-    public bool boostSpeed;
+    public float boostSpeed;
+
 
     // Start is called before the first frame update
     void Start()
@@ -119,7 +120,6 @@ public class Movement : MonoBehaviour
 
         
         PlayerManagerManager.players[playernum] = gameObject;
-        
 
         Vector2 c = controlDirection;
         GetComponentsInChildren<MeshRenderer>()[4].materials[0].color = paint;
@@ -132,17 +132,24 @@ public class Movement : MonoBehaviour
         if (Vector2.Angle(new Vector2(r.velocity.x, r.velocity.z), c) > 90) //If the angle you're trying to move at is more than 90 degrees away from the direction you're facing, you'll slow down for a sharper turn
         {
             c *= 0.33f;
-        } 
-        curSpeed += c.magnitude * maxSpeed * (acceleration - 1) * (traction - 1);
+        }
+
+        if (boostSpeed > 0)
+        {
+            boostSpeed--;
+            curSpeed += maxSpeed * 3 * (acceleration - 1) * (traction - 1);
+            launchTrajectory = new Vector3(0, 4, 0) + transform.forward * (launchForce + (r.velocity.magnitude));
+        }
+        else{
+            curSpeed += c.magnitude * maxSpeed * (acceleration - 1) * (traction - 1);
+        }
+
         transform.rotation = Quaternion.LookRotation(newDirection);
         curSpeed /= acceleration;
-        r.velocity += transform.forward * curSpeed;
-        r.velocity = new Vector3(r.velocity.x/traction, r.velocity.y, r.velocity.z/traction);
 
-        if (boostSpeed)
-        {
-            curSpeed *= 1.25f;
-        }
+        r.velocity += transform.forward * curSpeed;
+
+        r.velocity = new Vector3(r.velocity.x/traction, r.velocity.y, r.velocity.z/traction);
 
         if (fuelLevel <= 0)
         {
@@ -162,7 +169,7 @@ public class Movement : MonoBehaviour
         }
         if (isMoving)
         {
-            FuelDrain((curSpeed/maxSpeed)*(fuelEfficiency + (passengerPenalty*currentPassengers)));
+            FuelDrain(Mathf.Min((curSpeed/maxSpeed)*(fuelEfficiency + (passengerPenalty*currentPassengers)), fuelEfficiency + (passengerPenalty * currentPassengers)));
         }
         
         if (fuelLevel <= 0)
@@ -219,11 +226,7 @@ public class Movement : MonoBehaviour
 
         if (other.gameObject.CompareTag("Boost Pad"))
         {
-            boostSpeed = true;
-        }
-        else
-        {
-            boostSpeed = false;
+            boostSpeed = 80;
         }
 
         if (other.gameObject.CompareTag("Spring Pad"))
