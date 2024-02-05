@@ -28,10 +28,6 @@ public class Passenger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameModes.useLives && !isInCar)
-        {
-            StartCoroutine(DespawnPassengers());
-        }
 
         if (GameModes.peculiarPassengers && clump != null)
         {
@@ -78,6 +74,13 @@ public class Passenger : MonoBehaviour
         if (other.gameObject.CompareTag("Car") && !isInCar && canTrigger && clump == null)
         {
                 joinCar(other);
+        }
+        else
+        {
+            if (GameModes.useLives)
+            {
+                StartCoroutine(DespawnPassengers());
+            }
         }
         if (other.gameObject.CompareTag("Car"))
         {
@@ -137,12 +140,9 @@ public class Passenger : MonoBehaviour
     }
 
 
-
-
-
     IEnumerator DespawnPassengers()
     {
-        yield return new WaitForSeconds(despawnRate);
+        yield return new WaitForSeconds(10);
         Destroy(gameObject);
         gameManager.LifeDrain(-0.1111111111f);
     }
