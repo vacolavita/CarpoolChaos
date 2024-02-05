@@ -15,12 +15,15 @@ public class Spawner : MonoBehaviour
     public int passClump;
     public int passAmount;
     private GameManager gameManager;
+    public int despawnRate = 60;
+    Passenger passenger;
 
     void Start()
     {
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
         timer = spawnTime;
         spawnTimeAdjusted = spawnTime;
+        passenger = pass.GetComponent<Passenger>();
     }
 
     // Update is called once per frame
@@ -49,6 +52,11 @@ public class Spawner : MonoBehaviour
                 spawnPoint = (spawnPoint + 1) % 3;
             }
         }
+
+        if (GameModes.useLives)
+        {
+            StartCoroutine(DespawnPassengers());
+        }
     }
 
     public void TimeDecrease()
@@ -62,5 +70,15 @@ public class Spawner : MonoBehaviour
             spawnTimeAdjusted = spawnTime / (1 + (gameManager.score / 100.0f));
             //Debug.Log("bleg");
         }
+    }
+
+
+
+    IEnumerator DespawnPassengers()
+    {
+        yield return new WaitForSeconds(despawnRate);
+        Destroy(pass);
+        gameManager.LifeDrain(-0.1111111111f);
+        passenger.isInCar = false;
     }
 }

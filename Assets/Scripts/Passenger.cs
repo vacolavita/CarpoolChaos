@@ -134,12 +134,4 @@ public class Passenger : MonoBehaviour
             clump = null;
         }
     }
-
-    IEnumerator DespawnPassengers()
-    {
-        yield return new WaitForSeconds(30);
-        Destroy(gameObject);
-        gameManager.LifeDrain(-0.1111111111f);
-        isInCar = false;
-    }
 }
