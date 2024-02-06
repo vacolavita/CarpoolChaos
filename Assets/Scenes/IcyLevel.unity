@@ -15185,6 +15185,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3527238323619693209, guid: 8fad97fd14f6f1d49a7f27cbb38a4d6a, type: 3}
   m_PrefabInstance: {fileID: 617345163}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &618870639 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7458974938372974149, guid: 2f87948b0ab73154eb3df78d4f5902d6, type: 3}
+  m_PrefabInstance: {fileID: 1775450545}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &619715535
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18895,6 +18900,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 3527238323619693209, guid: 8fad97fd14f6f1d49a7f27cbb38a4d6a, type: 3}
   m_PrefabInstance: {fileID: 774951530}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &775088095 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3301784293237717141, guid: f1dc761dce0153948b8e3c07b4a1cb3d, type: 3}
+  m_PrefabInstance: {fileID: 2136433943}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &776114596
 PrefabInstance:
@@ -26307,7 +26317,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 841ecacddd21ad54f978e71632a24718, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraFollow: {fileID: 0}
+  cameraFollow: {fileID: 618870639}
   cameraDistance: {x: 0, y: 40, z: -20}
   cameraOffset: {x: 0, y: 0, z: -3}
 --- !u!81 &1067074828
@@ -46058,6 +46068,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 467067797310697953, guid: 2f87948b0ab73154eb3df78d4f5902d6, type: 3}
+      propertyPath: paint.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 467067797310697953, guid: 2f87948b0ab73154eb3df78d4f5902d6, type: 3}
+      propertyPath: paint.g
+      value: 0.6745095
+      objectReference: {fileID: 0}
+    - target: {fileID: 467067797310697953, guid: 2f87948b0ab73154eb3df78d4f5902d6, type: 3}
+      propertyPath: paint.r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2120605255053486501, guid: 2f87948b0ab73154eb3df78d4f5902d6, type: 3}
       propertyPath: m_Name
       value: Car (1)
@@ -46742,7 +46764,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 841ecacddd21ad54f978e71632a24718, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraFollow: {fileID: 0}
+  cameraFollow: {fileID: 775088095}
   cameraDistance: {x: 0, y: 40, z: -20}
   cameraOffset: {x: 0, y: 0, z: -3}
 --- !u!81 &1812096434
@@ -57022,6 +57044,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1202845486503582370, guid: f1dc761dce0153948b8e3c07b4a1cb3d, type: 3}
+      propertyPath: paint.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1202845486503582370, guid: f1dc761dce0153948b8e3c07b4a1cb3d, type: 3}
+      propertyPath: paint.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1202845486503582370, guid: f1dc761dce0153948b8e3c07b4a1cb3d, type: 3}
+      propertyPath: paint.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3301784293237717141, guid: f1dc761dce0153948b8e3c07b4a1cb3d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -104.84
