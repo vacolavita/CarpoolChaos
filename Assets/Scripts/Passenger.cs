@@ -116,7 +116,6 @@ public class Passenger : MonoBehaviour
 
     private void joinCar(Collider other) {
         if (other.GetComponent<Movement>().carryingCapacity > other.GetComponent<Movement>().currentPassengers) {
-            GetComponent<Rigidbody>().interpolation = RigidbodyInterpolation.Interpolate;
             transform.SetParent(other.gameObject.transform);
             parentMove = transform.parent.GetComponent<Movement>();
             for (int i = 0; i < parentMove.carryingCapacity; i++)
@@ -128,6 +127,7 @@ public class Passenger : MonoBehaviour
                     break;
                 }
             }
+            GetComponent<Rigidbody>().interpolation = RigidbodyInterpolation.None;
             isInCar = true;
             canTrigger = false;
             parentMove.currentPassengers++;
