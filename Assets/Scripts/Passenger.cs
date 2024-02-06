@@ -15,6 +15,7 @@ public class Passenger : MonoBehaviour
     SpriteRenderer mapSprite;
     MeshRenderer[] mesh;
     private GameManager gameManager;
+    private Spawner spawn;
 
     // Start is called before the first frame update
     void Start()
@@ -22,56 +23,52 @@ public class Passenger : MonoBehaviour
         mapSprite = GetComponentInChildren<SpriteRenderer>();
         mesh = GetComponentsInChildren<MeshRenderer>();
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+        spawn = GameObject.Find("Spawner").GetComponent<Spawner>();
     }
 
     // Update is called once per frame
     void Update()
     {
-
-
-        if (GameModes.peculiarPassengers && clump != null)
-        {
-            foreach (var item in mesh)
+            if (GameModes.peculiarPassengers && clump != null)
             {
-                item.material = passengerMats[3];
+                foreach (var item in mesh)
+                {
+                    item.material = passengerMats[3];
+                }
+                mapSprite.color = mesh[0].material.color;
             }
-            mapSprite.color = mesh[0].material.color;
-        }
-        else {
-            foreach (var item in mesh)
+            else
             {
-                item.material = passengerMats[passengerType - 1];
+                foreach (var item in mesh)
+                {
+                    item.material = passengerMats[passengerType - 1];
+                }
+                mapSprite.color = mesh[0].material.color;
             }
-            mapSprite.color = mesh[0].material.color;
-        }
 
-
-
-        mapSprite.enabled = true;
-        if (isInCar)
-        {
-            mapSprite.enabled = false;
-            transform.SetLocalPositionAndRotation(parentMove.PassengerPosition(passengerNum), new Quaternion());
-            if(parentMove.select == passengerType-1){
-                transform.localPosition = transform.localPosition + new Vector3(0, 0.3f, 0);
-            }
-            canTrigger = false;
-        }
-        if (parentMove != null)
-        {
-            if (Vector3.Distance(parentMove.transform.position, transform.position) > 4)
+            mapSprite.enabled = true;
+            if (isInCar)
             {
-                canTrigger = true;
+                mapSprite.enabled = false;
+                transform.SetLocalPositionAndRotation(parentMove.PassengerPosition(passengerNum), new Quaternion());
+                if (parentMove.select == passengerType - 1)
+                {
+                    transform.localPosition = transform.localPosition + new Vector3(0, 0.3f, 0);
+                }
+                canTrigger = false;
             }
-        }
-        if (clump != null && clump.player != null) {
-            joinCar(clump.player.GetComponent<Collider>());
-        }
-
-        if (GameModes.useLives)
-        {
-            StartCoroutine(DespawnPassengers());
-        }    
+            if (parentMove != null)
+            {
+                if (Vector3.Distance(parentMove.transform.position, transform.position) > 4)
+                {
+                    canTrigger = true;
+                }
+            }
+            if (clump != null && clump.player != null)
+            {
+                joinCar(clump.player.GetComponent<Collider>());
+            }
+        
     }
 
     private void OnTriggerEnter(Collider other)
@@ -79,6 +76,13 @@ public class Passenger : MonoBehaviour
         if (other.gameObject.CompareTag("Car") && !isInCar && canTrigger && clump == null)
         {
                 joinCar(other);
+        }
+        else
+        {
+            if (GameModes.useLives)
+            {
+                StartCoroutine(DespawnPassengers());
+            }
         }
         if (other.gameObject.CompareTag("Car"))
         {
@@ -137,10 +141,14 @@ public class Passenger : MonoBehaviour
         }
     }
 
+
     IEnumerator DespawnPassengers()
     {
-        yield return new WaitForSeconds(10);
-        Destroy(gameObject);
-        gameManager.LifeDrain(-1);
+        yield return new WaitForSeconds(spawn.despawnRate);
+        if (!isInCar)
+        {
+            Destroy(gameObject);
+            gameManager.LifeDrain(-0.1111111111f);
+        }
     }
 }

@@ -131,7 +131,15 @@ public class Movement : MonoBehaviour
         {
             c.Normalize();
         }
-        launchTrajectory = new Vector3(0, 4, 0) + transform.forward * (launchForce + (r.velocity.magnitude*0.3f));
+        if (GameModes.lobber)
+        {
+            launchTrajectory = new Vector3(0, 10, 0) + transform.forward * (launchForce + (r.velocity.magnitude * 0.3f));
+        }
+        else
+        {
+            launchTrajectory = new Vector3(0, 4, 0) + transform.forward * (launchForce + (r.velocity.magnitude * 0.3f));
+        }
+
         if (Vector2.Angle(new Vector2(r.velocity.x, r.velocity.z), c) > 90) //If the angle you're trying to move at is more than 90 degrees away from the direction you're facing, you'll slow down for a sharper turn
         {
             c *= 0.33f;

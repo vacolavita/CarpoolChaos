@@ -22,16 +22,18 @@ public class GameManager : MonoBehaviour
     public Slider fuelMeter2;
     public float fuelAmount1;
     public float fuelAmount2;
-    public int lives = 3;
+    public float lives = 3;
     public TextMeshProUGUI livesText;
     public GameObject timer;
     public GameObject lifeMeter;
+    public bool isGamePaused;
+    public GameObject pauseScreen;
 
     // Start is called before the first frame update
     void Start()
     {
         GameModes.useTime = true;
-        livesText.text = "Lives: " + lives;
+        livesText.text = "Lives: " + Mathf.Round(lives);
         scoreText.text = "Score: " + score;
         timerText.text = "Time: " + time;
         hasItem = false;
@@ -61,6 +63,7 @@ public class GameManager : MonoBehaviour
         {
             EndGame();
         }
+        GamePause();
     }
 
     public void UpdateScore(int scoreToAdd)
@@ -84,10 +87,27 @@ public class GameManager : MonoBehaviour
         Loader.Load(Loader.Scene.GameEndMenu);
     }
 
-    public void LifeDrain(int livesToDrain)
+    public void LifeDrain(float livesToDrain)
     {
         lives += livesToDrain;
-        livesText.text = "Lives: " + lives;
+        livesText.text = "Lives: " + Mathf.Round(lives);
+    }
+    
+    public void GamePause()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Time.timeScale = 0;
+            isGamePaused = true;
+            pauseScreen.SetActive(true);
+        }
+    }
+
+    public void ResumeGame()
+    {
+        Time.timeScale = 1;
+        isGamePaused = false;
+        pauseScreen.SetActive(false);
     }
 
 }

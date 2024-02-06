@@ -15,6 +15,7 @@ public class Spawner : MonoBehaviour
     public int passClump;
     public int passAmount;
     private GameManager gameManager;
+    public float despawnRate = 60;
 
     void Start()
     {
@@ -38,7 +39,8 @@ public class Spawner : MonoBehaviour
                 spawnType = Random.Range(1, 4);
                 for (int i = passAmount; i > 0; i--)
                 {
-                    if (GameModes.mixUp) {
+                    if (GameModes.mixUp)
+                    {
                         spawnType = Random.Range(1, 4);
                     }
                     GameObject passenger = Instantiate(pass);

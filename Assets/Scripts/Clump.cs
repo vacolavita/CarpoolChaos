@@ -8,10 +8,12 @@ public class Clump : MonoBehaviour
 
     public GameObject player;
     bool taken = false;
+    private GameManager gameManager;
+    //public Passenger pass;
 
     void Start()
     {
-        
+        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -26,6 +28,6 @@ public class Clump : MonoBehaviour
         {
             taken = true;
         }
-    }
 
+    }
 }
