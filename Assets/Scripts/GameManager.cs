@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
+
     public TextMeshProUGUI scoreText;
     public int score = 0;
     //public TextMeshProUGUI fuel1Text;

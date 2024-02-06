@@ -63,6 +63,9 @@ public class Movement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GetComponent<CapsuleCollider>().material.dynamicFriction = 0;
+        GetComponent<CapsuleCollider>().material.staticFriction = 0;
+
 
         passengers = new GameObject[carryingCapacity];
         r = GetComponent<Rigidbody>();
@@ -215,10 +218,6 @@ public class Movement : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Gas Station"))
-        {
-            GasRefill();
-        }
         if (other.gameObject.CompareTag("Clump"))
         {
             other.GetComponent<Clump>().player = gameObject;
@@ -330,7 +329,7 @@ public class Movement : MonoBehaviour
         if (item == 1) 
         {
             GameObject gas = Instantiate(items[0], transform.position, transform.rotation);
-            gas.GetComponent<Rigidbody>().velocity = transform.forward * (8 + r.velocity.magnitude) + new Vector3(0,4,0);
+            gas.GetComponent<Rigidbody>().velocity = launchTrajectory;
             gameManager.hasItem = false;
         }
         if (item == 2)
@@ -407,6 +406,15 @@ public class Movement : MonoBehaviour
             {
                 item1.color = new Color(1.00f, 0.89f, 0.28f);
             }
+        }
+    }
+
+    public void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.CompareTag("Gas Station"))
+        {
+            fuelLevel = Mathf.Min(fuelLevel + Time.deltaTime * 15, maxFuel);
+            SetFuel(fuelLevel);
         }
     }
 }
