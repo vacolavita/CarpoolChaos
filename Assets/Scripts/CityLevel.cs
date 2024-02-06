@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class IceButton : MonoBehaviour
+public class CityLevel : MonoBehaviour
 {
     private Button button;
     // Start is called before the first frame update
@@ -21,6 +21,6 @@ public class IceButton : MonoBehaviour
 
     void PlayGame()
     {
-        Loader.Load(Loader.Scene.IcyLevel);
+        Loader.Load(Loader.Scene.ConstructionCity);
     }
 }
