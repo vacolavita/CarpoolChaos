@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class GasCan : MonoBehaviour
 {
-    public float move = 5;
-    private Movement car;
     private GameManager gameManager;
     private Rigidbody gasR;
     private bool canTrigger = false;
     // Start is called before the first frame update
     void Start()
     {
-        car = GameObject.Find("Car").GetComponent<Movement>();
+       
     }
 
     // Update is called once per frame
@@ -25,7 +23,7 @@ public class GasCan : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Car") && canTrigger)
         {
-            car.GasCanFill();
+            other.GetComponent<Movement>().GasCanFill();
             Destroy(gameObject);
         }
     }
