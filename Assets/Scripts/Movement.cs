@@ -294,6 +294,7 @@ public class Movement : MonoBehaviour
                         currentPassengers--;
                         p.canTrigger = false;
                         passengers[i] = null;
+                        p.GetComponent<Rigidbody>().interpolation = RigidbodyInterpolation.Interpolate;
                     }
                 }
             }
@@ -324,6 +325,7 @@ public class Movement : MonoBehaviour
                     p.canTrigger = false;
                     passengers[i] = null;
                     dropped = true;
+                    p.GetComponent<Rigidbody>().interpolation = RigidbodyInterpolation.Interpolate;
                 }
             }
         }
