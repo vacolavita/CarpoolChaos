@@ -6,10 +6,10 @@ public static class Loader
 {
     public enum Scene
     {
-        MainMenu, LevelSelect, DesertScene, TownScene, Domenic, IcyLevel, GameEndMenu, ConstructionCity, VehicleSelect
+        MainMenu, LevelSelect, DesertScene, TownScene, Domenic, IcyLevel, GameEndMenu, ConstructionCity, VehicleSelect, Loading
     }
     public static void Load(Scene scene)
     {
-        SceneManager.LoadScene(scene.ToString());
+        UnityEngine.SceneManagement.SceneManager.LoadScene(scene.ToString());
     }
 }
