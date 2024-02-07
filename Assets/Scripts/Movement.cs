@@ -131,7 +131,7 @@ public class Movement : MonoBehaviour
         }
         if (GameModes.lobber)
         {
-            launchTrajectory = new Vector3(0, 10, 0) + transform.forward * (launchForce + (r.velocity.magnitude * 0.3f));
+            launchTrajectory = new Vector3(0, 12, 0) + transform.forward * (launchForce + (r.velocity.magnitude * 0.3f));
         }
         else
         {
