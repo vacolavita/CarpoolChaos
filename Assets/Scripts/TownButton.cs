@@ -22,5 +22,6 @@ public class TownButton : MonoBehaviour
     void PlayGame()
     {
         Loader.Load(Loader.Scene.TownScene);
+        Score.stage = 1;
     }
 }
