@@ -7,12 +7,12 @@ public class GameManager : MonoBehaviour
 {
 
     public TextMeshProUGUI scoreText;
-    public int score = 0;
     //public TextMeshProUGUI fuel1Text;
     //public TextMeshProUGUI fuel2Text;
     public Movement car1;
     public Movement car2;
     public bool hasItem;
+    public int score;
     
    
     
@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         GameModes.useTime = true;
+        score = 0;
         livesText.text = "Lives: " + Mathf.Round(lives);
         scoreText.text = "Score: " + score;
         timerText.text = "Time: " + time;
@@ -64,6 +65,7 @@ public class GameManager : MonoBehaviour
             EndGame();
         }
         GamePause();
+        Score.score = score;
     }
 
     public void UpdateScore(int scoreToAdd)
@@ -109,5 +111,4 @@ public class GameManager : MonoBehaviour
         isGamePaused = false;
         pauseScreen.SetActive(false);
     }
-
 }
