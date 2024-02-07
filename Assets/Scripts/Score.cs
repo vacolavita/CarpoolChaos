@@ -6,4 +6,5 @@ public static class Score
 {
     public static int highScore;
     public static int score;
+    public static int stage;
 }
