@@ -120,7 +120,6 @@ public class Movement : MonoBehaviour
 
     void FixedUpdate()
     {
-        ExhaustPlay();
         
         PlayerManagerManager.players[playernum] = gameObject;
 
@@ -176,6 +175,8 @@ public class Movement : MonoBehaviour
         if (isMoving)
         {
             FuelDrain(Mathf.Min((curSpeed/maxSpeed)*(fuelEfficiency + (passengerPenalty*currentPassengers)), fuelEfficiency + (passengerPenalty * currentPassengers)));
+
+            ExhaustPlay();
         }
         
         if (fuelLevel <= 0)
