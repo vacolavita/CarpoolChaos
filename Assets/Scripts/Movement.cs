@@ -22,6 +22,8 @@ public class Movement : MonoBehaviour
     public float launchPenalty;
     public float jumpForce = 5f;
 
+    public ParticleSystem exhaust;
+
 
     public int currentPassengers;
     
@@ -190,6 +192,7 @@ public class Movement : MonoBehaviour
         else
         {
             hasFuel = true;
+            exhaust.Play();
             if (GameModes.gasLeak) {
                 fuelLevel -= 0.03f;
                 fuelMeter.value = fuelLevel;
@@ -264,6 +267,7 @@ public class Movement : MonoBehaviour
         if (!hasFuel)
         {
             curSpeed /= 1.05f;
+            exhaust.Stop();
         }
     }
 
