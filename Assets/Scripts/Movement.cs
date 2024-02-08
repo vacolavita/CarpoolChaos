@@ -148,9 +148,11 @@ public class Movement : MonoBehaviour
             boostSpeed--;
             curSpeed += maxSpeed * 2.5f * (acceleration - 1) * (traction - 1);
             launchTrajectory = new Vector3(0, 4, 0) + transform.forward * (launchForce + (r.velocity.magnitude));
+            GetComponentInChildren<TrailRenderer>().enabled = true;
         }
         else{
             curSpeed += c.magnitude * maxSpeed * (acceleration - 1) * (traction - 1);
+            GetComponentInChildren<TrailRenderer>().enabled = false;
         }
 
         transform.rotation = Quaternion.LookRotation(newDirection);
