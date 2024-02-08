@@ -14,12 +14,12 @@ public class Loading : MonoBehaviour
             Loader.Load(Loader.Scene.TownScene);
        }
 
-        if (Score.stage == 1)
+        if (Score.stage == 2)
         {
             Loader.Load(Loader.Scene.DesertScene);
         }
 
-        if (Score.stage == 1)
+        if (Score.stage == 3)
         {
             Loader.Load(Loader.Scene.IcyLevel);
         }
