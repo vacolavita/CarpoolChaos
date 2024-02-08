@@ -184,8 +184,9 @@ public class Movement : MonoBehaviour
         }
         else
         {
-            hasFuel = true;
+            Debug.Log("Emit Exhaust");
             exhaust.Play();
+            hasFuel = true;
             if (GameModes.gasLeak) {
                 fuelLevel -= 0.03f;
                 fuelMeter.value = fuelLevel;
