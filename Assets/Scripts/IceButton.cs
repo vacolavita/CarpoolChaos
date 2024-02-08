@@ -21,7 +21,7 @@ public class IceButton : MonoBehaviour
 
     void PlayGame()
     {
-        Loader.Load(Loader.Scene.IcyLevel);
+        Loader.Load(Loader.Scene.Loading);
         Score.stage = 3;
     }
 }
