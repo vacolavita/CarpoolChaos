@@ -21,6 +21,9 @@ public class Movement : MonoBehaviour
     public float passengerPenalty;
     public float launchPenalty;
     public float jumpForce = 5f;
+    public ParticleSystem slipStream;
+
+    public ParticleSystem exhaust;
 
 
     public int currentPassengers;
@@ -118,7 +121,6 @@ public class Movement : MonoBehaviour
 
     void FixedUpdate()
     {
-
         
         PlayerManagerManager.players[playernum] = gameObject;
 
@@ -151,6 +153,7 @@ public class Movement : MonoBehaviour
         }
         else{
             curSpeed += c.magnitude * maxSpeed * (acceleration - 1) * (traction - 1);
+            slipStream.Stop();
         }
 
         transform.rotation = Quaternion.LookRotation(newDirection);
@@ -159,11 +162,6 @@ public class Movement : MonoBehaviour
         r.velocity += transform.forward * curSpeed;
 
         r.velocity = new Vector3(r.velocity.x/traction, r.velocity.y, r.velocity.z/traction);
-
-        if (fuelLevel <= 0)
-        {
-            hasFuel = false;
-        }
 
 
 
@@ -179,12 +177,15 @@ public class Movement : MonoBehaviour
         if (isMoving)
         {
             FuelDrain(Mathf.Min((curSpeed/maxSpeed)*(fuelEfficiency + (passengerPenalty*currentPassengers)), fuelEfficiency + (passengerPenalty * currentPassengers)));
+
+            ExhaustPlay();
         }
         
         if (fuelLevel <= 0)
         {
             hasFuel = false;
         }
+
         else
         {
             hasFuel = true;
@@ -232,6 +233,7 @@ public class Movement : MonoBehaviour
         if (other.gameObject.CompareTag("Boost Pad"))
         {
             boostSpeed = 80;
+            slipStream.Play();
         }
 
         if (other.gameObject.CompareTag("Spring Pad"))
@@ -262,6 +264,16 @@ public class Movement : MonoBehaviour
         if (!hasFuel)
         {
             curSpeed /= 1.05f;
+            exhaust.Stop();
+        }
+    }
+
+    public void ExhaustPlay()
+    {
+        if (hasFuel)
+        {
+            Debug.Log("Emit Exhaust");
+            exhaust.Play();
         }
     }
 
