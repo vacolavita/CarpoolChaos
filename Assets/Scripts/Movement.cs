@@ -162,11 +162,6 @@ public class Movement : MonoBehaviour
 
         r.velocity = new Vector3(r.velocity.x/traction, r.velocity.y, r.velocity.z/traction);
 
-        if (fuelLevel <= 0)
-        {
-            hasFuel = false;
-        }
-
 
 
         //Fuel Stuff
