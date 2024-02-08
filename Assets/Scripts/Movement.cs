@@ -120,7 +120,7 @@ public class Movement : MonoBehaviour
 
     void FixedUpdate()
     {
-
+        ExhaustPlay();
         
         PlayerManagerManager.players[playernum] = gameObject;
 
@@ -182,10 +182,9 @@ public class Movement : MonoBehaviour
         {
             hasFuel = false;
         }
+
         else
         {
-            Debug.Log("Emit Exhaust");
-            exhaust.Play();
             hasFuel = true;
             if (GameModes.gasLeak) {
                 fuelLevel -= 0.03f;
@@ -262,6 +261,15 @@ public class Movement : MonoBehaviour
         {
             curSpeed /= 1.05f;
             exhaust.Stop();
+        }
+    }
+
+    public void ExhaustPlay()
+    {
+        if (hasFuel)
+        {
+            Debug.Log("Emit Exhaust");
+            exhaust.Play();
         }
     }
 
