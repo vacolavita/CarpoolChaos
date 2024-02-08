@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
     public GameObject lifeMeter;
     public bool isGamePaused;
     public GameObject pauseScreen;
+    public DustStorm dust;
 
     // Start is called before the first frame update
     void Start()
@@ -111,4 +112,5 @@ public class GameManager : MonoBehaviour
         isGamePaused = false;
         pauseScreen.SetActive(false);
     }
+
 }
