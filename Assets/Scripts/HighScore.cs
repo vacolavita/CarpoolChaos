@@ -19,9 +19,36 @@ public class HighScore : MonoBehaviour
     // Update is called once per frame
     void CheckHighScore()
     {
-        if (Score.score > PlayerPrefs.GetInt("HighScore", 0))
+        if (Score.stage == 1)
         {
-            PlayerPrefs.SetInt("HighScore", Score.score);
+            if (Score.score > PlayerPrefs.GetInt("HighScore1", 0))
+            {
+                PlayerPrefs.SetInt("HighScore1", Score.score);
+            }
+        }
+
+        if (Score.stage == 2)
+        {
+            if (Score.score > PlayerPrefs.GetInt("HighScore2", 0))
+            {
+                PlayerPrefs.SetInt("HighScore2", Score.score);
+            }
+        }
+
+        if (Score.stage == 3)
+        {
+            if (Score.score > PlayerPrefs.GetInt("HighScore3", 0))
+            {
+                PlayerPrefs.SetInt("HighScore3", Score.score);
+            }
+        }
+
+        if (Score.stage == 4)
+        {
+            if (Score.score > PlayerPrefs.GetInt("HighScore4", 0))
+            {
+                PlayerPrefs.SetInt("HighScore4", Score.score);
+            }
         }
     }
 

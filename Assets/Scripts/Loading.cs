@@ -1,0 +1,32 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class Loading : MonoBehaviour
+{
+
+    // Update is called once per frame
+    void Update()
+    {
+       if (Score.stage == 1)
+       {
+            Loader.Load(Loader.Scene.TownScene);
+       }
+
+        if (Score.stage == 1)
+        {
+            Loader.Load(Loader.Scene.DesertScene);
+        }
+
+        if (Score.stage == 1)
+        {
+            Loader.Load(Loader.Scene.IcyLevel);
+        }
+
+        if (Score.stage == 4)
+        {
+            Loader.Load(Loader.Scene.ConstructionCity);
+        }
+    }
+}

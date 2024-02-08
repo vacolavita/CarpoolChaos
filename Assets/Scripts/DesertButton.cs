@@ -22,5 +22,6 @@ public class DesertButton : MonoBehaviour
     void PlayGame()
     {
         Loader.Load(Loader.Scene.Domenic);
+        Score.stage = 2;
     }
 }

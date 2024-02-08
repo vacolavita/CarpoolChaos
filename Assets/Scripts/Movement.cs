@@ -44,8 +44,6 @@ public class Movement : MonoBehaviour
 
     public Vector2 controlDirection;
 
-    public Transform carTransform;
-
     public GameObject[] items;
 
     public int playernum = 0;
@@ -133,7 +131,7 @@ public class Movement : MonoBehaviour
         }
         if (GameModes.lobber)
         {
-            launchTrajectory = new Vector3(0, 10, 0) + transform.forward * (launchForce + (r.velocity.magnitude * 0.3f));
+            launchTrajectory = new Vector3(0, 12, 0) + transform.forward * (launchForce + (r.velocity.magnitude * 0.3f));
         }
         else
         {
@@ -148,7 +146,7 @@ public class Movement : MonoBehaviour
         if (boostSpeed > 0)
         {
             boostSpeed--;
-            curSpeed += maxSpeed * 3 * (acceleration - 1) * (traction - 1);
+            curSpeed += maxSpeed * 2.5f * (acceleration - 1) * (traction - 1);
             launchTrajectory = new Vector3(0, 4, 0) + transform.forward * (launchForce + (r.velocity.magnitude));
         }
         else{
@@ -338,13 +336,13 @@ public class Movement : MonoBehaviour
     {
         if (item == 1) 
         {
-            GameObject gas = Instantiate(items[0], transform.position, transform.rotation);
+            GameObject gas = Instantiate(items[0], transform.position + new Vector3(0,1,0), transform.rotation);
             gas.GetComponent<Rigidbody>().velocity = launchTrajectory;
             gameManager.hasItem = false;
         }
         if (item == 2)
         {
-            Instantiate(items[1], carTransform.position, transform.rotation);
+            Instantiate(items[1], transform.position, transform.rotation);
             gameManager.hasItem = false;
         }
         if (item == 3)
@@ -423,7 +421,7 @@ public class Movement : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Gas Station"))
         {
-            fuelLevel = Mathf.Min(fuelLevel + Time.deltaTime * 15, maxFuel);
+            fuelLevel = Mathf.Min(fuelLevel + Time.deltaTime * 25, maxFuel);
             SetFuel(fuelLevel);
         }
     }
