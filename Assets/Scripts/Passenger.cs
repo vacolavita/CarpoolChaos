@@ -90,18 +90,7 @@ public class Passenger : MonoBehaviour
         }
         if (other.gameObject.CompareTag("Destination"))
         {
-            if(other.gameObject.GetComponent<Destination>().destType == passengerType)
-            {
-                if (isInCar) 
-                {
-                    parentMove.currentPassengers--;
-                    parentMove.passengers[passengerNum - 1] = null;
-                    parentMove.UpdateColor(0);
-                }
-                Destroy(gameObject);
-                gameManager.UpdateScore(1);
-
-            }
+            scorePassenger(other);
         }
     }
 
@@ -140,6 +129,23 @@ public class Passenger : MonoBehaviour
             clump = null;
         }
     }
+
+    public void scorePassenger(Collider other) {
+        if (other.gameObject.GetComponent<Destination>().destType == passengerType)
+        {
+            if (isInCar)
+            {
+                parentMove.currentPassengers--;
+                parentMove.passengers[passengerNum - 1] = null;
+                parentMove.UpdateColor(0);
+            }
+            Destroy(gameObject);
+            gameManager.UpdateScore(1);
+
+        }
+
+    }
+
 
 
     IEnumerator DespawnPassengers()

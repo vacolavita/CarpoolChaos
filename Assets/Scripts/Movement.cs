@@ -156,6 +156,10 @@ public class Movement : MonoBehaviour
             slipStream.Stop();
         }
 
+        if (Score.gameOver)
+        {
+            Destroy(gameObject);
+        }
         transform.rotation = Quaternion.LookRotation(newDirection);
         curSpeed /= acceleration;
 
@@ -244,6 +248,16 @@ public class Movement : MonoBehaviour
         if (other.gameObject.CompareTag("Ice"))
         {
             traction = ((traction - 1) * 0.7f) + 1;
+        }
+
+        if (other.gameObject.CompareTag("Destination")) {
+            foreach (var item1 in passengers)
+            {
+                if (item1 != null)
+                {
+                    item1.GetComponent<Passenger>().scorePassenger(other);
+                }
+            }
         }
     }
 

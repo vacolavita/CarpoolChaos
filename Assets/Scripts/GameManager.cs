@@ -87,6 +87,7 @@ public class GameManager : MonoBehaviour
 
     public void EndGame()
     {
+        Score.gameOver = true;
         Loader.Load(Loader.Scene.GameEndMenu);
     }
 
