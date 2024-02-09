@@ -10,18 +10,16 @@ public class ItemBox : MonoBehaviour
     public GameObject tentImage;
     public GameObject boostPadImage;
     public GameObject springPadImage;
-    private GameManager gameManager;
     public Movement car;
     // Start is called before the first frame update
     void Start()
     {
-        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (gameManager.hasItem)
+        if (car.hasItem)
         {
             if (car.item == 1)
             {
