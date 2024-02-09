@@ -17,7 +17,7 @@ public class BoostPad : MonoBehaviour
 
     IEnumerator BoostPadDelete()
     {
-        yield return new WaitForSeconds(10);
+        yield return new WaitForSeconds(15);
         Destroy(gameObject);
     }
 }

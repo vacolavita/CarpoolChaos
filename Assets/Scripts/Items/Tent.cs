@@ -26,7 +26,7 @@ public class Tent : MonoBehaviour
 
     IEnumerator TentDelete()
     {
-        yield return new WaitForSeconds(10);
+        yield return new WaitForSeconds(15);
         Destroy(gameObject);
     }
 }
