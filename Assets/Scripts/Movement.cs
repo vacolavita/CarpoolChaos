@@ -21,6 +21,7 @@ public class Movement : MonoBehaviour
     public float passengerPenalty;
     public float launchPenalty;
     public float jumpForce = 5f;
+    public ParticleSystem slipStream;
 
     public ParticleSystem exhaust;
 
@@ -152,6 +153,7 @@ public class Movement : MonoBehaviour
         }
         else{
             curSpeed += c.magnitude * maxSpeed * (acceleration - 1) * (traction - 1);
+            slipStream.Stop();
         }
 
         transform.rotation = Quaternion.LookRotation(newDirection);
@@ -231,6 +233,7 @@ public class Movement : MonoBehaviour
         if (other.gameObject.CompareTag("Boost Pad"))
         {
             boostSpeed = 80;
+            slipStream.Play();
         }
 
         if (other.gameObject.CompareTag("Spring Pad"))
