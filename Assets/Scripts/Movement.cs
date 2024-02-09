@@ -156,6 +156,10 @@ public class Movement : MonoBehaviour
             slipStream.Stop();
         }
 
+        if (Score.gameOver)
+        {
+            Destroy(gameObject);
+        }
         transform.rotation = Quaternion.LookRotation(newDirection);
         curSpeed /= acceleration;
 
