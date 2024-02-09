@@ -68,7 +68,11 @@ public class Passenger : MonoBehaviour
             {
                 joinCar(clump.player.GetComponent<Collider>());
             }
-        
+        if (Score.gameOver)
+        {
+            Destroy(gameObject);
+        }
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -90,7 +94,7 @@ public class Passenger : MonoBehaviour
         }
         if (other.gameObject.CompareTag("Destination"))
         {
-            scorePassenger(other);
+            scorePassenger(other, false);
         }
     }
 
@@ -130,20 +134,22 @@ public class Passenger : MonoBehaviour
         }
     }
 
-    public void scorePassenger(Collider other) {
-        if (other.gameObject.GetComponent<Destination>().destType == passengerType)
-        {
-            if (isInCar)
+    public void scorePassenger(Collider other, bool callObj)
+    {
+        if (!(isInCar && !callObj)) {
+            if (other.gameObject.GetComponent<Destination>().destType == passengerType)
             {
-                parentMove.currentPassengers--;
-                parentMove.passengers[passengerNum - 1] = null;
-                parentMove.UpdateColor(0);
+                if (isInCar)
+                {
+                    parentMove.currentPassengers--;
+                    parentMove.passengers[passengerNum - 1] = null;
+                    parentMove.UpdateColor(0);
+                }
+                Destroy(gameObject);
+                gameManager.UpdateScore(1);
+
             }
-            Destroy(gameObject);
-            gameManager.UpdateScore(1);
-
         }
-
     }
 
 

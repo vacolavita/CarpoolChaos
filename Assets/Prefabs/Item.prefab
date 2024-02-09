@@ -4919,13 +4919,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1667935660962873499}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: 0.5, y: 0.5, z: -0.5, w: 0.5}
   m_LocalPosition: {x: 0, y: 30, z: 0}
-  m_LocalScale: {x: 30, y: 30, z: 0.30000004}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2692550415965273159}
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 90, z: 0}
 --- !u!212 &5212723419623613213
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4967,7 +4967,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: 7347bfd3a57c5a444998a683ed16b359, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -4991,11 +4991,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   depth: 40
-  pulseAmount: 5
+  pulseAmount: 0.1
   pulseSpeed: 5
   wiggleAmount: 35
   wiggleSpeed: 10
-  scale: 1.3
+  scale: 1.5
   defaultScale: {x: 0, y: 0, z: 0}
 --- !u!1001 &7061361037653273224
 PrefabInstance:

@@ -99,7 +99,6 @@ public class Movement : MonoBehaviour
             PlayerManagerManager.players = new GameObject[2];
 
         }
-        
 
     }
     
@@ -126,6 +125,7 @@ public class Movement : MonoBehaviour
 
         Vector2 c = controlDirection;
         GetComponentsInChildren<MeshRenderer>()[4].materials[0].color = paint;
+        GetComponentsInChildren<SpriteRenderer>()[0].color = paint;
         Vector3 newDirection = Vector3.RotateTowards(transform.forward, new Vector3(c.x,0,c.y), handling, 0.0f);
         if (c.magnitude > 1)
         {
@@ -255,7 +255,7 @@ public class Movement : MonoBehaviour
             {
                 if (item1 != null)
                 {
-                    item1.GetComponent<Passenger>().scorePassenger(other);
+                    item1.GetComponent<Passenger>().scorePassenger(other, true);
                 }
             }
         }
@@ -373,7 +373,7 @@ public class Movement : MonoBehaviour
         }
         if (item == 3)
         {
-            Instantiate(items[2], transform.position + new Vector3(0, -0.92f, 0), transform.rotation);
+            Instantiate(items[2], transform.position + new Vector3(0, -1f, 0), transform.rotation);
             gameManager.hasItem = false;
         }
         if (item == 4)

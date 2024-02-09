@@ -15,6 +15,8 @@ public class MapIcon : MonoBehaviour
 
     public float scale = 1;
 
+    public bool lockRotation = true;
+
     public Vector3 defaultScale;
     // Start is called before the first frame update
     void Start()
@@ -25,7 +27,15 @@ public class MapIcon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.SetPositionAndRotation(new Vector3(transform.position.x,depth,transform.position.z), Quaternion.Euler(90,0, 90 + Mathf.Sin(Time.time * wiggleSpeed) * wiggleAmount));
+
+        if (lockRotation)
+        {
+            transform.SetPositionAndRotation(new Vector3(transform.position.x, depth, transform.position.z), Quaternion.Euler(90, 0, Mathf.Sin(Time.time * wiggleSpeed) * wiggleAmount));
+        }
+        else
+        {
+            transform.SetPositionAndRotation(new Vector3(transform.position.x, depth, transform.position.z), transform.rotation);
+        }
         transform.localScale = new Vector3((defaultScale.x + pulseAmount + Mathf.Sin(Time.time * pulseSpeed) * pulseAmount) * scale, (defaultScale.y + pulseAmount + Mathf.Sin(Time.time * pulseSpeed) * pulseAmount) * scale, 0);
     }
 }
