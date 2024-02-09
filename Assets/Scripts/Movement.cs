@@ -60,8 +60,6 @@ public class Movement : MonoBehaviour
     private GameManager gameManager;
     public float boostSpeed;
 
-    public bool hasItem;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -365,26 +363,18 @@ public class Movement : MonoBehaviour
         {
             GameObject gas = Instantiate(items[0], transform.position + new Vector3(0,1,0), transform.rotation);
             gas.GetComponent<Rigidbody>().velocity = launchTrajectory;
-            hasItem = true;
         }
         if (item == 2)
         {
             Instantiate(items[1], transform.position, transform.rotation);
-            hasItem = true;
         }
         if (item == 3)
         {
             Instantiate(items[2], transform.position + new Vector3(0, -1f, 0), transform.rotation);
-            hasItem = true;
         }
         if (item == 4)
         {
             Instantiate(items[3], transform.position + new Vector3(0, -0.92f, 0), transform.rotation);
-            hasItem = true;
-        }
-        else
-        {
-            gameManager.hasItem = false;
         }
 
         item = 0;

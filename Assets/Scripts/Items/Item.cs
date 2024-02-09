@@ -32,7 +32,7 @@ public class Item : MonoBehaviour
             {
                 other.GetComponent<Movement>().item = Random.Range(1, 5);
             }
-            car.hasItem = true;
+            
             Destroy(gameObject);
         }
     }
