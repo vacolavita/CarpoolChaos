@@ -21,7 +21,7 @@ public class CityLevel : MonoBehaviour
 
     void PlayGame()
     {
-        Loader.Load(Loader.Scene.Loading);
+        Loader.Load(Loader.Scene.ConstructionCity);
         Score.stage = 4;
     }
 }
