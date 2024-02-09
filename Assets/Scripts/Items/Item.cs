@@ -8,11 +8,13 @@ public class Item : MonoBehaviour
     private int itemGet;
     private GameManager gameManager;
     private ItemBox itemBox;
+    private Movement car;
     // Start is called before the first frame update
     void Start()
     {
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
         GetComponent<Rigidbody>().AddTorque(new Vector3(0,5000,0));
+        car = GameObject.Find("Car").GetComponent<Movement>();
     }
 
     // Update is called once per frame
@@ -30,7 +32,7 @@ public class Item : MonoBehaviour
             {
                 other.GetComponent<Movement>().item = Random.Range(1, 5);
             }
-            gameManager.hasItem = true;
+            car.hasItem = true;
             Destroy(gameObject);
         }
     }
