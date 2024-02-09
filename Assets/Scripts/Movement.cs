@@ -242,6 +242,16 @@ public class Movement : MonoBehaviour
         {
             traction = ((traction - 1) * 0.7f) + 1;
         }
+
+        if (other.gameObject.CompareTag("Destination")) {
+            foreach (var item1 in passengers)
+            {
+                if (item1 != null)
+                {
+                    item1.GetComponent<Passenger>().scorePassenger(other);
+                }
+            }
+        }
     }
 
     public void SetMaxFuel(float fuel)
