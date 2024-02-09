@@ -25,6 +25,7 @@ public class Movement : MonoBehaviour
 
     public ParticleSystem exhaust;
 
+    public bool hasItem;
 
     public int currentPassengers;
     
@@ -364,26 +365,26 @@ public class Movement : MonoBehaviour
         {
             GameObject gas = Instantiate(items[0], transform.position + new Vector3(0,1,0), transform.rotation);
             gas.GetComponent<Rigidbody>().velocity = launchTrajectory;
-            gameManager.hasItem = false;
+            hasItem = true;
         }
         if (item == 2)
         {
             Instantiate(items[1], transform.position, transform.rotation);
-            gameManager.hasItem = false;
+            hasItem = true;
         }
         if (item == 3)
         {
             Instantiate(items[2], transform.position + new Vector3(0, -0.92f, 0), transform.rotation);
-            gameManager.hasItem = false;
+            hasItem = true;
         }
         if (item == 4)
         {
             Instantiate(items[3], transform.position + new Vector3(0, -0.92f, 0), transform.rotation);
-            gameManager.hasItem = false;
+            hasItem = true;
         }
         else
         {
-            gameManager.hasItem = false;
+            hasItem = false;
         }
 
         item = 0;
