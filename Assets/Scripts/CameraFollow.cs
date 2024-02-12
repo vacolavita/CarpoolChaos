@@ -22,9 +22,9 @@ public class CameraFollow : MonoBehaviour
         float dist = Mathf.Sqrt(Mathf.Pow(cameraDistance.x, 2) + Mathf.Pow(cameraDistance.z, 2));
 
         transform.SetPositionAndRotation(new Vector3(
-Mathf.Clamp(cameraFollow.position.x + cameraDistance.x + cameraOffset.x,-35,35),
+cameraFollow.position.x + cameraDistance.x + cameraOffset.x,
 cameraFollow.position.y + cameraDistance.y + cameraOffset.y,
-Mathf.Clamp(cameraFollow.position.z + cameraDistance.z + cameraOffset.z,-55,15)), transform.rotation);
+cameraFollow.position.z + cameraDistance.z + cameraOffset.z), transform.rotation);
         
     }
 }
