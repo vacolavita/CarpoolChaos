@@ -193,7 +193,7 @@ public class Movement : MonoBehaviour
         {
             if (hasFuel) {
                 GameObject pop = Instantiate(popUp, transform.position + new Vector3(0,2,0), Quaternion.Euler(-70, 0, 0));
-                pop.GetComponent<PopUp>().buildPopUp(outOfGas, Color.red, 10, false);
+                pop.GetComponent<PopUp>().buildPopUp(outOfGas, new Color(1f,0.1f,0.1f), 10, false);
             }
             hasFuel = false;
         }
@@ -212,7 +212,7 @@ public class Movement : MonoBehaviour
         if (!atCapacity && carryingCapacity == currentPassengers) { 
             atCapacity = true;
             GameObject pop = Instantiate(popUp, transform.position + new Vector3(0, 2, 0), Quaternion.Euler(-70, 0, 0));
-            pop.GetComponent<PopUp>().buildPopUp(capacity, Color.white, 10, false);
+            pop.GetComponent<PopUp>().buildPopUp(capacity, Color.white, 7, false);
         }
         if (atCapacity && carryingCapacity != currentPassengers)
         {

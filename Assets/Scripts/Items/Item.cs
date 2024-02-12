@@ -26,12 +26,9 @@ public class Item : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.CompareTag("Car"))
-        {
-            if (other.GetComponent<Movement>().item == 0) 
-            {
-                other.GetComponent<Movement>().item = Random.Range(1, 5);
-            }
+        if (other.gameObject.CompareTag("Car")) {
+            other.GetComponent<Movement>().item = Random.Range(1, 5);
+            
             
             Destroy(gameObject);
         }
