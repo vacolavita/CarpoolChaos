@@ -17,6 +17,8 @@ public class Passenger : MonoBehaviour
     private GameManager gameManager;
     private Spawner spawn;
 
+    public GameObject pop;
+    public Material plusOne;
     // Start is called before the first frame update
     void Start()
     {
@@ -134,6 +136,7 @@ public class Passenger : MonoBehaviour
         }
     }
 
+
     public void scorePassenger(Collider other, bool callObj)
     {
         if (!(isInCar && !callObj)) {
@@ -145,6 +148,8 @@ public class Passenger : MonoBehaviour
                     parentMove.passengers[passengerNum - 1] = null;
                     parentMove.UpdateColor(0);
                 }
+                GameObject popUp = Instantiate(pop, transform.position, Quaternion.Euler(-70,0,0));
+                popUp.GetComponent<PopUp>().buildPopUp(plusOne, GetComponent<MeshRenderer>().material.color, 3, true);
                 Destroy(gameObject);
                 gameManager.UpdateScore(1);
 
