@@ -59,6 +59,11 @@ public class Movement : MonoBehaviour
     public Vector3 launchTrajectory;
     private GameManager gameManager;
     public float boostSpeed;
+    public GameObject popUp;
+    public Material outOfGas;
+    public Material capacity;
+
+    bool atCapacity;
 
     // Start is called before the first frame update
     void Start()
@@ -186,6 +191,10 @@ public class Movement : MonoBehaviour
         
         if (fuelLevel <= 0)
         {
+            if (hasFuel) {
+                GameObject pop = Instantiate(popUp, transform.position + new Vector3(0,2,0), Quaternion.Euler(-70, 0, 0));
+                pop.GetComponent<PopUp>().buildPopUp(outOfGas, Color.red, 10, false);
+            }
             hasFuel = false;
         }
 
@@ -199,6 +208,16 @@ public class Movement : MonoBehaviour
         }
 
         FuelGone();
+        ///////////////////////////////////////////////////////////////
+        if (!atCapacity && carryingCapacity == currentPassengers) { 
+            atCapacity = true;
+            GameObject pop = Instantiate(popUp, transform.position + new Vector3(0, 2, 0), Quaternion.Euler(-70, 0, 0));
+            pop.GetComponent<PopUp>().buildPopUp(capacity, Color.white, 10, false);
+        }
+        if (atCapacity && carryingCapacity != currentPassengers)
+        {
+            atCapacity = false;
+        }
     }
 
     public Vector3 PassengerPosition(int passengerNum)

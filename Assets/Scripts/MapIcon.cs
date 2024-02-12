@@ -13,15 +13,22 @@ public class MapIcon : MonoBehaviour
     public float wiggleAmount;
     public float wiggleSpeed;
 
+    public float transparentAmount;
+    public float transparentSpeed;
+
     public float scale = 1;
 
     public bool lockRotation = true;
 
+
     public Vector3 defaultScale;
+
+    SpriteRenderer spriteRenderer;
     // Start is called before the first frame update
     void Start()
     {
         defaultScale = transform.localScale;
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -37,5 +44,7 @@ public class MapIcon : MonoBehaviour
             transform.SetPositionAndRotation(new Vector3(transform.position.x, depth, transform.position.z), transform.rotation);
         }
         transform.localScale = new Vector3((defaultScale.x + pulseAmount + Mathf.Sin(Time.time * pulseSpeed) * pulseAmount) * scale, (defaultScale.y + pulseAmount + Mathf.Sin(Time.time * pulseSpeed) * pulseAmount) * scale, 0);
+
+        spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, 1-transparentAmount + Mathf.Sin(Time.time * transparentSpeed) * transparentAmount);
     }
 }
