@@ -8,6 +8,8 @@ public class CameraFollow : MonoBehaviour
     public Transform cameraFollow;
     public Vector3 cameraDistance;
     public Vector3 cameraOffset;
+    public Vector2 xBorders;
+    public Vector2 yBorders;
     void Start()
     {
         transform.SetPositionAndRotation(new Vector3(cameraFollow.position.x + cameraDistance.x, cameraFollow.position.y + cameraDistance.y, cameraFollow.position.z + cameraDistance.z), transform.rotation);
@@ -22,9 +24,9 @@ public class CameraFollow : MonoBehaviour
         float dist = Mathf.Sqrt(Mathf.Pow(cameraDistance.x, 2) + Mathf.Pow(cameraDistance.z, 2));
 
         transform.SetPositionAndRotation(new Vector3(
-Mathf.Clamp(cameraFollow.position.x + cameraDistance.x + cameraOffset.x,-35,35),
+Mathf.Clamp(cameraFollow.position.x + cameraDistance.x + cameraOffset.x,xBorders.x,xBorders.y),
 cameraFollow.position.y + cameraDistance.y + cameraOffset.y,
-Mathf.Clamp(cameraFollow.position.z + cameraDistance.z + cameraOffset.z,-55,15)), transform.rotation);
+Mathf.Clamp(cameraFollow.position.z + cameraDistance.z + cameraOffset.z,yBorders.x,yBorders.y)), transform.rotation);
         
     }
 }
