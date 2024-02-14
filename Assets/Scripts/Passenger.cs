@@ -105,6 +105,7 @@ public class Passenger : MonoBehaviour
         canTrigger = true;
         if (clump == null && GameModes.fragilePassengers) {
             Destroy(gameObject);
+            StaticGameManager.passengersOut -= 1;
         }
     }
 
@@ -151,6 +152,7 @@ public class Passenger : MonoBehaviour
                 GameObject popUp = Instantiate(pop, transform.position, Quaternion.Euler(-70,0,0));
                 popUp.GetComponent<PopUp>().buildPopUp(plusOne, GetComponent<MeshRenderer>().material.color, 3, true);
                 Destroy(gameObject);
+                StaticGameManager.passengersOut -= 1;
                 gameManager.UpdateScore(1);
 
             }
@@ -165,6 +167,7 @@ public class Passenger : MonoBehaviour
         if (!isInCar)
         {
             Destroy(gameObject);
+            StaticGameManager.passengersOut -= 1;
             gameManager.LifeDrain(-0.1111111111f);
         }
     }
