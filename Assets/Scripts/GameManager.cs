@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using static splashManager;
+
 public class GameManager : MonoBehaviour
 {
 
@@ -29,6 +31,8 @@ public class GameManager : MonoBehaviour
     public bool isGamePaused;
     public GameObject pauseScreen;
     public DustStorm dust;
+
+    bool oneMinute = false;
 
     // Start is called before the first frame update
     void Start()
@@ -67,6 +71,11 @@ public class GameManager : MonoBehaviour
         }
         GamePause();
         Score.score = score;
+
+        if (GameModes.useTime && time <= 60 && oneMinute == false) { 
+            oneMinute = true;
+            splashManager.splashes.Enqueue(new splashManager.splash(1, "One minute left!!!"));
+        }
     }
 
     public void UpdateScore(int scoreToAdd)

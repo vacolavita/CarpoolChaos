@@ -304,7 +304,7 @@ public class Movement : MonoBehaviour
     {
         if (hasFuel)
         {
-            Debug.Log("Emit Exhaust");
+            //Debug.Log("Emit Exhaust");
             exhaust.Play();
         }
     }
