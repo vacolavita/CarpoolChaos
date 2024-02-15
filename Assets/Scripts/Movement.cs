@@ -222,7 +222,7 @@ public class Movement : MonoBehaviour
 
     public Vector3 PassengerPosition(int passengerNum)
     {
-        return new Vector3(((passengerNum - 1) % 3 - 1) *0.5f,1,(Mathf.Floor((passengerNum - 1) / 3 - 1) * -0.5f)-0.5f);
+        return new Vector3(((passengerNum - 1) % 3 - 1) *0.5f,1.1f,(Mathf.Floor((passengerNum - 1) / 3 - 1) * -0.5f)-0.7f);
     }
 
     public void FuelDrain(float amount)

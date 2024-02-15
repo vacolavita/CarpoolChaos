@@ -31,10 +31,7 @@ public class Spawner : MonoBehaviour
     {
         TimeDecrease();
 
-        timeMultiplier = 1 + ((StaticGameManager.passengersOut-6)*0.1f);
-        if (StaticGameManager.passengersOut < 6) { 
-            timeMultiplier = 1;
-        }
+        timeMultiplier = 1 + ((StaticGameManager.passengersOut)*0.1f);
         if (StaticGameManager.passengersOut == 0)
         {
             timeMultiplier = 0.3f;
