@@ -63,6 +63,10 @@ public class Movement : MonoBehaviour
     public Material outOfGas;
     public Material capacity;
 
+    public GameObject marker;
+
+    public GameObject[] markers;
+
     bool atCapacity;
 
     // Start is called before the first frame update
@@ -70,7 +74,7 @@ public class Movement : MonoBehaviour
     {
         GetComponent<CapsuleCollider>().material.dynamicFriction = 0;
         GetComponent<CapsuleCollider>().material.staticFriction = 0;
-
+        markers = new GameObject[2];
 
         passengers = new GameObject[carryingCapacity];
         r = GetComponent<Rigidbody>();
@@ -431,14 +435,36 @@ public class Movement : MonoBehaviour
                 if (select == 0)
                 {
                     item1.color = Color.green;
+                    if (markers[0] == null)
+                    {
+                        markers[0] = Instantiate(marker);
+                        markers[0].transform.SetParent(transform);
+
+                    }
+                    markers[0].GetComponent<markerManager>().dest = new Vector3(50, 0, 0);
                 }
                 if (select == 1)
                 {
                     item1.color = new Color(1.00f, 0.5f, 0.4f);
+                    if (markers[0] == null)
+                    {
+                        markers[0] = Instantiate(marker);
+                        markers[0].transform.SetParent(transform);
+
+                    }
+                    markers[0].GetComponent<markerManager>().dest = new Vector3(-50, 0, -50);
+
                 }
                 if (select == 2)
                 {
                     item1.color = new Color(0.50f, 0.92f, 1.00f);
+                    if (markers[0] == null)
+                    {
+                        markers[0] = Instantiate(marker);
+                        markers[0].transform.SetParent(transform);
+
+                    }
+                    markers[0].GetComponent<markerManager>().dest = new Vector3(0, 0, 50);
                 }
             }
 
@@ -449,6 +475,9 @@ public class Movement : MonoBehaviour
             foreach (var item1 in GetComponentsInChildren<Light>())
             {
                 item1.color = new Color(1.00f, 0.89f, 0.28f);
+                if (markers[0] != null) {
+                    Destroy(markers[0]);
+                }
             }
         }
     }
