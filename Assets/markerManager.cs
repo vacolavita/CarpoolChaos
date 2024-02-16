@@ -33,8 +33,9 @@ public class markerManager : MonoBehaviour
 
         agent.enabled = true;
         NavMeshPath path = new NavMeshPath();
-        transform.localPosition = new Vector3(0, depth, 0);
+        transform.position = new Vector3(transform.position.x, 1, transform.position.z);
         agent.CalculatePath(dest, path);
+        transform.localPosition = new Vector3(0, depth, 0);
         agent.enabled = false;
         if (path.corners.Length > 1)
         {

@@ -463,7 +463,7 @@ public class Movement : MonoBehaviour
 
                     }
                     markers[0].GetComponent<markerManager>().dest = new Vector3(50, 0, 0);
-                    markers[0].GetComponent<markerManager>().color = Color.green;
+                    markers[0].GetComponent<markerManager>().color = new Color(0, 0.5f, 0);
                 }
                 if (select == 1)
                 {
