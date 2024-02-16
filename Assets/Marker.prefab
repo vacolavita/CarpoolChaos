@@ -145,7 +145,8 @@ MonoBehaviour:
   agent: {fileID: 0}
   car: {fileID: 0}
   dest: {x: 0, y: 0, z: 0}
-  car1: {fileID: 0}
+  color: {r: 1, g: 1, b: 1, a: 0}
+  pyramid: {fileID: 2550334486376518744}
 --- !u!1001 &3433416794112239881
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -235,6 +236,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 22741045e4be25946b9b8e98943af9a1, type: 3}
+--- !u!1 &2550334486376518744 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 22741045e4be25946b9b8e98943af9a1, type: 3}
+  m_PrefabInstance: {fileID: 3433416794112239881}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2895615683621998306 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 22741045e4be25946b9b8e98943af9a1, type: 3}

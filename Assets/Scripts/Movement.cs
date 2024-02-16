@@ -442,6 +442,7 @@ public class Movement : MonoBehaviour
 
                     }
                     markers[0].GetComponent<markerManager>().dest = new Vector3(50, 0, 0);
+                    markers[0].GetComponent<markerManager>().color = Color.green;
                 }
                 if (select == 1)
                 {
@@ -453,6 +454,7 @@ public class Movement : MonoBehaviour
 
                     }
                     markers[0].GetComponent<markerManager>().dest = new Vector3(-50, 0, -50);
+                    markers[0].GetComponent<markerManager>().color = Color.red;
 
                 }
                 if (select == 2)
@@ -462,9 +464,11 @@ public class Movement : MonoBehaviour
                     {
                         markers[0] = Instantiate(marker);
                         markers[0].transform.SetParent(transform);
+                        
 
                     }
                     markers[0].GetComponent<markerManager>().dest = new Vector3(0, 0, 50);
+                    markers[0].GetComponent<markerManager>().color = new Color(0.1f, 0.2f, 1);
                 }
             }
 
