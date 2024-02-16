@@ -63,6 +63,10 @@ public class Movement : MonoBehaviour
     public Material outOfGas;
     public Material capacity;
 
+    public GameObject marker;
+
+    public GameObject[] markers;
+
     bool atCapacity;
 
     // Start is called before the first frame update
@@ -70,7 +74,7 @@ public class Movement : MonoBehaviour
     {
         GetComponent<CapsuleCollider>().material.dynamicFriction = 0;
         GetComponent<CapsuleCollider>().material.staticFriction = 0;
-
+        markers = new GameObject[2];
 
         passengers = new GameObject[carryingCapacity];
         r = GetComponent<Rigidbody>();
@@ -207,6 +211,26 @@ public class Movement : MonoBehaviour
             }
         }
 
+        if (fuelLevel < 35)
+        {
+            if (markers[1] == null)
+            {
+                markers[1] = Instantiate(marker);
+                markers[1].transform.SetParent(transform);
+                markers[1].GetComponent<markerManager>().depth = 0.5f;
+
+            }
+
+            markers[1].GetComponent<markerManager>().dest = new Vector3(13.73f, 0, 16.06308f);
+            markers[1].GetComponent<markerManager>().color = new Color(0.7f, 0.2f, 0.1f);
+        }
+        else {
+            if (markers[1] != null)
+            {
+                Destroy(markers[1]);
+            }
+        }
+
         FuelGone();
         ///////////////////////////////////////////////////////////////
         if (!atCapacity && carryingCapacity == currentPassengers) { 
@@ -297,6 +321,7 @@ public class Movement : MonoBehaviour
         {
             curSpeed /= 1.05f;
             exhaust.Stop();
+
         }
     }
 
@@ -431,14 +456,40 @@ public class Movement : MonoBehaviour
                 if (select == 0)
                 {
                     item1.color = Color.green;
+                    if (markers[0] == null)
+                    {
+                        markers[0] = Instantiate(marker);
+                        markers[0].transform.SetParent(transform);
+
+                    }
+                    markers[0].GetComponent<markerManager>().dest = new Vector3(50, 0, 0);
+                    markers[0].GetComponent<markerManager>().color = Color.green;
                 }
                 if (select == 1)
                 {
                     item1.color = new Color(1.00f, 0.5f, 0.4f);
+                    if (markers[0] == null)
+                    {
+                        markers[0] = Instantiate(marker);
+                        markers[0].transform.SetParent(transform);
+
+                    }
+                    markers[0].GetComponent<markerManager>().dest = new Vector3(-50, 0, -50);
+                    markers[0].GetComponent<markerManager>().color = Color.red;
+
                 }
                 if (select == 2)
                 {
                     item1.color = new Color(0.50f, 0.92f, 1.00f);
+                    if (markers[0] == null)
+                    {
+                        markers[0] = Instantiate(marker);
+                        markers[0].transform.SetParent(transform);
+                        
+
+                    }
+                    markers[0].GetComponent<markerManager>().dest = new Vector3(0, 0, 50);
+                    markers[0].GetComponent<markerManager>().color = new Color(0.1f, 0.2f, 1);
                 }
             }
 
@@ -449,6 +500,9 @@ public class Movement : MonoBehaviour
             foreach (var item1 in GetComponentsInChildren<Light>())
             {
                 item1.color = new Color(1.00f, 0.89f, 0.28f);
+                if (markers[0] != null) {
+                    Destroy(markers[0]);
+                }
             }
         }
     }
