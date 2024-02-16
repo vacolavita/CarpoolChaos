@@ -16,6 +16,7 @@ public class markerManager : MonoBehaviour
     public Vector3 dest;
     public Color color;
     public GameObject pyramid;
+    public float depth = 0;
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -32,10 +33,9 @@ public class markerManager : MonoBehaviour
 
         agent.enabled = true;
         NavMeshPath path = new NavMeshPath();
-        transform.localPosition = new Vector3(0, 0, 0);
+        transform.localPosition = new Vector3(0, depth, 0);
         agent.CalculatePath(dest, path);
         agent.enabled = false;
-        Debug.Log(color);
         if (path.corners.Length > 1)
         {
             Vector3 nextPoint = new Vector3(path.corners.ElementAt(1).x, transform.position.y, path.corners.ElementAt(1).z);

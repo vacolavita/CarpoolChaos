@@ -211,6 +211,26 @@ public class Movement : MonoBehaviour
             }
         }
 
+        if (fuelLevel < 35)
+        {
+            if (markers[1] == null)
+            {
+                markers[1] = Instantiate(marker);
+                markers[1].transform.SetParent(transform);
+                markers[1].GetComponent<markerManager>().depth = 0.5f;
+
+            }
+
+            markers[1].GetComponent<markerManager>().dest = new Vector3(13.73f, 0, 16.06308f);
+            markers[1].GetComponent<markerManager>().color = new Color(0.7f, 0.2f, 0.1f);
+        }
+        else {
+            if (markers[1] != null)
+            {
+                Destroy(markers[1]);
+            }
+        }
+
         FuelGone();
         ///////////////////////////////////////////////////////////////
         if (!atCapacity && carryingCapacity == currentPassengers) { 
@@ -301,6 +321,7 @@ public class Movement : MonoBehaviour
         {
             curSpeed /= 1.05f;
             exhaust.Stop();
+
         }
     }
 
