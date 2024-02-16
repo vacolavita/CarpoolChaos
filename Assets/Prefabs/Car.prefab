@@ -309,8 +309,8 @@ GameObject:
   - component: {fileID: 1202845486503582370}
   - component: {fileID: 1553458610385992626}
   - component: {fileID: 4581285749138705671}
-  - component: {fileID: 4017152166891479000}
-  - component: {fileID: 7655118717380594997}
+  - component: {fileID: 2633632295365605843}
+  - component: {fileID: 8465736611159395898}
   m_Layer: 0
   m_Name: Car
   m_TagString: Car
@@ -404,13 +404,13 @@ MonoBehaviour:
   traction: 1.07
   acceleration: 1.05
   handling: 0.06
-  launchForce: 25
+  launchForce: 24
   carryingCapacity: 9
   fuelEfficiency: 0.25
   passengerPenalty: 0.02
   launchPenalty: 5
   jumpForce: 6
-  slipStream: {fileID: 4017152166891479000}
+  slipStream: {fileID: 2633632295365605843}
   exhaust: {fileID: 1921917175013145662}
   currentPassengers: 0
   isMoving: 0
@@ -428,7 +428,7 @@ MonoBehaviour:
   - {fileID: 1531684317481719074, guid: 83548550ab21f6949b49c0d052236435, type: 3}
   playernum: 0
   playerControl: {fileID: 0}
-  paint: {r: 0.8773585, g: 0.8258519, b: 0, a: 1}
+  paint: {r: 0.5377358, g: 0.07440364, b: 0.07440364, a: 1}
   passengers: []
   launchTrajectory: {x: 0, y: 0, z: 0}
   boostSpeed: 0
@@ -486,7 +486,7 @@ MonoBehaviour:
   m_DefaultActionMap: Player 1
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!198 &4017152166891479000
+--- !u!198 &2633632295365605843
 ParticleSystem:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5209,7 +5209,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
---- !u!199 &7655118717380594997
+--- !u!199 &8465736611159395898
 ParticleSystemRenderer:
   serializedVersion: 6
   m_ObjectHideFlags: 0

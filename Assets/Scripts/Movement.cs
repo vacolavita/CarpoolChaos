@@ -129,7 +129,7 @@ public class Movement : MonoBehaviour
 
         Vector2 c = controlDirection;
         GetComponentsInChildren<MeshRenderer>()[4].materials[0].color = paint;
-        //GetComponentsInChildren<SpriteRenderer>()[0].color = paint;
+        GetComponentsInChildren<SpriteRenderer>()[0].color = paint;
         Vector3 newDirection = Vector3.RotateTowards(transform.forward, new Vector3(c.x,0,c.y), handling, 0.0f);
         if (c.magnitude > 1)
         {
@@ -157,7 +157,7 @@ public class Movement : MonoBehaviour
         }
         else{
             curSpeed += c.magnitude * maxSpeed * (acceleration - 1) * (traction - 1);
-            //slipStream.Stop();
+            slipStream.Stop();
         }
 
         if (Score.gameOver)
@@ -222,7 +222,7 @@ public class Movement : MonoBehaviour
 
     public Vector3 PassengerPosition(int passengerNum)
     {
-        return new Vector3(((passengerNum - 1) % 3 - 1) *0.5f,1,(Mathf.Floor((passengerNum - 1) / 3 - 1) * 0.5f)-0.5f);
+        return new Vector3(((passengerNum - 1) % 3 - 1) *0.5f,1.1f,(Mathf.Floor((passengerNum - 1) / 3 - 1) * -0.5f)-0.7f);
     }
 
     public void FuelDrain(float amount)
@@ -304,7 +304,7 @@ public class Movement : MonoBehaviour
     {
         if (hasFuel)
         {
-            Debug.Log("Emit Exhaust");
+            //Debug.Log("Emit Exhaust");
             exhaust.Play();
         }
     }
