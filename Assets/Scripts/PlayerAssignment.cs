@@ -22,6 +22,7 @@ public class PlayerAssignment : MonoBehaviour
     {
         if (PlayerManagerManager.players[num] != null) {
             PlayerManagerManager.players[num].transform.SetParent(gameObject.transform);
+            
         }
     }
 }
