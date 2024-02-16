@@ -43,6 +43,7 @@ public class GameManager : MonoBehaviour
         scoreText.text = "Score: " + score;
         timerText.text = "Time: " + time;
         hasItem = false;
+        time = time + 1;
     }
 
     // Update is called once per frame
@@ -65,14 +66,14 @@ public class GameManager : MonoBehaviour
         }
 
 
-        if (GameModes.useTime && time <= 0 || GameModes.useLives && lives <= 0)
+        if (GameModes.useTime && time <= 1 || GameModes.useLives && lives <= 0)
         {
             EndGame();
         }
         GamePause();
         Score.score = score;
 
-        if (GameModes.useTime && time <= 60 && oneMinute == false) { 
+        if (GameModes.useTime && time <= 61 && oneMinute == false) { 
             oneMinute = true;
             splashManager.splashes.Enqueue(new splashManager.splash(1, "One minute left!!!"));
         }

@@ -42,7 +42,7 @@ public class Spawner : MonoBehaviour
         {
             timer -= spawnTimeAdjusted;
             spawnPoint = Random.Range(0, spawnPoints.Length);
-            splashManager.makeSplash(1, "New Passengers!");
+            splashManager.makeSplash(2, "New Passengers!");
             for (int j = passClump; j > 0; j--)
             {
                 spawnType = Random.Range(1, 4);

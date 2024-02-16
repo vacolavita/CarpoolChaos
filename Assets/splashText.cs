@@ -29,12 +29,23 @@ public class splashText : MonoBehaviour
             playing = true;
             timer = 0;
             tmp.SetText(splashManager.splashes.Peek().text);
+            style = splashManager.splashes.Peek().style;
             splashManager.splashes.Dequeue();
-            Debug.Log("Message");
 
         }
         timer += Time.deltaTime;
-        rTransform.localPosition = new Vector3(0, Mathf.Pow((timer-1)*7,3), 0);
+
+        if (style == 1)
+        {
+            tmp.fontSize = 100;
+            rTransform.localPosition = new Vector3(0, Mathf.Pow((timer - 1) * 7, 3), 0);
+        }
+        if (style == 2)
+        {
+            tmp.fontSize = 70;
+            rTransform.localPosition = new Vector3(Mathf.Pow((timer - 1) * 9, 3), 0, 0);
+        }
+
         if (timer > 2) {
             playing = false;
         }
