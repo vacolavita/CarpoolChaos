@@ -17,6 +17,8 @@ public class markerManager : MonoBehaviour
     public Color color;
     public GameObject pyramid;
     public float depth = 0;
+    public NavMeshPath path;
+    public LayerMask mask;
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -32,15 +34,46 @@ public class markerManager : MonoBehaviour
         pyramid.GetComponents<MeshRenderer>()[0].material.SetColor("_EmissionColor", color);
 
         agent.enabled = true;
-        NavMeshPath path = new NavMeshPath();
+        
         transform.position = new Vector3(transform.position.x, 1, transform.position.z);
-        agent.CalculatePath(dest, path);
+        if (agent.isOnNavMesh)
+        {
+            path = new NavMeshPath();
+            agent.CalculatePath(dest, path);
+        }
+
         transform.localPosition = new Vector3(0, depth, 0);
         agent.enabled = false;
+        
         if (path.corners.Length > 1)
         {
             Vector3 nextPoint = new Vector3(path.corners.ElementAt(1).x, transform.position.y, path.corners.ElementAt(1).z);
+            bool straightShot = true;
+            for (int i = 1; i < path.corners.Length; i++) {
+                if (!Physics.Linecast(transform.position, new Vector3(path.corners.ElementAt(i).x, transform.position.y, path.corners.ElementAt(i).z),mask))
+                {
+                    nextPoint = new Vector3(path.corners.ElementAt(i).x, transform.position.y, path.corners.ElementAt(i).z);
+                    Debug.DrawLine(transform.position, new Vector3(path.corners.ElementAt(i).x, transform.position.y, path.corners.ElementAt(i).z), Color.green);
+                }
+                else {
+                    Debug.DrawLine(transform.position, new Vector3(path.corners.ElementAt(i).x, transform.position.y, path.corners.ElementAt(i).z), Color.red);
+                    straightShot = false;
+                    break;
+                }
+               
+            }
+            if (straightShot)
+            {
+                pyramid.transform.localScale = new Vector3(0.1f,1.6f,1.2f);
+                pyramid.transform.localPosition = new Vector3(0, 0, 4);
+            }
+            else {
+                pyramid.transform.localScale = new Vector3(0.1f, 1.2f, 1.2f);
+                pyramid.transform.localPosition = new Vector3(0, 0, 3.5f);
+            }
+            
             transform.LookAt(nextPoint);
+
         }
 
     }
