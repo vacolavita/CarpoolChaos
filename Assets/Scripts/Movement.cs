@@ -211,7 +211,7 @@ public class Movement : MonoBehaviour
             }
         }
 
-        if (fuelLevel < 35)
+        if (fuelLevel < 30)
         {
             if (markers[1] == null)
             {
@@ -462,7 +462,7 @@ public class Movement : MonoBehaviour
                         markers[0].transform.SetParent(transform);
 
                     }
-                    markers[0].GetComponent<markerManager>().dest = new Vector3(50, 0, 0);
+                    markers[0].GetComponent<markerManager>().dest = new Vector3(45, 0, 0);
                     markers[0].GetComponent<markerManager>().color = new Color(0, 0.5f, 0);
                 }
                 if (select == 1)
@@ -474,7 +474,7 @@ public class Movement : MonoBehaviour
                         markers[0].transform.SetParent(transform);
 
                     }
-                    markers[0].GetComponent<markerManager>().dest = new Vector3(-50, 0, -50);
+                    markers[0].GetComponent<markerManager>().dest = new Vector3(-40, 0, -50);
                     markers[0].GetComponent<markerManager>().color = Color.red;
 
                 }
