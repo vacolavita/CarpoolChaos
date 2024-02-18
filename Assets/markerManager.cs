@@ -19,6 +19,7 @@ public class markerManager : MonoBehaviour
     public float depth = 0;
     public NavMeshPath path;
     public LayerMask mask;
+    float motion;
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -62,16 +63,14 @@ public class markerManager : MonoBehaviour
                 }
                
             }
-            if (straightShot)
-            {
-                pyramid.transform.localScale = new Vector3(0.1f,1.6f,1.2f);
-                pyramid.transform.localPosition = new Vector3(0, 0, 4);
-            }
-            else {
-                pyramid.transform.localScale = new Vector3(0.1f, 1.2f, 1.2f);
-                pyramid.transform.localPosition = new Vector3(0, 0, 3.5f);
-            }
+
             
+            motion += Time.deltaTime * 8;
+            if (straightShot) {
+                motion += Time.deltaTime * 4;
+            }
+
+            pyramid.transform.localPosition = new Vector3(0, 0, 4f + Mathf.Sin(motion)/2);
             transform.LookAt(nextPoint);
 
         }

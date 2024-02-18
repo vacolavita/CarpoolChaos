@@ -26,7 +26,6 @@ public class GameManager : MonoBehaviour
     public float fuelAmount2;
     public float lives = 3;
     public TextMeshProUGUI livesText;
-    public GameObject timer;
     public GameObject lifeMeter;
     public bool isGamePaused;
     public GameObject pauseScreen;
@@ -49,20 +48,16 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //fuel1Text.text = "Fuel: " + Mathf.Round(car1.fuelLevel);
-        //fuel2Text.text = "Fuel: " + Mathf.Round(car2.fuelLevel);
 
         if (GameModes.useTime)
         {
             Timer(1);
-            timer.SetActive(true);
             lifeMeter.SetActive(false);
         }
 
         if (GameModes.useLives)
         {
             lifeMeter.SetActive(true);
-            timer.SetActive(false);
         }
 
 
