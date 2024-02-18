@@ -6,15 +6,15 @@ public class Sun : MonoBehaviour
 {
     // Start is called before the first frame update
     public Gradient lightColor;
-    public Light light;
+    public Light lighting;
     void Start()
     {
-        light = GetComponent<Light>();
+        lighting = GetComponent<Light>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        light.color = lightColor.Evaluate(Time.time / 180);
+        lighting.color = lightColor.Evaluate(Time.time / 180);
     }
 }
