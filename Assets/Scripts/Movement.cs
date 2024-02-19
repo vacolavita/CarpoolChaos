@@ -73,6 +73,8 @@ public class Movement : MonoBehaviour
     {
         GetComponent<CapsuleCollider>().material.dynamicFriction = 0;
         GetComponent<CapsuleCollider>().material.staticFriction = 0;
+        GetComponent<MeshCollider>().material.dynamicFriction = 0;
+        GetComponent<MeshCollider>().material.staticFriction = 0;
         markers = new GameObject[2];
 
         passengers = new GameObject[carryingCapacity];
