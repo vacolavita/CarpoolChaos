@@ -9,19 +9,20 @@ public class Spawner : MonoBehaviour
     public float timer = 0;
     public float spawnTimeAdjusted;
     public GameObject pass;
-    public Vector3[] spawnPoints;
-    public GameObject[] spawnGroups;
     int spawnPoint = 1;
     int spawnType;
     public int passClump;
     public int passAmount;
-    private GameManager gameManager;
     public float despawnRate = 60;
     public float timeMultiplier = 1;
+    public stageManager stage;
+    public GameManager gameManager;
 
     void Start()
     {
+        stage = GameObject.Find("StageManager").GetComponent<stageManager>();
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+
         timer = spawnTime;
         spawnTimeAdjusted = spawnTime;
     }
@@ -31,17 +32,17 @@ public class Spawner : MonoBehaviour
     {
         TimeDecrease();
 
-        timeMultiplier = 1 + ((StaticGameManager.passengersOut)*0.1f);
+        timeMultiplier = 1 + ((StaticGameManager.passengersOut)*0.05f);
         if (StaticGameManager.passengersOut == 0)
         {
-            timeMultiplier = 0.3f;
+            timeMultiplier = 0.5f;
         }
 
         timer += Time.deltaTime / timeMultiplier;
         if (timer >= spawnTimeAdjusted)
         {
             timer -= spawnTimeAdjusted;
-            spawnPoint = Random.Range(0, spawnPoints.Length);
+            spawnPoint = Random.Range(0, stage.stops.Length);
             splashManager.makeSplash(2, "New Passengers!");
             for (int j = passClump; j > 0; j--)
             {
@@ -52,10 +53,10 @@ public class Spawner : MonoBehaviour
                     {
                         spawnType = Random.Range(1, 4);
                     }
-                    GameObject passenger = Instantiate(pass, spawnPoints[spawnPoint] + new Vector3(Random.Range(-2.0f, 2.0f), 0, Random.Range(-2.0f, 2.0f)), new Quaternion());
+                    GameObject passenger = Instantiate(pass, stage.stops[spawnPoint] + new Vector3(Random.Range(-2.0f, 2.0f), 0, Random.Range(-2.0f, 2.0f)), new Quaternion());
                     StaticGameManager.passengersOut += 1;
-                    //passenger.transform.position = spawnPoints[spawnPoint] + new Vector3(Random.Range(-2.0f, 2.0f), 0, Random.Range(-2.0f, 2.0f));
-                    passenger.GetComponent<Passenger>().clump = spawnGroups[spawnPoint].GetComponent<Clump>();
+                    passenger.GetComponent<Passenger>().clump = stage.clumps[spawnPoint].GetComponent<Clump>();
+                    passenger.GetComponent<Passenger>().clump.passengers++;
                     passenger.GetComponent<Passenger>().passengerType = spawnType;
                 }
                 spawnPoint = (spawnPoint + 1) % 3;
@@ -72,7 +73,6 @@ public class Spawner : MonoBehaviour
         else
         {
             spawnTimeAdjusted = spawnTime / (1 + (gameManager.score / 150.0f));
-            //Debug.Log("bleg");
         }
     }
 }

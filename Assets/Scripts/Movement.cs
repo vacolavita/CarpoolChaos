@@ -4,9 +4,6 @@ using UnityEngine;
 using UnityEngine.Experimental.GlobalIllumination;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
-using UnityEngine.WSA;
-using static System.Net.Mime.MediaTypeNames;
-using static UnityEditor.Progress;
 
 public class Movement : MonoBehaviour
 {
@@ -69,6 +66,9 @@ public class Movement : MonoBehaviour
     bool atCapacity;
 
     public bool DebugAI;
+    bool DebugFueling;
+
+    stageManager stage;
 
     // Start is called before the first frame update
     void Start()
@@ -77,7 +77,8 @@ public class Movement : MonoBehaviour
         GetComponent<CapsuleCollider>().material.staticFriction = 0;
         GetComponent<MeshCollider>().material.dynamicFriction = 0;
         GetComponent<MeshCollider>().material.staticFriction = 0;
-        markers = new GameObject[2];
+        markers = new GameObject[3];
+        stage = GameObject.Find("StageManager").GetComponent<stageManager>();
 
         passengers = new GameObject[carryingCapacity];
         r = GetComponent<Rigidbody>();
@@ -110,6 +111,8 @@ public class Movement : MonoBehaviour
             PlayerManagerManager.players = new GameObject[2];
 
         }
+        GetComponentsInChildren<MeshRenderer>()[4].materials[0].color = paint;
+        GetComponentsInChildren<SpriteRenderer>()[0].color = paint;
 
     }
     
@@ -134,23 +137,49 @@ public class Movement : MonoBehaviour
         
         PlayerManagerManager.players[playernum] = gameObject;
 
+        if ((stage.clumps[0].GetComponent<Clump>().passengers > 0 || stage.clumps[1].GetComponent<Clump>().passengers > 0 || stage.clumps[2].GetComponent<Clump>().passengers > 0) && currentPassengers == 0)
+        {
+            if (markers[2] == null)
+            {
+                markers[2] = Instantiate(marker);
+                markers[2].transform.SetParent(transform);
+                markers[2].GetComponent<markerManager>().depth = 0.25f;
+
+            }
+
+            markers[2].GetComponent<markerManager>().dest[0] = stage.stops[0];
+            markers[2].GetComponent<markerManager>().dest[1] = stage.stops[1];
+            markers[2].GetComponent<markerManager>().dest[2] = stage.stops[2];
+            markers[2].GetComponent<markerManager>().color = new Color(0.4f, 0.4f, 0.0f);
+            markers[2].GetComponent<markerManager>().numDests = 3;
+            markers[2].GetComponent<markerManager>().pointStops = true;
+        }
+        else {
+            if (markers[2] != null)
+            {
+                Destroy(markers[2]);
+            }
+        }
+
         if (DebugAI) {
             bool nav = false;
             foreach (var item1 in markers)
             {
-                if (item1 != null) {
+                if (item1 != null && !nav) {
                     controlDirection = new Vector2(item1.transform.forward.x, item1.transform.forward.z);
+                    controlDirection.Normalize();
                     nav = true;
                 }
             }
             if (nav == false){
                 controlDirection = Vector2.zero;
             }
+            if (DebugFueling) {
+                controlDirection = Vector2.zero;
+            }
         }
 
         Vector2 c = controlDirection;
-        GetComponentsInChildren<MeshRenderer>()[4].materials[0].color = paint;
-        GetComponentsInChildren<SpriteRenderer>()[0].color = paint;
         Vector3 newDirection = Vector3.RotateTowards(transform.forward, new Vector3(c.x,0,c.y), handling, 0.0f);
         if (c.magnitude > 1)
         {
@@ -238,8 +267,10 @@ public class Movement : MonoBehaviour
 
             }
 
-            markers[1].GetComponent<markerManager>().dest = new Vector3(13.73f, 0, 16.06308f);
+            markers[1].GetComponent<markerManager>().dest[0] = stage.fuel;
             markers[1].GetComponent<markerManager>().color = new Color(0.7f, 0.2f, 0.1f);
+            markers[1].GetComponent<markerManager>().numDests = 1;
+            markers[1].GetComponent<markerManager>().pointStops = false;
         }
         else {
             if (markers[1] != null)
@@ -422,20 +453,24 @@ public class Movement : MonoBehaviour
     {
         if (item == 1) 
         {
-            GameObject gas = Instantiate(items[0], transform.position + new Vector3(0,1,0), transform.rotation);
+            GameObject gas = Instantiate(items[0], transform.position + new Vector3(0,2,0), transform.rotation);
             gas.GetComponent<Rigidbody>().velocity = launchTrajectory;
+            splashManager.makeSplash(2, "Gas Can!");
         }
         if (item == 2)
         {
-            Instantiate(items[1], transform.position, transform.rotation);
+            Instantiate(items[1], transform.position + new Vector3(0, -0.92f, 0), transform.rotation);
+            splashManager.makeSplash(2, "Boost Pad!");
         }
         if (item == 3)
         {
             Instantiate(items[2], transform.position + new Vector3(0, -1f, 0), transform.rotation);
+            splashManager.makeSplash(2, "Tent!");
         }
         if (item == 4)
         {
             Instantiate(items[3], transform.position + new Vector3(0, -0.92f, 0), transform.rotation);
+            splashManager.makeSplash(2, "Jump Pad!");
         }
 
         item = 0;
@@ -479,8 +514,10 @@ public class Movement : MonoBehaviour
                         markers[0].transform.SetParent(transform);
 
                     }
-                    markers[0].GetComponent<markerManager>().dest = new Vector3(48, 0, 0);
-                    markers[0].GetComponent<markerManager>().color = new Color(0, 0.5f, 0);
+                    markers[0].GetComponent<markerManager>().dest[0] = stage.dests[0];
+                    markers[0].GetComponent<markerManager>().color = new Color(0, 0.4f, 0);
+                    markers[0].GetComponent<markerManager>().numDests = 1;
+                    markers[0].GetComponent<markerManager>().pointStops = false;
                 }
                 if (select == 1)
                 {
@@ -491,8 +528,10 @@ public class Movement : MonoBehaviour
                         markers[0].transform.SetParent(transform);
 
                     }
-                    markers[0].GetComponent<markerManager>().dest = new Vector3(-40, 0, -50);
+                    markers[0].GetComponent<markerManager>().dest[0] = stage.dests[1];
                     markers[0].GetComponent<markerManager>().color = Color.red;
+                    markers[0].GetComponent<markerManager>().numDests = 1;
+                    markers[0].GetComponent<markerManager>().pointStops = false;
 
                 }
                 if (select == 2)
@@ -505,8 +544,10 @@ public class Movement : MonoBehaviour
                         
 
                     }
-                    markers[0].GetComponent<markerManager>().dest = new Vector3(0, 0, 50);
+                    markers[0].GetComponent<markerManager>().dest[0] = stage.dests[2];
                     markers[0].GetComponent<markerManager>().color = new Color(0.1f, 0.2f, 1);
+                    markers[0].GetComponent<markerManager>().numDests = 1;
+                    markers[0].GetComponent<markerManager>().pointStops = false;
                 }
             }
 
@@ -530,6 +571,14 @@ public class Movement : MonoBehaviour
         {
             fuelLevel = Mathf.Min(fuelLevel + Time.deltaTime * 25, maxFuel);
             SetFuel(fuelLevel);
+            DebugFueling = true;
+            if (fuelLevel >= maxFuel*0.95f)
+            {
+                DebugFueling = false;
+            }
+        }
+        else {
+            DebugFueling = false;
         }
     }
 }

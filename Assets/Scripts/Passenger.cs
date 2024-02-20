@@ -119,6 +119,11 @@ public class Passenger : MonoBehaviour
                 {
                     parentMove.passengers[i] = gameObject;
                     passengerNum = i+1;
+                    if (clump != null)
+                    {
+                        clump.passengers--;
+                        clump = null;
+                    }
                     break;
                 }
             }

@@ -32,7 +32,14 @@ public class splashText : MonoBehaviour
             splashManager.splashes.Dequeue();
 
         }
-        timer += Time.deltaTime;
+        timer += Time.deltaTime * 1.1f;
+        if (splashManager.splashes.Count > 0) {
+            timer += Time.deltaTime * 0.5f * splashManager.splashes.Count;
+        }
+        if (splashManager.splashes.Count > 4)
+        {
+            timer += Time.deltaTime * 0.2f * splashManager.splashes.Count;
+        }
 
         if (style == 1)
         {
@@ -41,7 +48,7 @@ public class splashText : MonoBehaviour
         }
         if (style == 2)
         {
-            tmp.fontSize = 70;
+            tmp.fontSize = 60;
             rTransform.localPosition = new Vector3(Mathf.Pow((timer - 1) * 9, 3), 0, 0);
         }
 
