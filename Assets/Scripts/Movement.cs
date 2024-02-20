@@ -57,7 +57,7 @@ public class Movement : MonoBehaviour
     public GameObject[] passengers;
     public Vector3 launchTrajectory;
     private GameManager gameManager;
-    public float boostSpeed;
+    float boostSpeed;
     public GameObject popUp;
     public Material outOfGas;
     public Material capacity;
@@ -67,6 +67,8 @@ public class Movement : MonoBehaviour
     public GameObject[] markers;
 
     bool atCapacity;
+
+    public bool DebugAI;
 
     // Start is called before the first frame update
     void Start()
@@ -131,6 +133,20 @@ public class Movement : MonoBehaviour
     {
         
         PlayerManagerManager.players[playernum] = gameObject;
+
+        if (DebugAI) {
+            bool nav = false;
+            foreach (var item1 in markers)
+            {
+                if (item1 != null) {
+                    controlDirection = new Vector2(item1.transform.forward.x, item1.transform.forward.z);
+                    nav = true;
+                }
+            }
+            if (nav == false){
+                controlDirection = Vector2.zero;
+            }
+        }
 
         Vector2 c = controlDirection;
         GetComponentsInChildren<MeshRenderer>()[4].materials[0].color = paint;
