@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour
     public DustStorm dust;
 
     bool oneMinute = false;
+    public bool rush = false;
 
     // Start is called before the first frame update
     void Start()
@@ -42,6 +43,7 @@ public class GameManager : MonoBehaviour
         scoreText.text = "Score: " + score;
         timerText.text = "Time: " + time;
         hasItem = false;
+
         time = time + 1;
     }
 
@@ -71,6 +73,11 @@ public class GameManager : MonoBehaviour
         if (GameModes.useTime && time <= 61 && oneMinute == false) { 
             oneMinute = true;
             splashManager.splashes.Enqueue(new splashManager.splash(1, "One minute left!!!"));
+        }
+        if (GameModes.useTime && time <= 91 && rush == false)
+        {
+            rush = true;
+            splashManager.splashes.Enqueue(new splashManager.splash(1, "Rush!!!"));
         }
     }
 

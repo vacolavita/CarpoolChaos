@@ -17,6 +17,7 @@ public class Spawner : MonoBehaviour
     public float timeMultiplier = 1;
     public stageManager stage;
     public GameManager gameManager;
+    public bool rush = false;
 
     void Start()
     {
@@ -47,7 +48,7 @@ public class Spawner : MonoBehaviour
             for (int j = passClump; j > 0; j--)
             {
                 spawnType = Random.Range(1, 4);
-                for (int i = passAmount; i > 0; i--)
+                for (int i = passAmount - (passClump-j); i > 0; i--)
                 {
                     if (GameModes.mixUp)
                     {
@@ -61,6 +62,11 @@ public class Spawner : MonoBehaviour
                 }
                 spawnPoint = (spawnPoint + 1) % 3;
             }
+        }
+        if (gameManager.rush && !rush) {
+            rush = true;
+            spawnTime--;
+            passClump++;
         }
     }
 
