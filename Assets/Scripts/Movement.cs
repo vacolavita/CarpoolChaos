@@ -113,7 +113,7 @@ public class Movement : MonoBehaviour
         }
         GetComponentsInChildren<MeshRenderer>()[4].materials[0].color = paint;
         GetComponentsInChildren<SpriteRenderer>()[0].color = paint;
-
+        
     }
     
     public void OnMove(InputValue value) {
@@ -214,7 +214,7 @@ public class Movement : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        transform.rotation = Quaternion.LookRotation(newDirection);
+        r.MoveRotation(Quaternion.LookRotation(newDirection));
         curSpeed /= acceleration;
 
         r.velocity += transform.forward * curSpeed;

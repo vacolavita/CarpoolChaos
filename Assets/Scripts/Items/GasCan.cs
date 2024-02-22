@@ -38,6 +38,10 @@ public class GasCan : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         canTrigger = true;
+        if (collision.gameObject.CompareTag("Car")) {
+            collision.gameObject.GetComponent<Movement>().GasCanFill();
+            Destroy(gameObject);
+        }
     }
 
     IEnumerator GasCanDelete()
