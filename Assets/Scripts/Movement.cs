@@ -137,8 +137,16 @@ public class Movement : MonoBehaviour
 
     // Update is called once per frame
 
+    private void Update()
+    {
+        if (Score.gameOver)
+        {
+            Destroy(gameObject);
+        }
+    }
     void FixedUpdate()
     {
+        
         //carMesh.transform.localScale = Vector3.one*Time.time;
         //carMesh.Rotate(0,0,10);
         onGround += 2;
@@ -217,11 +225,6 @@ public class Movement : MonoBehaviour
         else{
             curSpeed += c.magnitude * maxSpeed * (acceleration - 1) * (traction - 1);
             slipStream.Stop();
-        }
-
-        if (Score.gameOver)
-        {
-            Destroy(gameObject);
         }
 
         //lean += (transform.forward - newDirection).magnitude * r.velocity.magnitude * 4;

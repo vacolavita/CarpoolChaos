@@ -309,7 +309,6 @@ GameObject:
   - component: {fileID: 1202845486503582370}
   - component: {fileID: 28060713266988252}
   - component: {fileID: 1553458610385992626}
-  - component: {fileID: 4581285749138705671}
   - component: {fileID: 2633632295365605843}
   - component: {fileID: 8465736611159395898}
   m_Layer: 0
@@ -419,14 +418,14 @@ MonoBehaviour:
   fuelLevel: 100
   maxFuel: 100
   fuelMeter: {fileID: 0}
-  carMesh: {fileID: 0}
+  carMesh: {fileID: 6408767385320038459}
   select: 0
   item: 0
   controlDirection: {x: 0, y: 0}
   items:
   - {fileID: 5224620715955481171, guid: b865040358d84684587015af45ced553, type: 3}
   - {fileID: 229548168784626748, guid: f111fed054803524b9004700cbdfedbc, type: 3}
-  - {fileID: 6999645714063828644, guid: b95b47aacddfcb24d82d3d24fd97558f, type: 3}
+  - {fileID: 8925266318660606246, guid: b95b47aacddfcb24d82d3d24fd97558f, type: 3}
   - {fileID: 1531684317481719074, guid: 83548550ab21f6949b49c0d052236435, type: 3}
   playernum: 0
   playerControl: {fileID: 0}
@@ -482,36 +481,6 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 4.2
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4581285749138705671
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7121863207185843292}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 1cf11ac5e5cc2ba44948b0a1edbd815b, type: 3}
-  m_NotificationBehavior: 0
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: Player 1
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
 --- !u!198 &2633632295365605843
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -10154,15 +10123,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 7d9d659e0485e714d97b322a85a35396, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.02
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7d9d659e0485e714d97b322a85a35396, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.02
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7d9d659e0485e714d97b322a85a35396, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.02
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7d9d659e0485e714d97b322a85a35396, type: 3}
       propertyPath: m_LocalPosition.x
