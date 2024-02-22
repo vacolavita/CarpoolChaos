@@ -17,29 +17,32 @@ public class TimeManager : MonoBehaviour
     public void HandleInputData(int val)
     {
         DontDestroyOnLoad(gameObject);
-        if (val == 0)
+        if (GameModes.useTime)
         {
-            GameModes.time = 60;
-        }
+            if (val == 0)
+            {
+                GameModes.time = 60;
+            }
 
-        if (val == 1)
-        {
-            GameModes.time = 180;
-        }
+            if (val == 1)
+            {
+                GameModes.time = 180;
+            }
 
-        if (val == 2)
-        {
-            GameModes.time = 300;
-        }
+            if (val == 2)
+            {
+                GameModes.time = 300;
+            }
 
-        if (val == 3)
-        {
-            GameModes.time = 480;
-        }
+            if (val == 3)
+            {
+                GameModes.time = 480;
+            }
 
-        if (val == 4)
-        {
-            GameModes.time = 600;
+            if (val == 4)
+            {
+                GameModes.time = 600;
+            }
         }
     }
 

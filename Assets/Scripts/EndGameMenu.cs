@@ -7,6 +7,7 @@ using UnityEngine.Events;
 public class EndGameMenu : MonoBehaviour
 {
     private Dropdown dropDown;
+    public GameObject timerSet;
     // Start is called before the first frame update
     private void Start()
     {
@@ -22,12 +23,16 @@ public class EndGameMenu : MonoBehaviour
         {
             GameModes.useTime = true;
             GameModes.useLives = false;
+            timerSet.SetActive(true);
+            Debug.Log("Use the timer");
         }
 
         if (val == 1)
         {
             GameModes.useTime = false;
             GameModes.useLives = true;
+            timerSet.SetActive(false);
+            Debug.Log("Use your lives");
         }
     }
 
