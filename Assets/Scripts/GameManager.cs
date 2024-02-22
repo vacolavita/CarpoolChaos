@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviour
         score = 0;
         livesText.text = "Lives: " + Mathf.Round(lives);
         scoreText.text = "Score: " + score;
-        timerText.text = "Time: " + time;
+        timerText.text = "Time: " + GameModes.time;
         hasItem = false;
 
         time = time + 1;
@@ -89,10 +89,10 @@ public class GameManager : MonoBehaviour
 
     public void Timer(float timeLeft)
     {
-        time -= timeLeft * Time.deltaTime;
+        GameModes.time -= timeLeft * Time.deltaTime;
 
-        float minutes = Mathf.FloorToInt(time / 60F);
-        float seconds = Mathf.FloorToInt(time - minutes * 60);
+        float minutes = Mathf.FloorToInt(GameModes.time / 60F);
+        float seconds = Mathf.FloorToInt(GameModes.time - minutes * 60);
         timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
 
     }
