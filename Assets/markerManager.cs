@@ -76,18 +76,18 @@ public class markerManager : MonoBehaviour
 
         if (path.corners.Length > 1)
         {
-            Vector3 nextPoint = new Vector3(path.corners.ElementAt(1).x, transform.position.y, path.corners.ElementAt(1).z);
+            Vector3 nextPoint = new Vector3(path.corners.ElementAt(1).x, transform.parent.transform.position.y, path.corners.ElementAt(1).z);
             bool straightShot = true;
             for (int i = 1; i < path.corners.Length; i++)
             {
-                if (!Physics.Linecast(transform.position, new Vector3(path.corners.ElementAt(i).x, transform.position.y, path.corners.ElementAt(i).z), mask))
+                if (!Physics.Linecast(transform.position, new Vector3(path.corners.ElementAt(i).x, transform.parent.transform.position.y, path.corners.ElementAt(i).z), mask))
                 {
-                    nextPoint = new Vector3(path.corners.ElementAt(i).x, transform.position.y, path.corners.ElementAt(i).z);
-                    Debug.DrawLine(transform.position, new Vector3(path.corners.ElementAt(i).x, transform.position.y, path.corners.ElementAt(i).z), Color.green);
+                    nextPoint = new Vector3(path.corners.ElementAt(i).x, transform.parent.transform.position.y, path.corners.ElementAt(i).z);
+                    Debug.DrawLine(transform.position, new Vector3(path.corners.ElementAt(i).x, transform.parent.transform.position.y, path.corners.ElementAt(i).z), Color.green);
                 }
                 else
                 {
-                    Debug.DrawLine(transform.position, new Vector3(path.corners.ElementAt(i).x, transform.position.y, path.corners.ElementAt(i).z), Color.red);
+                    Debug.DrawLine(transform.position, new Vector3(path.corners.ElementAt(i).x, transform.parent.transform.position.y, path.corners.ElementAt(i).z), Color.red);
                     straightShot = false;
                     break;
                 }
