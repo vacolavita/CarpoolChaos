@@ -48,16 +48,19 @@ public class Passenger : MonoBehaviour
             }
 
             mapSprite.enabled = true;
-            if (isInCar)
+        if (isInCar)
+        {
+            mapSprite.enabled = false;
+            transform.SetLocalPositionAndRotation(parentMove.PassengerPosition(passengerNum), new Quaternion());
+            if (parentMove.select == passengerType - 1)
             {
-                mapSprite.enabled = false;
-                transform.SetLocalPositionAndRotation(parentMove.PassengerPosition(passengerNum), new Quaternion());
-                if (parentMove.select == passengerType - 1)
-                {
-                    transform.localPosition = transform.localPosition + new Vector3(0, 0.3f, 0);
-                }
-                canTrigger = false;
+                transform.localPosition = transform.localPosition + new Vector3(0, 0.3f * (1 / transform.parent.localScale.x), 0);
             }
+            canTrigger = false;
+        }
+        else {
+            transform.rotation = Quaternion.Euler(0,transform.rotation.y,0);
+        }
             if (parentMove != null)
             {
                 if (Vector3.Distance(parentMove.transform.position, transform.position) > 4)
@@ -111,8 +114,8 @@ public class Passenger : MonoBehaviour
 
     private void joinCar(Collider other) {
         if (other.GetComponent<Movement>().carryingCapacity > other.GetComponent<Movement>().currentPassengers) {
-            transform.SetParent(other.gameObject.transform);
-            parentMove = transform.parent.GetComponent<Movement>();
+            transform.SetParent(other.gameObject.GetComponent<Movement>().carMesh);
+            parentMove = other.gameObject.GetComponent<Movement>();
             for (int i = 0; i < parentMove.carryingCapacity; i++)
             {
                 if (parentMove.passengers[i] == null)

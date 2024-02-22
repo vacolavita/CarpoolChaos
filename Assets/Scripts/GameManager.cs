@@ -18,7 +18,6 @@ public class GameManager : MonoBehaviour
     
    
     
-    public float time;
     public TextMeshProUGUI timerText;
     public Slider fuelMeter1;
     public Slider fuelMeter2;
@@ -44,7 +43,7 @@ public class GameManager : MonoBehaviour
         timerText.text = "Time: " + GameModes.time;
         hasItem = false;
 
-        time = time + 1;
+        GameModes.time = GameModes.time + 1;
     }
 
     // Update is called once per frame
@@ -63,18 +62,18 @@ public class GameManager : MonoBehaviour
         }
 
 
-        if (GameModes.useTime && time <= 1 || GameModes.useLives && lives <= 0)
+        if (GameModes.useTime && GameModes.time <= 1 || GameModes.useLives && lives <= 0)
         {
             EndGame();
         }
         GamePause();
         Score.score = score;
 
-        if (GameModes.useTime && time <= 61 && oneMinute == false) { 
+        if (GameModes.useTime && GameModes.time <= 61 && oneMinute == false) { 
             oneMinute = true;
             splashManager.splashes.Enqueue(new splashManager.splash(1, "One minute left!!!"));
         }
-        if (GameModes.useTime && time <= 91 && rush == false)
+        if (GameModes.useTime && GameModes.time <= 91 && rush == false)
         {
             rush = true;
             splashManager.splashes.Enqueue(new splashManager.splash(1, "Rush!!!"));

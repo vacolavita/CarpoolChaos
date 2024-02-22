@@ -22,7 +22,7 @@ public static class GameModes
     public static bool bigCars = false;
     public static bool lobber = false;
 
-    public static float time;
+    public static float time = 180;
     
     //public static bool breakdown = false //This makes the zero fuel speed penalty far harsher
 

@@ -31,6 +31,7 @@ public class Movement : MonoBehaviour
     public float maxFuel;
     private float gasToAdd;
     public Slider fuelMeter;
+    public Transform carMesh;
 
     Rigidbody r;
     float curSpeed;
@@ -68,7 +69,11 @@ public class Movement : MonoBehaviour
     public bool DebugAI;
     bool DebugFueling;
 
+    //float lean = 0;
+
     stageManager stage;
+
+    float onGround;
 
     // Start is called before the first frame update
     void Start()
@@ -111,7 +116,7 @@ public class Movement : MonoBehaviour
             PlayerManagerManager.players = new GameObject[2];
 
         }
-        GetComponentsInChildren<MeshRenderer>()[4].materials[0].color = paint;
+        GetComponentsInChildren<MeshRenderer>()[0].materials[0].color = paint;
         GetComponentsInChildren<SpriteRenderer>()[0].color = paint;
         
     }
@@ -134,7 +139,11 @@ public class Movement : MonoBehaviour
 
     void FixedUpdate()
     {
-        
+        //carMesh.transform.localScale = Vector3.one*Time.time;
+        //carMesh.Rotate(0,0,10);
+        onGround += 2;
+        onGround = Mathf.Clamp(onGround,0, 20);
+        carMesh.localRotation = Quaternion.Euler(-onGround, 0, 0);
         PlayerManagerManager.players[playernum] = gameObject;
 
         if ((stage.clumps[0].GetComponent<Clump>().passengers > 0 || stage.clumps[1].GetComponent<Clump>().passengers > 0 || stage.clumps[2].GetComponent<Clump>().passengers > 0) && currentPassengers == 0)
@@ -214,6 +223,11 @@ public class Movement : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        //lean += (transform.forward - newDirection).magnitude * r.velocity.magnitude * 4;
+        //lean = Mathf.Clamp(lean, -20, 20);
+        //carMesh.localRotation = Quaternion.Euler(0,0,lean);
+        //Debug.Log(name + " " + lean);
         r.MoveRotation(Quaternion.LookRotation(newDirection));
         curSpeed /= acceleration;
 
@@ -294,7 +308,7 @@ public class Movement : MonoBehaviour
 
     public Vector3 PassengerPosition(int passengerNum)
     {
-        return new Vector3(((passengerNum - 1) % 3 - 1) *0.5f,1.1f,(Mathf.Floor((passengerNum - 1) / 3 - 1) * -0.5f)-0.7f);
+        return new Vector3(((passengerNum - 1) % 3 - 1) *0.5f,2.1f,(Mathf.Floor((passengerNum - 1) / 3 - 1) * -0.5f)-0.7f) * (1/carMesh.localScale.x);
     }
 
     public void FuelDrain(float amount)
@@ -580,6 +594,11 @@ public class Movement : MonoBehaviour
         else {
             DebugFueling = false;
         }
+    }
+
+    public void OnCollisionStay(Collision collision)
+    {
+        onGround -= 4*Time.deltaTime*60;
     }
 }
         
