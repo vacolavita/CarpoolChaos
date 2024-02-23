@@ -18,6 +18,12 @@ public class Passenger : MonoBehaviour
 
     public GameObject pop;
     public Material plusOne;
+
+    public int state;
+    public float turning;
+    public float turnTimer;
+
+    Rigidbody r;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +31,7 @@ public class Passenger : MonoBehaviour
         mesh = GetComponentsInChildren<MeshRenderer>();
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
         spawn = GameObject.Find("Spawner").GetComponent<Spawner>();
+        r = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -59,7 +66,7 @@ public class Passenger : MonoBehaviour
             canTrigger = false;
         }
         else {
-            transform.rotation = Quaternion.Euler(0,transform.rotation.y,0);
+            //transform.rotation = Quaternion.Euler(0,transform.rotation.y,0);
         }
             if (parentMove != null)
             {
@@ -111,9 +118,28 @@ public class Passenger : MonoBehaviour
         }
     }
 
+    private void FixedUpdate()
+    {
+        if (state == 0) {
+            turning = 0;
+            turnTimer = 0;
+        }
+        if (state == 1) {
+            if (turning == 0 || turnTimer <= 0) {
+                float sign = Mathf.Sign(turning);
+                turning = Random.Range(25f, 50f) * sign * -1;
+                turnTimer = Random.Range(20, 100);
+            }
+            turnTimer--;
+            r.angularVelocity = new Vector3(0, turning, 0);
+            r.velocity = transform.forward * 15;
+        }
+    }
+
 
     private void joinCar(Collider other) {
         if (other.GetComponent<Movement>().carryingCapacity > other.GetComponent<Movement>().currentPassengers) {
+            state = 0;
             transform.SetParent(other.gameObject.GetComponent<Movement>().carMesh);
             parentMove = other.gameObject.GetComponent<Movement>();
             for (int i = 0; i < parentMove.carryingCapacity; i++)
