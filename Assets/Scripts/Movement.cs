@@ -146,7 +146,11 @@ public class Movement : MonoBehaviour
     }
     void FixedUpdate()
     {
-        
+        if (Score.gameOver)
+        {
+            Destroy(gameObject);
+        }
+
         //carMesh.transform.localScale = Vector3.one*Time.time;
         //carMesh.Rotate(0,0,10);
         onGround += 2;
