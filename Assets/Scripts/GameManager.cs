@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviour
     public ParticleSystem fire;
 
     public float check;
-    public GameObject waterBucket;
+    //public GameObject waterBucket;
     public Vector3[] spawnPoints;
     int spawn;
 
@@ -164,8 +164,8 @@ public class GameManager : MonoBehaviour
         {
             spawn = Random.Range(0, spawnPoints.Length);
             StopCoroutine(Fire());
-            Instantiate(waterBucket);
-            waterBucket.transform.position = spawnPoints[spawn] + new Vector3(0, 1, 0);
+            //Instantiate(waterBucket);
+            //waterBucket.transform.position = spawnPoints[spawn] + new Vector3(0, 1, 0);
             fire.Play();
         }
     }

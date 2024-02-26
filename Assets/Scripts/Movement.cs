@@ -69,6 +69,8 @@ public class Movement : MonoBehaviour
     public bool DebugAI;
     bool DebugFueling;
 
+    int spinOut = 0;
+
     //float lean = 0;
 
     stageManager stage;
@@ -87,6 +89,7 @@ public class Movement : MonoBehaviour
 
         passengers = new GameObject[carryingCapacity];
         r = GetComponent<Rigidbody>();
+        r.maxAngularVelocity = 50;
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
         SetMaxFuel(maxFuel);
         if (GameModes.turbo) {
@@ -214,6 +217,19 @@ public class Movement : MonoBehaviour
         {
             launchTrajectory = new Vector3(0, 4, 0) + transform.forward * (launchForce + (r.velocity.magnitude * 0.3f));
         }
+        
+        if (spinOut > 0) { 
+            c = new Vector3(0, 0, 0);
+            curSpeed = 0;
+            spinOut--;
+            r.angularVelocity = Vector3.zero;
+            r.AddTorque(new Vector3(0,10,0), ForceMode.VelocityChange);
+            Debug.Log(r.angularVelocity);
+        }
+        else
+        {
+            r.angularVelocity = Vector3.zero;
+        }
 
         if (Vector2.Angle(new Vector2(r.velocity.x, r.velocity.z), c) > 90) //If the angle you're trying to move at is more than 90 degrees away from the direction you're facing, you'll slow down for a sharper turn
         {
@@ -235,7 +251,10 @@ public class Movement : MonoBehaviour
         //lean = Mathf.Clamp(lean, -20, 20);
         //carMesh.localRotation = Quaternion.Euler(0,0,lean);
         //Debug.Log(name + " " + lean);
-        r.MoveRotation(Quaternion.LookRotation(newDirection));
+        if (spinOut <= 0) {
+            r.MoveRotation(Quaternion.LookRotation(newDirection));
+        }
+
         curSpeed /= acceleration;
 
         r.velocity += transform.forward * curSpeed;
@@ -313,6 +332,24 @@ public class Movement : MonoBehaviour
         }
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     public Vector3 PassengerPosition(int passengerNum)
     {
         return new Vector3(((passengerNum - 1) % 3 - 1) *0.5f,2.1f,(Mathf.Floor((passengerNum - 1) / 3 - 1) * -0.5f)-0.7f) * (1/carMesh.localScale.x);
@@ -361,6 +398,13 @@ public class Movement : MonoBehaviour
             traction = ((traction - 1) * 0.7f) + 1;
         }
 
+        if (other.gameObject.CompareTag("Obstacle"))
+        {
+            spinOut = 60;
+            Destroy(other.gameObject);
+            SpinPassengers();
+        }
+
         if (other.gameObject.CompareTag("Destination")) {
             foreach (var item1 in passengers)
             {
@@ -403,7 +447,23 @@ public class Movement : MonoBehaviour
         }
     }
 
-
+    public void SpinPassengers() {
+        int count = currentPassengers;
+        for (int i = 0; i < carryingCapacity; i++) {
+            if (passengers[i] != null) {
+                Passenger p = passengers[i].GetComponent<Passenger>();
+                p.isInCar = false;
+                passengers[i].transform.SetParent(null);
+                p.GetComponent<Rigidbody>().isKinematic = false;
+                currentPassengers--;
+                p.canTrigger = false;
+                passengers[i] = null;
+                p.GetComponent<Rigidbody>().interpolation = RigidbodyInterpolation.Interpolate;
+                p.transform.rotation = Quaternion.Euler(0, transform.rotation.y + 360/count * (i + 0.5f), 0);
+                p.GetComponent<Rigidbody>().velocity = p.transform.forward * (6 + Random.Range(0,2f)) + new Vector3(0, 1, 0);
+            }
+        }
+    }
 
 
 
@@ -431,6 +491,7 @@ public class Movement : MonoBehaviour
                         p.canTrigger = false;
                         passengers[i] = null;
                         p.GetComponent<Rigidbody>().interpolation = RigidbodyInterpolation.Interpolate;
+                        
                     }
                 }
             }
