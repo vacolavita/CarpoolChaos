@@ -461,6 +461,7 @@ public class Movement : MonoBehaviour
                 p.GetComponent<Rigidbody>().interpolation = RigidbodyInterpolation.Interpolate;
                 p.transform.rotation = Quaternion.Euler(0, transform.rotation.y + 360/count * (i + 0.5f), 0);
                 p.GetComponent<Rigidbody>().velocity = p.transform.forward * (6 + Random.Range(0,2f)) + new Vector3(0, 1, 0);
+                UpdateColor(0);
             }
         }
     }

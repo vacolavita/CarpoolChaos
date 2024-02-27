@@ -9,11 +9,8 @@ public class GameManager : MonoBehaviour
 {
 
     public TextMeshProUGUI scoreText;
-    //public TextMeshProUGUI fuel1Text;
-    //public TextMeshProUGUI fuel2Text;
     public Movement car1;
     public Movement car2;
-    public bool hasItem;
     public int score;
     
    
@@ -28,17 +25,17 @@ public class GameManager : MonoBehaviour
     public GameObject lifeMeter;
     public bool isGamePaused;
     public GameObject pauseScreen;
-    public DustStorm dust;
+    //public DustStorm dust;
 
     bool oneMinute = false;
     public bool rush = false;
 
-    public bool isOnFire;
+    //public bool isOnFire;
 
-    private int fireMin = 0;
-    private int fireMax = 10;
-    public int fireState;
-    public ParticleSystem fire;
+    //private int fireMin = 0;
+    //private int fireMax = 10;
+    //public int fireState;
+    //public ParticleSystem fire;
 
     public float check;
     //public GameObject waterBucket;
@@ -53,10 +50,9 @@ public class GameManager : MonoBehaviour
         livesText.text = "Lives: " + Mathf.Round(lives);
         scoreText.text = "Score: " + score;
         timerText.text = "Time: " + GameModes.time;
-        hasItem = false;
-        fire.Stop();
+        //fire.Stop();
         GameModes.time = GameModes.time + 1;
-        StartCoroutine(Fire());
+        //StartCoroutine(Fire());
     }
 
     // Update is called once per frame
@@ -74,10 +70,10 @@ public class GameManager : MonoBehaviour
             lifeMeter.SetActive(true);
         }
 
-        if(fireState == 6)
-        {
-            isOnFire = true;
-        }
+        //if(fireState == 6)
+        //{
+        //    isOnFire = true;
+        //}
 
         if (GameModes.useTime && GameModes.time <= 1 || GameModes.useLives && lives <= 0)
         {
@@ -147,12 +143,12 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator Fire()
     {
-        while (!isOnFire)
+        //while (!isOnFire)
         {
-            fireState = Random.Range(fireMin, fireMax);
-            if (fireState == 6)
+            //fireState = Random.Range(fireMin, fireMax);
+            //if (fireState == 6)
             {
-                break;
+            //    break;
             }
             yield return new WaitForSeconds(check);
         }
@@ -160,19 +156,19 @@ public class GameManager : MonoBehaviour
 
     public void StartFire()
     {
-        if (fireState == 6 && isOnFire)
+        //if (fireState == 6 && isOnFire)
         {
             spawn = Random.Range(0, spawnPoints.Length);
             StopCoroutine(Fire());
             //Instantiate(waterBucket);
             //waterBucket.transform.position = spawnPoints[spawn] + new Vector3(0, 1, 0);
-            fire.Play();
+            //fire.Play();
         }
     }
 
     public void StopFire()
     {
-        fire.Stop();
+        //fire.Stop();
         StartCoroutine(Fire());
     }
 }
