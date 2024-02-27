@@ -651,7 +651,7 @@ public class Movement : MonoBehaviour
 
     public void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.CompareTag("Gas Station") && !gameManager.isOnFire)
+        if (other.gameObject.CompareTag("Gas Station"))
         {
             fuelLevel = Mathf.Min(fuelLevel + Time.deltaTime * 25, maxFuel);
             SetFuel(fuelLevel);
