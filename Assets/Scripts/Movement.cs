@@ -80,6 +80,7 @@ public class Movement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
         GetComponent<CapsuleCollider>().material.dynamicFriction = 0;
         GetComponent<CapsuleCollider>().material.staticFriction = 0;
         GetComponent<MeshCollider>().material.dynamicFriction = 0;
@@ -650,7 +651,7 @@ public class Movement : MonoBehaviour
 
     public void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.CompareTag("Gas Station"))
+        if (other.gameObject.CompareTag("Gas Station") && !gameManager.isOnFire)
         {
             fuelLevel = Mathf.Min(fuelLevel + Time.deltaTime * 25, maxFuel);
             SetFuel(fuelLevel);
