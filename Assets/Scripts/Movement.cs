@@ -163,7 +163,7 @@ public class Movement : MonoBehaviour
         carMesh.localRotation = Quaternion.Euler(-onGround, 0, 0);
         PlayerManagerManager.players[playernum] = gameObject;
 
-        if ((stage.clumps[0].GetComponent<Clump>().passengers > 0 || stage.clumps[1].GetComponent<Clump>().passengers > 0 || stage.clumps[2].GetComponent<Clump>().passengers > 0) && currentPassengers == 0)
+        if (stage.clumps[0] != null && (stage.clumps[0].GetComponent<Clump>().passengers > 0 || stage.clumps[1].GetComponent<Clump>().passengers > 0 || stage.clumps[2].GetComponent<Clump>().passengers > 0) && currentPassengers == 0)
         {
             if (markers[2] == null)
             {
@@ -204,10 +204,11 @@ public class Movement : MonoBehaviour
                 controlDirection = Vector2.zero;
             }
         }
-        if (!StaticGameManager.control) {
-            controlDirection = Vector3.zero;
-        }
         Vector2 c = controlDirection;
+        if (!StaticGameManager.control)
+        {
+            c = Vector3.zero;
+        }
         Vector3 newDirection = Vector3.RotateTowards(transform.forward, new Vector3(c.x,0,c.y), handling, 0.0f);
         if (c.magnitude > 1)
         {
@@ -228,7 +229,6 @@ public class Movement : MonoBehaviour
             spinOut--;
             r.angularVelocity = Vector3.zero;
             r.AddTorque(new Vector3(0,10,0), ForceMode.VelocityChange);
-            Debug.Log(r.angularVelocity);
         }
         else
         {
