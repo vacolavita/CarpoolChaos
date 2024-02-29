@@ -42,6 +42,7 @@ public class GameManager : MonoBehaviour
     //public GameObject waterBucket;
     public Vector3[] spawnPoints;
     int spawn;
+    public GameObject UI;
 
     // Start is called before the first frame update
     void Start()
@@ -109,10 +110,12 @@ public class GameManager : MonoBehaviour
         {
             GameModes.time -= timeLeft * Time.deltaTime;
         }
-        else {
+        else 
+        {
             countdown -= Time.deltaTime;
             if (countdown <= 0) {
                 StaticGameManager.control = true;
+                UI.SetActive(true);
             }
         }
 
