@@ -18,7 +18,7 @@ public class BananaDespawn : MonoBehaviour
 
     IEnumerator BananaDelete()
     {
-        yield return new WaitForSeconds(15);
+        yield return new WaitForSeconds(30);
         Destroy(gameObject);
     }
 }
