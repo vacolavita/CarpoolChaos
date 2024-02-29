@@ -5,4 +5,5 @@ using UnityEngine;
 public static class StaticGameManager
 {
     public static int passengersOut = 0;
+    public static bool control = false;
 }
