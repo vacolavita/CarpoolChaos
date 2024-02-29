@@ -5,7 +5,7 @@ using UnityEngine;
 public class MapIcon : MonoBehaviour
 {
 
-    public int depth;
+    public float depth;
     
     public float pulseAmount;
     public float pulseSpeed;
