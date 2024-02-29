@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
     public GameObject lifeMeter;
     public bool isGamePaused;
     public GameObject pauseScreen;
+    public float countdown = 3;
     //public DustStorm dust;
 
     bool oneMinute = false;
@@ -51,7 +52,7 @@ public class GameManager : MonoBehaviour
         scoreText.text = "Score: " + score;
         timerText.text = "Time: " + GameModes.time;
         //fire.Stop();
-        GameModes.time = GameModes.time + 1;
+        //GameModes.time = GameModes.time + 0;
         //StartCoroutine(Fire());
     }
 
@@ -104,7 +105,16 @@ public class GameManager : MonoBehaviour
 
     public void Timer(float timeLeft)
     {
-        GameModes.time -= timeLeft * Time.deltaTime;
+        if (countdown <= 0)
+        {
+            GameModes.time -= timeLeft * Time.deltaTime;
+        }
+        else {
+            countdown -= Time.deltaTime;
+            if (countdown <= 0) {
+                StaticGameManager.control = true;
+            }
+        }
 
         float minutes = Mathf.FloorToInt(GameModes.time / 60F);
         float seconds = Mathf.FloorToInt(GameModes.time - minutes * 60);

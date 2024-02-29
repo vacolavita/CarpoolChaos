@@ -126,6 +126,7 @@ public class Movement : MonoBehaviour
     }
     
     public void OnMove(InputValue value) {
+
         controlDirection = value.Get<Vector2>();
     }
 
@@ -203,7 +204,9 @@ public class Movement : MonoBehaviour
                 controlDirection = Vector2.zero;
             }
         }
-
+        if (!StaticGameManager.control) {
+            controlDirection = Vector3.zero;
+        }
         Vector2 c = controlDirection;
         Vector3 newDirection = Vector3.RotateTowards(transform.forward, new Vector3(c.x,0,c.y), handling, 0.0f);
         if (c.magnitude > 1)
@@ -475,89 +478,101 @@ public class Movement : MonoBehaviour
 
     public void OnLaunch()
     {
-        if (hasFuel && currentPassengers > 0)
+        if (StaticGameManager.control)
         {
-            bool launched = false;
-            for (int i = 0; i < carryingCapacity; i++) {
+            if (hasFuel && currentPassengers > 0)
+            {
+                bool launched = false;
+                for (int i = 0; i < carryingCapacity; i++)
+                {
+                    if (passengers[i] != null)
+                    {
+                        Passenger p = passengers[i].GetComponent<Passenger>();
+                        if (p.passengerType - 1 == select)
+                        {
+                            launched = true;
+                            p.isInCar = false;
+                            passengers[i].transform.SetParent(null);
+                            p.GetComponent<Rigidbody>().isKinematic = false;
+                            p.GetComponent<Rigidbody>().velocity = launchTrajectory + new Vector3(Random.Range(-1.0f, 1.0f), 0, (Random.Range(-1.0f, 1.0f)));
+                            currentPassengers--;
+                            p.canTrigger = false;
+                            passengers[i] = null;
+                            p.GetComponent<Rigidbody>().interpolation = RigidbodyInterpolation.Interpolate;
+
+                        }
+                    }
+                }
+                if (launched)
+                {
+                    fuelLevel = Mathf.Max(fuelLevel - launchPenalty, 0);
+                    SetFuel(fuelLevel);
+                    UpdateColor(1);
+                }
+            }
+
+        }
+    }
+
+        public void OnDrop()
+    {
+        if (StaticGameManager.control)
+        {
+            bool dropped = false;
+            for (int i = 0; i < carryingCapacity; i++)
+            {
                 if (passengers[i] != null)
                 {
                     Passenger p = passengers[i].GetComponent<Passenger>();
-                    if (p.passengerType-1 == select)
+                    if (p.passengerType - 1 == select)
                     {
-                        launched = true;
                         p.isInCar = false;
                         passengers[i].transform.SetParent(null);
                         p.GetComponent<Rigidbody>().isKinematic = false;
-                        p.GetComponent<Rigidbody>().velocity = launchTrajectory + new Vector3(Random.Range(-1.0f, 1.0f), 0, (Random.Range(-1.0f, 1.0f)));
+                        p.GetComponent<Rigidbody>().velocity = p.transform.forward * -4;
                         currentPassengers--;
                         p.canTrigger = false;
                         passengers[i] = null;
+                        dropped = true;
                         p.GetComponent<Rigidbody>().interpolation = RigidbodyInterpolation.Interpolate;
-                        
                     }
                 }
             }
-            if (launched)
+            if (dropped)
             {
-                fuelLevel = Mathf.Max(fuelLevel - launchPenalty, 0);
-                SetFuel(fuelLevel);
                 UpdateColor(1);
             }
         }
     }
 
-    public void OnDrop()
-    {
-        bool dropped = false;
-        for (int i = 0; i < carryingCapacity; i++)
-        {
-            if (passengers[i] != null)
-            {
-                Passenger p = passengers[i].GetComponent<Passenger>();
-                if (p.passengerType - 1 == select)
-                {
-                    p.isInCar = false;
-                    passengers[i].transform.SetParent(null);
-                    p.GetComponent<Rigidbody>().isKinematic = false;
-                    p.GetComponent<Rigidbody>().velocity = p.transform.forward * -4;
-                    currentPassengers--;
-                    p.canTrigger = false;
-                    passengers[i] = null;
-                    dropped = true;
-                    p.GetComponent<Rigidbody>().interpolation = RigidbodyInterpolation.Interpolate;
-                }
-            }
-        }
-        if (dropped) {
-            UpdateColor(1);
-        }
-    }
-
     public void OnItem() 
     {
-        if (item == 1) 
+        if (StaticGameManager.control)
         {
-            GameObject gas = Instantiate(items[0], transform.position + new Vector3(0,2,0), transform.rotation);
-            gas.GetComponent<Rigidbody>().velocity = launchTrajectory;
-            splashManager.makeSplash(2, "Gas Can!");
-        }
-        if (item == 2)
-        {
-            Instantiate(items[1], transform.position + new Vector3(0, -0.92f, 0), transform.rotation);
-            splashManager.makeSplash(2, "Boost Pad!");
-        }
-        if (item == 3)
-        {
-            Instantiate(items[2], transform.position + new Vector3(0, -1f, 0), transform.rotation);
-            splashManager.makeSplash(2, "Tent!");
-        }
-        if (item == 4)
-        {
-            Instantiate(items[3], transform.position + new Vector3(0, -0.92f, 0), transform.rotation);
-            splashManager.makeSplash(2, "Jump Pad!");
-        }
+            if (item == 1)
+            {
+                GameObject gas = Instantiate(items[0], transform.position + new Vector3(0, 2, 0), transform.rotation);
+                gas.GetComponent<Rigidbody>().velocity = launchTrajectory;
+                splashManager.makeSplash(2, "Gas Can!");
+            }
+            if (item == 2)
+            {
+                Instantiate(items[1], transform.position + new Vector3(0, -0.92f, 0), transform.rotation);
+                splashManager.makeSplash(2, "Boost Pad!");
+            }
+            if (item == 3)
+            {
+                Instantiate(items[2], transform.position + new Vector3(0, -1f, 0), transform.rotation);
+                splashManager.makeSplash(2, "Tent!");
+            }
+            if (item == 4)
+            {
+                Instantiate(items[3], transform.position + new Vector3(0, -0.92f, 0), transform.rotation);
+                splashManager.makeSplash(2, "Jump Pad!");
+            }
 
-        item = 0;
+            item = 0;
+        }
     }
 
     public void UpdateColor(int selectChange) {
