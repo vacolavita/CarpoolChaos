@@ -6,7 +6,7 @@ using UnityEngine.Rendering;
 public class Spawner : MonoBehaviour
 {
     public float spawnTime = 10;
-    public float timer = 0;
+    public float timer = 3;
     public float spawnTimeAdjusted;
     public GameObject pass;
     int spawnPoint = 1;
@@ -24,7 +24,7 @@ public class Spawner : MonoBehaviour
         stage = GameObject.Find("StageManager").GetComponent<stageManager>();
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
 
-        timer = spawnTime;
+        timer = spawnTime-6;
         spawnTimeAdjusted = spawnTime;
     }
 

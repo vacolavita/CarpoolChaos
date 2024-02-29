@@ -11,7 +11,7 @@ public class BananaPeels : StageEvent
         splashManager.makeSplash(1, "Event:\nBanana Peels!");
         foreach (var p in spawnPoints)
         {
-            Instantiate(peels, p, new Quaternion());
+            Instantiate(peels, p, Quaternion.Euler(0, Random.Range(0,360),0));
         }
     }
 }
