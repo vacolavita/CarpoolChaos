@@ -28,7 +28,7 @@ public class stageManager : MonoBehaviour
     void Update()
     {
         timer += Time.deltaTime;
-        if (timer > 60) {
+        if (timer > 63) {
             timer = -9999;
             events[0].Trigger();
         }

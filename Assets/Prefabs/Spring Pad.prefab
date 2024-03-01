@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2513833722741405487}
   - component: {fileID: 4932037107809813635}
   - component: {fileID: 1432245577447333703}
+  - component: {fileID: 5112706231526197118}
   m_Layer: 11
   m_Name: Spring Pad
   m_TagString: Spring Pad
@@ -115,11 +116,28 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1531684317481719074}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 84f1eaf3d53c8064fb96e2cefc163849, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5112706231526197118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1531684317481719074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1212f9da31f313b4a96a884eabdea0bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentTime: 15
+  countingUp: 0
+  timeMultiplier: 0
+  milestones: []
+  destroyOnZero: 1
 --- !u!1 &7145076564205692226
 GameObject:
   m_ObjectHideFlags: 0
