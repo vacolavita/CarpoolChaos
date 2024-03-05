@@ -5,37 +5,31 @@ using UnityEngine;
 
 public class Timer : MonoBehaviour
 {
-    public float currentTime;
-    public bool countingUp;
-    public float timeMultiplier;
+    float dTime = -1;
     public List<float> milestones;
-    public bool destroyOnZero;
+    public bool destroy;
+    public float destroyAt;
     
 
     void Start()
     {
-
+        dTime = Time.time;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (countingUp)
-        {
-            currentTime += Time.deltaTime;
-        }
-        else
-        {
-            currentTime -= Time.deltaTime;
-        }
-        if (currentTime <= 0)
-        {
+        if (destroy && Time.time >= destroyAt + dTime) {
             Destroy(gameObject);
         }
     }
 
     public bool reachedMilestone(int milestone) {
-        if (milestones.ElementAt(milestone) >= currentTime)
+        if (dTime == -1)
+        {
+            return false;
+        }
+        if (milestones.ElementAt(milestone) + dTime <= Time.time)
         {
             return true;
         }
@@ -44,8 +38,15 @@ public class Timer : MonoBehaviour
         }
     }
 
-    public int addMilestone(float milestone) {
-        milestones.Add(milestone);
-        return milestones.Count-1;
+    public int addMilestone(float milestone, bool fromNow) {
+        if (!fromNow)
+        {
+            milestones.Add(milestone);
+            return milestones.Count - 1;
+        }
+        else {
+            milestones.Add(milestone + (Time.time - dTime));
+            return milestones.Count - 1;
+        }
     }
 }
