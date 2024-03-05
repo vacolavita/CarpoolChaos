@@ -16,7 +16,7 @@ public class GasCan : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        StartCoroutine(GasCanDelete());
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -42,11 +42,5 @@ public class GasCan : MonoBehaviour
             collision.gameObject.GetComponent<Movement>().GasCanFill();
             Destroy(gameObject);
         }
-    }
-
-    IEnumerator GasCanDelete()
-    {
-        yield return new WaitForSeconds(20);
-        Destroy(gameObject);
     }
 }
