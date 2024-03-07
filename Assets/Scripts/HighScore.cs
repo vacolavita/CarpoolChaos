@@ -56,22 +56,22 @@ public class HighScore : MonoBehaviour
     {
         if (Score.stage == 1)
         {
-            highScoreText.text = $"High Score: {PlayerPrefs.GetInt("HighScore1")}";
+            highScoreText.text = $"Level High Score: {PlayerPrefs.GetInt("HighScore1")}";
         }
 
         if (Score.stage == 2)
         {
-            highScoreText.text = $"High Score: {PlayerPrefs.GetInt("HighScore2")}";
+            highScoreText.text = $"Level High Score: {PlayerPrefs.GetInt("HighScore2")}";
         }
 
         if (Score.stage == 3)
         {
-            highScoreText.text = $"High Score: {PlayerPrefs.GetInt("HighScore3")}";
+            highScoreText.text = $"Level High Score: {PlayerPrefs.GetInt("HighScore3")}";
         }
 
         if (Score.stage == 4)
         {
-            highScoreText.text = $"High Score: {PlayerPrefs.GetInt("HighScore4")}";
+            highScoreText.text = $"Level High Score: {PlayerPrefs.GetInt("HighScore4")}";
         }
     }
 
