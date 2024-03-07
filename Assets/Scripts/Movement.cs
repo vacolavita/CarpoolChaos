@@ -176,7 +176,7 @@ public class Movement : MonoBehaviour
             markers[2].GetComponent<markerManager>().dest[0] = stage.stops[0];
             markers[2].GetComponent<markerManager>().dest[1] = stage.stops[1];
             markers[2].GetComponent<markerManager>().dest[2] = stage.stops[2];
-            markers[2].GetComponent<markerManager>().color = new Color(0.4f, 0.4f, 0.0f);
+            markers[2].GetComponent<markerManager>().color = new Color(0.8f, 0.8f, 0.0f);
             markers[2].GetComponent<markerManager>().numDests = 3;
             markers[2].GetComponent<markerManager>().pointStops = true;
         }
@@ -312,7 +312,7 @@ public class Movement : MonoBehaviour
             }
 
             markers[1].GetComponent<markerManager>().dest[0] = stage.fuel;
-            markers[1].GetComponent<markerManager>().color = new Color(0.7f, 0.2f, 0.1f);
+            markers[1].GetComponent<markerManager>().color = new Color(0.7f, 0.4f, 0.2f);
             markers[1].GetComponent<markerManager>().numDests = 1;
             markers[1].GetComponent<markerManager>().pointStops = false;
         }
@@ -614,7 +614,7 @@ public class Movement : MonoBehaviour
 
                     }
                     markers[0].GetComponent<markerManager>().dest[0] = stage.dests[0];
-                    markers[0].GetComponent<markerManager>().color = new Color(0, 0.4f, 0);
+                    markers[0].GetComponent<markerManager>().color = new Color(0.1f, 1f, 0.1f);
                     markers[0].GetComponent<markerManager>().numDests = 1;
                     markers[0].GetComponent<markerManager>().pointStops = false;
                 }
@@ -628,7 +628,7 @@ public class Movement : MonoBehaviour
 
                     }
                     markers[0].GetComponent<markerManager>().dest[0] = stage.dests[1];
-                    markers[0].GetComponent<markerManager>().color = Color.red;
+                    markers[0].GetComponent<markerManager>().color = new Color(1, 0.1f, 0.1f);
                     markers[0].GetComponent<markerManager>().numDests = 1;
                     markers[0].GetComponent<markerManager>().pointStops = false;
 
@@ -644,7 +644,7 @@ public class Movement : MonoBehaviour
 
                     }
                     markers[0].GetComponent<markerManager>().dest[0] = stage.dests[2];
-                    markers[0].GetComponent<markerManager>().color = new Color(0.1f, 0.2f, 1);
+                    markers[0].GetComponent<markerManager>().color = new Color(0.3f, 0.4f, 1);
                     markers[0].GetComponent<markerManager>().numDests = 1;
                     markers[0].GetComponent<markerManager>().pointStops = false;
                 }

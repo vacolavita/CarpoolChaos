@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
     public bool isGamePaused;
     public GameObject pauseScreen;
     public float countdown = 3;
+    public AudioSource music;
     //public DustStorm dust;
 
     bool oneMinute = false;
@@ -88,6 +89,7 @@ public class GameManager : MonoBehaviour
         if (GameModes.useTime && GameModes.time <= 61 && oneMinute == false) { 
             oneMinute = true;
             splashManager.splashes.Enqueue(new splashManager.splash(1, "One minute left!!!"));
+            music.pitch = 1.2f;
         }
         if (GameModes.useTime && GameModes.time <= 91 && rush == false)
         {

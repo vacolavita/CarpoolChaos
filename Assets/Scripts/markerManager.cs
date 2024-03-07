@@ -32,10 +32,10 @@ public class markerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        color.a = 0.7f;
+        color.a = 0.8f;
         pyramid.GetComponent<MeshRenderer>().material.color = color;
-        color.a = 1;
-        pyramid.GetComponents<MeshRenderer>()[0].material.SetColor("_EmissionColor", color);
+        //color.a = 1;
+        //pyramid.GetComponents<MeshRenderer>()[0].material.SetColor("_EmissionColor", color);
 
         agent.enabled = true;
 
