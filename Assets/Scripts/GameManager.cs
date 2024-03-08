@@ -89,12 +89,15 @@ public class GameManager : MonoBehaviour
         if (GameModes.useTime && GameModes.time <= 61 && oneMinute == false) { 
             oneMinute = true;
             splashManager.splashes.Enqueue(new splashManager.splash(1, "One minute left!!!"));
-            music.pitch = 1.2f;
+            
         }
         if (GameModes.useTime && GameModes.time <= 91 && rush == false)
         {
             rush = true;
             splashManager.splashes.Enqueue(new splashManager.splash(1, "Rush!!!"));
+        }
+        if (oneMinute) {
+            music.pitch = 1.2f;
         }
 
         StartFire();

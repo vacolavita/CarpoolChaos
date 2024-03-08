@@ -40,7 +40,6 @@ public class Tent : MonoBehaviour
                 flash += 0.7f;
             }
         }
-        Debug.Log(flash);
 
 
         if (dest.destType == 1)

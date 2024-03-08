@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: -4942333713263110482}
   - component: {fileID: 4797324572453983102}
   - component: {fileID: 145737306270324193}
+  - component: {fileID: -6583238514795121354}
   m_Layer: 7
   m_Name: Item
   m_TagString: Item
@@ -30,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 1235334786771694874}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -50, y: 1, z: -40}
+  m_LocalPosition: {x: 43.9, y: 1, z: -41.19}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4893,6 +4894,21 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &-6583238514795121354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1235334786771694874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1212f9da31f313b4a96a884eabdea0bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  milestones: []
+  destroy: 1
+  destroyAt: 16
 --- !u!1 &1667935660962873499
 GameObject:
   m_ObjectHideFlags: 0

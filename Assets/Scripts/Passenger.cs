@@ -32,6 +32,11 @@ public class Passenger : MonoBehaviour
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
         spawn = GameObject.Find("Spawner").GetComponent<Spawner>();
         r = GetComponent<Rigidbody>();
+        foreach (var item in mesh)
+        {
+            item.material = passengerMats[passengerType - 1];
+        }
+        mapSprite.color = mesh[0].material.color;
     }
 
     // Update is called once per frame

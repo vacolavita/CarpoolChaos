@@ -18,7 +18,6 @@ public class Item : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        StartCoroutine(ItemDelete());
         transform.Rotate(0, 120 * Time.deltaTime, 0);
     }
 
@@ -32,9 +31,4 @@ public class Item : MonoBehaviour
         }
     }
 
-    IEnumerator ItemDelete()
-    {
-        yield return new WaitForSeconds(20);
-        Destroy(gameObject);
-    }
 }
