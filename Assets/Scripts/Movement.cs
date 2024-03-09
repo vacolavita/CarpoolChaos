@@ -30,7 +30,6 @@ public class Movement : MonoBehaviour
     public float fuelLevel;
     public float maxFuel;
     private float gasToAdd;
-    public Slider fuelMeter;
     public Transform carMesh;
 
     Rigidbody r;
@@ -92,7 +91,6 @@ public class Movement : MonoBehaviour
         r = GetComponent<Rigidbody>();
         r.maxAngularVelocity = 50;
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
-        SetMaxFuel(maxFuel);
         if (GameModes.turbo) {
             maxSpeed *= 1.3f;
         }
@@ -297,7 +295,6 @@ public class Movement : MonoBehaviour
             hasFuel = true;
             if (GameModes.gasLeak) {
                 fuelLevel -= 0.03f;
-                fuelMeter.value = fuelLevel;
             }
         }
 
@@ -364,20 +361,17 @@ public class Movement : MonoBehaviour
         if (hasFuel)
         {
             fuelLevel -= amount;
-            SetFuel(fuelLevel);
         }
     }
 
     public void GasRefill()
     {
         fuelLevel = maxFuel;
-        SetFuel(fuelLevel);
     }
 
     public void GasCanFill()
     {
         fuelLevel = Mathf.Min(fuelLevel+maxFuel*0.3f,maxFuel);
-        SetFuel(fuelLevel);
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -420,17 +414,6 @@ public class Movement : MonoBehaviour
         }
     }
 
-    public void SetMaxFuel(float fuel)
-    {
-        fuelMeter.maxValue = fuel;
-
-        fuelMeter.value = fuel;
-    }
-
-    public void SetFuel(float fuel)
-    {
-        fuelMeter.value = fuel;
-    }
 
     public void FuelGone()
     {
@@ -506,7 +489,6 @@ public class Movement : MonoBehaviour
                 if (launched)
                 {
                     fuelLevel = Mathf.Max(fuelLevel - launchPenalty, 0);
-                    SetFuel(fuelLevel);
                     UpdateColor(1);
                 }
             }
@@ -669,7 +651,6 @@ public class Movement : MonoBehaviour
         if (other.gameObject.CompareTag("Gas Station"))
         {
             fuelLevel = Mathf.Min(fuelLevel + Time.deltaTime * 25, maxFuel);
-            SetFuel(fuelLevel);
             DebugFueling = true;
             if (fuelLevel >= maxFuel*0.95f)
             {
