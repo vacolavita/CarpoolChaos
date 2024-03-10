@@ -59,7 +59,7 @@ public class PassengersUI : MonoBehaviour
                 if (movement.select == movement.passengers[i].GetComponent<Passenger>().passengerType - 1)
                 {
                     images[i].color = new Color(images[i].color.r, images[i].color.g, images[i].color.b, 1f);
-                    images[i].rectTransform.localScale = new Vector3(0.18f + (Mathf.Sin(Time.time*6)* 0.03f), 0.18f + (Mathf.Sin(Time.time * 6) * 0.03f), 0.18f + (Mathf.Sin(Time.time * 6) * 0.03f));
+                    images[i].rectTransform.localScale = new Vector3(0.18f + (Mathf.Sin(Time.time*10)* 0.03f), 0.18f + (Mathf.Sin(Time.time * 10) * 0.03f), 0.18f + (Mathf.Sin(Time.time * 10) * 0.03f));
                 }
                 else {
                     images[i].rectTransform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
