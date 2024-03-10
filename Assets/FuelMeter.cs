@@ -7,10 +7,13 @@ public class FuelMeter : MonoBehaviour
 {
     public Movement movement;
     public Image fuelFill;
+    public Image UI;
     // Start is called before the first frame update
     void Start()
     {
-        fuelFill = GetComponentsInChildren<Image>()[1];
+        UI = GetComponentsInChildren<Image>()[0];
+        UI.color = movement.paint;
+        fuelFill = GetComponentsInChildren<Image>()[2];
     }
 
     // Update is called once per frame
