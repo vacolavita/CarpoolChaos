@@ -10,14 +10,16 @@ public class PassengersUI : MonoBehaviour
     public Image[] images;
     public Image pas;
     public Image[] buttons;
+    public Image sel;
     int[] colors;
     // Start is called before the first frame update
     void Start()
     {
         colors = new int[3];
+        sel = GetComponentsInChildren<Image>()[0];
         buttons = new Image[2];
-        buttons[0] = GetComponentsInChildren<Image>()[0];
-        buttons[1] = GetComponentsInChildren<Image>()[1];
+        buttons[0] = GetComponentsInChildren<Image>()[1];
+        buttons[1] = GetComponentsInChildren<Image>()[2];
         images = new Image[movement.carryingCapacity];
         for (int i = 0; i < movement.carryingCapacity; i++) {
             Image img = Instantiate(pas).GetComponent<Image>();
@@ -56,11 +58,11 @@ public class PassengersUI : MonoBehaviour
                 }
                 if (movement.select == movement.passengers[i].GetComponent<Passenger>().passengerType - 1)
                 {
-                    images[i].color = new Color(images[i].color.r, images[i].color.g, images[i].color.b, 0.9f);
-                    images[i].rectTransform.localScale = new Vector3(0.18f, 0.18f, 0.18f);
+                    images[i].color = new Color(images[i].color.r, images[i].color.g, images[i].color.b, 1f);
+                    images[i].rectTransform.localScale = new Vector3(0.18f + (Mathf.Sin(Time.time*6)* 0.03f), 0.18f + (Mathf.Sin(Time.time * 6) * 0.03f), 0.18f + (Mathf.Sin(Time.time * 6) * 0.03f));
                 }
                 else {
-                    images[i].rectTransform.localScale = new Vector3(0.12f, 0.12f, 0.12f);
+                    images[i].rectTransform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
                 }
 
             }
@@ -76,11 +78,24 @@ public class PassengersUI : MonoBehaviour
                 c++;
             }
         }
+        if (c > 0) {
+            sel.enabled = true;
+            if (movement.select == 0) {
+                sel.color = new Color(0.0f, 1f, 0.0f, 0.1f);
+            }
+            if (movement.select == 1)
+            {
+                sel.color = new Color(1, 0.2f, 0.2f, 0.1f);
+            }
+            if (movement.select == 2)
+            {
+                sel.color = new Color(0.3f, 0.4f, 1f, 0.1f);
+            }
+        }
         if (c > 1)
         {
             buttons[0].enabled = true;
             buttons[1].enabled = true;
-
 
 
 
@@ -157,6 +172,7 @@ public class PassengersUI : MonoBehaviour
         else {
             buttons[0].enabled = false;
             buttons[1].enabled = false;
+            sel.enabled = false;
         }
     }
 }
