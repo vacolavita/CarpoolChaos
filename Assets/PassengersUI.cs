@@ -166,8 +166,8 @@ public class PassengersUI : MonoBehaviour
         {
             buttons[0].enabled = true;
             buttons[1].enabled = true;
-            buttons[0].color = new Color(1f, 1f, 1f, 0.5f);
-            buttons[1].color = new Color(1f, 1f, 1f, 0.5f);
+            buttons[0].color = new Color(0.8f, 0.8f, 0.8f, 0.5f);
+            buttons[1].color = new Color(0.8f, 0.8f, 0.8f, 0.5f);
         }
         else {
             buttons[0].enabled = false;
