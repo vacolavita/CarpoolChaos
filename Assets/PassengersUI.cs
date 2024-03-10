@@ -22,7 +22,7 @@ public class PassengersUI : MonoBehaviour
         for (int i = 0; i < movement.carryingCapacity; i++) {
             Image img = Instantiate(pas).GetComponent<Image>();
             img.rectTransform.SetParent(gameObject.GetComponent<RectTransform>());
-            img.rectTransform.localPosition = new Vector3(movement.PassengerPosition(i+1).x * 15, movement.PassengerPosition(i+1).z * 20, 0) ;
+            img.rectTransform.localPosition = new Vector3(movement.PassengerPosition(i+1).x * 18, movement.PassengerPosition(i+1).z * 24, 0) ;
             images[i] = img;
         }
     }
@@ -57,10 +57,10 @@ public class PassengersUI : MonoBehaviour
                 if (movement.select == movement.passengers[i].GetComponent<Passenger>().passengerType - 1)
                 {
                     images[i].color = new Color(images[i].color.r, images[i].color.g, images[i].color.b, 0.9f);
-                    images[i].rectTransform.localScale = new Vector3(0.15f, 0.15f, 0.15f);
+                    images[i].rectTransform.localScale = new Vector3(0.18f, 0.18f, 0.18f);
                 }
                 else {
-                    images[i].rectTransform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+                    images[i].rectTransform.localScale = new Vector3(0.12f, 0.12f, 0.12f);
                 }
 
             }
@@ -84,21 +84,23 @@ public class PassengersUI : MonoBehaviour
 
 
 
-            if (movement.select == 0) {
+            if (movement.select == 0)
+            {
                 if (colors[1] > 0)
                 {
-                    buttons[1].color = new Color(1, 0.2f, 0.2f);
-                }
-                else {
-                    buttons[1].color = new Color(0.3f, 0.4f, 1f);
-                }
-                if (colors[2] > 0)
-                {
-                    buttons[0].color = new Color(0.3f, 0.4f, 1f);
+                    buttons[1].color = new Color(1, 0.2f, 0.2f, 0.8f);
                 }
                 else
                 {
-                    buttons[0].color = new Color(1, 0.2f, 0.2f);
+                    buttons[1].color = new Color(0.3f, 0.4f, 1f, 0.8f);
+                }
+                if (colors[2] > 0)
+                {
+                    buttons[0].color = new Color(0.3f, 0.4f, 1f, 0.8f);
+                }
+                else
+                {
+                    buttons[0].color = new Color(1, 0.2f, 0.2f, 0.8f);
                 }
             }
 
@@ -107,19 +109,19 @@ public class PassengersUI : MonoBehaviour
             {
                 if (colors[2] > 0)
                 {
-                    buttons[1].color = new Color(0.3f, 0.4f, 1f);
+                    buttons[1].color = new Color(0.3f, 0.4f, 1f, 0.8f);
                 }
                 else
                 {
-                    buttons[1].color = new Color(0.0f, 1f, 0.0f);
+                    buttons[1].color = new Color(0.0f, 1f, 0.0f, 0.8f);
                 }
                 if (colors[0] > 0)
                 {
-                    buttons[0].color = new Color(0.0f, 1f, 0.0f);
+                    buttons[0].color = new Color(0.0f, 1f, 0.0f, 0.8f);
                 }
                 else
                 {
-                    buttons[0].color = new Color(0.3f, 0.4f, 1f);
+                    buttons[0].color = new Color(0.3f, 0.4f, 1f, 0.8f);
                 }
             }
 
@@ -128,25 +130,31 @@ public class PassengersUI : MonoBehaviour
             {
                 if (colors[0] > 0)
                 {
-                    buttons[1].color = new Color(0.0f, 1f, 0.0f);
+                    buttons[1].color = new Color(0.0f, 1f, 0.0f, 0.8f);
                 }
                 else
                 {
-                    buttons[1].color = new Color(1, 0.2f, 0.2f);
+                    buttons[1].color = new Color(1, 0.2f, 0.2f, 0.8f);
                 }
                 if (colors[1] > 0)
                 {
-                    buttons[0].color = new Color(1, 0.2f, 0.2f);
+                    buttons[0].color = new Color(1, 0.2f, 0.2f, 0.8f);
                 }
                 else
                 {
-                    buttons[0].color = new Color(0.0f, 1f, 0.0f);
+                    buttons[0].color = new Color(0.0f, 1f, 0.0f, 0.8f);
                 }
             }
 
         }
-        else
+        else if (c > 0)
         {
+            buttons[0].enabled = true;
+            buttons[1].enabled = true;
+            buttons[0].color = new Color(1f, 1f, 1f, 0.5f);
+            buttons[1].color = new Color(1f, 1f, 1f, 0.5f);
+        }
+        else {
             buttons[0].enabled = false;
             buttons[1].enabled = false;
         }
