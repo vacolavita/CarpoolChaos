@@ -48,6 +48,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Application.targetFrameRate = 30;
         GameModes.useTime = true;
         score = 0;
         livesText.text = "Lives: " + Mathf.Round(lives);
