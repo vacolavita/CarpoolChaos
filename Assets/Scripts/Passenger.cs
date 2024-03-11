@@ -108,7 +108,7 @@ public class Passenger : MonoBehaviour
         {
             canTrigger = true;
         }
-        if (other.gameObject.CompareTag("Destination"))
+        if (other.gameObject.CompareTag("Destination") && clump == null)
         {
             scorePassenger(other, false);
         }
@@ -178,9 +178,6 @@ public class Passenger : MonoBehaviour
 
     public void scorePassenger(Collider other, bool callObj)
     {
-        if (clump != null) {
-            clump.passengers--;
-        }
         if (!(isInCar && !callObj)) {
             if (other.gameObject.GetComponent<Destination>().destType == passengerType)
             {
