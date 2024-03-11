@@ -178,6 +178,9 @@ public class Passenger : MonoBehaviour
 
     public void scorePassenger(Collider other, bool callObj)
     {
+        if (clump != null) {
+            clump.passengers--;
+        }
         if (!(isInCar && !callObj)) {
             if (other.gameObject.GetComponent<Destination>().destType == passengerType)
             {
