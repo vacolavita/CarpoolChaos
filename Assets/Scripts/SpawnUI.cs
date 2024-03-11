@@ -17,6 +17,9 @@ public class SpawnUI : MonoBehaviour
     void Update()
     {
         img = GetComponent<Image>();
-        img.fillAmount = (spawn.timer / spawn.spawnTimeAdjusted) * 0.96f + 0.02f;
+        img.fillAmount = (spawn.timer / spawn.spawnTimeAdjusted) * 0.94f + 0.03f;
+        if (spawn.rush) {
+            img.color = new Color(1,0.5f,0.5f);
+        }
     }
 }
