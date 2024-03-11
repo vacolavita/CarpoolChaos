@@ -55,10 +55,12 @@ public class Spawner : MonoBehaviour
                         spawnType = Random.Range(1, 4);
                     }
                     GameObject passenger = Instantiate(pass, stage.stops[spawnPoint] + new Vector3(Random.Range(-2.0f, 2.0f), 0, Random.Range(-2.0f, 2.0f)), new Quaternion());
+                    passenger.SetActive(false);
                     StaticGameManager.passengersOut += 1;
                     passenger.GetComponent<Passenger>().clump = stage.clumps[spawnPoint].GetComponent<Clump>();
                     passenger.GetComponent<Passenger>().clump.passengers++;
                     passenger.GetComponent<Passenger>().passengerType = spawnType;
+                    passenger.SetActive(true);
                 }
                 spawnPoint = (spawnPoint + 1) % 3;
             }
