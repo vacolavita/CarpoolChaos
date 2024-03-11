@@ -380,10 +380,6 @@ public class Movement : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Clump"))
-        {
-            other.GetComponent<Clump>().player = gameObject;
-        }
 
         if (other.gameObject.CompareTag("Boost Pad"))
         {
@@ -661,6 +657,10 @@ public class Movement : MonoBehaviour
             {
                 DebugFueling = false;
             }
+        }
+        if (other.gameObject.CompareTag("Clump"))
+        {
+            other.GetComponent<Clump>().player = gameObject;
         }
     }
 
