@@ -12,6 +12,7 @@ public class FuelMeter : MonoBehaviour
     public float fuel;
     public float time = 0;
     public int desync = 0;
+    public float syncSpeed = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -41,13 +42,15 @@ public class FuelMeter : MonoBehaviour
                 fuelFill.fillAmount = fuel * 0.0097f + 0.015f;
                 if (time <= 0)
                 {
-                    fuelDif.fillAmount -= Time.deltaTime * 0.3f;
+                    syncSpeed = Mathf.Max(syncSpeed, Time.deltaTime * Mathf.Abs(fuelDif.fillAmount - fuelFill.fillAmount) * 3);
+                    fuelDif.fillAmount -= syncSpeed;
                     if (fuelDif.fillAmount <= fuelFill.fillAmount)
                     {
                         if (!testDesync())
                         {
                             fuelDif.fillAmount = fuelFill.fillAmount;
                             desync = 0;
+                            syncSpeed = 0;
                         }
                     }
                 }
@@ -57,7 +60,8 @@ public class FuelMeter : MonoBehaviour
                 fuelDif.fillAmount = fuel * 0.0097f + 0.015f;
                 if (time <= 0)
                 {
-                    fuelFill.fillAmount += Time.deltaTime * 0.3f;
+                    syncSpeed = Mathf.Max(syncSpeed, Time.deltaTime * Mathf.Abs(fuelDif.fillAmount - fuelFill.fillAmount) * 3);
+                    fuelFill.fillAmount += syncSpeed;
                     if (fuelDif.fillAmount <= fuelFill.fillAmount)
                     {
                         if (!testDesync())
@@ -81,7 +85,7 @@ public class FuelMeter : MonoBehaviour
     {
         if (Mathf.Abs(movement.fuelLevel - fuel) >= 3)
         {
-            time = 0.6f;
+            time = 0.4f;
 
             if (desync == 0)
             {
