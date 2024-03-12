@@ -44,10 +44,10 @@ public class FuelMeter : MonoBehaviour
                     fuelDif.fillAmount -= Time.deltaTime * 0.3f;
                     if (fuelDif.fillAmount <= fuelFill.fillAmount)
                     {
+                        desync = 0;
                         if (!testDesync())
                         {
                             fuelDif.fillAmount = fuelFill.fillAmount;
-                            desync = 0;
                         }
                     }
                 }
@@ -60,10 +60,10 @@ public class FuelMeter : MonoBehaviour
                     fuelFill.fillAmount += Time.deltaTime * 0.3f;
                     if (fuelDif.fillAmount <= fuelFill.fillAmount)
                     {
+                        desync = 0;
                         if (!testDesync())
                         {
                             fuelFill.fillAmount = fuelDif.fillAmount;
-                            desync = 0;
                         }
                     }
                 }
