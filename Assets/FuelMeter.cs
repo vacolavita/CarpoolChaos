@@ -25,26 +25,15 @@ public class FuelMeter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Mathf.Abs(movement.fuelLevel - fuel) >= 3) {
-            time = 0.6f;
-                
-                if (movement.fuelLevel > fuel) {
-                    if (desync == 0) { fuelDif.fillAmount = movement.fuelLevel * 0.0097f + 0.015f; }
-                    desync = 1;
-
-                } else
-                {
-                    if (desync == 0) { fuelFill.fillAmount = fuel * 0.0097f + 0.015f; }
-                    desync = 2;
-                }
-        }
+        testDesync();
         fuel = movement.fuelLevel;
         if (desync == 0)
         {
             fuelFill.fillAmount = fuel * 0.0097f + 0.015f;
             fuelDif.fillAmount = fuel * 0.0097f + 0.015f;
         }
-        else {
+        else
+        {
             time -= Time.deltaTime;
 
             if (desync == 2)
@@ -55,28 +44,62 @@ public class FuelMeter : MonoBehaviour
                     fuelDif.fillAmount -= Time.deltaTime * 0.3f;
                     if (fuelDif.fillAmount <= fuelFill.fillAmount)
                     {
-                        fuelDif.fillAmount = fuelFill.fillAmount;
-                        desync = 0;
+                        if (!testDesync())
+                        {
+                            fuelDif.fillAmount = fuelFill.fillAmount;
+                            desync = 0;
+                        }
                     }
                 }
             }
-            else {
+            else
+            {
                 fuelDif.fillAmount = fuel * 0.0097f + 0.015f;
                 if (time <= 0)
                 {
                     fuelFill.fillAmount += Time.deltaTime * 0.3f;
                     if (fuelDif.fillAmount <= fuelFill.fillAmount)
                     {
-                        fuelFill.fillAmount = fuelDif.fillAmount;
-                        desync = 0;
+                        if (!testDesync())
+                        {
+                            fuelFill.fillAmount = fuelDif.fillAmount;
+                            desync = 0;
+                        }
                     }
                 }
             }
         }
 
-        float f = Mathf.Clamp(Mathf.Min(movement.fuelLevel,50)-30, 0, 50)*0.028f;
-        fuelFill.color = new Color(0.87f, 0.2f+f, 0.2f);
+        float f = Mathf.Clamp(Mathf.Min(movement.fuelLevel, 50) - 30, 0, 50) * 0.028f;
+        fuelFill.color = new Color(0.87f, 0.2f + f, 0.2f);
 
 
+    }
+
+
+    public bool testDesync()
+    {
+        if (Mathf.Abs(movement.fuelLevel - fuel) >= 3)
+        {
+            time = 0.6f;
+
+            if (desync == 0)
+            {
+                if (movement.fuelLevel > fuel)
+                {
+                    { fuelDif.fillAmount = movement.fuelLevel * 0.0097f + 0.015f; }
+                    desync = 1;
+                    return true;
+                }
+                else
+                {
+                    { fuelFill.fillAmount = fuel * 0.0097f + 0.015f; }
+                    desync = 2;
+                    return true;
+                }
+            }
+
+        }
+        return false;
     }
 }
