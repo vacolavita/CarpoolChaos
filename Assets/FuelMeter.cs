@@ -68,6 +68,7 @@ public class FuelMeter : MonoBehaviour
                         {
                             fuelFill.fillAmount = fuelDif.fillAmount;
                             desync = 0;
+                            syncSpeed = 0;
                         }
                     }
                 }

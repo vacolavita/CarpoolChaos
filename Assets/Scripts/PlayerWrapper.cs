@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerWrapper : MonoBehaviour
     
@@ -14,6 +15,7 @@ public class PlayerWrapper : MonoBehaviour
         if (instance == null)
         {
             instance = this;
+            GetComponent<PlayerInputManager>().enabled = true;
 
         }
         else {
