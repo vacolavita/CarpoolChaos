@@ -21,9 +21,13 @@ public class Overlay : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Destroy(tex);
-        tex = new RenderTexture(Screen.width, Screen.height, 16);
-        tex.Create();
+        
+        if (tex == null || Screen.width != tex.width || Screen.height != tex.height)
+        {
+            Destroy(tex);
+            tex = new RenderTexture(Screen.width, Screen.height, 16);
+            //tex.Create();
+        }
         cam.targetTexture = tex;
         image.texture = tex;
         tex.Release();
