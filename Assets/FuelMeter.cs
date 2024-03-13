@@ -42,8 +42,8 @@ public class FuelMeter : MonoBehaviour
                 fuelFill.fillAmount = fuel * 0.0097f + 0.015f;
                 if (time <= 0)
                 {
-                    syncSpeed = Mathf.Max(syncSpeed, Time.deltaTime * Mathf.Abs(fuelDif.fillAmount - fuelFill.fillAmount) * 3);
-                    fuelDif.fillAmount -= syncSpeed;
+                    syncSpeed = Mathf.Max(syncSpeed, Mathf.Abs(fuelDif.fillAmount - fuelFill.fillAmount) * 3);
+                    fuelDif.fillAmount -= Time.deltaTime * syncSpeed;
                     if (fuelDif.fillAmount <= fuelFill.fillAmount)
                     {
                         if (!testDesync())
@@ -60,8 +60,8 @@ public class FuelMeter : MonoBehaviour
                 fuelDif.fillAmount = fuel * 0.0097f + 0.015f;
                 if (time <= 0)
                 {
-                    syncSpeed = Mathf.Max(syncSpeed, Time.deltaTime * Mathf.Abs(fuelDif.fillAmount - fuelFill.fillAmount) * 3);
-                    fuelFill.fillAmount += syncSpeed;
+                    syncSpeed = Mathf.Max(syncSpeed, Mathf.Abs(fuelDif.fillAmount - fuelFill.fillAmount) * 3);
+                    fuelFill.fillAmount += Time.deltaTime * syncSpeed;
                     if (fuelDif.fillAmount <= fuelFill.fillAmount)
                     {
                         if (!testDesync())
