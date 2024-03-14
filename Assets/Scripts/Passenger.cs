@@ -70,7 +70,8 @@ public class Passenger : MonoBehaviour
         mapSprite.enabled = true;
         if (isInCar)
         {
-            pas.transform.localPosition = new Vector3(0, -1.11f, -4.12f);
+            pas.transform.localPosition = new Vector3(0, -1, 0);
+            pas.transform.localScale = new Vector3(1, 1, 1);
             jumpTime = 0;
             jump = 0;
             mapSprite.enabled = false;
@@ -83,13 +84,14 @@ public class Passenger : MonoBehaviour
         }
         else
         {
+            pas.transform.localScale = new Vector3(1.2f, 1.2f, 1.2f);
             if (jump <= -1f)
             {
-                pas.transform.localPosition = new Vector3(0, -1.11f, -4.12f);
+                pas.transform.localPosition = new Vector3(0, -1, 0);
             }
             else
             {
-                pas.transform.localPosition = new Vector3(0, Mathf.Max(pas.transform.localPosition.y + (jump * 0.7f), -1.11f), -4.12f);
+                pas.transform.localPosition = new Vector3(0, Mathf.Max(pas.transform.localPosition.y + (jump * 0.7f), -1), 0);
                 jump -= 2 * Time.deltaTime;
             }
         }
