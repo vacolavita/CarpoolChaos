@@ -23,9 +23,9 @@ public class Passenger : MonoBehaviour
     public float turning;
     public float turnTimer;
 
-    public float jump = 0;
+    public float jump = -1;
     public float jumpTime = 0;
-    public float jumpTime2 = 0;
+    public float jumpTime2 = 10;
     public GameObject pas;
 
     Rigidbody r;
@@ -43,6 +43,7 @@ public class Passenger : MonoBehaviour
         }
         mapSprite.color = mesh[0].material.color;
         jumpTime2 = Random.Range(2f, 6f);
+        jump = -1;
     }
 
 
@@ -79,12 +80,12 @@ public class Passenger : MonoBehaviour
             canTrigger = false;
         }
         else {
-            if (jump <= -0.5f)
+            if (jump <= -1f)
             {
                 pas.transform.localPosition = new Vector3(0, -1.11f, -4.12f);
             }
             else {
-                pas.transform.localPosition = new Vector3(0, pas.transform.localPosition.y + jump, -4.12f);
+                pas.transform.localPosition = new Vector3(0, Mathf.Max(pas.transform.localPosition.y + (jump*0.7f), -1.11f), -4.12f);
                 jump -= 2 * Time.deltaTime;
             }
         }
@@ -105,8 +106,8 @@ public class Passenger : MonoBehaviour
         }
         jumpTime += Time.deltaTime;
         if (jumpTime >= jumpTime2) {
-            if (r.velocity.magnitude > 0.1f) {
-                jump = 0.5f;
+            if (r.velocity.magnitude < 0.1f) {
+                jump = Random.Range(0.4f, 0.6f);
             }
             jumpTime = 0;
             jumpTime2 = Random.Range(2f, 6f);
