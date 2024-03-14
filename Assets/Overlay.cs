@@ -10,17 +10,17 @@ public class Overlay : MonoBehaviour
     RenderTexture tex;
     // Start is called before the first frame update
     void Start()
-    {
+    { 
         cam = GetComponent<Camera>();
         cam.targetTexture = tex;
         image.texture = tex;
-        image.color = new Color(1f, 1f, 1f, 0.3f);
         
     }
 
     // Update is called once per frame
     void Update()
     {
+        image.color = new Color(1f, 1f, 1f, 0.2f + Mathf.Sin(Time.time * 10) * 0.05f);
         if (tex == null || Screen.width != tex.width || Screen.height != tex.height)
         {
             Destroy(tex);
