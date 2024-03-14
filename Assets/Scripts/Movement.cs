@@ -76,6 +76,8 @@ public class Movement : MonoBehaviour
 
     float onGround;
 
+    public RawImage overlay;
+    float ultravis = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -149,6 +151,14 @@ public class Movement : MonoBehaviour
     }
     void FixedUpdate()
     {
+        if (ultravis > 0)
+        {
+            ultravis--;
+            overlay.color = new Color(1, 1, 1, 0.6f);
+        }
+        else {
+            overlay.color = new Color(1, 1, 1, 0.2f);
+        }
         if (Score.gameOver)
         {
             Destroy(gameObject);
@@ -495,6 +505,10 @@ public class Movement : MonoBehaviour
             }
 
         }
+    }
+
+    public void OnUltraVision() {
+        ultravis = 180;
     }
 
         public void OnDrop()

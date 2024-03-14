@@ -14,13 +14,13 @@ public class Overlay : MonoBehaviour
         cam = GetComponent<Camera>();
         cam.targetTexture = tex;
         image.texture = tex;
-        
+        image.color = new Color(1f, 1f, 1f, 0.2f);
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        image.color = new Color(1f, 1f, 1f, 0.25f);
         if (tex == null || Screen.width != tex.width || Screen.height != tex.height)
         {
             Destroy(tex);
