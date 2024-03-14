@@ -23,6 +23,11 @@ public class Passenger : MonoBehaviour
     public float turning;
     public float turnTimer;
 
+    public float jump = 0;
+    public float jumpTime = 0;
+    public float jumpTime2 = 0;
+    public GameObject pas;
+
     Rigidbody r;
     // Start is called before the first frame update
     void Start()
@@ -37,7 +42,9 @@ public class Passenger : MonoBehaviour
             item.material = passengerMats[passengerType - 1];
         }
         mapSprite.color = mesh[0].material.color;
+        jumpTime2 = Random.Range(2f, 6f);
     }
+
 
     // Update is called once per frame
     void Update()
@@ -62,6 +69,7 @@ public class Passenger : MonoBehaviour
             mapSprite.enabled = true;
         if (isInCar)
         {
+            pas.transform.localPosition = new Vector3(0, -1.11f, -4.12f);
             mapSprite.enabled = false;
             transform.SetLocalPositionAndRotation(parentMove.PassengerPosition(passengerNum), new Quaternion());
             if (parentMove.select == passengerType - 1)
@@ -71,7 +79,14 @@ public class Passenger : MonoBehaviour
             canTrigger = false;
         }
         else {
-            //transform.rotation = Quaternion.Euler(0,transform.rotation.y,0);
+            if (jump <= -0.5f)
+            {
+                pas.transform.localPosition = new Vector3(0, -1.11f, -4.12f);
+            }
+            else {
+                pas.transform.localPosition = new Vector3(0, pas.transform.localPosition.y + jump, -4.12f);
+                jump -= 2 * Time.deltaTime;
+            }
         }
             if (parentMove != null)
             {
@@ -88,7 +103,14 @@ public class Passenger : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
+        jumpTime += Time.deltaTime;
+        if (jumpTime >= jumpTime2) {
+            if (r.velocity.magnitude > 0.1f) {
+                jump = 0.5f;
+            }
+            jumpTime = 0;
+            jumpTime2 = Random.Range(2f, 6f);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
