@@ -20,7 +20,7 @@ public class Overlay : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        image.color = new Color(1f, 1f, 1f, 0.2f + Mathf.Sin(Time.time * 10) * 0.05f);
+        image.color = new Color(1f, 1f, 1f, 0.2f + Mathf.Sin(Time.time * 7) * 0.05f);
         if (tex == null || Screen.width != tex.width || Screen.height != tex.height)
         {
             Destroy(tex);
