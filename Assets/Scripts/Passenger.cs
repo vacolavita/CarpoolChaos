@@ -71,6 +71,8 @@ public class Passenger : MonoBehaviour
         if (isInCar)
         {
             pas.transform.localPosition = new Vector3(0, -1.11f, -4.12f);
+            jumpTime = 0;
+            jump = 0;
             mapSprite.enabled = false;
             transform.SetLocalPositionAndRotation(parentMove.PassengerPosition(passengerNum), new Quaternion());
             if (parentMove.select == passengerType - 1)
