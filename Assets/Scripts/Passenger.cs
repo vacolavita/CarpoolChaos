@@ -84,7 +84,7 @@ public class Passenger : MonoBehaviour
         }
         else
         {
-            pas.transform.localScale = new Vector3(1.2f, 1.2f, 1.2f);
+            pas.transform.localScale = new Vector3(1.13f, 1.13f, 1.13f);
             if (jump <= -1f)
             {
                 pas.transform.localPosition = new Vector3(0, -1, 0);
