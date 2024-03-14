@@ -284,7 +284,8 @@ Shader "NewUberWithAlpha"
             }
             #endif
 
-            return half4(color, 1.0);
+            half alpha = SAMPLE_TEXTURE2D_X(_BlitTexture, sampler_LinearClamp, uvDistorted).w;
+            return half4(color, alpha);
         }
 
     ENDHLSL
