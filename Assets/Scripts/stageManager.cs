@@ -9,6 +9,8 @@ public class stageManager : MonoBehaviour
     public Vector3[] stops;
     public Vector3 fuel;
     public GameObject clump;
+    public GameObject pas;
+    public float floor;
     [SerializeReference] public StageEvent[] events;
     public float timer;
 
@@ -20,6 +22,7 @@ public class stageManager : MonoBehaviour
         int i = 0;
         foreach (var item in stops){
             clumps[i] = Instantiate(clump, item, new Quaternion());
+            Instantiate(pas, item, new Quaternion());
             i++;
         }
     }

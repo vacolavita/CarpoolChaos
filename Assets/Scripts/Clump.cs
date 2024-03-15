@@ -9,11 +9,13 @@ public class Clump : MonoBehaviour
     public GameObject player;
     bool taken = false;
     public int passengers = 0;
+    public SpriteRenderer icon;
 
     //public Passenger pass;
 
     void Start()
     {
+        icon = GetComponentInChildren<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -28,6 +30,12 @@ public class Clump : MonoBehaviour
         {
             taken = true;
         }
-
+        if (passengers > 0)
+        {
+            icon.enabled = false;
+        }
+        else {
+            icon.enabled = true;
+        }
     }
 }
