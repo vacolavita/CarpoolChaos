@@ -21,10 +21,7 @@ public class TownButton : MonoBehaviour
 
     void PlayGame()
     {
-        Score.gameOver = false;
         Loader.Load(Loader.Scene.Test);
         Score.stage = 1;
-        GameModes.time = 180;
-        StaticGameManager.passengersOut = 0;
     }
 }
