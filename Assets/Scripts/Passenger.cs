@@ -23,6 +23,11 @@ public class Passenger : MonoBehaviour
     public float turning;
     public float turnTimer;
 
+    public float jump = -1;
+    public float jumpTime = 0;
+    public float jumpTime2 = 10;
+    public GameObject pas;
+
     Rigidbody r;
     // Start is called before the first frame update
     void Start()
@@ -37,31 +42,38 @@ public class Passenger : MonoBehaviour
             item.material = passengerMats[passengerType - 1];
         }
         mapSprite.color = mesh[0].material.color;
+        jumpTime2 = Random.Range(2f, 6f);
+        jump = -1;
     }
+
 
     // Update is called once per frame
     void Update()
     {
-            if (GameModes.peculiarPassengers && clump != null)
+        if (GameModes.peculiarPassengers && clump != null)
+        {
+            foreach (var item in mesh)
             {
-                foreach (var item in mesh)
-                {
-                    item.material = passengerMats[3];
-                }
-                mapSprite.color = mesh[0].material.color;
+                item.material = passengerMats[3];
             }
-            else
+            mapSprite.color = mesh[0].material.color;
+        }
+        else
+        {
+            foreach (var item in mesh)
             {
-                foreach (var item in mesh)
-                {
-                    item.material = passengerMats[passengerType - 1];
-                }
-                mapSprite.color = mesh[0].material.color;
+                item.material = passengerMats[passengerType - 1];
             }
+            mapSprite.color = mesh[0].material.color;
+        }
 
-            mapSprite.enabled = true;
+        mapSprite.enabled = true;
         if (isInCar)
         {
+            pas.transform.localPosition = new Vector3(0, -1, 0);
+            pas.transform.localScale = new Vector3(1, 1, 1);
+            jumpTime = 0;
+            jump = 0;
             mapSprite.enabled = false;
             transform.SetLocalPositionAndRotation(parentMove.PassengerPosition(passengerNum), new Quaternion());
             if (parentMove.select == passengerType - 1)
@@ -70,32 +82,51 @@ public class Passenger : MonoBehaviour
             }
             canTrigger = false;
         }
-        else {
-            //transform.rotation = Quaternion.Euler(0,transform.rotation.y,0);
+        else
+        {
+            pas.transform.localScale = new Vector3(1.13f, 1.13f, 1.13f);
+            if (jump <= -1f)
+            {
+                pas.transform.localPosition = new Vector3(0, -1, 0);
+            }
+            else
+            {
+                pas.transform.localPosition = new Vector3(0, Mathf.Max(pas.transform.localPosition.y + (jump * 0.7f), -1), 0);
+                jump -= 2 * Time.deltaTime;
+            }
         }
-            if (parentMove != null)
+        if (parentMove != null)
+        {
+            if (Vector3.Distance(parentMove.transform.position, transform.position) > 4)
             {
-                if (Vector3.Distance(parentMove.transform.position, transform.position) > 4)
-                {
-                    canTrigger = true;
-                }
+                canTrigger = true;
             }
-            if (clump != null && clump.player != null)
-            {
-                joinCar(clump.player.GetComponent<Collider>());
-            }
+        }
+        if (clump != null && clump.player != null)
+        {
+            joinCar(clump.player.GetComponent<Collider>());
+        }
         if (Score.gameOver)
         {
             Destroy(gameObject);
         }
-
+        jumpTime += Time.deltaTime;
+        if (jumpTime >= jumpTime2)
+        {
+            if (r.velocity.magnitude < 0.1f)
+            {
+                jump = Random.Range(0.4f, 0.6f);
+            }
+            jumpTime = 0;
+            jumpTime2 = Random.Range(2f, 6f);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Car") && !isInCar && canTrigger && clump == null)
         {
-                joinCar(other);
+            joinCar(other);
         }
         else
         {
@@ -117,7 +148,8 @@ public class Passenger : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         canTrigger = true;
-        if (clump == null && GameModes.fragilePassengers) {
+        if (clump == null && GameModes.fragilePassengers)
+        {
             Destroy(gameObject);
             StaticGameManager.passengersOut -= 1;
         }
@@ -125,12 +157,15 @@ public class Passenger : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (state == 0) {
+        if (state == 0)
+        {
             turning = 0;
             turnTimer = 0;
         }
-        if (state == 1) {
-            if (turning == 0 || turnTimer <= 0) {
+        if (state == 1)
+        {
+            if (turning == 0 || turnTimer <= 0)
+            {
                 float sign = Mathf.Sign(turning);
                 turning = Random.Range(25f, 50f) * sign * -1;
                 turnTimer = Random.Range(20, 100);
@@ -142,8 +177,10 @@ public class Passenger : MonoBehaviour
     }
 
 
-    private void joinCar(Collider other) {
-        if (other.GetComponent<Movement>().carryingCapacity > other.GetComponent<Movement>().currentPassengers) {
+    private void joinCar(Collider other)
+    {
+        if (other.GetComponent<Movement>().carryingCapacity > other.GetComponent<Movement>().currentPassengers)
+        {
             state = 0;
             transform.SetParent(other.gameObject.GetComponent<Movement>().carMesh);
             parentMove = other.gameObject.GetComponent<Movement>();
@@ -152,7 +189,7 @@ public class Passenger : MonoBehaviour
                 if (parentMove.passengers[i] == null)
                 {
                     parentMove.passengers[i] = gameObject;
-                    passengerNum = i+1;
+                    passengerNum = i + 1;
                     if (clump != null)
                     {
                         clump.passengers--;
@@ -178,16 +215,21 @@ public class Passenger : MonoBehaviour
 
     public void scorePassenger(Collider other, bool callObj)
     {
-        if (!(isInCar && !callObj)) {
+        if (!(isInCar && !callObj))
+        {
             if (other.gameObject.GetComponent<Destination>().destType == passengerType)
             {
+                if (clump != null)
+                {
+                    clump.passengers--;
+                }
                 if (isInCar)
                 {
                     parentMove.currentPassengers--;
                     parentMove.passengers[passengerNum - 1] = null;
                     parentMove.UpdateColor(0);
                 }
-                GameObject popUp = Instantiate(pop, transform.position, Quaternion.Euler(-70,0,0));
+                GameObject popUp = Instantiate(pop, transform.position, Quaternion.Euler(-70, 0, 0));
                 popUp.GetComponent<PopUp>().buildPopUp(plusOne, GetComponent<MeshRenderer>().material.color, 3, true);
                 Destroy(gameObject);
                 StaticGameManager.passengersOut -= 1;

@@ -56,6 +56,7 @@ public class GameManager : MonoBehaviour
         //fire.Stop();
         //GameModes.time = GameModes.time + 0;
         //StartCoroutine(Fire());
+        music = GameObject.Find("Music Manager").GetComponent<AudioSource>();
     }
 
     // Update is called once per frame

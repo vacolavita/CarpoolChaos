@@ -195,6 +195,11 @@ public class Movement : MonoBehaviour
                     nav = true;
                 }
             }
+            if (fuelLevel < 10) {
+                controlDirection = new Vector2(markers[1].transform.forward.x, markers[1].transform.forward.z);
+                controlDirection.Normalize();
+                nav = true;
+            }
             if (nav == false){
                 controlDirection = Vector2.zero;
             }
@@ -375,10 +380,6 @@ public class Movement : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Clump"))
-        {
-            other.GetComponent<Clump>().player = gameObject;
-        }
 
         if (other.gameObject.CompareTag("Boost Pad"))
         {
@@ -652,12 +653,21 @@ public class Movement : MonoBehaviour
         {
             fuelLevel = Mathf.Min(fuelLevel + Time.deltaTime * 25, maxFuel);
             DebugFueling = true;
-            if (fuelLevel >= maxFuel*0.95f)
+            if (fuelLevel >= maxFuel*0.9f)
             {
                 DebugFueling = false;
             }
         }
-        else {
+        if (other.gameObject.CompareTag("Clump"))
+        {
+            other.GetComponent<Clump>().player = gameObject;
+        }
+    }
+
+    public void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Gas Station"))
+        {
             DebugFueling = false;
         }
     }
