@@ -12,9 +12,9 @@ public class GameManager : MonoBehaviour
     public Movement car1;
     public Movement car2;
     public int score;
-    
-   
-    
+
+
+
     public TextMeshProUGUI timerText;
     public Slider fuelMeter1;
     public Slider fuelMeter2;
@@ -83,21 +83,23 @@ public class GameManager : MonoBehaviour
         {
             EndGame();
         }
-        
+
         GamePause();
         Score.score = score;
 
-        if (GameModes.useTime && GameModes.time <= 61 && oneMinute == false) { 
+        if (GameModes.useTime && GameModes.time <= 61 && oneMinute == false)
+        {
             oneMinute = true;
             splashManager.splashes.Enqueue(new splashManager.splash(1, "One minute left!!!"));
-            
+
         }
         if (GameModes.useTime && GameModes.time <= 91 && rush == false)
         {
             rush = true;
             splashManager.splashes.Enqueue(new splashManager.splash(1, "Rush!!!"));
         }
-        if (oneMinute) {
+        if (oneMinute)
+        {
             music.pitch = 1.2f;
         }
 
@@ -116,10 +118,11 @@ public class GameManager : MonoBehaviour
         {
             GameModes.time -= timeLeft * Time.deltaTime;
         }
-        else 
+        else
         {
             countdown -= Time.deltaTime;
-            if (countdown <= 0) {
+            if (countdown <= 0)
+            {
                 StaticGameManager.control = true;
                 UI.SetActive(true);
             }
@@ -137,12 +140,20 @@ public class GameManager : MonoBehaviour
         Loader.Load(Loader.Scene.GameEndMenu);
     }
 
+    public void QuitGame()
+    {
+
+        Score.gameOver = true;
+        Loader.Load(Loader.Scene.MainMenu);
+        ResumeGame();
+    }
+
     public void LifeDrain(float livesToDrain)
     {
         lives += livesToDrain;
         livesText.text = "Lives: " + Mathf.Round(lives);
     }
-    
+
     public void GamePause()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -167,7 +178,7 @@ public class GameManager : MonoBehaviour
             //fireState = Random.Range(fireMin, fireMax);
             //if (fireState == 6)
             {
-            //    break;
+                //    break;
             }
             yield return new WaitForSeconds(check);
         }
