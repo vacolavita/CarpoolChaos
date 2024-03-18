@@ -10,6 +10,7 @@ public class ItemBox : MonoBehaviour
     public Movement movement;
     public Sprite[] sprites;
     public Image image;
+    public int player = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,15 +20,19 @@ public class ItemBox : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (movement.item == 0)
+        movement = GameObject.Find("Player " + player).GetComponent<Movement>();
+        if (movement != null)
         {
-            image.enabled = false;
+            if (movement.item == 0)
+            {
+                image.enabled = false;
+            }
+            else
+            {
+                image.enabled = true;
+                image.sprite = sprites[movement.item - 1];
+            }
         }
-        else {
-            image.enabled = true;
-            image.sprite = sprites[movement.item-1];
-        }
-
         
     }
 }
