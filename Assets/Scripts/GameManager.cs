@@ -142,6 +142,7 @@ public class GameManager : MonoBehaviour
 
         Score.gameOver = true;
         Loader.Load(Loader.Scene.MainMenu);
+        ResumeGame();
     }
 
     public void LifeDrain(float livesToDrain)
