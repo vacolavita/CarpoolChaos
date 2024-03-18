@@ -117,7 +117,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3663203845265194192}
   - component: {fileID: 7320902317602984026}
-  m_Layer: 0
+  - component: {fileID: 4073896987301388179}
+  m_Layer: 9
   m_Name: Spot Light (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -151,7 +152,7 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 0.8888049, b: 0.27987415, a: 1}
-  m_Intensity: 1
+  m_Intensity: 30
   m_Range: 20
   m_SpotAngle: 76.1
   m_InnerSpotAngle: 21.80208
@@ -201,6 +202,29 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &4073896987301388179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5968093897524165285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 3
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_LightLayerMask: 1
+  m_RenderingLayers: 1
+  m_CustomShadowLayers: 0
+  m_ShadowLayerMask: 1
+  m_ShadowRenderingLayers: 1
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
+  m_SoftShadowQuality: 0
 --- !u!1 &5990697433740804565
 GameObject:
   m_ObjectHideFlags: 0
@@ -211,7 +235,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5248608544442143603}
   - component: {fileID: 8806957649529132649}
-  m_Layer: 0
+  - component: {fileID: 7731696811582371999}
+  m_Layer: 9
   m_Name: Spot Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -245,7 +270,7 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 0.8901961, b: 0.2784314, a: 1}
-  m_Intensity: 1
+  m_Intensity: 30
   m_Range: 20
   m_SpotAngle: 76.1
   m_InnerSpotAngle: 21.80208
@@ -295,6 +320,29 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &7731696811582371999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5990697433740804565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 3
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_LightLayerMask: 1
+  m_RenderingLayers: 1
+  m_CustomShadowLayers: 0
+  m_ShadowLayerMask: 1
+  m_ShadowRenderingLayers: 1
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
+  m_SoftShadowQuality: 0
 --- !u!1 &7121863207185843292
 GameObject:
   m_ObjectHideFlags: 0
@@ -417,7 +465,6 @@ MonoBehaviour:
   hasFuel: 0
   fuelLevel: 100
   maxFuel: 100
-  fuelMeter: {fileID: 0}
   carMesh: {fileID: 4275386579752369036}
   select: 0
   item: 0
@@ -429,7 +476,7 @@ MonoBehaviour:
   - {fileID: 1531684317481719074, guid: 83548550ab21f6949b49c0d052236435, type: 3}
   playernum: 0
   playerControl: {fileID: 0}
-  paint: {r: 0.47161373, g: 0.40503737, b: 0.6981132, a: 1}
+  paint: {r: 0.8113208, g: 0.79262674, b: 0, a: 1}
   passengers: []
   launchTrajectory: {x: 0, y: 0, z: 0}
   popUp: {fileID: 6370264067895288898, guid: b54c5dceeb9277347b0a43e7bcf3ad45, type: 3}
@@ -438,6 +485,7 @@ MonoBehaviour:
   marker: {fileID: 5274907496561475266, guid: c5df6db4606ba54468b700b2d1486299, type: 3}
   markers: []
   DebugAI: 0
+  overlay: {fileID: 0}
 --- !u!64 &28060713266988252
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5260,13 +5308,15 @@ ParticleSystemRenderer:
   m_RenderAlignment: 0
   m_Pivot: {x: 0, y: 0, z: 0}
   m_Flip: {x: 0, y: 0, z: 0}
-  m_UseCustomVertexStreams: 0
   m_EnableGPUInstancing: 1
   m_ApplyActiveColorSpace: 1
   m_AllowRoll: 1
   m_FreeformStretching: 0
   m_RotateWithStretchDirection: 1
+  m_UseCustomVertexStreams: 0
   m_VertexStreams: 00010304
+  m_UseCustomTrailVertexStreams: 0
+  m_TrailVertexStreams: 00010304
   m_Mesh: {fileID: 0}
   m_Mesh1: {fileID: 0}
   m_Mesh2: {fileID: 0}
@@ -5287,7 +5337,7 @@ GameObject:
   - component: {fileID: 4772726001348494424}
   - component: {fileID: 1921917175013145662}
   - component: {fileID: 3368401385304206485}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Exhaust
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10097,13 +10147,15 @@ ParticleSystemRenderer:
   m_RenderAlignment: 0
   m_Pivot: {x: 0, y: 0, z: 0}
   m_Flip: {x: 0, y: 0, z: 0}
-  m_UseCustomVertexStreams: 0
   m_EnableGPUInstancing: 1
   m_ApplyActiveColorSpace: 1
   m_AllowRoll: 1
   m_FreeformStretching: 0
   m_RotateWithStretchDirection: 1
+  m_UseCustomVertexStreams: 0
   m_VertexStreams: 00010304
+  m_UseCustomTrailVertexStreams: 0
+  m_TrailVertexStreams: 00010304
   m_Mesh: {fileID: 0}
   m_Mesh1: {fileID: 0}
   m_Mesh2: {fileID: 0}
@@ -10184,6 +10236,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 618c510c84e512d40ba65538b22ffe11, type: 3}
       propertyPath: m_Name
       value: VanMESH
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 618c510c84e512d40ba65538b22ffe11, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
