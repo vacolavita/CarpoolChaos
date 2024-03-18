@@ -137,6 +137,14 @@ public class GameManager : MonoBehaviour
         Loader.Load(Loader.Scene.GameEndMenu);
     }
 
+    public void QuitGame()
+    {
+
+        Score.gameOver = true;
+        Loader.Load(Loader.Scene.MainMenu);
+        ResumeGame();
+    }
+
     public void LifeDrain(float livesToDrain)
     {
         lives += livesToDrain;
