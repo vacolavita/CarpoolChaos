@@ -19,7 +19,7 @@ public class stageManager : MonoBehaviour
     [NonSerialized] public GameObject[] clumps;
     void Start()
     {
-        int col = UnityEngine.Random.Range(1, 4);
+        int col = UnityEngine.Random.Range(1, 5);
         int i = 0;
         foreach (var p in spawnPoints)
         {
@@ -61,6 +61,17 @@ public class stageManager : MonoBehaviour
                 if (i == 2)
                 {
                     m.paint = new Color(1f, 0.2f, 0.7f);
+                }
+            }
+            if (col == 4)
+            {
+                if (i == 1)
+                {
+                    m.paint = new Color(0.1f, 0.3f, 0.1f);
+                }
+                if (i == 2)
+                {
+                    m.paint = new Color(1f, 0.6f, 0.1f);
                 }
             }
         }

@@ -26,5 +26,6 @@ public class TownButton : MonoBehaviour
         Score.stage = 1;
         GameModes.time = 180;
         StaticGameManager.passengersOut = 0;
+        StaticGameManager.control = false;
     }
 }
