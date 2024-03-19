@@ -91,8 +91,8 @@ public class Passenger : MonoBehaviour
             }
             else
             {
-                pas.transform.localPosition = new Vector3(0, Mathf.Max(pas.transform.localPosition.y + (jump * 0.7f), -1), 0);
-                jump -= 2 * Time.deltaTime;
+                pas.transform.localPosition = new Vector3(0, Mathf.Max(pas.transform.localPosition.y + (jump * 0.7f * Time.timeScale), -1), 0);
+                jump -= 2 * Time.deltaTime * Time.timeScale;
             }
         }
         if (parentMove != null)
