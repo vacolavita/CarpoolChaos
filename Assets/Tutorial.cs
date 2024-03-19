@@ -55,7 +55,7 @@ public class Tutorial : MonoBehaviour
         }
         if (timer >= 76)
         {
-            tmp.text = "Work together and get a high score!";
+            tmp.text = "";
         }
     }
 }
