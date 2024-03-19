@@ -146,6 +146,14 @@ public class Movement : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        if (Input.GetKeyDown(KeyCode.K)) {
+            DebugAI = true;
+        }
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            DebugAI = false;
+        }
     }
     void FixedUpdate()
     {
