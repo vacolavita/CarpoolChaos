@@ -76,6 +76,8 @@ public class Movement : MonoBehaviour
 
     float onGround;
 
+    public bool TEMP;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -85,7 +87,12 @@ public class Movement : MonoBehaviour
         GetComponent<MeshCollider>().material.dynamicFriction = 0;
         GetComponent<MeshCollider>().material.staticFriction = 0;
         markers = new GameObject[3];
-        stage = GameObject.Find("StageManager").GetComponent<stageManager>();
+
+        if (!TEMP)
+        {
+            stage = GameObject.Find("StageManager").GetComponent<stageManager>();
+        }
+
 
         passengers = new GameObject[carryingCapacity];
         r = GetComponent<Rigidbody>();
@@ -161,7 +168,7 @@ public class Movement : MonoBehaviour
         carMesh.localRotation = Quaternion.Euler(-onGround, 0, 0);
         PlayerManagerManager.players[playernum] = gameObject;
 
-        if (stage.clumps[0] != null && (stage.clumps[0].GetComponent<Clump>().passengers > 0 || stage.clumps[1].GetComponent<Clump>().passengers > 0 || stage.clumps[2].GetComponent<Clump>().passengers > 0) && currentPassengers == 0)
+        if (!TEMP && stage.clumps[0] != null && (stage.clumps[0].GetComponent<Clump>().passengers > 0 || stage.clumps[1].GetComponent<Clump>().passengers > 0 || stage.clumps[2].GetComponent<Clump>().passengers > 0) && currentPassengers == 0)
         {
             if (markers[2] == null)
             {
