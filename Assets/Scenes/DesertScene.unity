@@ -21669,8 +21669,9 @@ MonoBehaviour:
   cameraFollow: {fileID: 718743423}
   cameraDistance: {x: 0, y: 40, z: -20}
   cameraOffset: {x: 0, y: 0, z: -3}
-  xBorders: {x: 0, y: 0}
-  yBorders: {x: 0, y: 0}
+  xBorders: {x: -100, y: 100}
+  yBorders: {x: -100, y: 100}
+  TEMP: 0
 --- !u!114 &991170609
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35293,6 +35294,10 @@ PrefabInstance:
       value: Car
       objectReference: {fileID: 0}
     - target: {fileID: 1202845486503582370, guid: f1dc761dce0153948b8e3c07b4a1cb3d, type: 3}
+      propertyPath: TEMP
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1202845486503582370, guid: f1dc761dce0153948b8e3c07b4a1cb3d, type: 3}
       propertyPath: paint.b
       value: 0.29874206
       objectReference: {fileID: 0}
@@ -35306,15 +35311,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3301784293237717141, guid: f1dc761dce0153948b8e3c07b4a1cb3d, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.6310319
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3301784293237717141, guid: f1dc761dce0153948b8e3c07b4a1cb3d, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.6310319
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3301784293237717141, guid: f1dc761dce0153948b8e3c07b4a1cb3d, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.6310319
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3301784293237717141, guid: f1dc761dce0153948b8e3c07b4a1cb3d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -35327,6 +35332,10 @@ PrefabInstance:
     - target: {fileID: 3301784293237717141, guid: f1dc761dce0153948b8e3c07b4a1cb3d, type: 3}
       propertyPath: m_LocalPosition.z
       value: 30.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7121863207185843292, guid: f1dc761dce0153948b8e3c07b4a1cb3d, type: 3}
+      propertyPath: m_Name
+      value: Player 1
       objectReference: {fileID: 0}
     - target: {fileID: 7955159108260895079, guid: f1dc761dce0153948b8e3c07b4a1cb3d, type: 3}
       propertyPath: m_LocalPosition.x
