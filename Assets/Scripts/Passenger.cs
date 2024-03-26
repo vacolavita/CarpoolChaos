@@ -37,6 +37,8 @@ public class Passenger : MonoBehaviour
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
         spawn = GameObject.Find("Spawner").GetComponent<Spawner>();
         r = GetComponent<Rigidbody>();
+        GetComponent<Collider>().material.dynamicFriction = 10;
+        GetComponent<Collider>().material.staticFriction = 10;
         foreach (var item in mesh)
         {
             item.material = passengerMats[passengerType - 1];
