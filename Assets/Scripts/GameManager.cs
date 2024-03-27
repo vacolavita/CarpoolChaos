@@ -16,8 +16,8 @@ public class GameManager : MonoBehaviour
    
     
     public TextMeshProUGUI timerText;
-    public Slider fuelMeter1;
-    public Slider fuelMeter2;
+    //public Slider fuelMeter1;
+    //public Slider fuelMeter2;
     public float fuelAmount1;
     public float fuelAmount2;
     public float lives = 3;
