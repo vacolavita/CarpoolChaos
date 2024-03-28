@@ -4905,6 +4905,8 @@ Transform:
   - {fileID: 536388145}
   - {fileID: 623464107}
   - {fileID: 601708912}
+  - {fileID: 576748151}
+  - {fileID: 214227805}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &212336233
@@ -5083,6 +5085,59 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 5302568919011541938, guid: 69b765f5ac164dd4c941ec457907b5af, type: 3}
+--- !u!1 &214227804
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 214227805}
+  - component: {fileID: 214227806}
+  m_Layer: 0
+  m_Name: GameObject (1)
+  m_TagString: Gas Station
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &214227805
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 214227804}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -8.64, y: -11.34, z: 0.32}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 211578893}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &214227806
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 214227804}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 6.861012, y: 1, z: 5.934494}
+  m_Center: {x: 1.3653944, y: 0, z: -0.70292664}
 --- !u!1 &216563917 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 354608528327833227, guid: 17655d59a83d64141aab1b0fee04f7c0, type: 3}
@@ -10901,6 +10956,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gas Station Wild West
       objectReference: {fileID: 0}
+    - target: {fileID: 302930923326068429, guid: 12690f1eec3b4484db12b2dad2113c1b, type: 3}
+      propertyPath: m_TagString
+      value: Gas Station
+      objectReference: {fileID: 0}
     - target: {fileID: 502846783726299228, guid: 12690f1eec3b4484db12b2dad2113c1b, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.0033303725
@@ -14121,6 +14180,59 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 518.53827, y: 647.18945, z: 216.4687}
   m_Center: {x: -7.943626, y: 0, z: 3.199703}
+--- !u!1 &576748150
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 576748151}
+  - component: {fileID: 576748152}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Gas Station
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &576748151
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 576748150}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 8.57, y: -11.34, z: 0.32}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 211578893}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &576748152
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 576748150}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 6.861012, y: 1, z: 5.934494}
+  m_Center: {x: 1.3653944, y: 0, z: -0.70292664}
 --- !u!1001 &583687046
 PrefabInstance:
   m_ObjectHideFlags: 0
