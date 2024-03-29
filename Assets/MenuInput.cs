@@ -5,12 +5,12 @@ using UnityEngine.InputSystem;
 
 public class MenuInput : MonoBehaviour
 {
-    public int nav;
+    public int nav = -1;
     public MenuController[] menus;
     // Start is called before the first frame update
     void Start()
     {
-        
+        menus = new MenuController[5];
     }
 
     // Update is called once per frame
@@ -30,32 +30,48 @@ public class MenuInput : MonoBehaviour
         {
             if (Mathf.Sign(h) > 0)
             {
-                foreach (var item in menus)
+                if (nav != 3)
                 {
-                    item.navigate(3);
+                    nav = 3;
+                    foreach (var item in menus)
+                    {
+                        item.navigate(3);
+                    }
                 }
             }
             else
             {
-                foreach (var item in menus)
+                if (nav != 2)
                 {
-                    item.navigate(2);
+                    nav = 2;
+                    foreach (var item in menus)
+                    {
+                        item.navigate(2);
+                    }
                 }
             }
         }
         else {
             if (Mathf.Sign(h) > 0)
             {
-                foreach (var item in menus)
+                if (nav != 0)
                 {
-                    item.navigate(0);
+                    nav = 0;
+                    foreach (var item in menus)
+                    {
+                        item.navigate(0);
+                    }
                 }
             }
             else
             {
-                foreach (var item in menus)
+                if (nav != 1)
                 {
-                    item.navigate(1);
+                    nav = 1;
+                    foreach (var item in menus)
+                    {
+                        item.navigate(1);
+                    }
                 }
             }
         }
