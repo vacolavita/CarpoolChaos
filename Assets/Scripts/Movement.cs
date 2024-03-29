@@ -9,6 +9,7 @@ public class Movement : MonoBehaviour
 {
     public float maxSpeed;
     public float traction;
+    public float originalTraction;
     public float acceleration;
     public float handling;
     public float launchForce;
@@ -107,7 +108,7 @@ public class Movement : MonoBehaviour
         }
         if (GameModes.wornOutWheels)
         {
-            traction = ((traction-1)*0.7f)+1;
+            traction = ((originalTraction-1)*0.7f)+1;
         }
         if (GameModes.superLaunch)
         {
@@ -401,7 +402,11 @@ public class Movement : MonoBehaviour
 
         if (other.gameObject.CompareTag("Ice"))
         {
-            traction = ((traction - 1) * 0.7f) + 1;
+            traction = ((originalTraction - 1) * 0.7f) + 1;
+        }
+        else
+        {
+            traction = originalTraction;
         }
 
         if (other.gameObject.CompareTag("Obstacle"))
