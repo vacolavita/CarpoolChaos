@@ -24,7 +24,7 @@ public class MenuInput : MonoBehaviour
         float h = value.Get<Vector2>().x;
         float v = value.Get<Vector2>().y;
         if (value.Get<Vector2>().magnitude < 0.2) {
-            nav = 0;
+            nav = -1;
         }
         if (Mathf.Abs(h) >= Mathf.Abs(v))
         {
