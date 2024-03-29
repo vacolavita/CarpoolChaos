@@ -16,61 +16,71 @@ public class MenuInput : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        Debug.Log(nav);
     }
 
     public void OnNavigate(InputValue value)
     {
+        
         float h = value.Get<Vector2>().x;
         float v = value.Get<Vector2>().y;
-        if (value.Get<Vector2>().magnitude < 0.2) {
+        if (value.Get<Vector2>().magnitude < 0.2)
+        {
             nav = -1;
         }
-        if (Mathf.Abs(h) >= Mathf.Abs(v))
+        else
         {
-            if (Mathf.Sign(h) > 0)
+            if (Mathf.Abs(h) >= Mathf.Abs(v))
             {
-                if (nav != 3)
+                if (Mathf.Sign(h) > 0)
                 {
-                    nav = 3;
-                    foreach (var item in menus)
+                    if (nav != 3)
                     {
-                        item.navigate(3);
+                        nav = 3;
+                        foreach (var item in menus)
+                        {
+                            if (item != null)
+                                item.navigate(3);
+                        }
+                    }
+                }
+                else
+                {
+                    if (nav != 2)
+                    {
+                        nav = 2;
+                        foreach (var item in menus)
+                        {
+                            if(item != null)
+                                item.navigate(2);
+                        }
                     }
                 }
             }
             else
             {
-                if (nav != 2)
+                if (Mathf.Sign(v) > 0)
                 {
-                    nav = 2;
-                    foreach (var item in menus)
+                    if (nav != 0)
                     {
-                        item.navigate(2);
+                        nav = 0;
+                        foreach (var item in menus)
+                        {
+                            if (item != null)
+                                item.navigate(0);
+                        }
                     }
                 }
-            }
-        }
-        else {
-            if (Mathf.Sign(h) > 0)
-            {
-                if (nav != 0)
+                else
                 {
-                    nav = 0;
-                    foreach (var item in menus)
+                    if (nav != 1)
                     {
-                        item.navigate(0);
-                    }
-                }
-            }
-            else
-            {
-                if (nav != 1)
-                {
-                    nav = 1;
-                    foreach (var item in menus)
-                    {
-                        item.navigate(1);
+                        nav = 1;
+                        foreach (var item in menus)
+                        {
+                            if (item != null)
+                                item.navigate(1);
+                        }
                     }
                 }
             }
