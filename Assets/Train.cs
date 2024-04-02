@@ -14,5 +14,8 @@ public class Train : MonoBehaviour
     void Update()
     {
         transform.position += new Vector3(0,0,15)*Time.deltaTime;
+        if (transform.position.z > 350) {
+            transform.position += new Vector3(0, 0, -500);
+        }
     }
 }
