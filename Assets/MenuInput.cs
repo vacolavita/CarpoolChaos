@@ -16,7 +16,7 @@ public class MenuInput : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(nav);
+        //Debug.Log(nav);
     }
 
     public void OnNavigate(InputValue value)
