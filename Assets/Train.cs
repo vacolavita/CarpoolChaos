@@ -5,15 +5,16 @@ using UnityEngine;
 public class Train : MonoBehaviour
 {
     // Start is called before the first frame update
+    Rigidbody body;
     void Start()
     {
-        
+        body = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        transform.position += new Vector3(0,0,15)*Time.deltaTime;
+        body.MovePosition(transform.position + new Vector3(0, 0, 0.3f));
         if (transform.position.z > 350) {
             transform.position += new Vector3(0, 0, -500);
         }
