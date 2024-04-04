@@ -22,8 +22,8 @@ public class Train : MonoBehaviour
     void FixedUpdate()
     {
         body.MovePosition(transform.position + new Vector3(0, 0, 0.225f));
-        if (transform.position.z > 330) {
-            transform.position += new Vector3(0, 0, -500);
+        if (transform.position.z > 300) {
+            transform.position += new Vector3(0, 0, -450);
             Shuffle();
         }
         if (!startShuffle) {
