@@ -27,7 +27,6 @@ public class stageManager : MonoBehaviour
             Movement m = play.GetComponent<Movement>();
             m.playernum = i;
             i++;
-            Debug.Log("P" + i + " Cam");
             GameObject.Find("P" + i + " Cam").GetComponent<CameraFollow>().cameraFollow = play.transform;
             if (col == 1)
             {

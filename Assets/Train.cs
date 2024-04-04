@@ -7,6 +7,7 @@ public class Train : MonoBehaviour
     // Start is called before the first frame update
     Rigidbody body;
     public GameObject[] cars;
+    public int[] distances;
     public int[] indexes;
     public bool startShuffle;
 
@@ -20,7 +21,7 @@ public class Train : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        body.MovePosition(transform.position + new Vector3(0, 0, 0.25f));
+        body.MovePosition(transform.position + new Vector3(0, 0, 0.225f));
         if (transform.position.z > 330) {
             transform.position += new Vector3(0, 0, -500);
             Shuffle();
@@ -33,18 +34,12 @@ public class Train : MonoBehaviour
 
     void Shuffle() {
         reshuffle(indexes);
-        int dist = 117;
+        int dist = 135;
         foreach (var item in indexes) {
             cars[item].transform.localPosition = new Vector3(dist, 0, 0);
-            if (item != 7)
-            {
-                dist += 259;
-            }
-            else {
-                dist += 130;
-                cars[item].GetComponent<SpecialCar>().Activate();
-            }
+            dist += distances[item];
         }
+        cars[7].GetComponent<SpecialCar>().Activate();
     }
 
     void reshuffle(int[] texts)
