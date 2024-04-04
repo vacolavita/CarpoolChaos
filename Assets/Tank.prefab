@@ -406,10 +406,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1
+  m_Radius: 1.2
   m_Height: 1
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0.2, z: 0}
 --- !u!54 &3368034309783969102
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -450,15 +450,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSpeed: 21
-  traction: 1.08
-  originalTraction: 1.08
-  acceleration: 1.08
+  traction: 1.1
+  originalTraction: 1.1
+  acceleration: 1.1
   handling: 0.05
   launchForce: 52
   carryingCapacity: 9
-  fuelEfficiency: 0.15
+  fuelEfficiency: 0.13
   passengerPenalty: 0
-  launchPenalty: 14
+  launchPenalty: 12
   jumpForce: 7
   slipStream: {fileID: 2633632295365605843}
   exhaust: {fileID: 1921917175013145662}

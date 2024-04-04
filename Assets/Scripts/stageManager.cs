@@ -67,7 +67,8 @@ public class stageManager : MonoBehaviour
         i = 0;
         foreach (var item in stops){
             clumps[i] = Instantiate(clump, item, new Quaternion());
-            Instantiate(pas, item, new Quaternion());
+            GameObject p = Instantiate(pas, item, new Quaternion());
+            p.GetComponentInChildren<MapIcon>().depth = floor;
             i++;
         }
     }
