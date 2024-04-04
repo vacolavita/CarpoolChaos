@@ -33,7 +33,14 @@ public class Train : MonoBehaviour
         int dist = 117;
         foreach (var item in indexes) {
             cars[item].transform.localPosition = new Vector3(dist, 0, 0);
-            dist += 259;
+            if (item != 7)
+            {
+                dist += 259;
+            }
+            else {
+                dist += 130;
+                cars[item].GetComponent<SpecialCar>().Activate();
+            }
         }
     }
 
