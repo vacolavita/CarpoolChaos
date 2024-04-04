@@ -6573,7 +6573,7 @@ MeshCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
@@ -15700,7 +15700,7 @@ MeshCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
@@ -27676,6 +27676,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1524201441}
     m_Modifications:
+    - target: {fileID: -9172597366186058905, guid: 6ceb46dae0e78824288bf29bfcd8d586, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8937470340504274067, guid: 6ceb46dae0e78824288bf29bfcd8d586, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6ceb46dae0e78824288bf29bfcd8d586, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -27728,9 +27736,57 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 6ceb46dae0e78824288bf29bfcd8d586, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d3f6d3f22f5ce0a438fa1c8ca1c674a8, type: 2}
+    - target: {fileID: -5627174970283433320, guid: 6ceb46dae0e78824288bf29bfcd8d586, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -3989045239917683716, guid: 6ceb46dae0e78824288bf29bfcd8d586, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -3455877215471338665, guid: 6ceb46dae0e78824288bf29bfcd8d586, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -2990766530212672708, guid: 6ceb46dae0e78824288bf29bfcd8d586, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -800952373742534717, guid: 6ceb46dae0e78824288bf29bfcd8d586, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -505426787625616209, guid: 6ceb46dae0e78824288bf29bfcd8d586, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 6ceb46dae0e78824288bf29bfcd8d586, type: 3}
       propertyPath: m_Name
       value: TrainPassengerCarMesh (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6ceb46dae0e78824288bf29bfcd8d586, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2936146753706448169, guid: 6ceb46dae0e78824288bf29bfcd8d586, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5918704746302062150, guid: 6ceb46dae0e78824288bf29bfcd8d586, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6978130423744254083, guid: 6ceb46dae0e78824288bf29bfcd8d586, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7423216887517389615, guid: 6ceb46dae0e78824288bf29bfcd8d586, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -43317,6 +43373,7 @@ GameObject:
   - component: {fileID: 1524201441}
   - component: {fileID: 1524201444}
   - component: {fileID: 1524201443}
+  - component: {fileID: 1524201445}
   - component: {fileID: 1524201442}
   m_Layer: 0
   m_Name: SpecialCar
@@ -43354,8 +43411,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 1235334786771694874, guid: d8138a094dae2fa4d9948def94b77be1, type: 3}
-  activated: 0
-  p: {fileID: 0}
 --- !u!65 &1524201443
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -43375,8 +43430,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1397.3386, y: 404.17258, z: 265.83826}
-  m_Center: {x: 688.1036, y: -125.38618, z: 97.786285}
+  m_Size: {x: 1397.3386, y: 404.17258, z: 370.27145}
+  m_Center: {x: 688.1036, y: -125.38618, z: 107.45455}
 --- !u!54 &1524201444
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -43396,14 +43451,35 @@ Rigidbody:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 16382
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 0
   m_IsKinematic: 1
-  m_Interpolate: 1
-  m_Constraints: 0
+  m_Interpolate: 0
+  m_Constraints: 126
   m_CollisionDetection: 1
+--- !u!65 &1524201445
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1524201440}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1397.3386, y: 421.87115, z: 254.05746}
+  m_Center: {x: 688.1036, y: -118.08102, z: 101.02854}
 --- !u!1001 &1524918030
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -26,18 +26,21 @@ public class SpecialCar : MonoBehaviour
         Debug.Log("Ah!");
         if (collision.gameObject.CompareTag("Car") && !activated){
             Debug.Log("Ah!");
-            GameObject i = Instantiate(item, transform.position + new Vector3(1,4,-5), new Quaternion());
+            GameObject i = Instantiate(item, transform.position + new Vector3(1,2,-5), new Quaternion());
             Rigidbody r = i.GetComponent<Rigidbody>();
             if (collision.transform.position.x > transform.position.x)
             {
-                r.velocity += new Vector3(-13, 3, 0);
+                i.transform.position += new Vector3(-1,0,0);
+                r.velocity += new Vector3(-13, 2, 0);
             }
             else {
-                r.velocity += new Vector3(13, 3, 0);
+                i.transform.position += new Vector3(1, 0, 0);
+                r.velocity += new Vector3(13, 2, 0);
             }
             activated = true;
             col[0].enabled = false;
             p.Stop();
+            p.Clear();
         }
     }
 
