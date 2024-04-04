@@ -8,24 +8,27 @@ public class Train : MonoBehaviour
     Rigidbody body;
     public GameObject[] cars;
     public int[] indexes;
+    public bool startShuffle;
 
-    //258
     void Start()
     {
 
         body = GetComponent<Rigidbody>();
-        Shuffle();
     }
+
 
     // Update is called once per frame
     void FixedUpdate()
     {
         body.MovePosition(transform.position + new Vector3(0, 0, 0.25f));
-        if (transform.position.z > 350) {
+        if (transform.position.z > 330) {
             transform.position += new Vector3(0, 0, -500);
             Shuffle();
         }
-
+        if (!startShuffle) {
+            startShuffle = true;
+            Shuffle();
+        }
     }
 
     void Shuffle() {
