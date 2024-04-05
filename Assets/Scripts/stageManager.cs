@@ -78,7 +78,8 @@ public class stageManager : MonoBehaviour
         timer += Time.deltaTime;
         if (timer > 63) {
             timer = -9999;
-            events[0].Trigger();
+            events[UnityEngine.Random.Range(0, events.Length)].Trigger();
+            
         }
     }
 }
