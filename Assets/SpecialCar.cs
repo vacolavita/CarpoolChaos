@@ -34,7 +34,7 @@ public class SpecialCar : MonoBehaviour
             Rigidbody r = i.GetComponent<Rigidbody>();
             if (collision.transform.position.x > transform.position.x)
             {
-                i.transform.position += new Vector3(-1, 0, 0);
+                i.transform.position += new Vector3(-3, 0, 0);
                 r.velocity += new Vector3(-13, 2, 0);
             }
             else

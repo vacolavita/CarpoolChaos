@@ -18862,8 +18862,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 513.7695, y: 482.49796, z: 1216.9723}
-  m_Center: {x: 190.91776, y: 0, z: 20.492245}
+  m_Size: {x: 576.3021, y: 482.49796, z: 1216.9723}
+  m_Center: {x: 159.65128, y: 0, z: 20.49227}
 --- !u!1 &544148061
 GameObject:
   m_ObjectHideFlags: 0
@@ -22357,7 +22357,7 @@ MonoBehaviour:
   dests:
   - {x: 78.8, y: 0, z: -74.4}
   - {x: 0, y: 0, z: 5.9}
-  - {x: -72.28, y: 0, z: 78.06}
+  - {x: -77.95, y: 0, z: 22.97}
   stops:
   - {x: -52, y: 1, z: -57}
   - {x: 60, y: 1, z: 4.745359}
@@ -25894,7 +25894,7 @@ GameObject:
   - component: {fileID: 810735689}
   - component: {fileID: 810735690}
   m_Layer: 0
-  m_Name: BPEvent
+  m_Name: SpeedEvent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25924,11 +25924,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 810735688}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd5b0c01103136f45a2de51c952a7171, type: 3}
+  m_Script: {fileID: 11500000, guid: b4dfcc533d4dc344996e2c948af70aef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  peels: {fileID: 4240577409209856703, guid: 659d81c078464e24992c5c93d911b4ee, type: 3}
-  spawnPoints: []
+  train: {fileID: 1193333692499562928}
 --- !u!1 &817678085
 GameObject:
   m_ObjectHideFlags: 0
@@ -36245,7 +36244,7 @@ Transform:
   m_GameObject: {fileID: 1215234087}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -77.95, y: 80, z: 22.97}
+  m_LocalPosition: {x: -78.99, y: 80, z: 27.04}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -36353,7 +36352,7 @@ Transform:
   m_GameObject: {fileID: 1225464191}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -14.6, y: 80, z: 4}
+  m_LocalPosition: {x: -14.07, y: 80, z: 9.29}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -59331,6 +59330,7 @@ MonoBehaviour:
   distances: da000000da000000da000000da000000ff000000ff000000ff0000006d000000
   indexes: 0000000001000000020000000300000004000000050000000600000007000000
   startShuffle: 0
+  speed: 0.225
 --- !u!65 &7292160432200036328
 BoxCollider:
   m_ObjectHideFlags: 0

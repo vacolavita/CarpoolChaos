@@ -10,6 +10,7 @@ public class Train : MonoBehaviour
     public int[] distances;
     public int[] indexes;
     public bool startShuffle;
+    public float speed = 0.225f;
 
     void Start()
     {
@@ -21,7 +22,7 @@ public class Train : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        body.MovePosition(transform.position + new Vector3(0, 0, 0.225f));
+        body.MovePosition(transform.position + new Vector3(0, 0, speed));
         if (transform.position.z > 300) {
             transform.position += new Vector3(0, 0, -450);
             Shuffle();
