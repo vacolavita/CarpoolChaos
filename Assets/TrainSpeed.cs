@@ -8,7 +8,8 @@ public class TrainSpeed : StageEvent
 
     public override void Trigger()
     {
-        splashManager.makeSplash(1, "Event:\nTrain Speed Up!");
+        splashManager.makeSplash(1, "Event:\nWild Train!");
         train.GetComponent<Train>().speed += 0.225f;
+        train.GetComponent<Train>().time += 70f;
     }
 }

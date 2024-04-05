@@ -11,6 +11,7 @@ public class Train : MonoBehaviour
     public int[] indexes;
     public bool startShuffle;
     public float speed = 0.225f;
+    public float time = -450;
 
     void Start()
     {
@@ -23,8 +24,8 @@ public class Train : MonoBehaviour
     void FixedUpdate()
     {
         body.MovePosition(transform.position + new Vector3(0, 0, speed));
-        if (transform.position.z > 300) {
-            transform.position += new Vector3(0, 0, -450);
+        if (transform.position.z > 280) {
+            transform.position += new Vector3(0, 0, time);
             Shuffle();
         }
         if (!startShuffle) {
