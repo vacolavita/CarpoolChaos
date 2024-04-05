@@ -9,10 +9,12 @@ public class SpecialCar : MonoBehaviour
     bool activated = false;
     ParticleSystem p;
     Collider[] col;
+    Material m;
     void Start()
     {
         p = GetComponentInChildren<ParticleSystem>();
         col = GetComponents<Collider>();
+        m = GetComponentInChildren<MeshRenderer>().material;
     }
 
     // Update is called once per frame
@@ -44,6 +46,8 @@ public class SpecialCar : MonoBehaviour
             col[0].enabled = false;
             p.Stop();
             p.Clear();
+            m.color = new Color(0.8f, 0.8f, 0.8f);
+            m.SetFloat("_Glossiness", 0.6f);
 
         }
     }
@@ -53,5 +57,7 @@ public class SpecialCar : MonoBehaviour
         p.Play();
         activated = false;
         col[0].enabled = true;
+        m.color = new Color(1f, 1f, 1f);
+        m.SetFloat("_Glossiness", 1);
     }
 }
