@@ -23,12 +23,17 @@ public class MapIcon : MonoBehaviour
 
     public Vector3 defaultScale;
 
+    public bool scaleWithMap = true;
+
     SpriteRenderer spriteRenderer;
     // Start is called before the first frame update
     void Start()
     {
         defaultScale = transform.localScale;
         spriteRenderer = GetComponent<SpriteRenderer>();
+        if (scaleWithMap) {
+            scale *= GameObject.Find("Minimap Camera").GetComponent<Camera>().orthographicSize/59f;
+        }
     }
 
     // Update is called once per frame

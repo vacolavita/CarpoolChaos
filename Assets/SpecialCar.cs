@@ -30,7 +30,7 @@ public class SpecialCar : MonoBehaviour
 
 
 
-            GameObject i = Instantiate(item, transform.position + new Vector3(1, 2, -5), new Quaternion());
+            GameObject i = Instantiate(item, transform.position + new Vector3(1, 3, -5), new Quaternion());
             Rigidbody r = i.GetComponent<Rigidbody>();
             if (collision.transform.position.x > transform.position.x)
             {
