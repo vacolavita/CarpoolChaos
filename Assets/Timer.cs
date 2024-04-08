@@ -49,8 +49,4 @@ public class Timer : MonoBehaviour
             return milestones.Count - 1;
         }
     }
-
-    public void restart() {
-        dTime = Time.time;
-    }
 }
