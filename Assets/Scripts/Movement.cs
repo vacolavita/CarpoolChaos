@@ -486,6 +486,7 @@ public class Movement : MonoBehaviour
                         Passenger p = passengers[i].GetComponent<Passenger>();
                         if (p.passengerType - 1 == select)
                         {
+
                             launched = true;
                             p.isInCar = false;
                             passengers[i].transform.SetParent(null);
@@ -495,6 +496,7 @@ public class Movement : MonoBehaviour
                             p.canTrigger = false;
                             passengers[i] = null;
                             p.GetComponent<Rigidbody>().interpolation = RigidbodyInterpolation.Interpolate;
+                            p.GetComponent<AudioSource>().Play();
 
                         }
                     }
