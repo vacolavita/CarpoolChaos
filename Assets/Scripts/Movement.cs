@@ -243,7 +243,6 @@ public class Movement : MonoBehaviour
         if (spinOut > 0) { 
             c = new Vector3(0, 0, 0);
             curSpeed = 0;
-            audioSources[1].Play();
             spinOut--;
             r.angularVelocity = Vector3.zero;
             r.AddTorque(new Vector3(0,10,0), ForceMode.VelocityChange);
