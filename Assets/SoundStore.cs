@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class SoundStore : MonoBehaviour
 {
-    public AudioClip[] screams; 
+    public AudioClip[] sounds; 
     void Start()
     {
-        GetComponent<AudioSource>().clip = screams[Random.Range(0,screams.Length)];
-        GetComponent<AudioSource>().pitch = Random.Range(0.8f, 1.2f);
+        
     }
 
     // Update is called once per frame

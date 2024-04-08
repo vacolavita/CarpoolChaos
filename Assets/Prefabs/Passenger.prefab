@@ -124,6 +124,7 @@ GameObject:
   - component: {fileID: 8616050440410458265}
   - component: {fileID: 439159973509738577}
   - component: {fileID: 1915991435655584173}
+  - component: {fileID: 590242988615129017}
   m_Layer: 3
   m_Name: Passenger
   m_TagString: Passenger
@@ -291,7 +292,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.1
+  m_Volume: 0.137
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -387,7 +388,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0067425c14dddd84b886a9b94c307721, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  screams:
+  sounds:
   - {fileID: 8300000, guid: f18eebe93a6ccd149a3b4e39dcf70ab3, type: 3}
   - {fileID: 8300000, guid: 96ae6944627fd0d47a6a8e18f268e7df, type: 3}
   - {fileID: 8300000, guid: 4410793e31fedf641a6912e1c506eb0e, type: 3}
@@ -396,6 +397,18 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 56830d87a55f48c4a9eca715d9826792, type: 3}
   - {fileID: 8300000, guid: b55bdbddc2b79384cacfb97fe6a41c43, type: 3}
   - {fileID: 8300000, guid: aac643dfa495cc848a4e90fe8ea6f337, type: 3}
+--- !u!114 &590242988615129017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4128033999256982640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 810aeaa1bf0dea640bdb146932a0378d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6294426634765905575
 GameObject:
   m_ObjectHideFlags: 0

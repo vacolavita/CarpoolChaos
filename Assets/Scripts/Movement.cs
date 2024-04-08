@@ -79,9 +79,15 @@ public class Movement : MonoBehaviour
 
     public bool TEMP;
 
+    AudioSource[] audioSources;
+
+    SoundStore soundStore;
+
     // Start is called before the first frame update
     void Start()
     {
+        audioSources = GetComponents<AudioSource>();
+        soundStore = GetComponent<SoundStore>();
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
         GetComponent<CapsuleCollider>().material.dynamicFriction = 0;
         GetComponent<CapsuleCollider>().material.staticFriction = 0;
@@ -237,6 +243,7 @@ public class Movement : MonoBehaviour
         if (spinOut > 0) { 
             c = new Vector3(0, 0, 0);
             curSpeed = 0;
+            audioSources[1].Play();
             spinOut--;
             r.angularVelocity = Vector3.zero;
             r.AddTorque(new Vector3(0,10,0), ForceMode.VelocityChange);
@@ -276,7 +283,24 @@ public class Movement : MonoBehaviour
 
         r.velocity = new Vector3(r.velocity.x/traction, r.velocity.y, r.velocity.z/traction);
 
-
+        if (curSpeed > 0.1f)
+        {
+            if (audioSources[0].clip != soundStore.sounds[1])
+            {
+                audioSources[0].clip = soundStore.sounds[1];
+                audioSources[0].Play();
+            }
+            audioSources[0].pitch = 1 + curSpeed/2;
+            audioSources[0].clip = soundStore.sounds[1];
+        }
+        else {
+            if (audioSources[0].clip != soundStore.sounds[0]) {
+                audioSources[0].clip = soundStore.sounds[0];
+                audioSources[0].Play();
+            }
+            audioSources[0].pitch = 1;
+            audioSources[0].clip = soundStore.sounds[0];
+        }
 
         //Fuel Stuff
         if (curSpeed > 0.1f)
@@ -503,6 +527,7 @@ public class Movement : MonoBehaviour
                 }
                 if (launched)
                 {
+                    audioSources[1].Play();
                     fuelLevel = Mathf.Max(fuelLevel - launchPenalty, 0);
                     UpdateColor(1);
                 }
