@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Screams : MonoBehaviour
+public class SoundStore : MonoBehaviour
 {
     public AudioClip[] screams; 
     void Start()
