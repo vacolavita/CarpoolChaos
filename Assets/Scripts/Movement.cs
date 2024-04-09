@@ -425,7 +425,7 @@ public class Movement : MonoBehaviour
 
         if (other.gameObject.CompareTag("Ice"))
         {
-            traction = ((originalTraction - 1) * 0.7f) + 1;
+            StartCoroutine(IceSlip());
         }
         else
         {
@@ -489,7 +489,11 @@ public class Movement : MonoBehaviour
         }
     }
 
-
+    IEnumerator IceSlip()
+    {
+        traction = ((originalTraction - 1) * 0.7f) + 1;
+        yield return new WaitForSeconds(5);
+    }
 
 
 
