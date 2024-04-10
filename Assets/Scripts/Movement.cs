@@ -421,6 +421,7 @@ public class Movement : MonoBehaviour
         if (other.gameObject.CompareTag("Spring Pad"))
         {
             r.velocity = new Vector3 (r.velocity.x, jumpForce, r.velocity.z);
+            other.gameObject.GetComponent<JumpPad>().Trigger();
         }
 
         if (other.gameObject.CompareTag("Ice"))
