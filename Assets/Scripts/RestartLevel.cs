@@ -22,7 +22,7 @@ public class RestartLevel : MonoBehaviour
     {
         if (Score.stage == 1)
         {
-            Loader.Load(Loader.Scene.Test);
+            Loader.Load(Loader.Scene.TownScene);
         }
 
         if (Score.stage == 2)
@@ -37,7 +37,7 @@ public class RestartLevel : MonoBehaviour
 
         if (Score.stage == 4)
         {
-            Loader.Load(Loader.Scene.ConstructionCity);
+            Loader.Load(Loader.Scene.CityLevel);
         }
     }
 }
