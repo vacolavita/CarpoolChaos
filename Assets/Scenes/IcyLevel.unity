@@ -36752,7 +36752,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 360
+      value: 200
       mode: 0
       spread: 0
       speed:
@@ -36871,7 +36871,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 150
+      scalar: 100
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -84257,8 +84257,9 @@ MonoBehaviour:
   countdown: 3
   music: {fileID: 0}
   rush: 0
-  check: 0
-  spawnPoints: []
+  isOnFire: 0
+  fireState: 0
+  fire: {fileID: 0}
   UI: {fileID: 631521676}
 --- !u!4 &2069627468
 Transform:
