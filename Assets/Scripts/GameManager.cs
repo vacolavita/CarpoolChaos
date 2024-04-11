@@ -32,17 +32,14 @@ public class GameManager : MonoBehaviour
     bool oneMinute = false;
     public bool rush = false;
 
-    //public bool isOnFire;
+    public bool isOnFire;
 
-    //private int fireMin = 0;
-    //private int fireMax = 10;
-    //public int fireState;
-    //public ParticleSystem fire;
+    private int fireMin = 0;
+    private int fireMax = 10;
+    public int fireState;
+    public ParticleSystem fire;
 
-    public float check;
-    //public GameObject waterBucket;
-    public Vector3[] spawnPoints;
-    int spawn;
+    
     public GameObject UI;
 
     // Start is called before the first frame update
@@ -53,9 +50,7 @@ public class GameManager : MonoBehaviour
         livesText.text = "Lives: " + Mathf.Round(lives);
         scoreText.text = "Score: " + score;
         timerText.text = "Time: " + GameModes.time;
-        //fire.Stop();
-        //GameModes.time = GameModes.time + 0;
-        //StartCoroutine(Fire());
+        GameModes.time = GameModes.time + 0;
         music = GameObject.Find("Music Manager").GetComponent<AudioSource>();
     }
 
@@ -74,10 +69,10 @@ public class GameManager : MonoBehaviour
             lifeMeter.SetActive(true);
         }
 
-        //if(fireState == 6)
-        //{
-        //    isOnFire = true;
-        //}
+        if(fireState == 6)
+        {
+            isOnFire = true;
+        }
 
         if (GameModes.useTime && GameModes.time <= 1 || GameModes.useLives && lives <= 0)
         {
@@ -100,8 +95,6 @@ public class GameManager : MonoBehaviour
         if (oneMinute) {
             music.pitch = 1.2f;
         }
-
-        StartFire();
     }
 
     public void UpdateScore(int scoreToAdd)
@@ -167,35 +160,3 @@ public class GameManager : MonoBehaviour
         isGamePaused = false;
         pauseScreen.SetActive(false);
     }
-
-    public IEnumerator Fire()
-    {
-        //while (!isOnFire)
-        {
-            //fireState = Random.Range(fireMin, fireMax);
-            //if (fireState == 6)
-            {
-            //    break;
-            }
-            yield return new WaitForSeconds(check);
-        }
-    }
-
-    public void StartFire()
-    {
-        //if (fireState == 6 && isOnFire)
-        {
-            spawn = Random.Range(0, spawnPoints.Length);
-            StopCoroutine(Fire());
-            //Instantiate(waterBucket);
-            //waterBucket.transform.position = spawnPoints[spawn] + new Vector3(0, 1, 0);
-            //fire.Play();
-        }
-    }
-
-    public void StopFire()
-    {
-        //fire.Stop();
-        StartCoroutine(Fire());
-    }
-}
