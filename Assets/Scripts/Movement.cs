@@ -23,6 +23,8 @@ public class Movement : MonoBehaviour
     public ParticleSystem exhaust;
 
 
+    public bool isOnFire;
+
     public int currentPassengers;
     
     //Variables for fuel
@@ -692,7 +694,7 @@ public class Movement : MonoBehaviour
 
     public void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.CompareTag("Gas Station"))
+        if (other.gameObject.CompareTag("Gas Station") && (other.gameObject.GetComponent<OnFireBool>() == null || other.gameObject.GetComponent<OnFireBool>().fire == false))
         {
             fuelLevel = Mathf.Min(fuelLevel + Time.deltaTime * 25, maxFuel);
             DebugFueling = true;
