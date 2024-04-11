@@ -22,8 +22,8 @@ public class ItemSpawner : MonoBehaviour
         {
             timer -= spawnTime;
             spawnPoint = Random.Range(0, spawnPoints.Length);
-            GameObject itemx = Instantiate(item);
-            item.transform.position = spawnPoints[spawnPoint] + new Vector3(0, 1, 0);
+            GameObject itemx = Instantiate(item, spawnPoints[spawnPoint] + new Vector3(0, 1, 0) , new Quaternion());
+            itemx.transform.position = spawnPoints[spawnPoint] + new Vector3(0, 1, 0);
             spawnPoint = (spawnPoint + 1) % 3;
         }
     }
