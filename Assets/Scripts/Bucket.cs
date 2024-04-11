@@ -21,7 +21,7 @@ public class Bucket : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Fire"))
         {
-            gameManager.StopFire();
+            //gameManager.StopFire();
         }
     }
 }

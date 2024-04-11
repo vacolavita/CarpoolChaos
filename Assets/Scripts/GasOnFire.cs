@@ -21,8 +21,9 @@ public class GasOnFire : StageEvent
         
     }
 
-    public void FireStart()
+    public override void Trigger()
     {
+        splashManager.makeSplash(1, "Event:\nGas Fire!");
         spawn = Random.Range(0, spawnPoints.Length);
         Instantiate(waterBucket);
         waterBucket.transform.position = spawnPoints[spawn] + new Vector3(0, 1, 0);

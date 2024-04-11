@@ -12,9 +12,9 @@ public class GameManager : MonoBehaviour
     public Movement car1;
     public Movement car2;
     public int score;
-    
-   
-    
+
+
+
     public TextMeshProUGUI timerText;
     //public Slider fuelMeter1;
     //public Slider fuelMeter2;
@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour
     public int fireState;
     public ParticleSystem fire;
 
-    
+
     public GameObject UI;
 
     // Start is called before the first frame update
@@ -69,7 +69,7 @@ public class GameManager : MonoBehaviour
             lifeMeter.SetActive(true);
         }
 
-        if(fireState == 6)
+        if (fireState == 6)
         {
             isOnFire = true;
         }
@@ -78,21 +78,23 @@ public class GameManager : MonoBehaviour
         {
             EndGame();
         }
-        
+
         GamePause();
         Score.score = score;
 
-        if (GameModes.useTime && GameModes.time <= 61 && oneMinute == false) { 
+        if (GameModes.useTime && GameModes.time <= 61 && oneMinute == false)
+        {
             oneMinute = true;
             splashManager.splashes.Enqueue(new splashManager.splash(1, "One minute left!!!"));
-            
+
         }
         if (GameModes.useTime && GameModes.time <= 91 && rush == false)
         {
             rush = true;
             splashManager.splashes.Enqueue(new splashManager.splash(1, "Rush!!!"));
         }
-        if (oneMinute) {
+        if (oneMinute)
+        {
             music.pitch = 1.2f;
         }
     }
@@ -109,10 +111,11 @@ public class GameManager : MonoBehaviour
         {
             GameModes.time -= timeLeft * Time.deltaTime;
         }
-        else 
+        else
         {
             countdown -= Time.deltaTime;
-            if (countdown <= 0) {
+            if (countdown <= 0)
+            {
                 StaticGameManager.control = true;
                 UI.SetActive(true);
             }
@@ -143,7 +146,7 @@ public class GameManager : MonoBehaviour
         lives += livesToDrain;
         livesText.text = "Lives: " + Mathf.Round(lives);
     }
-    
+
     public void GamePause()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -160,3 +163,4 @@ public class GameManager : MonoBehaviour
         isGamePaused = false;
         pauseScreen.SetActive(false);
     }
+}
