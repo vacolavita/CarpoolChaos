@@ -253,4 +253,13 @@ public class Passenger : MonoBehaviour
             gameManager.LifeDrain(-0.1111111111f);
         }
     }
+
+    public void OnCollisionStay(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Pushbox") && !isInCar)
+        {
+            Vector3 angle = new Vector3(transform.position.x - collision.gameObject.transform.position.x, 0, transform.position.z - collision.gameObject.transform.position.z).normalized;
+            r.MovePosition((angle * Time.deltaTime * 5) + transform.position);
+        }
+    }
 }

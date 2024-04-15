@@ -20,7 +20,7 @@ public class BeamStack : MonoBehaviour
     {
         r.MovePosition(new Vector3(Mathf.Lerp(transform.position.x, positions[pos].x, 0.03f), Mathf.Lerp(transform.position.y, positions[pos].y, 0.03f), Mathf.Lerp(transform.position.z, positions[pos].z, 0.03f)));
         foreach (var item in rend)
-            item.material.color = new Color(0.9f + Mathf.Sin(Time.time*4)*0.2f, 0.9f + Mathf.Sin(Time.time * 4) * 0.2f, 0.9f + Mathf.Sin(Time.time * 4) * 0.2f);
+            item.material.color = new Color(0.9f + Mathf.Sin(Time.time*8)*0.2f, 0.9f + Mathf.Sin(Time.time * 8) * 0.2f, 0.9f + Mathf.Sin(Time.time * 8) * 0.2f);
 
     }
 
@@ -28,12 +28,21 @@ public class BeamStack : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Car"))
         {
+            Rigidbody car = collision.gameObject.GetComponent<Rigidbody>();
             if (collision.transform.position.x > transform.position.x)
             {
+                if (pos == 1)
+                {
+                    car.velocity = new Vector3(20, car.velocity.y, car.velocity.z);
+                }
                 pos = 0;
             }
             else
             {
+                if (pos == 0)
+                {
+                    car.velocity = new Vector3(-20, car.velocity.y, car.velocity.z);
+                }
                 pos = 1;
             }
         }
