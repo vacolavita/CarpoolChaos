@@ -20,7 +20,7 @@ public class BeamStack : MonoBehaviour
     {
         r.MovePosition(new Vector3(Mathf.Lerp(transform.position.x, positions[pos].x, 0.03f), Mathf.Lerp(transform.position.y, positions[pos].y, 0.03f), Mathf.Lerp(transform.position.z, positions[pos].z, 0.03f)));
         foreach (var item in rend)
-            item.material.color = new Color(0.9f + Mathf.Sin(Time.time*8)*0.2f, 0.9f + Mathf.Sin(Time.time * 8) * 0.2f, 0.9f + Mathf.Sin(Time.time * 8) * 0.2f);
+            item.material.color = new Color(1 + Mathf.Sin(Time.time*8)*0.3f, 1 + Mathf.Sin(Time.time * 8) * 0.3f, 1 + Mathf.Sin(Time.time * 8) * 0.3f);
 
     }
 
