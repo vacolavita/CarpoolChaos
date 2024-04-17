@@ -53,6 +53,7 @@ public class Movement : MonoBehaviour
     public GameObject playerControl;
 
     public Color paint;
+    public int paintMat;
 
     public GameObject[] passengers;
     public Vector3 launchTrajectory;
@@ -134,7 +135,7 @@ public class Movement : MonoBehaviour
             PlayerManagerManager.players = new GameObject[2];
 
         }
-        GetComponentsInChildren<MeshRenderer>()[0].materials[0].color = paint;
+        GetComponentsInChildren<MeshRenderer>()[0].materials[paintMat].color = paint;
         GetComponentsInChildren<SpriteRenderer>()[0].color = paint;
         
     }
