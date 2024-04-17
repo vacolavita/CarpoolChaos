@@ -26470,16 +26470,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 471603592}
     m_Modifications:
     - target: {fileID: 3556518330373165408, guid: 94940d981b274e0469f0bc645c688d4e, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.31818384
+      objectReference: {fileID: 0}
+    - target: {fileID: 3556518330373165408, guid: 94940d981b274e0469f0bc645c688d4e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -92.50191
       objectReference: {fileID: 0}
     - target: {fileID: 3556518330373165408, guid: 94940d981b274e0469f0bc645c688d4e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -81.74562
+      value: -83.77
       objectReference: {fileID: 0}
     - target: {fileID: 3556518330373165408, guid: 94940d981b274e0469f0bc645c688d4e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -77.88432
+      value: -77.63
       objectReference: {fileID: 0}
     - target: {fileID: 3556518330373165408, guid: 94940d981b274e0469f0bc645c688d4e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -28378,7 +28382,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 841ecacddd21ad54f978e71632a24718, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraFollow: {fileID: 0}
+  cameraFollow: {fileID: 1547540158}
   cameraDistance: {x: 0, y: 55, z: -12}
   cameraOffset: {x: 0, y: 0, z: -2}
   xBorders: {x: -100, y: 100}
@@ -46263,6 +46267,11 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 100.00002, y: 100, z: 100.00002}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &1547540158 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3301784293237717141, guid: f1dc761dce0153948b8e3c07b4a1cb3d, type: 3}
+  m_PrefabInstance: {fileID: 1446236186}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1553434981 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5397730379275188233, guid: 46c3fa30679245449880518af4e530e9, type: 3}
