@@ -14,7 +14,7 @@ public class stageManager : MonoBehaviour
     [SerializeReference] public StageEvent[] events;
     public Vector3[] spawnPoints;
     public float timer;
-    public GameObject player;
+    public GameObject[] player;
 
     [NonSerialized] public GameObject[] clumps;
     void Start()
@@ -22,9 +22,10 @@ public class stageManager : MonoBehaviour
         int col = UnityEngine.Random.Range(1, 4);
         int i = 0;
         foreach (var p in spawnPoints) {
-            GameObject play = Instantiate(player, p, new Quaternion());
+            GameObject play = Instantiate(player[VehicleSelection.playerVehicle[i]], p, new Quaternion());
             play.name = "Player " + (i + 1);
             Movement m = play.GetComponent<Movement>();
+            //m.paint = VehicleSelection.playerVehicleColor[i];
             m.playernum = i;
             i++;
             GameObject.Find("P" + i + " Cam").GetComponent<CameraFollow>().cameraFollow = play.transform;
