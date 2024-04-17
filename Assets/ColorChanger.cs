@@ -6,10 +6,11 @@ using UnityEngine.SceneManagement;
 
 public class ColorChanger : MonoBehaviour
 {
+    int playerAssignment;
     // Start is called before the first frame update
     void Start()
     {
-        
+        playerAssignment = GetComponent<PlayerAssignment>().num;
     }
 
     // Update is called once per frame
@@ -18,9 +19,50 @@ public class ColorChanger : MonoBehaviour
         
     }
 
-    public void OnItem() {
-        if (SceneManager.GetActiveScene().name == "VehicleSelect") { 
-            
+    public void OnColorUp() {
+        if (SceneManager.GetActiveScene().name == "VehicleSelect") {
+            VehicleSelection.playerVehicleColor[playerAssignment]--;
+            if (VehicleSelection.playerVehicleColor[playerAssignment] < 0) {
+                VehicleSelection.playerVehicleColor[playerAssignment] = 15;
+            }
         }
     }
+
+    public void OnColorDown()
+    {
+        if (SceneManager.GetActiveScene().name == "VehicleSelect")
+        {
+            VehicleSelection.playerVehicleColor[playerAssignment]++;
+            if (VehicleSelection.playerVehicleColor[playerAssignment] > 15)
+            {
+                VehicleSelection.playerVehicleColor[playerAssignment] = 0;
+            }
+        }
+    }
+
+    public void OnVehicleLeft()
+    {
+        if (SceneManager.GetActiveScene().name == "VehicleSelect")
+        {
+            VehicleSelection.playerVehicle[playerAssignment]--;
+            if (VehicleSelection.playerVehicle[playerAssignment] < 0)
+            {
+                VehicleSelection.playerVehicle[playerAssignment] = 2;
+            }
+        }
+    }
+
+    public void OnVehicleRight()
+    {
+        if (SceneManager.GetActiveScene().name == "VehicleSelect")
+        {
+            VehicleSelection.playerVehicle[playerAssignment]++;
+            if (VehicleSelection.playerVehicle[playerAssignment] > 2)
+            {
+                VehicleSelection.playerVehicle[playerAssignment] = 0;
+            }
+        }
+    }
+
+
 }

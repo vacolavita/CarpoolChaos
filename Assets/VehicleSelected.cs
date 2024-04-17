@@ -7,11 +7,12 @@ using System.Diagnostics;
 using System.Security.Cryptography;
 using System.Collections.Specialized;
 
-public class VehicleSelected : MonoBehaviour, ISelectHandler, IDeselectHandler
+public class VehicleSelected : MonoBehaviour
 {
     public Vector3 pos;
     public int player;
     public int vehicle;
+    public int matnum;
     Material mat;
     colorManager colors;
 
@@ -19,23 +20,19 @@ public class VehicleSelected : MonoBehaviour, ISelectHandler, IDeselectHandler
     void Start()
     {
         colors = GameObject.Find("ColorManager").GetComponent<colorManager>();
-        mat = GetComponent<MeshRenderer>().material;
+        mat = GetComponent<MeshRenderer>().materials[matnum];
     }
 
     // Update is called once per frame
     void Update()
     {
-        mat.color = colors.colors[player];
-    }
-
-    public void OnSelect(BaseEventData eventData)
-    {
-        UnityEngine.Debug.Log(name);
-        transform.position = pos;
-    }
-
-    public void OnDeselect(BaseEventData data)
-    {
-        transform.position = new Vector3(-45, 100f, 4.73f);
+        mat.color = colors.colors[VehicleSelection.playerVehicleColor[player]];
+        if (VehicleSelection.playerVehicle[player] == vehicle)
+        {
+            transform.position = pos;
+        }
+        else { 
+            transform.position = pos + new Vector3(0,100,0);
+        }
     }
 }

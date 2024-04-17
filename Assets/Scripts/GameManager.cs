@@ -32,10 +32,6 @@ public class GameManager : MonoBehaviour
     bool oneMinute = false;
     public bool rush = false;
 
-    public bool isOnFire;
-
-    private int fireMin = 0;
-    private int fireMax = 10;
     public int fireState;
     public ParticleSystem fire;
 
@@ -67,11 +63,6 @@ public class GameManager : MonoBehaviour
         if (GameModes.useLives)
         {
             lifeMeter.SetActive(true);
-        }
-
-        if (fireState == 6)
-        {
-            isOnFire = true;
         }
 
         if (GameModes.useTime && GameModes.time <= 1 || GameModes.useLives && lives <= 0)
