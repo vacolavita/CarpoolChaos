@@ -57,7 +57,6 @@ public class Movement : MonoBehaviour
 
     public GameObject[] passengers;
     public Vector3 launchTrajectory;
-    private GameManager gameManager;
     float boostSpeed;
     public GameObject popUp;
     public Material outOfGas;
@@ -74,7 +73,7 @@ public class Movement : MonoBehaviour
 
     int spinOut = 0;
 
-    //float lean = 0;
+    public float passengerHeight = 2.1f;
 
     stageManager stage;
 
@@ -91,7 +90,6 @@ public class Movement : MonoBehaviour
     {
         audioSources = GetComponents<AudioSource>();
         soundStore = GetComponent<SoundStore>();
-        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
         GetComponent<CapsuleCollider>().material.dynamicFriction = 0;
         GetComponent<CapsuleCollider>().material.staticFriction = 0;
         GetComponent<MeshCollider>().material.dynamicFriction = 0;
@@ -107,7 +105,6 @@ public class Movement : MonoBehaviour
         passengers = new GameObject[carryingCapacity];
         r = GetComponent<Rigidbody>();
         r.maxAngularVelocity = 50;
-        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
         if (GameModes.turbo) {
             maxSpeed *= 1.3f;
         }
@@ -392,7 +389,7 @@ public class Movement : MonoBehaviour
 
     public Vector3 PassengerPosition(int passengerNum)
     {
-        return new Vector3(((passengerNum - 1) % 3 - 1) *0.5f,2.1f,(Mathf.Floor((passengerNum - 1) / 3 - 1) * -0.5f)-0.7f) * (1/carMesh.localScale.x);
+        return new Vector3(((passengerNum - 1) % 3 - 1) *0.5f,passengerHeight,(Mathf.Floor((passengerNum - 1) / 3 - 1) * -0.5f)-0.7f) * (1/carMesh.localScale.x);
     }
 
     public void FuelDrain(float amount)
