@@ -21,7 +21,6 @@ public class RestartLevel : MonoBehaviour
     void Restart()
     {
         Score.gameOver = false;
-        Score.stage = 2;
         GameModes.time = 180;
         StaticGameManager.passengersOut = 0;
         if (Score.stage == 1)
