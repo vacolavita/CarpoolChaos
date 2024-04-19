@@ -20,7 +20,7 @@ public class stageManager : MonoBehaviour
     [NonSerialized] public GameObject[] clumps;
     void Start()
     {
-        int col = UnityEngine.Random.Range(1, 4);
+        
         int i = 0;
         color = GetComponent<colorManager>();
         foreach (var p in spawnPoints) {
@@ -40,6 +40,7 @@ public class stageManager : MonoBehaviour
             p.GetComponentInChildren<MapIcon>().depth = floor;
             i++;
         }
+        GameObject.Find("Game Manager").GetComponent<GameManager>().countdown = 3;
     }
 
     // Update is called once per frame

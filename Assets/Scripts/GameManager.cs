@@ -105,6 +105,7 @@ public class GameManager : MonoBehaviour
         else
         {
             countdown -= Time.deltaTime;
+            Debug.Log(countdown);
             if (countdown <= 0)
             {
                 StaticGameManager.control = true;
