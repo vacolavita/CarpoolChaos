@@ -21,7 +21,10 @@ public class DesertButton : MonoBehaviour
 
     void PlayGame()
     {
+        Score.gameOver = false;
         Loader.Load(Loader.Scene.DesertScene);
         Score.stage = 2;
+        GameModes.time = 180;
+        StaticGameManager.passengersOut = 0;
     }
 }

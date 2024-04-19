@@ -48,6 +48,7 @@ public class GameManager : MonoBehaviour
         timerText.text = "Time: " + GameModes.time;
         GameModes.time = GameModes.time + 0;
         music = GameObject.Find("Music Manager").GetComponent<AudioSource>();
+        Debug.Log("Start Works");
     }
 
     // Update is called once per frame
@@ -105,7 +106,7 @@ public class GameManager : MonoBehaviour
         else
         {
             countdown -= Time.deltaTime;
-            Debug.Log(countdown);
+            StaticGameManager.control = false;
             if (countdown <= 0)
             {
                 StaticGameManager.control = true;
@@ -145,7 +146,8 @@ public class GameManager : MonoBehaviour
         {
             Time.timeScale = 0;
             isGamePaused = true;
-            pauseScreen.SetActive(true);
+            if (pauseScreen != null)
+                pauseScreen.SetActive(true);
         }
     }
 
@@ -153,6 +155,7 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 1;
         isGamePaused = false;
-        pauseScreen.SetActive(false);
+        if(pauseScreen != null)
+            pauseScreen.SetActive(false);
     }
 }

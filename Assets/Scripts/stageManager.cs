@@ -31,6 +31,7 @@ public class stageManager : MonoBehaviour
             m.playernum = i;
             i++;
             GameObject.Find("P" + i + " Cam").GetComponent<CameraFollow>().cameraFollow = play.transform;
+            Debug.Log("Spawn Complete");
         }
         clumps = new GameObject[stops.Length];
         i = 0;
@@ -39,8 +40,10 @@ public class stageManager : MonoBehaviour
             GameObject p = Instantiate(pas, item, new Quaternion());
             p.GetComponentInChildren<MapIcon>().depth = floor;
             i++;
+            Debug.Log("Stop Complete");
         }
         GameObject.Find("Game Manager").GetComponent<GameManager>().countdown = 3;
+        Debug.Log("stageManager Complete");
     }
 
     // Update is called once per frame
