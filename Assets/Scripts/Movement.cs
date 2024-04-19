@@ -516,6 +516,7 @@ public class Movement : MonoBehaviour
                         {
 
                             launched = true;
+                            p.Launch();
                             p.isInCar = false;
                             passengers[i].transform.SetParent(null);
                             p.GetComponent<Rigidbody>().isKinematic = false;

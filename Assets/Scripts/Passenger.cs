@@ -27,8 +27,12 @@ public class Passenger : MonoBehaviour
     public float jumpTime = 0;
     public float jumpTime2 = 10;
     public GameObject pas;
+    public GameObject trail;
+    GameObject tr;
 
     Rigidbody r;
+    private bool launched;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -52,6 +56,13 @@ public class Passenger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (r.velocity.magnitude < 0.2 && launched)
+        {
+            launched = false;
+            if (tr != null) {
+                tr.transform.SetParent(null);
+            }
+        }
         if (GameModes.peculiarPassengers && clump != null)
         {
             foreach (var item in mesh)
@@ -152,6 +163,11 @@ public class Passenger : MonoBehaviour
         canTrigger = true;
         if (clump == null && GameModes.fragilePassengers)
         {
+            if (launched)
+            {
+                launched = false;
+                tr.transform.SetParent(null);
+            }
             Destroy(gameObject);
             StaticGameManager.passengersOut -= 1;
         }
@@ -181,6 +197,10 @@ public class Passenger : MonoBehaviour
 
     private void joinCar(Collider other)
     {
+        if (launched) {
+            launched = false;
+            tr.transform.SetParent(null);
+        }
         if (other.GetComponent<Movement>().carryingCapacity > other.GetComponent<Movement>().currentPassengers)
         {
             state = 0;
@@ -231,6 +251,11 @@ public class Passenger : MonoBehaviour
                     parentMove.passengers[passengerNum - 1] = null;
                     parentMove.UpdateColor(0);
                 }
+                if (launched)
+                {
+                    launched = false;
+                    tr.transform.SetParent(null);
+                }
                 GameObject popUp = Instantiate(pop, transform.position, Quaternion.Euler(-70, 0, 0));
                 popUp.GetComponent<PopUp>().buildPopUp(plusOne, GetComponent<MeshRenderer>().material.color, 3, true);
                 Destroy(gameObject);
@@ -261,5 +286,23 @@ public class Passenger : MonoBehaviour
             Vector3 angle = new Vector3(transform.position.x - collision.gameObject.transform.position.x, 0, transform.position.z - collision.gameObject.transform.position.z).normalized;
             r.MovePosition((angle * Time.deltaTime * 5) + transform.position);
         }
+    }
+
+    public void Launch() { 
+        launched = true;
+        tr = Instantiate(trail, transform.position, new Quaternion());
+        tr.transform.SetParent(gameObject.transform);
+        if (passengerType == 1) {
+            tr.GetComponent<TrailRenderer>().material.color = Color.green;
+        }
+        if (passengerType == 2)
+        {
+            tr.GetComponent<TrailRenderer>().material.color = Color.red;
+        }
+        if (passengerType == 3)
+        {
+            tr.GetComponent<TrailRenderer>().material.color = Color.blue;
+        }
+
     }
 }
