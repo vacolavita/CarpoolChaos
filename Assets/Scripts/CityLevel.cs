@@ -21,7 +21,10 @@ public class CityLevel : MonoBehaviour
 
     void PlayGame()
     {
+        Score.gameOver = false;
         Loader.Load(Loader.Scene.CityLevel);
         Score.stage = 4;
+        GameModes.time = 180;
+        StaticGameManager.passengersOut = 0;
     }
 }
