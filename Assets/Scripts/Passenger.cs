@@ -301,7 +301,7 @@ public class Passenger : MonoBehaviour
         }
         if (passengerType == 3)
         {
-            tr.GetComponent<TrailRenderer>().material.color = Color.blue;
+            tr.GetComponent<TrailRenderer>().material.color = new Color(0.1f,0.3f,1);
         }
 
     }
