@@ -23405,6 +23405,7 @@ GameObject:
   m_Component:
   - component: {fileID: 673540360}
   - component: {fileID: 673540359}
+  - component: {fileID: 673540361}
   m_Layer: 0
   m_Name: StageManager
   m_TagString: Untagged
@@ -23462,6 +23463,39 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &673540361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 673540358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 039239cd01f4f984c8a655042f95cd12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colors:
+  - {r: 1, g: 0.3, b: 0.3, a: 1}
+  - {r: 0.9, g: 0.05, b: 0.05, a: 1}
+  - {r: 0.4, g: 0.05, b: 0.1, a: 1}
+  - {r: 1, g: 0.35, b: 0, a: 1}
+  - {r: 0.8, g: 0.7, b: 0.5, a: 1}
+  - {r: 0.85, g: 0.7, b: 0, a: 1}
+  - {r: 0.8000001, g: 0.85098046, b: 0, a: 1}
+  - {r: 0.3, g: 0.95, b: 0.3019608, a: 1}
+  - {r: 0.40000004, g: 0.45098042, b: 0, a: 1}
+  - {r: 0.05, g: 0.2, b: 0.05, a: 1}
+  - {r: 0.25, g: 0.7, b: 0.6, a: 1}
+  - {r: 0.55, g: 0.95, b: 0.9, a: 1}
+  - {r: 0.3, g: 0.3, b: 1, a: 1}
+  - {r: 0.1, g: 0.05, b: 0.5, a: 1}
+  - {r: 0.65, g: 0.2, b: 0.8, a: 1}
+  - {r: 1, g: 0.4, b: 0.7, a: 1}
+  - {r: 1, g: 0.7, b: 0.8, a: 1}
+  - {r: 0.85, g: 0.85, b: 0.85, a: 1}
+  - {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  - {r: 0.1, g: 0.1, b: 0.1, a: 1}
 --- !u!1001 &678875879
 PrefabInstance:
   m_ObjectHideFlags: 0
