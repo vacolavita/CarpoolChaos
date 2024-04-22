@@ -85,6 +85,8 @@ public class Movement : MonoBehaviour
 
     SoundStore soundStore;
 
+    public ParticleSystem tankBurst;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -530,6 +532,9 @@ public class Movement : MonoBehaviour
                 }
                 if (launched)
                 {
+                    if (tankBurst != null) { 
+                        tankBurst.Play();
+                    }
                     audioSources[1].Play();
                     fuelLevel = Mathf.Max(fuelLevel - launchPenalty, 0);
                     UpdateColor(1);

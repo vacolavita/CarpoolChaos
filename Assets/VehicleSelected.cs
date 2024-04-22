@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
-using System.Diagnostics;
-using System.Security.Cryptography;
-using System.Collections.Specialized;
+using TMPro;
 
 public class VehicleSelected : MonoBehaviour
 {
