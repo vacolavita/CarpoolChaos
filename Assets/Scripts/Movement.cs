@@ -179,8 +179,7 @@ public class Movement : MonoBehaviour
         {
             if (markers[2] == null)
             {
-                markers[2] = Instantiate(marker);
-                markers[2].transform.SetParent(transform);
+                markers[2] = Instantiate(marker, transform);
                 markers[2].GetComponent<markerManager>().depth = 0.25f;
 
             }
@@ -338,8 +337,7 @@ public class Movement : MonoBehaviour
         {
             if (markers[1] == null)
             {
-                markers[1] = Instantiate(marker);
-                markers[1].transform.SetParent(transform);
+                markers[1] = Instantiate(marker, transform);
                 markers[1].GetComponent<markerManager>().depth = 0.5f;
 
             }
@@ -636,8 +634,7 @@ public class Movement : MonoBehaviour
                     item1.color = Color.green;
                     if (markers[0] == null)
                     {
-                        markers[0] = Instantiate(marker);
-                        markers[0].transform.SetParent(transform);
+                        markers[0] = Instantiate(marker, transform);
 
                     }
                     markers[0].GetComponent<markerManager>().dest[0] = stage.dests[0];
@@ -650,8 +647,7 @@ public class Movement : MonoBehaviour
                     item1.color = new Color(1.00f, 0.5f, 0.4f);
                     if (markers[0] == null)
                     {
-                        markers[0] = Instantiate(marker);
-                        markers[0].transform.SetParent(transform);
+                        markers[0] = Instantiate(marker, transform);
 
                     }
                     markers[0].GetComponent<markerManager>().dest[0] = stage.dests[1];
@@ -665,8 +661,7 @@ public class Movement : MonoBehaviour
                     item1.color = new Color(0.50f, 0.92f, 1.00f);
                     if (markers[0] == null)
                     {
-                        markers[0] = Instantiate(marker);
-                        markers[0].transform.SetParent(transform);
+                        markers[0] = Instantiate(marker, transform);
                         
 
                     }

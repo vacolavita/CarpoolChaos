@@ -74,7 +74,7 @@ public class markerManager : MonoBehaviour
         transform.localPosition = new Vector3(0, depth, 0);
         agent.enabled = false;
 
-        if (path.corners.Length > 1)
+        if (path != null && path.corners.Length > 1)
         {
             Vector3 nextPoint = new Vector3(path.corners.ElementAt(1).x, transform.parent.transform.position.y, path.corners.ElementAt(1).z);
             bool straightShot = true;
