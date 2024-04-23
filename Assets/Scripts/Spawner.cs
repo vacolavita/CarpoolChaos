@@ -31,7 +31,7 @@ public class Spawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        TimeDecrease();
+        //TimeDecrease();
 
         timeMultiplier = 1 + ((StaticGameManager.passengersOut)*0.05f);
         if (StaticGameManager.passengersOut == 0)
