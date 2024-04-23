@@ -29,10 +29,11 @@ public class Passenger : MonoBehaviour
     public GameObject pas;
     public GameObject trail;
     GameObject tr;
+    public bool interp;
 
     Rigidbody r;
     private bool launched;
-
+    public Collider col;
     // Start is called before the first frame update
     void Start()
     {
@@ -41,8 +42,9 @@ public class Passenger : MonoBehaviour
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
         spawn = GameObject.Find("Spawner").GetComponent<Spawner>();
         r = GetComponent<Rigidbody>();
-        GetComponent<Collider>().material.dynamicFriction = 10;
-        GetComponent<Collider>().material.staticFriction = 10;
+        col = GetComponent<Collider>();
+        col.material.dynamicFriction = 10;
+        col.material.staticFriction = 10;
         foreach (var item in mesh)
         {
             item.material = passengerMats[passengerType - 1];
@@ -83,6 +85,7 @@ public class Passenger : MonoBehaviour
         mapSprite.enabled = true;
         if (isInCar)
         {
+            col.enabled = false;
             pas.transform.localPosition = new Vector3(0, -1, 0);
             pas.transform.localScale = new Vector3(1, 1, 1);
             jumpTime = 0;
@@ -97,6 +100,17 @@ public class Passenger : MonoBehaviour
         }
         else
         {
+            if (interp)
+            {
+                interp = false;
+            }
+            else {
+                if (r.interpolation != RigidbodyInterpolation.Interpolate) {
+                    r.interpolation = RigidbodyInterpolation.Interpolate;
+                }
+            }
+
+            col.enabled = true;
             pas.transform.localScale = new Vector3(1.13f, 1.13f, 1.13f);
             if (jump <= -1f)
             {

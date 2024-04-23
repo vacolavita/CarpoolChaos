@@ -46,7 +46,7 @@ public class ColorChanger : MonoBehaviour
             VehicleSelection.playerVehicle[playerAssignment]--;
             if (VehicleSelection.playerVehicle[playerAssignment] < 0)
             {
-                VehicleSelection.playerVehicle[playerAssignment] = 2;
+                VehicleSelection.playerVehicle[playerAssignment] = 3;
             }
         }
     }
@@ -56,7 +56,7 @@ public class ColorChanger : MonoBehaviour
         if (SceneManager.GetActiveScene().name == "VehicleSelect")
         {
             VehicleSelection.playerVehicle[playerAssignment]++;
-            if (VehicleSelection.playerVehicle[playerAssignment] > 2)
+            if (VehicleSelection.playerVehicle[playerAssignment] > 3)
             {
                 VehicleSelection.playerVehicle[playerAssignment] = 0;
             }

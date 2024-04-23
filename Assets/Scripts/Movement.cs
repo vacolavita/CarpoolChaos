@@ -516,15 +516,17 @@ public class Movement : MonoBehaviour
                         {
 
                             launched = true;
-                            p.Launch();
-                            p.isInCar = false;
+                            passengers[i].transform.localPosition += new Vector3(0, 2.1f-passengerHeight, 0);
                             passengers[i].transform.SetParent(null);
                             p.GetComponent<Rigidbody>().isKinematic = false;
-                            p.GetComponent<Rigidbody>().velocity = launchTrajectory + new Vector3(Random.Range(-1.0f, 1.0f), 0, (Random.Range(-1.0f, 1.0f)));
                             currentPassengers--;
                             p.canTrigger = false;
                             passengers[i] = null;
-                            p.GetComponent<Rigidbody>().interpolation = RigidbodyInterpolation.Interpolate;
+                            p.GetComponent<Rigidbody>().velocity = new Vector3();
+                            p.GetComponent<Rigidbody>().velocity = launchTrajectory + new Vector3(Random.Range(-1.0f, 1.0f), 0, Random.Range(-1.0f, 1.0f));
+                            p.Launch();
+                            p.isInCar = false;
+                            p.interp = true;
                             p.GetComponent<AudioSource>().Play();
 
                         }

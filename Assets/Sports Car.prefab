@@ -135,7 +135,7 @@ Transform:
   m_GameObject: {fileID: 5968093897524165285}
   serializedVersion: 2
   m_LocalRotation: {x: 0.0000004768371, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.5, y: -0.120000005, z: 1.26}
+  m_LocalPosition: {x: 0.5, y: -0.538, z: 2.113}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -253,7 +253,7 @@ Transform:
   m_GameObject: {fileID: 5990697433740804565}
   serializedVersion: 2
   m_LocalRotation: {x: 0.0000004768371, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.5, y: -0.12, z: 1.26}
+  m_LocalPosition: {x: -0.5, y: -0.538, z: 2.113}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -453,16 +453,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cc04437c481e2e48b9ccfb8cd4f470c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 28
-  traction: 1.07
-  originalTraction: 1.07
+  maxSpeed: 30
+  traction: 1.06
+  originalTraction: 1.06
   acceleration: 1.07
-  handling: 0.1
-  launchForce: 24
+  handling: 0.08
+  launchForce: 25
   carryingCapacity: 6
-  fuelEfficiency: 0.3
+  fuelEfficiency: 0.35
   passengerPenalty: 0.04
-  launchPenalty: 7
+  launchPenalty: 6
   jumpForce: 7
   slipStream: {fileID: 2633632295365605843}
   exhaust: {fileID: 1921917175013145662}
@@ -484,7 +484,7 @@ MonoBehaviour:
   playernum: 0
   playerControl: {fileID: 0}
   paint: {r: 1, g: 0.23113215, b: 0.23113209, a: 1}
-  paintMat: 0
+  paintMat: 1
   passengers: []
   launchTrajectory: {x: 0, y: 0, z: 0}
   popUp: {fileID: 6370264067895288898, guid: b54c5dceeb9277347b0a43e7bcf3ad45, type: 3}
@@ -493,8 +493,9 @@ MonoBehaviour:
   marker: {fileID: 5274907496561475266, guid: c5df6db4606ba54468b700b2d1486299, type: 3}
   markers: []
   DebugAI: 0
-  passengerHeight: 2.1
+  passengerHeight: 1.1
   TEMP: 0
+  tankBurst: {fileID: 0}
 --- !u!64 &28060713266988252
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -10518,7 +10519,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 618c510c84e512d40ba65538b22ffe11, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.02
+      value: -0.86
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 618c510c84e512d40ba65538b22ffe11, type: 3}
       propertyPath: m_LocalPosition.z
@@ -10555,11 +10556,15 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 618c510c84e512d40ba65538b22ffe11, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: ab7306c50a683634f8c207d79e5d14da, type: 2}
+      objectReference: {fileID: 2100000, guid: cb631dd165fedcf4c801d7025bec1b5d, type: 2}
     - target: {fileID: -7511558181221131132, guid: 618c510c84e512d40ba65538b22ffe11, type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
-      objectReference: {fileID: 2100000, guid: cb631dd165fedcf4c801d7025bec1b5d, type: 2}
+      objectReference: {fileID: 2100000, guid: f7097c317be274f439f24bf46ce5525c, type: 2}
+    - target: {fileID: -5754084199372789682, guid: 618c510c84e512d40ba65538b22ffe11, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -8224607974557619006, guid: e63681dbde388064fa53d73a25c904a6, type: 3}
     - target: {fileID: 919132149155446097, guid: 618c510c84e512d40ba65538b22ffe11, type: 3}
       propertyPath: m_Name
       value: VanMESH
