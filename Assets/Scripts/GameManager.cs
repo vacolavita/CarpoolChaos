@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public Movement car1;
     public Movement car2;
     public int score;
+    public Button resume;
 
 
 
@@ -147,7 +148,10 @@ public class GameManager : MonoBehaviour
             Time.timeScale = 0;
             isGamePaused = true;
             if (pauseScreen != null)
+            {
                 pauseScreen.SetActive(true);
+                resume.Select();
+            }
         }
     }
 
