@@ -8,6 +8,7 @@ public class tutorial : MonoBehaviour
 
     public int progress = 0;
     public TextMeshProUGUI textMeshProUGUI;
+    public TextMeshProUGUI buttonText;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,7 +16,7 @@ public class tutorial : MonoBehaviour
     }
 
     public void progression(int i){
-        if (progress == 15) {
+        if (progress == 15 && i == 1) {
             Loader.Load(Loader.Scene.LevelSelect);
         }
         progress = Mathf.Clamp(progress+i, 0, 15);
@@ -86,6 +87,10 @@ public class tutorial : MonoBehaviour
         if (progress == 15)
         {
             textMeshProUGUI.text = "Now work together, and get those people where they need to be!";
+            buttonText.text = "Return";
+        }
+        else {
+            buttonText.text = "Next";
         }
     }
 }

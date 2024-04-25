@@ -7,6 +7,7 @@ public class SelectText : MonoBehaviour
 {
     public int player;
     public TextMeshProUGUI textMeshPro;
+    public TextMeshProUGUI desc;
     public GameObject color;
     colorManager c;
     // Start is called before the first frame update
@@ -20,21 +21,26 @@ public class SelectText : MonoBehaviour
     void Update()
     {
         if (VehicleSelection.playerVehicle[player] == 0) {
-            textMeshPro.text = "Van: \n Your standard van.";
+            textMeshPro.text = "Van";
+            desc.text = "A good all-around vehicle!";
         }
         if (VehicleSelection.playerVehicle[player] == 1)
         {
-            textMeshPro.text = "Bus: \n Helps bring more of the kids to school.";
+            textMeshPro.text = "Bus";
+            desc.text = "Big and heavy, but has a lot of space for passsengers and fuel!";
         }
         if (VehicleSelection.playerVehicle[player] == 2)
         {
-            textMeshPro.text = "Tank: \n You know what this is and does. Have fun.";
+            textMeshPro.text = "Tank";
+            desc.text = "Ready, aim, fire! You know what this is and what this does. Have fun!";
         }
         if (VehicleSelection.playerVehicle[player] == 3)
         {
-            textMeshPro.text = "Sports Car: \n A very fast car indeed.";
+            textMeshPro.text = "Sports Car";
+            desc.text = "Speedy, but it doesn't have much space, and guzzles fuel!";
         }
 
         textMeshPro.color = c.colors[VehicleSelection.playerVehicleColor[player]];
+        desc.color = c.colors[VehicleSelection.playerVehicleColor[player]];
     }
 }
