@@ -32,7 +32,7 @@ public class SelectText : MonoBehaviour
         if (VehicleSelection.playerVehicle[player] == 2)
         {
             textMeshPro.text = "Tank";
-            desc.text = "Ready, aim, fire! You know what this is and what this does. Have fun!";
+            desc.text = "Ready, aim, fire! You know what this is and what it does. Have fun!";
         }
         if (VehicleSelection.playerVehicle[player] == 3)
         {
