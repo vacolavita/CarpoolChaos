@@ -131,7 +131,7 @@ public class GameManager : MonoBehaviour
     {
 
         Score.gameOver = true;
-        Loader.Load(Loader.Scene.MainMenu);
+        Loader.Load(Loader.Scene.LevelSelect);
         ResumeGame();
     }
 
