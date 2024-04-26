@@ -14,11 +14,14 @@ public class splashText : MonoBehaviour
 
     public int style = 0;
     public TextMeshProUGUI tmp;
+    public AudioSource[] audioSources;
+    public bool sound = false;
     // Start is called before the first frame update
     void Start()
     {
         rTransform = GetComponent<RectTransform>();
         tmp = GetComponent<TextMeshProUGUI>();
+        audioSources = GetComponents<AudioSource>();
     }
 
     // Update is called once per frame
@@ -30,6 +33,14 @@ public class splashText : MonoBehaviour
             tmp.SetText(splashManager.splashes.Peek().text);
             style = splashManager.splashes.Peek().style;
             splashManager.splashes.Dequeue();
+            sound = false;
+            if (style == 2) {
+                audioSources[0].Play();
+            }
+            if (style == 1)
+            {
+                audioSources[2].Play();
+            }
 
         }
         timer += Time.deltaTime * 1.1f;
@@ -50,6 +61,10 @@ public class splashText : MonoBehaviour
         {
             tmp.fontSize = 60;
             rTransform.localPosition = new Vector3(Mathf.Pow((timer - 1) * 9, 3), 0, 0);
+            if (!sound && timer > 1) { 
+                sound = true;
+                audioSources[1].Play();
+            }
         }
 
         if (timer > 2) {

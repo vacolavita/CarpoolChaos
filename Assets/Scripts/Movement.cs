@@ -586,6 +586,11 @@ public class Movement : MonoBehaviour
                 GameObject gas = Instantiate(items[0], transform.position + new Vector3(0, 2, 0), transform.rotation);
                 gas.GetComponent<Rigidbody>().velocity = launchTrajectory;
                 splashManager.makeSplash(2, "Gas Can!");
+                if (tankBurst != null)
+                {
+                    tankBurst.Play();
+                }
+                audioSources[1].Play();
             }
             if (item == 2)
             {

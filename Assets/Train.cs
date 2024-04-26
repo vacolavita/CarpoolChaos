@@ -12,10 +12,12 @@ public class Train : MonoBehaviour
     public bool startShuffle;
     public float speed = 0.225f;
     public float time = -450;
+    public bool sound;
+    public AudioSource[] audioSources;
 
     void Start()
     {
-
+        audioSources = GetComponents<AudioSource>();
         body = GetComponent<Rigidbody>();
     }
 
@@ -26,11 +28,18 @@ public class Train : MonoBehaviour
         body.MovePosition(transform.position + new Vector3(0, 0, speed));
         if (transform.position.z > 280) {
             transform.position += new Vector3(0, 0, time);
+            sound = false;
             Shuffle();
+            audioSources[1].Stop();
         }
         if (!startShuffle) {
             startShuffle = true;
             Shuffle();
+        }
+        if (transform.position.z > -105 && !sound) {
+            audioSources[0].Play();
+            audioSources[1].Play();
+            sound = true;
         }
     }
 
