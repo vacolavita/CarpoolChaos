@@ -87,6 +87,8 @@ public class Movement : MonoBehaviour
 
     public ParticleSystem tankBurst;
 
+    public bool canScore = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -175,7 +177,10 @@ public class Movement : MonoBehaviour
         onGround += 2;
         onGround = Mathf.Clamp(onGround,0, 20);
         carMesh.localRotation = Quaternion.Euler(-onGround, 0, 0);
-        PlayerManagerManager.players[playernum] = gameObject;
+        if (playernum < 2)
+        {
+            PlayerManagerManager.players[playernum] = gameObject;
+        }
 
         if (!TEMP && stage.clumps[0] != null && (stage.clumps[0].GetComponent<Clump>().passengers > 0 || stage.clumps[1].GetComponent<Clump>().passengers > 0 || stage.clumps[2].GetComponent<Clump>().passengers > 0) && currentPassengers == 0)
         {
@@ -445,7 +450,7 @@ public class Movement : MonoBehaviour
             {
                 if (item1 != null)
                 {
-                    item1.GetComponent<Passenger>().scorePassenger(other, true);
+                    item1.GetComponent<Passenger>().scorePassenger(other, true, canScore);
                 }
             }
         }
@@ -726,6 +731,14 @@ public class Movement : MonoBehaviour
     public void OnCollisionStay(Collision collision)
     {
         onGround -= 4*Time.deltaTime*60;
+    }
+
+    public void OnCollisionEnter(Collision collision)
+    {
+        if (!canScore && collision.gameObject.CompareTag("Car")) {
+            spinOut = 80;
+            SpinPassengers();
+        }
     }
 }
         

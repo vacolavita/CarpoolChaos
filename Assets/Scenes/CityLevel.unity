@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -39724,33 +39724,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1242880436}
-  - component: {fileID: 1242880435}
+  - component: {fileID: 1242880437}
   m_Layer: 0
-  m_Name: BPEvent
+  m_Name: RivalEvent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
   m_IsActive: 1
---- !u!114 &1242880435
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1242880434}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd5b0c01103136f45a2de51c952a7171, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  peels: {fileID: 4240577409209856703, guid: 659d81c078464e24992c5c93d911b4ee, type: 3}
-  spawnPoints:
-  - {x: -66.85, y: 10, z: 3.04}
-  - {x: -49.3, y: 10, z: 52.68}
-  - {x: 10.9, y: 10, z: -13.74}
-  - {x: 74.2, y: 10, z: 20.4}
-  - {x: 0, y: 10, z: 37}
 --- !u!4 &1242880436
 Transform:
   m_ObjectHideFlags: 0
@@ -39766,6 +39747,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1242880437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1242880434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 734fd7d7fa3362e48b3cc7e79390d1cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rival: {fileID: 7121863207185843292, guid: c934ec3bf68c6fd4a952ba933072a563, type: 3}
+  r: {fileID: 0}
+  coords: {x: 0, y: 1, z: 71}
 --- !u!1001 &1244446484
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -59519,13 +59515,13 @@ MonoBehaviour:
   pas: {fileID: 8928039370936052153, guid: d83f567a93ed945129a888f9f68e3c8f, type: 3}
   floor: 1.16
   events:
-  - {fileID: 1242880435}
+  - {fileID: 1242880437}
   spawnPoints:
   - {x: -76.6, y: 1.98, z: 20}
   - {x: 77.3, y: 1.98, z: -23.8}
   timer: 0
   player:
-  - {fileID: 7121863207185843292, guid: c934ec3bf68c6fd4a952ba933072a563, type: 3}
+  - {fileID: 7121863207185843292, guid: f1dc761dce0153948b8e3c07b4a1cb3d, type: 3}
   - {fileID: 7121863207185843292, guid: 534980ad1726a4e44bedf499b556bf6e, type: 3}
   - {fileID: 7121863207185843292, guid: e849bce76a3d7b746b744f1214924fed, type: 3}
   - {fileID: 7121863207185843292, guid: 35d6905d6adce794cb10636df58b16d3, type: 3}

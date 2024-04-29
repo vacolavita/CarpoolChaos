@@ -168,7 +168,7 @@ public class Passenger : MonoBehaviour
         }
         if (other.gameObject.CompareTag("Destination"))
         {
-            scorePassenger(other, false);
+            scorePassenger(other, false, true);
         }
     }
 
@@ -249,7 +249,7 @@ public class Passenger : MonoBehaviour
     }
 
 
-    public void scorePassenger(Collider other, bool callObj)
+    public void scorePassenger(Collider other, bool callObj, bool scoring)
     {
         if (!(isInCar && !callObj))
         {
@@ -270,11 +270,18 @@ public class Passenger : MonoBehaviour
                     launched = false;
                     tr.transform.SetParent(null);
                 }
-                GameObject popUp = Instantiate(pop, transform.position, Quaternion.Euler(-70, 0, 0));
-                popUp.GetComponent<PopUp>().buildPopUp(plusOne, GetComponent<MeshRenderer>().material.color, 3, true);
+                if (scoring)
+                {
+                    GameObject popUp = Instantiate(pop, transform.position, Quaternion.Euler(-70, 0, 0));
+                    popUp.GetComponent<PopUp>().buildPopUp(plusOne, GetComponent<MeshRenderer>().material.color, 3, true);
+                }
+                
                 Destroy(gameObject);
                 StaticGameManager.passengersOut -= 1;
-                gameManager.UpdateScore(1);
+                if (scoring)
+                {
+                    gameManager.UpdateScore(1);
+                }
 
             }
         }
