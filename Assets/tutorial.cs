@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class tutorial : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class tutorial : MonoBehaviour
     public int progress = 0;
     public TextMeshProUGUI textMeshProUGUI;
     public TextMeshProUGUI buttonText;
+    public GameObject previous;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,8 +27,14 @@ public class tutorial : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (progress == 0) {
+        if (progress == 0)
+        {
             textMeshProUGUI.text = "Welcome to Carpool Chaos! Team up with a friend to become the best ride-share drivers you can be!";
+            previous.SetActive(false);
+            GetComponent<Button>().Select();
+        }
+        else {
+            previous.SetActive(true);
         }
         if (progress == 1)
         {
