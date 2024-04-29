@@ -33,6 +33,7 @@ public class Passenger : MonoBehaviour
 
     Rigidbody r;
     private bool launched;
+    public bool spin;
     public Collider col;
     // Start is called before the first frame update
     void Start()
@@ -64,6 +65,10 @@ public class Passenger : MonoBehaviour
             if (tr != null) {
                 tr.transform.SetParent(null);
             }
+        }
+        if (r.velocity.magnitude < 0.2 && spin)
+        {
+            spin = false;
         }
         if (GameModes.peculiarPassengers && clump != null)
         {
@@ -151,7 +156,7 @@ public class Passenger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Car") && !isInCar && canTrigger && clump == null)
+        if (other.gameObject.CompareTag("Car") && !isInCar && canTrigger && clump == null && !spin)
         {
             joinCar(other);
         }
@@ -209,7 +214,7 @@ public class Passenger : MonoBehaviour
     }
 
 
-    private void joinCar(Collider other)
+    public void joinCar(Collider other)
     {
         if (launched) {
             launched = false;

@@ -39725,6 +39725,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1242880436}
   - component: {fileID: 1242880437}
+  - component: {fileID: 1242880438}
   m_Layer: 0
   m_Name: RivalEvent
   m_TagString: Untagged
@@ -39762,6 +39763,21 @@ MonoBehaviour:
   rival: {fileID: 7121863207185843292, guid: c934ec3bf68c6fd4a952ba933072a563, type: 3}
   r: {fileID: 0}
   coords: {x: 0, y: 1, z: 71}
+--- !u!114 &1242880438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1242880434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1212f9da31f313b4a96a884eabdea0bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  milestones: []
+  destroy: 0
+  destroyAt: 0
 --- !u!1001 &1244446484
 PrefabInstance:
   m_ObjectHideFlags: 0

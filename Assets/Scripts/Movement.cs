@@ -482,6 +482,7 @@ public class Movement : MonoBehaviour
             if (passengers[i] != null) {
                 Passenger p = passengers[i].GetComponent<Passenger>();
                 p.isInCar = false;
+                p.spin = true;
                 passengers[i].transform.SetParent(null);
                 p.GetComponent<Rigidbody>().isKinematic = false;
                 currentPassengers--;
@@ -737,7 +738,10 @@ public class Movement : MonoBehaviour
     {
         if (!canScore && collision.gameObject.CompareTag("Car")) {
             spinOut = 80;
+            GameObject[] passengers2 = passengers;
             SpinPassengers();
+            
+
         }
     }
 }
